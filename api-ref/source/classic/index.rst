@@ -1,8 +1,7 @@
 Classic Load Balancer APIs
 ==========================
 
-API Call Precaution
--------------------
+**API Call Precaution**
 
 Classic load balancers are not supported in the **eu-nl** region.
 
@@ -17,4 +16,3 @@ Classic load balancers are not supported in the **eu-nl** region.
    cert
    status
    metrics
-   version

@@ -8,3 +8,4 @@ Elastic Load Balancing
    classic/index
    shared/index
    dedicated/index
+   version
