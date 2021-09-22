@@ -36,6 +36,8 @@ html_theme_options = {
     "sidebar_dropdown": "api_ref",
     "sidebar_mode": "toc"
 }
+otcdocs_auto_name = False
+project = 'Load Balancer Service'
 otcdocs_repo_name = 'opentelekomcloud-docs/elb'
 
 
