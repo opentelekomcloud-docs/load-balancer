@@ -33,7 +33,7 @@ extensions = [
 
 html_theme = 'otcdocs'
 html_theme_options = {
-    "sidebar_dropdown": "api_ref",
+#    "sidebar_dropdown": "api_ref",
     "sidebar_mode": "toctree"
 }
 otcdocs_auto_name = False
