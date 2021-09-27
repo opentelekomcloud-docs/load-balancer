@@ -13,6 +13,8 @@ Dedicated Load Balancer
    pool
    member
    hm
+   l7policy
+   l7rule
    cert
    quota
    status_code
