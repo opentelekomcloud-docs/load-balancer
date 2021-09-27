@@ -1,5 +1,6 @@
+========
 Listener
-########
+========
 
 Adding a Listener
 =================
@@ -27,10 +28,10 @@ Request
    +-----------+-----------+--------+---------------------------------------------------------+
    | Parameter | Mandatory | Type   | Description                                             |
    +===========+===========+========+=========================================================+
-   | listener  | Yes       | Object | Specifies the listener. For details, see :ref:`scl_t2`. |
+   | listener  | Yes       | Object | Specifies the listener. For details, see :ref:`slc_t2`. |
    +-----------+-----------+--------+---------------------------------------------------------+
 
-.. _scl_t2:
+.. _slc_t2:
 .. table:: **Table 2** **listener** parameter description
 
    +-----------------------------+-----------+---------+-------------------------------------+
@@ -244,10 +245,10 @@ Request
    |                             |           |         | default value is                    |
    |                             |           |         | **tls-1-0**. For details of         |
    |                             |           |         | cipher suites for each              |
-   |                             |           |         | security policy, see :ref:`scl_t3`. |
+   |                             |           |         | security policy, see :ref:`slc_t3`. |
    +-----------------------------+-----------+---------+-------------------------------------+
 
-.. _scl_t3:
+.. _slc_t3:
 .. table:: **Table 3** **tls_ciphers_policy** parameter description
 
    +-----------------+-------------------------+------------------------------------------------------------------------+
@@ -289,10 +290,10 @@ Response
    +-----------+--------+---------------------------------------------------------+
    | Parameter | Type   | Description                                             |
    +===========+========+=========================================================+
-   | listener  | Object | Specifies the listener. For details, see :ref:`scl_t5`. |
+   | listener  | Object | Specifies the listener. For details, see :ref:`slc_t5`. |
    +-----------+--------+---------------------------------------------------------+
 
-.. _scl_t5:
+.. _slc_t5:
 .. table:: **Table 5** **listeners** parameter description
 
    +-----------------------------+---------+---------------------------------------+
@@ -322,7 +323,7 @@ Response
    +-----------------------------+---------+---------------------------------------+
    | loadbalancers               | Array   | Specifies the ID of the associated    |
    |                             |         | load balancer. For details, see       |
-   |                             |         | :ref:`scl_t6`.                        |
+   |                             |         | :ref:`slc_t6`.                        |
    +-----------------------------+---------+---------------------------------------+
    | connection_limit            | Integer | Specifies the maximum number of       |
    |                             |         | connections.                          |
@@ -408,10 +409,10 @@ Response
    |                             |         | **tls-1-2**, or **tls-1-2-strict**,   |
    |                             |         | and the default value is **tls-1-0**. |
    |                             |         | For details of cipher suites for each |
-   |                             |         | security policy, see :ref:`scl_t3`.   |
+   |                             |         | security policy, see :ref:`slc_t3`.   |
    +-----------------------------+---------+---------------------------------------+
 
-.. _scl_t6:
+.. _slc_t6:
 .. table:: **Table 6** **loadbalancers** parameter description
 
    ========= ====== =================================================
@@ -1242,7 +1243,7 @@ Response
    +-----------------------------+---------+---------------------------------------+
    | loadbalancers               | Array   | Specifies the ID of the associated    |
    |                             |         | load balancer. For details, see       |
-   |                             |         | :ref:`scl_t6`.                        |
+   |                             |         | :ref:`slc_t6`.                        |
    +-----------------------------+---------+---------------------------------------+
    | connection_limit            | Integer | Specifies the maximum number of       |
    |                             |         | connections.                          |
@@ -1328,7 +1329,7 @@ Response
    |                             |         | **tls-1-2**, or **tls-1-2-strict**,   |
    |                             |         | and the default value is **tls-1-0**. |
    |                             |         | For details of cipher suites for each |
-   |                             |         | security policy, see :ref:`scl_t3`.   |
+   |                             |         | security policy, see :ref:`slc_t3`.   |
    +-----------------------------+---------+---------------------------------------+
 
 .. ssl_t4:
@@ -1675,7 +1676,7 @@ Response
    +-----------------------------+---------+---------------------------------------+
    | loadbalancers               | Array   | Specifies the ID of the associated    |
    |                             |         | load balancer. For details, see       |
-   |                             |         | :ref:`scl_t6`.                        |
+   |                             |         | :ref:`slc_t6`.                        |
    +-----------------------------+---------+---------------------------------------+
    | connection_limit            | Integer | Specifies the maximum number of       |
    |                             |         | connections.                          |
@@ -1761,7 +1762,7 @@ Response
    |                             |         | **tls-1-2**, or **tls-1-2-strict**,   |
    |                             |         | and the default value is **tls-1-0**. |
    |                             |         | For details of cipher suites for each |
-   |                             |         | security policy, see :ref:`scl_t3`.   |
+   |                             |         | security policy, see :ref:`slc_t3`.   |
    +-----------------------------+---------+---------------------------------------+
 
 .. _sul_t7:

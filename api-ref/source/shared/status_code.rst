@@ -86,486 +86,106 @@ The following code descriptions are only suitable for shared load balancers.
    | 503         | Service unavailable    | Failed to assign the MAC address.     |
    +-------------+------------------------+---------------------------------------+
 
-.. table:: **Table 3** Error codes
+.. csv-table:: **Table 3** Error codes
+   :delim: ;
+   :header: Module, HTTP Status Code, Error Code, Error Message, Description, Handling Measure
 
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Module            | HTTP Status Code | Error Code | Error Message             | Description                   | Handling Measure  |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Load balancer     | 400              | ELB.0002   | RequestBody is            | The request body              | Set the parameter |
-   |                   |                  |            | null or                   | is empty.                     | by following the  |
-   |                   |                  |            | empty,request is          |                               | instructions in   |
-   |                   |                  |            | invalid.                  |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 401              | ELB.1102   | Token is error,           | Empty token.                  | Use a correct     |
-   |                   |                  |            | Authentication            |                               | token that has    |
-   |                   |                  |            | required.                 |                               | not expired.      |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | RequestBody is            | Failed to convert             | Set the parameter |
-   |                   |                  |            | null, request is          | the request body.             | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **vip_subnet_id**             | Set the parameter |
-   |                   |                  |            | loadbalanc                | in the request                | by following the  |
-   |                   |                  |            | er[vip_subnet_id]         | body is empty.                | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.1202   | 1.decoded token           | -  The token is               | Check the         |
-   |                   |                  |            | is null.                  |    empty.                     | enterprise        |
-   |                   |                  |            |                           | -  An error                   | project ID.       |
-   |                   |                  |            | 2.check                   |    occurred                   |                   |
-   |                   |                  |            | EnterpriseProject         |    during                     |                   |
-   |                   |                  |            | is error.                 |    verification               |                   |
-   |                   |                  |            |                           |    of **ep_id**.              |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9802   | Policy doesn't            | Authentication                | Check whether you |
-   |                   |                  |            | allow                     | failure                       | have the          |
-   |                   |                  |            | elb:l                     |                               | permission to     |
-   |                   |                  |            | oadbalancers:list         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9803   | Policy doesn't            | Authentication                | Check whether you |
-   |                   |                  |            | allow                     | failure                       | have the          |
-   |                   |                  |            | elb:l                     |                               | permission to     |
-   |                   |                  |            | oadbalancers:list         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9804   | Policy doesn't            | Authentication                | Check whether you |
-   |                   |                  |            | allow                     | failure                       | have the          |
-   |                   |                  |            | elb:l                     |                               | permission to     |
-   |                   |                  |            | oadbalancers:list         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0004   | Api response is           | The response                  | Contact customer  |
-   |                   |                  |            | null or invaild.          | returned by                   | service.          |
-   |                   |                  |            |                           | Neutron is                    |                   |
-   |                   |                  |            |                           | **null**.                     |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9899   | The                       | Combined API                  | Rectify the fault |
-   |                   |                  |            | default_tls_container_ref | failed to send                | based on the      |
-   |                   |                  |            | field of the              | the request to                | error             |
-   |                   |                  |            | TERMINATED_HTTPS          | Neutron.                      | information.      |
-   |                   |                  |            | listener does not         |                               |                   |
-   |                   |                  |            | allow updating to         |                               |                   |
-   |                   |                  |            | null                      |                               |                   |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resources:                |                               | customer service. |
-   |                   |                  |            | ['loadbalancer'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.1204   | Bind fail.                | Failed to                     | Contact customer  |
-   |                   |                  |            |                           | associate the                 | service.          |
-   |                   |                  |            |                           | load balancer                 |                   |
-   |                   |                  |            |                           | with the                      |                   |
-   |                   |                  |            |                           | enterprise                    |                   |
-   |                   |                  |            |                           | project.                      |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | Ep_id is not              | **ep_id** in the              | Check the         |
-   |                   |                  |            | uuid.                     | URI is not a                  | enterprise        |
-   |                   |                  |            |                           | valid UUID.                   | project ID.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9806   | Loadbalancer_id           | **                            | Check whether the |
-   |                   |                  |            | in url is null or         | loadbalancer_id**             | load balancer ID  |
-   |                   |                  |            | empty.                    | in the URI is                 | in the URL is     |
-   |                   |                  |            |                           | empty.                        | correct.          |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 404              | ELB.9800   | Resource could            | The specified                 | Check the load    |
-   |                   |                  |            | not be found.             | load balancer                 | balancer ID.      |
-   |                   |                  |            |                           | does not exist                |                   |
-   |                   |                  |            |                           | when **ep_id** is             |                   |
-   |                   |                  |            |                           | queried.                      |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9808   | Tenant_id in              | The value of                  | Check whether     |
-   |                   |                  |            | token mismatches          | **tenant_id** in              | parameter         |
-   |                   |                  |            | with tenant_id in         | the token is                  | **tenant_id** in  |
-   |                   |                  |            | url.                      | different from                | the token and URL |
-   |                   |                  |            |                           | that in the URL.              | is correct.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9801   | Not be list               | In the                        | Check whether the |
-   |                   |                  |            | action,                   | fine-grained                  | parameters in the |
-   |                   |                  |            | ente                      | authorization                 | request for       |
-   |                   |                  |            | rprise_project_id         | scenario, the                 | querying the load |
-   |                   |                  |            | must not be null.         | enterprise ID is              | balancers are     |
-   |                   |                  |            |                           | not transmitted               | correct.          |
-   |                   |                  |            |                           | in the request                |                   |
-   |                   |                  |            |                           | for querying the              |                   |
-   |                   |                  |            |                           | load balancers.               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Listener          | 400              | ELB.0002   | Listener is null,         | The request body              | Set the parameter |
-   |                   |                  |            | request is                | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **protocol** in               | Set the parameter |
-   |                   |                  |            | l                         | the request body              | by following the  |
-   |                   |                  |            | istener[protocol]         | is empty.                     | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **protocol_port**             | Set the parameter |
-   |                   |                  |            | listen                    | is empty.                     | by following the  |
-   |                   |                  |            | er[protocol_port]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **                            | Set the parameter |
-   |                   |                  |            | listener                  | loadbalancer_id**             | by following the  |
-   |                   |                  |            | [loadbalancer_id]         | is empty.                     | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.6200   | Load Balaner              | The port number               | Change the port   |
-   |                   |                  |            | \**\* already has         | is in use.                    | number.           |
-   |                   |                  |            | a listener with           |                               |                   |
-   |                   |                  |            | protocol_port of          |                               |                   |
-   |                   |                  |            | \***.                     |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resour                    |                               | customer service. |
-   |                   |                  |            | ces:['listener'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Backend server    | 400              | ELB.0002   | Pool is null,             | The request body              | Set the parameter |
-   | group             |                  |            | request is                | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **protocol** is               | Set the parameter |
-   |                   |                  |            | pool[protocol] is         | empty.                        | by following the  |
-   |                   |                  |            | null, this is a           |                               | instructions in   |
-   |                   |                  |            | required                  |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **lb_algorithm**              | Set the parameter |
-   |                   |                  |            | p                         | is empty.                     | by following the  |
-   |                   |                  |            | ool[lb_algorithm]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | re                        |                               | customer service. |
-   |                   |                  |            | sources:['pool'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **listener_id**               | Set the parameter |
-   |                   |                  |            | pool                      | is empty.                     | by following the  |
-   |                   |                  |            | [loadbalancer_id]         |                               | instructions in   |
-   |                   |                  |            | and                       |                               | this guide.       |
-   |                   |                  |            | pool[listener_id]         |                               |                   |
-   |                   |                  |            | both are null,            |                               |                   |
-   |                   |                  |            | this has at least         |                               |                   |
-   |                   |                  |            | one parameter.            |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Backend server    | 400              | ELB.9805   | RequestBody               | **sess                        | Set the parameter |
-   |                   |                  |            | pool[session_p            | ion_persistence**             | by following the  |
-   |                   |                  |            | ersistence][type]         | is empty.                     | instructions in   |
-   |                   |                  |            | is null. when             |                               | this guide.       |
-   |                   |                  |            | pool[ses                  |                               |                   |
-   |                   |                  |            | sion_persistence]         |                               |                   |
-   |                   |                  |            | exists, this is a         |                               |                   |
-   |                   |                  |            | required                  |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | Member is                 | The request body              | Set the parameter |
-   |                   |                  |            | null,request is           | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **address** is                | Set the parameter |
-   |                   |                  |            | member[address]           | empty.                        | by following the  |
-   |                   |                  |            | is null, this is          |                               | instructions in   |
-   |                   |                  |            | a required                |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | reso                      |                               | customer service. |
-   |                   |                  |            | urces:['member'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | The value of                  | Set the parameter |
-   |                   |                  |            | member[address]'s         | **address**                   | by following the  |
-   |                   |                  |            | length is %s,             | contains more                 | instructions in   |
-   |                   |                  |            | greater than 64.          | than 64                       | this guide.       |
-   |                   |                  |            |                           | characters.                   |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **protocol_port**             | Set the parameter |
-   |                   |                  |            | memb                      | is empty.                     | by following the  |
-   |                   |                  |            | er[protocol_port]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Health check      | 400              | ELB.9805   | RequestBody               | **subnet_id** is              | Set the parameter |
-   |                   |                  |            | member[subnet_id]         | empty.                        | by following the  |
-   |                   |                  |            | is null, this is          |                               | instructions in   |
-   |                   |                  |            | a required                |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | healthmonitor is          | The request body              | Set the parameter |
-   |                   |                  |            | null,request is           | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **delay** is                  | Set the parameter |
-   |                   |                  |            | hea                       | empty.                        | by following the  |
-   |                   |                  |            | lthmonitor[delay]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **max_retries**               | Set the parameter |
-   |                   |                  |            | healthmon                 | is empty.                     | by following the  |
-   |                   |                  |            | itor[max_retries]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **pool_id** is                | Set the parameter |
-   |                   |                  |            | healt                     | empty.                        | by following the  |
-   |                   |                  |            | hmonitor[pool_id]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resources:[               |                               | customer service. |
-   |                   |                  |            | 'healthmonitor'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **timeout** is                | Set the parameter |
-   |                   |                  |            | healt                     | empty.                        | by following the  |
-   |                   |                  |            | hmonitor[timeout]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Forwarding policy | 400              | ELB.9805   | RequestBody               | **type** is                   | Set the parameter |
-   |                   |                  |            | he                        | empty.                        | by following the  |
-   |                   |                  |            | althmonitor[type]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | l7policy is               | The request body              | Set the parameter |
-   |                   |                  |            | null,request is           | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resource                  |                               | customer service. |
-   |                   |                  |            | s:['l7policiey'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **listener_id**               | Set the parameter |
-   |                   |                  |            | l7po                      | is empty.                     | by following the  |
-   |                   |                  |            | licy[listener_id]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Forwarding rule   | 400              | ELB.9805   | RequestBody               | **action** is                 | Set the parameter |
-   |                   |                  |            | l7policy[action]          | empty.                        | by following the  |
-   |                   |                  |            | is null, this is          |                               | instructions in   |
-   |                   |                  |            | a required                |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | Rule is                   | The request body              | Set the parameter |
-   |                   |                  |            | null,request is           | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **type** is                   | Set the parameter |
-   |                   |                  |            | rule[type] is             | empty.                        | by following the  |
-   |                   |                  |            | null, this is a           |                               | instructions in   |
-   |                   |                  |            | required                  |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resources:['              |                               | customer service. |
-   |                   |                  |            | l7policieyrule'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **compare_type**              | Set the parameter |
-   |                   |                  |            | r                         | is empty.                     | by following the  |
-   |                   |                  |            | ule[compare_type]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **value** is                  | Set the parameter |
-   |                   |                  |            | rule[value] is            | empty.                        | by following the  |
-   |                   |                  |            | null, this is a           |                               | instructions in   |
-   |                   |                  |            | required                  |                               | this guide.       |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | The parameter                 | Set the parameter |
-   |                   |                  |            | rule[value]'s             | value contains                | by following the  |
-   |                   |                  |            | length is %s,             | more than 128                 | instructions in   |
-   |                   |                  |            | greater than 128.         | characters.                   | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Whitelist         | 400              | ELB.9807   | Quota exceeded            | The quota has                 | To expand the     |
-   |                   |                  |            | for                       | been used up.                 | quota, contact    |
-   |                   |                  |            | resourc                   |                               | customer service. |
-   |                   |                  |            | es:['whitelist'].         |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | whitelist is              | The request body              | Set the parameter |
-   |                   |                  |            | null,request is           | is empty.                     | by following the  |
-   |                   |                  |            | invalid.                  |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | **listener_id**               | Set the parameter |
-   |                   |                  |            | white                     | is empty.                     | by following the  |
-   |                   |                  |            | list[listener_id]         |                               | instructions in   |
-   |                   |                  |            | is null, this is          |                               | this guide.       |
-   |                   |                  |            | a required                |                               |                   |
-   |                   |                  |            | parameter.                |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9805   | RequestBody               | The value of                  | Set the parameter |
-   |                   |                  |            | whiteli                   | **listener_id**               | by following the  |
-   |                   |                  |            | st[listener_id]'s         | contains more                 | instructions in   |
-   |                   |                  |            | length is %s,             | than 255                      | this guide.       |
-   |                   |                  |            | greater than 255.         | characters.                   |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Label Management  | 400              | ELB.0002   | RequestBody is            | Invalid request               | Set the parameter |
-   |                   |                  |            | null or empty.            | body.                         | by following the  |
-   |                   |                  |            |                           |                               | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 401              | ELB.1102   | Token is error,           | Invalid token.                | Use a correct     |
-   |                   |                  |            | Authentication            |                               | token that has    |
-   |                   |                  |            | required.                 |                               | not expired.      |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.0002   | L                         | Invalid request               | Set the parameter |
-   |                   |                  |            | ogTankRequestBody         | body.                         | by following the  |
-   |                   |                  |            | is null, request          |                               | instructions in   |
-   |                   |                  |            | is invalid.               |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   |                  |            | LoadbalancerId in         | **                            | Set the parameter |
-   |                   |                  |            | requestBody is            | loadbalancer_id**             | by following the  |
-   |                   |                  |            | null.                     | in the request                | instructions in   |
-   |                   |                  |            |                           | body is empty.                | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   |                  |            | LoggroupId in             | **log_group_id**              | Set the parameter |
-   |                   |                  |            | requestBody is            | in the request                | by following the  |
-   |                   |                  |            | null.                     | body is empty.                | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   |                  |            | LogtopicId in             | **log_topic_id**              | Set the parameter |
-   |                   |                  |            | requestBody is            | in the request                | by following the  |
-   |                   |                  |            | null.                     | body is empty.                | instructions in   |
-   |                   |                  |            |                           |                               | this guide.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9802   | Policy doesn't            | Permission                    | Check whether you |
-   |                   |                  |            | allow                     | verification                  | have the          |
-   |                   |                  |            | el                        | failed.                       | permission to     |
-   |                   |                  |            | b:logtanks:create         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9803   | Policy doesn't            | Permission                    | Check whether you |
-   |                   |                  |            | allow                     | verification                  | have the          |
-   |                   |                  |            | elb:l                     | failed.                       | permission to     |
-   |                   |                  |            | oadbalancers:list         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 403              | ELB.9804   | Policy doesn't            | Permission                    | Check whether you |
-   |                   |                  |            | allow                     | verification                  | have the          |
-   |                   |                  |            | elb:l                     | failed.                       | permission to     |
-   |                   |                  |            | oadbalancers:list         |                               | perform this      |
-   |                   |                  |            | to be performed.          |                               | operation.        |
-   |                   |                  |            |                           |                               |                   |
-   |                   |                  |            | etc.                      |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.9899   | The                       | Parameter                     | Rectify the fault |
-   |                   |                  |            | default_tls_container_ref | **default_tls_container_ref** | based on the      |
-   |                   |                  |            |                           |                               | error             |
-   |                   |                  |            | field of the              | cannot be left                | information.      |
-   |                   |                  |            | TERMINATED_HTTPS          | blank.                        |                   |
-   |                   |                  |            | listener does not         |                               |                   |
-   |                   |                  |            | allow updating to         |                               |                   |
-   |                   |                  |            | null.                     |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | Certificate       | 400              | ELB.1001   | Request                   | Invalid                       | Enter a valid     |
-   |                   |                  |            | parameters                | parameter.                    | parameter.        |
-   |                   |                  |            | invalid.                  |                               |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5010   | The certificate           | The certificate               | Enter a valid     |
-   |                   |                  |            | URL contains more         | URL contains more             | certificate URL.  |
-   |                   |                  |            | than four parts.          | than four parts.              |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5020   | The certificate           | The certificate               | Enter a valid     |
-   |                   |                  |            | ID must be 32             | ID is not a                   | certificate ID.   |
-   |                   |                  |            | characters.               | 32-character                  |                   |
-   |                   |                  |            |                           | string.                       |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5030   | Incorrect                 | Incorrect                     | Enter a valid     |
-   |                   |                  |            | certificate URL.          | certificate URL.              | certificate URL.  |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 404              | ELB.5040   | The certificate           | The certificate               | Ensure that the   |
-   |                   |                  |            | does not exist.           | does not exist.               | certificate       |
-   |                   |                  |            |                           |                               | exists.           |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5131   | Failed to query           | Failed to query               | Contact customer  |
-   |                   |                  |            | the certificate           | the certificate               | service.          |
-   |                   |                  |            | quota.                    | quota.                        |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5141   | Failed to query           | Failed to query               | Contact customer  |
-   |                   |                  |            | the user                  | the used                      | service.          |
-   |                   |                  |            | certificate               | certificate                   |                   |
-   |                   |                  |            | quota.                    | quota.                        |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5151   | The certificate           | The quota has                 | Ensure that the   |
-   |                   |                  |            | quantity exceeds          | been used up.                 | quantity of       |
-   |                   |                  |            | the quota.                |                               | certificates is   |
-   |                   |                  |            |                           |                               | less than the     |
-   |                   |                  |            |                           |                               | quota.            |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.1011   | Private_key or            | Invalid public or             | Enter a valid     |
-   |                   |                  |            | certificate               | private key of                | public or private |
-   |                   |                  |            | content is not            | the server                    | key.              |
-   |                   |                  |            | valid.                    | certificate.                  |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5051   | CA certificate            | Invalid CA                    | Enter valid       |
-   |                   |                  |            | content is not            | certificate                   | certificate       |
-   |                   |                  |            | valid.                    | content.                      | content.          |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5002   | Failed to delete          | Failed to delete              | Contact customer  |
-   |                   |                  |            | the certificate.          | the certificate.              | service.          |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5033   | Failed to update          | Failed to modify              | Contact customer  |
-   |                   |                  |            | certificate.              | the certificate.              | service.          |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5013   | Private_key or            | Invalid public or             | Enter a valid     |
-   |                   |                  |            | certificate               | private key of                | public or private |
-   |                   |                  |            | content is not            | the server                    | key.              |
-   |                   |                  |            | valid.                    | certificate.                  |                   |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5053   | CA certificate            | Invalid CA                    | Enter valid       |
-   |                   |                  |            | content is not            | certificate                   | certificate       |
-   |                   |                  |            | valid.                    | content.                      | content.          |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   |                   | 400              | ELB.5004   | Invalid search            | Invalid query                 | Ensure that the   |
-   |                   |                  |            | criteria.                 | condition.                    | query condition   |
-   |                   |                  |            |                           |                               | is correct.       |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-   | API version       | 404              | ELB.1110   | version not               | The API version               | Contact customer  |
-   |                   |                  |            | found.                    | does not exist.               | service.          |
-   +-------------------+------------------+------------+---------------------------+-------------------------------+-------------------+
-
+   Load balancer;400;ELB.0002;RequestBody is null or empty,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;401;ELB.1102;Token is error, Authentication required.;Empty token.;Use a correct token that has not expired.
+   ;400;ELB.0002;RequestBody is null, request is invalid.;Failed to convert the request body.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody loadbalancer[vip_subnet_id] is null, this is a required parameter.;vip_subnet_id in the request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.1202;1.decoded token is null. 2.checkEnterpriseProject is error.;The token is empty. An error occurred during verification of ep_id.;Check the enterprise project ID.
+   ;403;ELB.9802;Policy doesn't allow elb:loadbalancers:list to be performed.;Authentication failure;Check whether you have the permission to perform this operation.
+   ;403;ELB.9803;Policy doesn't allow elb:loadbalancers:list to be performed.;Authentication failure;Check whether you have the permission to perform this operation.
+   ;403;ELB.9804;Policy doesn't allow elb:loadbalancers:list to be performed.;Authentication failure;Check whether you have the permission to perform this operation.
+   ;400;ELB.0004;Api response is null or invaild.;The response returned by Neutron is null.;Contact customer service.
+   ;400;ELB.9899;The default_tls_container_ref field of the TERMINATED_HTTPS listener does not allow updating to null;Combined API failed to send the request to Neutron.;Rectify the fault based on the error information.
+   ;400;ELB.9807;Quota exceeded for resources:['loadbalancer'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.1204;Bind fail.;Failed to associate the load balancer with the enterprise project.;Contact customer service.
+   ;400;ELB.9805;Ep_id is not uuid.;ep_id in the URI is not a valid UUID.;Check the enterprise project ID.
+   ;400;ELB.9806;Loadbalancer_id in url is null or empty.;loadbalancer_id in the URI is empty.;Check whether the load balancer ID in the URL is correct.
+   ;404;ELB.9800;Resource could not be found.;The specified load balancer does not exist when ep_id is queried.;Check the load balancer ID.
+   ;400;ELB.9808;Tenant_id in token mismatches with tenant_id in url.;The value of tenant_id in the token is different from that in the URL.;Check whether parameter tenant_id in the token and URL is correct.
+   ;403;ELB.9801;Not be list action, enterprise_project_id must not be null.;In the fine-grained authorization scenario, the enterprise ID is not transmitted in the request for querying the load balancers.;Check whether the parameters in the request for querying the load balancers are correct.
+   Listener;400;ELB.0002;Listener is null, request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody listener[protocol] is null, this is a required parameter.;protocol in the request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody listener[protocol_port] is null, this is a required parameter.;protocol_port is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody listener[loadbalancer_id] is null, this is a required parameter.;loadbalancer_id is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.6200;Load Balaner *** already has a listener with protocol_port of ***.;The port number is in use.;Change the port number.
+   ;400;ELB.9807;Quota exceeded for resources:['listener'].;The quota has been used up.;To expand the quota, contact customer service.
+   Backend server group;400;ELB.0002;Pool is null, request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody pool[protocol] is null, this is a required parameter.;protocol is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody pool[lb_algorithm] is null, this is a required parameter.;lb_algorithm is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9807;Quota exceeded for resources:['pool'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.9805;RequestBody pool[loadbalancer_id] and pool[listener_id] both are null, this has at least one parameter.;listener_id is empty.;Set the parameter by following the instructions in this guide.
+   Backend server;400;ELB.9805;RequestBody pool[session_persistence][type] is null. when pool[session_persistence] exists, this is a required parameter.;session_persistence is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0002;Member is null,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody member[address] is null, this is a required parameter.;address is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9807;Quota exceeded for resources:['member'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.9805;RequestBody member[address]'s length is %s, greater than 64.;The value of address contains more than 64 characters.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody member[protocol_port] is null, this is a required parameter.;protocol_port is empty.;Set the parameter by following the instructions in this guide.
+   Health check;400;ELB.9805;RequestBody member[subnet_id] is null, this is a required parameter.;subnet_id is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0002;healthmonitor is null,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody healthmonitor[delay] is null, this is a required parameter.;delay is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody healthmonitor[max_retries] is null, this is a required parameter.;max_retries is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody healthmonitor[pool_id] is null, this is a required parameter.;pool_id is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9807;Quota exceeded for resources:['healthmonitor'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.9805;RequestBody healthmonitor[timeout] is null, this is a required parameter.;timeout is empty.;Set the parameter by following the instructions in this guide.
+   Forwarding policy;400;ELB.9805;RequestBody healthmonitor[type] is null, this is a required parameter.;type is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0002;l7policy is null,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9807;Quota exceeded for resources:['l7policiey'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.9805;RequestBody l7policy[listener_id] is null, this is a required parameter.;listener_id is empty.;Set the parameter by following the instructions in this guide.
+   Forwarding rule;400;ELB.9805;RequestBody l7policy[action] is null, this is a required parameter.;action is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0002;Rule is null,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody rule[type] is null, this is a required parameter.;type is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9807;Quota exceeded for resources:['l7policieyrule'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.9805;RequestBody rule[compare_type] is null, this is a required parameter.;compare_type is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody rule[value] is null, this is a required parameter.;value is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody rule[value]'s length is %s, greater than 128.;The parameter value contains more than 128 characters.;Set the parameter by following the instructions in this guide.
+   Whitelist;400;ELB.9807;Quota exceeded for resources:['whitelist'].;The quota has been used up.;To expand the quota, contact customer service.
+   ;400;ELB.0002;whitelist is null,request is invalid.;The request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody whitelist[listener_id] is null, this is a required parameter.;listener_id is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.9805;RequestBody whitelist[listener_id]'s length is %s, greater than 255.;The value of listener_id contains more than 255 characters.;Set the parameter by following the instructions in this guide.
+   Label Management;400;ELB.0002;RequestBody is null or empty.;Invalid request body.;Set the parameter by following the instructions in this guide.
+   ;401;ELB.1102;Token is error, Authentication required.;Invalid token.;Use a correct token that has not expired.
+   ;400;ELB.0002;LogTankRequestBody is null, request is invalid.;Invalid request body.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0003;LoadbalancerId in requestBody is null.;loadbalancer_id in the request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0004;LoggroupId in requestBody is null.;log_group_id in the request body is empty.;Set the parameter by following the instructions in this guide.
+   ;400;ELB.0005;LogtopicId in requestBody is null.;log_topic_id in the request body is empty.;Set the parameter by following the instructions in this guide.
+   ;403;ELB.9802;Policy doesn't allow elb:logtanks:create to be performed.;Permission verification failed.;Check whether you have the permission to perform this operation.
+   ;403;ELB.9803;Policy doesn't allow elb:loadbalancers:list to be performed.;Permission verification failed.;Check whether you have the permission to perform this operation.
+   ;400;ELB.9899;The default_tls_container_ref field of the TERMINATED_HTTPS listener does not allow updating to null.;Parameter default_tls_container_ref cannot be left blank.;Rectify the fault based on the error information.
+   Certificate;400;ELB.1001;Request parameters invalid.;Invalid parameter.;Enter a valid parameter.
+   ;400;ELB.5010;The certificate URL contains more than four parts.;The certificate URL contains more than four parts.;Enter a valid certificate URL.
+   ;400;ELB.5020;The certificate ID must be 32 characters.;The certificate ID is not a 32-character string.;Enter a valid certificate ID.
+   ;400;ELB.5030;Incorrect certificate URL.;Incorrect certificate URL.;Enter a valid certificate URL.
+   ;404;ELB.5040;The certificate does not exist.;The certificate does not exist.;Ensure that the certificate exists.
+   ;400;ELB.5131;Failed to query the certificate quota.;Failed to query the certificate quota.;Contact customer service.
+   ;400;ELB.5141;Failed to query the user certificate quota.;Failed to query the used certificate quota.;Contact customer service.
+   ;400;ELB.5151;The certificate quantity exceeds the quota.;The quota has been used up.;Ensure that the quantity of certificates is less than the quota.
+   ;400;ELB.1011;Private_key or certificate content is not valid.;Invalid public or private key of the server certificate.;Enter a valid public or private key.
+   ;400;ELB.5051;CA certificate content is not valid.;Invalid CA certificate content.;Enter valid certificate content.
+   ;400;ELB.5002;Failed to delete the certificate.;Failed to delete the certificate.;Contact customer service.
+   ;400;ELB.5033;Failed to update certificate.;Failed to modify the certificate.;Contact customer service.
+   ;400;ELB.5013;Private_key or certificate content is not valid.;Invalid public or private key of the server certificate.;Enter a valid public or private key.
+   ;400;ELB.5053;CA certificate content is not valid.;Invalid CA certificate content.;Enter valid certificate content.
+   ;400;ELB.5004;Invalid search criteria.;Invalid query condition.;Ensure that the query condition is correct.
+   Tag;400;VPC.1801;The ID is incorrect.;resource id is invalid/Getting id is invalid.;Use a correct resource ID.
+   ;400;VPC.1801;An action error occurs.;action is invalid.;Ensure that the value of action is create or delete.
+   ;400;VPC.1801;The key length is invalid.;Tag length is invalid. The key length must be in range [1,36] and value in range [0,43];Input a valid key.
+   ;400;VPC.0007;The project ID is incorrect.;urlTenantId is not equal token TenantId.;Check the project ID.
+   ;401;VPC.0008;The token in the request is invalid or the request does not contain the token.;Invalid token in the header./Authorization information is wrong.;Check whether the token is valid.
+   ;400;VPC.1801;The value length is invalid.;Tag length is invalid. The key length must be in range [1,36] and value in range [0,43];Input a valid value.
+   ;400;VPC.1801;The key or value contains invalid characters.;InvalidInput/Tag value xxx is invalid.;Check the validity of the key or value.
+   ;400;VPC.1801;The key or value is left blank.;Tag xxx can not be null.;Check whether the key or value is left blank.
+   ;400;VPC.1801;The tag is null.;Tag can not be null.;Check whether the tag is null.
+   ;400;VPC.1801;A resource type error occurs.;Resource xxx is invalid.;Ensure that the value of resource_type is loadbalancers or listeners.
+   ;400;VPC.1801;The total number of tags added at a time exceeds 10.;number of tags exceeds max unm of 10.;Reduce the number of tags.
+   ;400;VPC.1814;The total number of existing tags and newly added tags exceeds 10.;Invalid input for operation: resource_id: XXXX, number of tags exceed max num of 10.;Reduce the number of tags.
+   ;400;VPC.1814;The key values of newly added tags are duplicate.;Invalid input for operation: tags key is duplicated.;Change the tag values.
+   ;400;VPC.1814;The resource ID does not exist.;Resource XXX XXX could not be found.;Check whether the resource is available.
+   ;400;VPC.1814;The specified key to be deleted does not exist, or the key is an empty string.;The resource could not be found.;Enter a correct key and send the request again.
+   ;400;VPC.1814;More than 10 tags are added to a specified resource.;Invalid input for operation:resource_id:xxx, number of tags exceeds max num of 10.;Each resource supports up to 10 tags.
+   ;400;VPC.1801;Tags are duplicate.;Tag key is repeated.;Delete duplicate tags and resend the request.
+   ;500;;The request format is incorrect.;Internal Server Error.;Use the correct request body format.
+   API Version;404;ELB.1110;version not found.;The API version does not exist.;Contact customer service.

@@ -1,5 +1,6 @@
+====================
 Shared Load Balancer
-####################
+====================
 
 .. toctree::
    :maxdepth: 1
@@ -9,5 +10,9 @@ Shared Load Balancer
    pool
    member
    hm
+   l7policy
+   l7rule
+   whitelist
    cert
+   tag
    status_code

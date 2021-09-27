@@ -1,0 +1,6 @@
+200:
+  default: |
+    Request was successful.
+400:
+  default: |
+    Some content in the request was invalid.

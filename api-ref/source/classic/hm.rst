@@ -1,5 +1,6 @@
+============
 Health Check
-############
+============
 
 Configuring a Health Check
 ==========================
