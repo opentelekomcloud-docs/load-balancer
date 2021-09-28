@@ -1,0 +1,2 @@
+curl -H "X-Auth-Token: ${token}" https://{elb_endpoint}/v3/{project_id}/elb/flavors/{flavor_id}
+

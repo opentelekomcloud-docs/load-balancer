@@ -1,6 +1,5 @@
-=======================
 Elastic Load Balancing
-=======================
+######################
 
 
 .. toctree::
@@ -8,3 +7,4 @@ Elastic Load Balancing
    classic/index
    shared/index
    dedicated/index
+   version

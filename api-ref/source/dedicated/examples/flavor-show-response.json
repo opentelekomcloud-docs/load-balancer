@@ -1,0 +1,15 @@
+{
+  "flavor" : {
+    "shared" : true,
+    "project_id" : "573d73c9f90e48d0bddfa0eb202b25c2",
+    "info" : {
+      "connection" : 6000,
+      "cps" : 3000,
+      "qps" : 1000
+    },
+    "id" : "becf3beb-7653-45ab-a025-961597a901bc",
+    "name" : "L7_flavor.elb.s1.small",
+    "type" : "L7"
+  },
+  "request_id" : "3b9fb516-b7bb-4760-9128-4a23dd36ae10"
+}
