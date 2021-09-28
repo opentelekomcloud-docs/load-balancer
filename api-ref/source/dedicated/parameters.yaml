@@ -7,6 +7,18 @@ path-flavor-id:
   in: path
   required: yes
   type: uuid
+path-l7policy-id:
+  description: |
+    Specifies the forwarding policy ID.
+  in: path
+  required: true
+  type: uuid
+path-l7rule-id:
+  description: |
+    Specifies the forwarding rule ID.
+  in: path
+  required: true
+  type: uuid
 path-project-id:
   description: |
     Specifies the project ID.
@@ -38,7 +50,195 @@ flavor-shared-query:
   in: query
   required: no
   type: boolean
+l7policy-action-query:
+  description: |
+    Specifies where requests will be forwarded. The value can be one of the following:
 
+    - REDIRECT_TO_POOL: Requests will be forwarded to another backend server group.
+    - REDIRECT_TO_LISTENER: Requests will be redirected to an HTTPS listener.
+
+    Multiple values can be queried in the format of action=xxx&action=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-admin_state_up-query:
+  description: |
+    Specifies the administrative status of the forwarding policy. The default value is true.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: bool
+l7policy-description-query:
+  description: |
+    Provides supplementary information about the forwarding policy.
+
+    Multiple descriptions can be queried in the format of description=xxx&description=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-display_all_rules-query:
+  description: |
+    Specifies whether to display all information about the forwarding rule in the forwarding policy. The value can be true or false.
+
+    true indicates all information about the forwarding rule is displayed.
+
+    false indicates that only the rule ID is displayed.
+  in: query
+  required: false
+  type: bool
+l7policy-id-query:
+  description: |
+    Specifies the forwarding policy ID.
+  in: query
+  required: false
+  type: uuid
+l7policy-listener_id-query:
+  description: |
+    Specifies the ID of the listener to which the forwarding policy is added.
+
+    If action is set to REDIRECT_TO_POOL, the forwarding policy can be added to an HTTP or HTTPS listener.
+
+    If action is set to REDIRECT_TO_LISTENER, the forwarding policy can be added to an HTTP listener.
+
+    Multiple IDs can be queried in the format of listener_id=xxx&listener_id=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-name-query:
+  description: |
+    Specifies the forwarding policy name.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-position-query:
+  description: |
+    Specifies the forwarding policy priority.
+
+    Multiple priorities can be queried in the format of position=xxx&position=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7policy-priority-query:
+  description: |
+    Specifies the forwarding policy priority. A smaller value indicates a higher priority.
+
+    Multiple priorities can be queried in the format of position=xxx&position=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7policy-provisioning_status-query:
+  description: |
+    Specifies the provisioning status of the forwarding policy. The value can only be ACTIVE, indicating that the forwarding policy is provisioned successfully.
+
+    Multiple provisioning statuses can be queried in the format of provisioning_status=xxx&provisioning_status=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-redirect_listener_id-query:
+  description: |
+    Specifies the ID of the listener to which requests are redirected. This parameter will take effect and is mandatory when action is set to REDIRECT_TO_LISTENER.
+
+    Multiple IDs can be queried in the format of redirect_listener_id=xxx&redirect_listener_id=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-redirect_pool_id-query:
+  description: |
+    Specifies the ID of the backend server group to which requests are forwarded. This parameter will take effect and is mandatory when action is set to REDIRECT_TO_POOL.
+
+    Multiple IDs can be queried in the format of redirect_pool_id=xxx&redirect_pool_id=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-redirect_url-query:
+  description: |
+    Specifies the URL to which requests are forwarded.
+
+    Multiple URLs can be queried in the format of redirect_url=xxx&redirect_url=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7rule-admin_state_up-query:
+  description: |
+    Specifies the administrative status of the forwarding rule. The default value is true.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: bool
+l7rule-compare_type-query:
+  description: |
+    Specifies how requests are matched with the domain name or URL.
+
+    If type is set to HOST_NAME, this parameter can only be set to EQUAL_TO.
+
+    If type is set to PATH, this parameter can be set to REGEX, STARTS_WITH, or EQUAL_TO.
+
+    Multiple values can be queried in the format of compare_type=xxx&compare_type=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-id-query:
+  description: |
+    Specifies the forwarding rule ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+l7rule-invert-query:
+  description: |
+    Specifies whether reverse matching is supported. The value is fixed at false. This parameter can be updated but remains invalid.
+  in: query
+  required: false
+  type: bool
+l7rule-key-query:
+  description: |
+    Specifies the key of the match content that is used to identify the forwarding rule.
+
+    Multiple keys can be queried in the format of key=xxx&key=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7rule-provisioning_status-query:
+  description: |
+    Specifies the provisioning status of the forwarding rule. The value can only be ACTIVE, indicating that the forwarding rule is provisioned successfully.
+
+    Multiple provisioning statuses can be queried in the format of provisioning_status=xxx&provisioning_status=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-type-query:
+  description: |
+    Specifies the match content. The value can be HOST_NAME or PATH.
+
+    HOST_NAME indicates that the domain name will be used for matching, and PATH indicates that the URL will be used for matching.
+
+    The type value must be unique for each forwarding rule in a forwarding policy.
+
+    Multiple values can be queried in the format of type=xxx&type=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-value-query:
+  description: |
+    Specifies the value of the match content.
+
+    Multiple values can be queried in the format of value=xxx&value=xxx.
+  in: query
+  required: false
+  type: str
 limit:
   description: |
     Specifies the number of records on each page.
@@ -70,6 +270,13 @@ page-reverse:
 ###
 # Body fields
 ###
+admin_state_up:
+  description: |
+    Specifies the administrative status of the forwarding policy. The default value is true.
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: no
+  type: boolean
 flavor:
   description: |
     Specifies the flavors.
@@ -141,19 +348,389 @@ flavors:
   in: body
   type: array
   required: true
-page-info:
+l7policies:
+  description: |
+    Lists the forwarding policies.
+  in: body
+  required: true
+  type: array
+l7policy:
+  description: |
+    Object representing the forwarding policy
+  in: body
+  required: true
+  type: object
+l7policy-action:
+  description: |
+    Specifies where requests will be forwarded. The value can be one of the following:
+
+    - REDIRECT_TO_POOL: Requests will be forwarded to another backend server group.
+    - REDIRECT_TO_LISTENER: Requests will be redirected to an HTTPS listener.
+
+    REDIRECT_TO_LISTENER has the highest priority. If requests are to be redirected to an HTTPS listener, other forwarding policies of the listener will become invalid.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+l7policy-description:
+  description: |
+    Provides supplementary information about the forwarding policy.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+l7policy-fixed_response_config:
+  description: |
+    Specifies the configuration of the page that will be returned. This parameter will take effect when enhance_l7policy_enable is set to true. If this parameter is passed and enhance_l7policy_enable is set to false, an error will be returned. For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: false
+  type: object
+l7policy-fixed_response_config-content_type:
+  description: |
+    Specifies the format of the response body.
+
+    Value options:
+
+    - text/plain
+    - text/css
+    - text/html
+    - application/javascript
+    - application/json
+
+    Minimum: 0
+    Maximum: 32
+  in: body
+  required: false
+  type: str
+l7policy-fixed_response_config-message_body:
+  description: |
+    Specifies the content of the response body.
+
+    Minimum: 0
+    Maximum: 1024
+  in: body
+  required: false
+  type: str
+l7policy-fixed_response_config-status_code:
+  description: |
+    Specifies the fixed HTTP status code configured in the forwarding rule. The value can be any integer in the range of 200–299, 400–499, or 500–599.
+
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: true
+  type: str
+l7policy-listener_id:
+  description: |
+    Specifies the ID of the listener to which the forwarding policy is added.
+    If action is set to REDIRECT_TO_POOL, the forwarding policy can be added to an HTTP or HTTPS listener.
+    If action is set to REDIRECT_TO_LISTENER, the forwarding policy can be added to an HTTP listener.
+  in: body
+  required: true
+  type: string
+l7policy-name:
+  description: |
+    Specifies the forwarding policy name.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: false
+  type: string
+l7policy-position:
+  description: |
+    Specifies the forwarding policy priority. The value cannot be updated.
+    This parameter is unsupported. Please do not use it.
+
+    Minimum: 1
+    Maximum: 100
+  in: body
+  required: false
+  type: int
+l7policy-priority:
+  description: |
+    Specifies the forwarding policy priority. This parameter is available only for dedicated load balancers and will take effect when enhance_l7policy_enable is set to true. If this parameter is passed and enhance_l7policy_enable is set to false, an error will be returned. For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.
+    A smaller value indicates a higher priority. The value must be unique for each forwarding policy of the same listener.
+    If action is set to REDIRECT_TO_LISTENER, the value can only be 0, indicating that REDIRECT_TO_LISTENER has the highest priority.
+
+    - If enhance_l7policy_enable is set to false, forwarding policies are automatically prioritized based on the original sorting logic. Forwarding policy priorities are independent of each other regardless of domain names. If forwarding policies use the same domain name, their priorities follow the order of exact match (EQUAL_TO), prefix match (STARTS_WITH), and regular expression match (REGEX). If prefix match is used for matching, the longer the path, the higher the priority. If a forwarding policy contains only a domain name without a path specified, the path is /, and prefix match is used by default.
+
+    - If enhance_l7policy_enable is set to true and this parameter is not passed, the priority will set to a sum of 1 and the highest priority of existing forwarding policy in the same listener by default. There will be two cases: a) If the highest priority of existing forwarding policies is the maximum (10,000), the forwarding policy will fail to create because the final priority for creating the forwarding policy is the sum of 1 and 10,000, which exceeds the maximum. In this case, please specify a value or adjust the priorities of existing forwarding policies. b) If no forwarding policies exist, the highest priority of existing forwarding policies will set to 1 by default.
+
+    This parameter is unsupported. Please do not use it.
+
+    Minimum: 0
+    Maximum: 10000
+  in: body
+  required: false
+  type: int
+l7policy-redirect_listener_id:
+  description: |
+    Specifies the ID of the listener to which requests are redirected. This parameter is mandatory when action is set to REDIRECT_TO_LISTENER.
+    For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.
+  in: body
+  required: false
+  type: uuid
+l7policy-redirect_pool_id:
+  description: |
+    Specifies the ID of the backend server group that requests are forwarded to.
+
+    This parameter is valid and mandatory only when action is set to REDIRECT_TO_POOL. The specified backend server group cannot be the default one associated with the listener, or any backend server group associated with the forwarding policies of other listeners.
+
+    This parameter cannot be specified when action is set to REDIRECT_TO_LISTENER.
+  in: body
+  required: false
+  type: uuid
+l7policy-redirect_url:
+  description: |
+    Specifies the URL to which requests are forwarded.
+
+    Format: protocol://host:port/path?query
+
+    This parameter is unsupported. Please do not use it.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: false
+  type: string
+l7policy-redirect_url_config:
+  description: |
+    Specifies the URL to which requests are forwarded.
+
+    For shared load balancers, this parameter is not supported. If it is passed, an error will be returned.
+
+    For dedicated load balancers, this parameter will take effect only when advanced forwarding is enabled (enhance_l7policy_enable is set to true). If it is passed when enhance_l7policy_enable is set to false, an error will be returned.
+
+    Format: protocol://host:port/path?query
+
+    At least one of the four parameters (protocol, host, port, and path) must be passed, or their values cannot be set to ${xxx} at the same time. (${xxx} indicates that the value in the request will be inherited. For example, ${host} indicates the host in the URL to be redirected.)
+
+    The values of protocol and port cannot be the same as those of the associated listener, and either host or path must be passed or their values cannot be ${xxx} at the same time.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: false
+  type: object
+l7policy-redirect_url_config-host:
+  description: |
+    Specifies the host name that requests are redirected to. The value can contain only letters, digits, hyphens (-), and periods (.) and must start with a letter or digit. The default value is ${host}, indicating that the host of the request will be used.
+
+    Default: ${host}
+    Minimum: 1
+    Maximum: 128
+  in: body
+  required: false
+  type: str
+l7policy-redirect_url_config-path:
+  description: |
+    Specifies the path that requests are redirected to. The default value is ${path}, indicating that the path of the request will be used.
+
+    The value can contain only letters, digits, and special characters _-';@^- %#&$.*+?,=!:\|/()[]{} and must start with a slash (/).
+
+    Default: ${path}
+    Minimum: 1
+    Maximum: 128
+  in: body
+  required: false
+  type: str
+l7policy-redirect_url_config-port:
+  description: |
+    Specifies the port that requests are redirected to. The default value is ${port}, indicating that the port of the request will be used.
+
+    Default: ${port}
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: false
+  type: str
+l7policy-redirect_url_config-protocol:
+  description: |
+    Specifies the protocol for redirection. The default value is ${protocol}, indicating that the protocol of the request will be used.
+
+    Value options:
+
+    - HTTP
+    - HTTPS
+    - ${protocol}
+
+    Default: ${protocol}
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: false
+  type: str
+l7policy-redirect_url_config-query:
+  description: |
+    Specifies the query string set in the URL for redirection. The default value is ${query}, indicating that the query string of the request will be used.
+
+    For example, in the URL https://www.xxx.com:8080/elb?type=loadbalancer, ${query} indicates type=loadbalancer. If this parameter is set to ${query}&name=my_name, the URL will be redirected to https://www.xxx.com:8080/elb?type=loadbalancer&name=my_name.
+
+    The value is case-sensitive and can contain only letters, digits, and special characters !$&'()*+,-./:;=?@^_`
+
+    Default: ${query}
+    Minimum: 0
+    Maximum: 128
+  in: body
+  required: false
+  type: str
+l7policy-redirect_url_config-status_code:
+  description: |
+    Specifies the status code returned after the requests are redirected.
+
+    Value options:
+
+    - 301
+    - 302
+    - 303
+    - 307
+    - 308
+
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: true
+  type: str
+l7policy-rules:
+  description: |
+    Lists the forwarding rules in the forwarding policy.
+
+    The list can contain a maximum of 10 forwarding rules (if conditions is specified, a condition is considered as a rule).
+
+    If type is set to HOST_NAME, PATH, METHOD, or SOURCE_IP, only one forwarding rule can be created for each type.
+
+    The entire list will be replaced if you update it.
+  in: body
+  required: false
+  type: array
+l7rule:
+  description: |
+    Specifies the forwarding rule.
+  in: body
+  required: true
+  type: object
+l7rule-admin_state_up:
+  description: |
+    Specifies the administrative status of the forwarding rule. The value can be true or false, and the default value is true.
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: true
+  in: body
+  required: false
+  type: bool
+l7rule-compare_type:
+  description: |
+    Specifies how requests are matched with the domain name or URL.
+
+    If type is set to HOST_NAME, this parameter can only be set to EQUAL_TO (exact match).
+
+    If type is set to PATH, this parameter can be set to REGEX (regular expression match), STARTS_WITH (prefix match), or EQUAL_TO (exact match).
+  in: body
+  required: true
+  type: str
+l7rule-conditions:
+  description: |
+    Specifies the conditions contained in a forwarding rule. This parameter will take effect when enhance_l7policy_enable is set to true.
+
+    If conditions is specified, key and value will not take effect, and the value of this parameter will contain all conditions configured for the forwarding rule. The keys in the list must be the same, whereas each value must be unique.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: false
+  type: array
+l7rule-conditions-key:
+  description: |
+    Specifies the key of match item. This parameter is left blank.
+
+    Minimum: 1
+    Maximum: 128
+  in: body
+  required: no
+  type: str
+l7rule-conditions-value:
+  description: |
+    Specifies the value of the match item.
+
+    If type is set to HOST_NAME, key is left blank, and value indicates the domain name, which can contain 1 to 128 characters, including letters, digits, hyphens (-), periods (.), and asterisks (), and must start with a letter, digit, or asterisk (). If you want to use a wildcard domain name, enter an asterisk (*) as the leftmost label of the domain name.
+
+    If type is set to PATH, key is left blank, and value indicates the request path, which can contain 1 to 128 characters. If compare_type is set to STARTS_WITH or EQUAL_TO for the forwarding rule, the value must start with a slash (/) and can contain only letters, digits, and special characters _~';@^-%#&$.*+?,=!:\|/()[]{}
+  in: body
+  required: true
+  type: str
+l7rule-invert:
+  description: |
+    Specifies whether reverse matching is supported. The value can be true or false, and the default value is false.
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: false
+  in: body
+  required: false
+  type: bool
+l7rule-key:
+  description: |
+    Specifies the key of the match item. For example, if an HTTP header is used for matching, key is the name of the HTTP header parameter.
+
+    This parameter is unsupported. Please do not use it.
+
+    Minimum: 1
+
+    Maximum: 255
+  in: body
+  required: false
+  type: str
+l7rule-type:
+  description: |
+    Specifies the match content. The value can be one of the following:
+
+    HOST_NAME: A domain name will be used for matching.
+
+    PATH: A URL will be used for matching.
+
+    If type is set to HOST_NAME, PATH, METHOD, or SOURCE_IP, only one forwarding rule can be created for each type.
+  in: body
+  required: true
+  type: str
+l7rule-value:
+  description: |
+    Specifies the value of the match item. For example, if a domain name is used for matching, value is the domain name.
+
+    If type is set to HOST_NAME, the value can contain letters, digits, hyphens (-), and periods (.) and must start with a letter or digit. If you want to use a wildcard domain name, enter an asterisk (*) as the leftmost label of the domain name.
+
+    If type is set to PATH and compare_type to STARTS_WITH or EQUAL_TO, the value must start with a slash (/) and can contain only letters, digits, and special characters _~';@^-%#&$.*+?,=!:\|/()[]{}
+
+    Minimum: 1
+
+    Maximum: 128
+  in: body
+  required: true
+  type: str
+l7rules:
+  description: |
+    Lists the forwarding rules.
+  in: body
+  required: true
+  type: array
+page_info:
   description: |
     Shows pagination information
   in: body
   type: array
   required: false
-project-id:
+project_id:
   description: |
     Specifies the project ID.
   in: body
   required: true
   type: uuid
-request-id:
+request_id:
   description: |
     Specifies the request ID. The value is automatically generated.
   in: body

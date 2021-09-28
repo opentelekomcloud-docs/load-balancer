@@ -1,0 +1,7 @@
+{
+  "l7policy" : {
+    "action" : "REDIRECT_TO_LISTENER",
+    "listener_id" : "e2220d2a-3faf-44f3-8cd6-0c42952bd0ab",
+    "redirect_listener_id" : "48a97732-449e-4aab-b561-828d29e45050"
+  }
+}

@@ -16,7 +16,7 @@ query.
 Parameters **marker** and **page_reverse** take effect only when they are used
 together with parameter **limit**.
 
-.. rest_status_code:: success http-status.yaml
+.. rest_status_code:: success ../http-status.yaml
 
    - 200
 
@@ -26,7 +26,6 @@ together with parameter **limit**.
    - 401
    - 403
    - 404
-
 
 Request
 ^^^^^^^
@@ -46,6 +45,8 @@ Response Parameters
 
 .. rest_parameters:: ./parameters.yaml
 
+   - page_info: page_info
+   - request_id: request_id
    - flavors: flavors
    - id: flavor-id
    - info: flavor-info
@@ -54,9 +55,7 @@ Response Parameters
    - info.cps: flavor-info-cps
    - info.qps: flavor-info-qps
    - name: flavor-name
-   - page_info: page-info
-   - project_id: project-id
-   - request_id: request-id
+   - project_id: project_id
    - shared: flavor-shared
    - type: flavor-type
 
@@ -88,7 +87,7 @@ This API is used to view details of a flavor.
 
 This API can only be used to view the details of a flavor.
 
-.. rest_status_code:: success http-status.yaml
+.. rest_status_code:: success ../http-status.yaml
 
    - 200
 
@@ -120,8 +119,8 @@ Response Parameters
    - info.cps: flavor-info-cps
    - info.qps: flavor-info-qps
    - name: flavor-name
-   - project_id: project-id
-   - request_id: request-id
+   - project_id: project_id
+   - request_id: request_id
    - shared: flavor-shared
    - type: flavor-type
 

@@ -1,0 +1,13 @@
+{
+  "rule" : {
+    "compare_type" : "STARTS_WITH",
+    "provisioning_status" : "ACTIVE",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "invert" : false,
+    "admin_state_up" : true,
+    "value" : "/ccc.html",
+    "type" : "PATH",
+    "id" : "84f4fcae-9c15-4e19-a99f-72c0b08fd3d7"
+  },
+  "request_id" : "0d799435-259e-459f-b2bc-0beee06f6a77"
+}

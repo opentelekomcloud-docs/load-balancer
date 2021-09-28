@@ -1,0 +1,17 @@
+{
+  "rules" : [ {
+    "compare_type" : "STARTS_WITH",
+    "provisioning_status" : "ACTIVE",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "invert" : false,
+    "admin_state_up" : true,
+    "value" : "/ccc.html",
+    "type" : "PATH",
+    "id" : "84f4fcae-9c15-4e19-a99f-72c0b08fd3d7"
+  } ],
+  "page_info" : {
+    "previous_marker" : "84f4fcae-9c15-4e19-a99f-72c0b08fd3d7",
+    "current_count" : 1
+  },
+  "request_id" : "ae4dbd7d-9271-4040-98b6-3bfe45bb15ee"
+}

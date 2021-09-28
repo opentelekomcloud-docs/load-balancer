@@ -1,0 +1,13 @@
+{
+  "rule" : {
+    "compare_type" : "EQUAL_TO",
+    "provisioning_status" : "ACTIVE",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "invert" : false,
+    "admin_state_up" : true,
+    "value" : "/bbb.html",
+    "type" : "PATH",
+    "id" : "84f4fcae-9c15-4e19-a99f-72c0b08fd3d7"
+  },
+  "request_id" : "3639f1b7-f04b-496e-9218-ec5a9e493f69"
+}

@@ -1,0 +1,16 @@
+{
+  "request_id" : "e5c07525-1470-47b6-9b0c-567527a036aa",
+  "l7policy" : {
+    "description" : "Update policy.",
+    "admin_state_up" : true,
+    "rules" : [ ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "listener_id" : "e2220d2a-3faf-44f3-8cd6-0c42952bd0ab",
+    "redirect_listener_id" : "48a97732-449e-4aab-b561-828d29e45050",
+    "action" : "REDIRECT_TO_LISTENER",
+    "position" : 100,
+    "provisioning_status" : "ACTIVE",
+    "id" : "cf4360fd-8631-41ff-a6f5-b72c35da74be",
+    "name" : "My policy."
+  }
+}
