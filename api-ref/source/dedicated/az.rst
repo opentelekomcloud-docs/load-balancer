@@ -2,106 +2,51 @@
 Querying AZs
 ============
 
-Function
-^^^^^^^^
+.. rest_method:: GET /v3/{project_id}/elb/availability-zones
 
-This API is used to query all available AZs when you create a dedicated load
-balancer.
+This API is used to query all available AZs when you create a dedicated load balancer.
 
-One set of AZs is returned. When you create a dedicated load balancer, you
-can select one or more AZs only in the set.
+One set of AZs is returned. When you create a dedicated load balancer, you can select one or more AZs only in the set.
 
-URI
-^^^
+.. rest_status_code:: success ../http-status.yaml
 
-GET /v3/{project_id}/elb/availability-zones
+   - 200
 
-.. table:: **Table 1** Path parameters
+.. rest_status_code:: error ../http-status.yaml
 
-   ========== ========= ====== =========================
-   Parameter  Mandatory Type   Description
-   ========== ========= ====== =========================
-   project_id Yes       String Specifies the project ID.
-   ========== ========= ====== =========================
+   - 400
+   - 401
+   - 403
+   - 404
 
-Request Parameters
-^^^^^^^^^^^^^^^^^^
+Request
+^^^^^^^
 
-.. table:: **Table 2** Request header parameters
+.. rest_parameters:: ./parameters.yaml
 
-   ============ ========= ====== ================================================
-   Parameter    Mandatory Type   Description
-   ============ ========= ====== ================================================
-   X-Auth-Token Yes       String Specifies the token used for IAM authentication.
-   ============ ========= ====== ================================================
+   - project_id: path-project-id
 
 Response Parameters
 ^^^^^^^^^^^^^^^^^^^
 
-**Status code: 200**
+.. rest_parameters:: ./parameters.yaml
 
-.. table:: **Table 3** Response body parameters
-
-   +--------------------+------------+---------------------------------------------+
-   | Parameter          | Type       | Description                                 |
-   +====================+============+=============================================+
-   | availability_zones | :ref:`daz` | Specifies the AZs that are available during |
-   |                    |            | load balancer creation.                     |
-   +--------------------+------------+---------------------------------------------+
-   | request_id         | String     | Specifies the request ID. The value is      |
-   |                    |            | automatically generated.                    |
-   +--------------------+------------+---------------------------------------------+
-
-.. _daz:
-.. table:: **Table 4** AvailabilityZone
-
-   ========= ====== ==========================================================
-   Parameter Type   Description
-   ========= ====== ==========================================================
-   state     String Specifies the AZ status. The value can only be **ACTIVE**.
-   code      String Specifies the AZ code.
-   ========= ====== ==========================================================
+   - availability_zones: availability_zones
+   - request_id: request_id
+   - availability_zone.state: availability_zone-state
+   - availability_zone.code: availability_zone-code
 
 Example Requests
 ^^^^^^^^^^^^^^^^
 
-.. code::
-
-   GET
-
-   https://{ELB_Endpoint}/v3/060576782980d5762f9ec014dd2f1148/elb/availability-zones
+.. literalinclude:: examples/az-list-curl
+   :language: bash
 
 Example Responses
 ^^^^^^^^^^^^^^^^^
 
-**Status code: 200**
-
-Successful request.
-
-.. code::
-
-   {
-     "availability_zones" : [ [ {
-       "state" : "ACTIVE",
-       "code" : "az1"
-     }, {
-       "state" : "ACTIVE",
-       "code" : "az2"
-     }, {
-       "state" : "ACTIVE",
-       "code" : "az3"
-     } ] ],
-     "request_id" : "0d799435-259e-459f-b2bc-0beee06f6a77"
-   }
-
-Status Codes
-^^^^^^^^^^^^
-
-=========== ===================
-Status Code Description
-=========== ===================
-200         Successful request.
-=========== ===================
+.. literalinclude:: examples/az-list-response.json
+   :language: javascript
 
 Error Codes
 ^^^^^^^^^^^

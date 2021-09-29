@@ -277,6 +277,24 @@ admin_state_up:
   in: body
   required: no
   type: boolean
+availability_zone-code:
+  description: |
+    Specifies the AZ code.
+  in: body
+  required: true
+  type: str
+availability_zone-state:
+  description: |
+    Specifies the AZ status. The value can only be ACTIVE.
+  in: body
+  required: true
+  type: str
+availability_zones:
+  description: |
+    Specifies the AZs that are available during load balancer creation.
+  in: body
+  required: true
+  type: array
 flavor:
   description: |
     Specifies the flavors.

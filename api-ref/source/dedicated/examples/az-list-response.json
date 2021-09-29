@@ -1,0 +1,17 @@
+{
+  "availability_zones": [ 
+    [ 
+      {
+        "state": "ACTIVE",
+        "code": "az1"
+      }, {
+        "state": "ACTIVE",
+        "code": "az2"
+      }, {
+        "state": "ACTIVE",
+        "code": "az3"
+      } 
+    ] 
+  ],
+  "request_id": "0d799435-259e-459f-b2bc-0beee06f6a77"
+}
