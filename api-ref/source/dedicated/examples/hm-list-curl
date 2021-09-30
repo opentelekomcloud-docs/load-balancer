@@ -1,0 +1,1 @@
+curl -H "X-Auth-Token: ${token}" https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/healthmonitors

@@ -7,6 +7,12 @@ path-flavor-id:
   in: path
   required: yes
   type: uuid
+path-healthmonitor-id:
+  description: |
+    Specifies the health monitor.
+  in: path
+  required: true
+  type: uuid
 path-l7policy-id:
   description: |
     Specifies the forwarding policy ID.
@@ -50,6 +56,124 @@ flavor-shared-query:
   in: query
   required: no
   type: boolean
+healthmonitor-admin_state_up-query:
+  description: |
+    Specifies the administrative status of the health check.
+
+    Although this parameter can be used in the APIs for creating and updating health checks, its actual value depends on whether cloud servers that serve as the backend servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
+  in: query
+  required: false
+  type: bool
+healthmonitor-delay-query:
+  description: |
+    Specifies the interval between health checks, in seconds.
+
+    Multiple intervals can be queried in the format of delay=xxx&delay=xxx.
+  in: query
+  required: false
+  type: number
+healthmonitor-domain_name-query:
+  description: |
+    Specifies the domain name to which HTTP requests are sent during the health check.
+
+    This parameter will take effect only when type is set to HTTP.
+
+    The value is left blank by default, indicating that the virtual IP address bound to the load balancer is used as the destination of HTTP requests.
+
+    The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.
+
+    Multiple domain names can be queried in the format of domain_name=xxx&domain_name=xxx.
+  in: query
+  required: false
+  type: string
+healthmonitor-expected_codes-query:
+  description: |
+    Specifies the expected HTTP status code. This parameter will take effect only when type is set to HTTP.
+
+    The value options are as follows:
+
+    - A specific value, for example, 200
+    - A list of values that are separated with commas (,), for example, 200, 202
+    - A value range, for example, 200-204
+
+    Multiple status codes can be queried in the format of expected_codes=xxx&expected_codes=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+healthmonitor-http_method-query:
+  description: |
+    Specifies the HTTP method. This parameter will take effect only when type is set to HTTP.
+
+    The value can be GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, or PATCH.
+
+    Multiple methods can be queried in the format of http_method=xxx&http_method=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+healthmonitor-id-query:
+  description: |
+    Specifies the health check ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+healthmonitor-max_retries-query:
+  description: |
+    Specifies the maximum number of retries.
+
+    Multiple values can be queried in the format of max_retries=xxx&max_retries=xxx.
+  in: query
+  required: false
+  type: number
+healthmonitor-max_retries_down-query:
+  description: |
+    Specifies the number of consecutive health checks when the health check result of a backend server changes from ONLINE to OFFLINE. The value ranges from 1 to 10.
+  in: query
+  required: false
+  type: number
+healthmonitor-monitor_port-query:
+  description: |
+    Specifies the port used for the health check.
+
+    Multiple ports can be queried in the format of monitor_port=xxx&monitor_port=xxx.
+  in: query
+  required: false
+  type: number
+healthmonitor-name-query:
+  description: |
+    Specifies the health check name.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
+healthmonitor-timeout-query:
+  description: |
+    Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter delay.
+  in: query
+  required: false
+  type: number
+healthmonitor-type-query:
+  description: |
+    Specifies the health check protocol.
+
+    Multiple protocols can be queried in the format of type=xxx&type=xxx.
+  in: query
+  required: false
+  type: string
+healthmonitor-url_path-query:
+  description: |
+    Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when type is set to HTTP.
+
+    Multiple paths can be queried in the format of url_path=xxx&url_path=xxx.
+  in: query
+  required: false
+  type: string
 l7policy-action-query:
   description: |
     Specifies where requests will be forwarded. The value can be one of the following:
@@ -275,6 +399,13 @@ admin_state_up:
     Specifies the administrative status of the forwarding policy. The default value is true.
     This parameter is unsupported. Please do not use it.
   in: body
+  required: yes
+  type: boolean
+admin_state_up-optional:
+  description: |
+    Specifies the administrative status of the forwarding policy. The default value is true.
+    This parameter is unsupported. Please do not use it.
+  in: body
   required: no
   type: boolean
 availability_zone-code:
@@ -366,6 +497,302 @@ flavors:
   in: body
   type: array
   required: true
+healthmonitor:
+  description: |
+    Specifies the health check.
+  in: body
+  required: true
+  type: object
+healthmonitor-admin_state_up:
+  description: |
+    Specifies the administrative status of the health check. Two value options are available. true indicates that the health check is enabled, and false indicates that the health check is disabled.
+
+    Default: true
+  in: body
+  required: true
+  type: bool
+healthmonitor-admin_state_up-optional:
+  description: |
+    Specifies the administrative status of the health check. Two value options are available. true indicates that the health check is enabled, and false indicates that the health check is disabled.
+
+    Default: true
+  in: body
+  required: false
+  type: bool
+healthmonitor-delay:
+  description: |
+    Specifies the interval between health checks, in seconds.
+
+    Minimum: 1
+    Maximum: 50
+  in: body
+  required: true
+  type: integer
+healthmonitor-delay-optional:
+  description: |
+    Specifies the interval between health checks, in seconds.
+
+    Minimum: 1
+    Maximum: 50
+  in: body
+  required: false
+  type: integer
+healthmonitor-domain_name:
+  description: |
+    Specifies the domain name that HTTP requests are sent to during the health check.
+
+    This parameter is available only when type is set to HTTP.
+
+    The value is left blank by default, indicating that the virtual IP address of the load balancer is used as the destination address of HTTP requests.
+
+    The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.
+
+    Minimum: 1
+    Maximum: 100
+  in: body
+  required: true
+  type: string
+healthmonitor-domain_name-optional:
+  description: |
+    Specifies the domain name that HTTP requests are sent to during the health check.
+
+    This parameter is available only when type is set to HTTP.
+
+    The value is left blank by default, indicating that the virtual IP address of the load balancer is used as the destination address of HTTP requests.
+
+    The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.
+
+    Minimum: 1
+    Maximum: 100
+  in: body
+  required: false
+  type: string
+healthmonitor-expected_codes:
+  description: |
+    Specifies the expected HTTP status code. This parameter will take effect only when type is set to HTTP.
+
+    The value options are as follows:
+
+    - A specific value, for example, 200
+    - A list of values that are separated with commas (,), for example, 200, 202
+    - A value range, for example, 200-204
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: 200
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: true
+  type: string
+healthmonitor-expected_codes-optional:
+  description: |
+    Specifies the expected HTTP status code. This parameter will take effect only when type is set to HTTP.
+
+    The value options are as follows:
+
+    - A specific value, for example, 200
+    - A list of values that are separated with commas (,), for example, 200, 202
+    - A value range, for example, 200-204
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: 200
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: false
+  type: string
+healthmonitor-http_method:
+  description: |
+    Specifies the HTTP method.
+
+    The value can be GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, or PATCH.
+
+    This parameter will take effect only when type is set to HTTP.
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: GET
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: true
+  type: string
+healthmonitor-http_method-optional:
+  description: |
+    Specifies the HTTP method.
+
+    The value can be GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, or PATCH.
+
+    This parameter will take effect only when type is set to HTTP.
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: GET
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: false
+  type: string
+healthmonitor-id:
+  description: |
+    Specifies the health check ID.
+  in: body
+  required: true
+  type: uuid
+healthmonitor-max_retries:
+  description: |
+    Specifies the number of consecutive health checks when the health check result of a backend server changes from OFFLINE to ONLINE. The value ranges from 1 to 10.
+
+    Minimum: 1
+    Maximum: 10
+  in: body
+  required: true
+  type: number
+healthmonitor-max_retries-optional:
+  description: |
+    Specifies the number of consecutive health checks when the health check result of a backend server changes from OFFLINE to ONLINE. The value ranges from 1 to 10.
+
+    Minimum: 1
+    Maximum: 10
+  in: body
+  required: false
+  type: number
+healthmonitor-max_retries_down:
+  description: |
+    Specifies the number of consecutive health checks when the health check result of a backend server changes from ONLINE to OFFLINE.
+
+    Minimum: 1
+    Maximum: 10
+    Default: 3
+  in: body
+  required: true
+  type: number
+healthmonitor-max_retries_down-optional:
+  description: |
+    Specifies the number of consecutive health checks when the health check result of a backend server changes from ONLINE to OFFLINE.
+
+    Minimum: 1
+    Maximum: 10
+    Default: 3
+  in: body
+  required: false
+  type: number
+healthmonitor-monitor_port:
+  description: |
+    Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.
+
+    Minimum: 1
+    Maximum: 65535
+  in: body
+  required: true
+  type: number
+healthmonitor-monitor_port-optional:
+  description: |
+    Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.
+
+    Minimum: 1
+    Maximum: 65535
+  in: body
+  required: false
+  type: number
+healthmonitor-name:
+  description: |
+    Specifies the health check name.
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+healthmonitor-name-optional:
+  description: |
+    Specifies the health check name.
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: false
+  type: string
+healthmonitor-name-optional:
+  description: |
+    Specifies the health check name.
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: false
+  type: string
+healthmonitor-pool_id:
+  description: |
+    Specifies the ID of the backend server group for which the health check is configured.
+  in: body
+  required: true
+  type: uuid
+healthmonitor-pools:
+  description: |
+    Lists the IDs of backend server groups for which the health check is configured.
+  in: body
+  required: true
+  type: array
+healthmonitor-timeout:
+  description: |
+    Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter delay.
+
+    Minimum: 1
+    Maximum: 50
+  in: body
+  required: true
+  type: number
+healthmonitor-timeout-optional:
+  description: |
+    Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter delay.
+
+    Minimum: 1
+    Maximum: 50
+  in: body
+  required: false
+  type: number
+healthmonitor-type:
+  description: |
+    Specifies the health check protocol.
+
+    The value can be TCP, UDP_CONNECT, HTTP, HTTPS, or PING.
+  in: body
+  required: true
+  type: string
+healthmonitor-type-optional:
+  description: |
+    Specifies the health check protocol.
+
+    The value can be TCP, UDP_CONNECT, HTTP, HTTPS, or PING.
+  in: body
+  required: false
+  type: string
+healthmonitor-url_path:
+  description: |
+    Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when type is set to HTTP.
+
+    Default: /
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+healthmonitor-url_path-optional:
+  description: |
+    Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when type is set to HTTP.
+
+    Default: /
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: false
+  type: string
+healthmonitors:
+  description: |
+    Specifies the health check.
+  in: body
+  required: true
+  type: array
 l7policies:
   description: |
     Lists the forwarding policies.
@@ -741,7 +1168,7 @@ page_info:
     Shows pagination information
   in: body
   type: array
-  required: false
+  required: true
 project_id:
   description: |
     Specifies the project ID.

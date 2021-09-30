@@ -1,0 +1,19 @@
+{
+  "request_id" : "08d6ffea-d092-4cfa-860a-e364f3bef1be",
+  "healthmonitor" : {
+    "id" : "c2b210b2-60c4-449d-91e2-9e9ea1dd7441",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "name" : "My Healthmonitor update",
+    "delay" : 10,
+    "max_retries" : 10,
+    "pools" : [ {
+      "id" : "488acc50-6bcf-423d-8f0a-0f4184f5b8a0"
+    } ],
+    "admin_state_up" : true,
+    "timeout" : 30,
+    "type" : "HTTP",
+    "expected_codes" : "200",
+    "url_path" : "/",
+    "http_method" : "GET"
+  }
+}

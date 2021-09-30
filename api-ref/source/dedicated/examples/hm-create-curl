@@ -1,0 +1,1 @@
+curl -X PUT -H "X-Auth-Token: ${token}" -d '{"healthmonitor":{"name":"My Healthmonitor","max_retries":3,"pool_id":"488acc50-6bcf-423d-8f0a-0f4184f5b8a0","type":"HTTP","timeout":30,"delay":1}}' https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/healthmonitors

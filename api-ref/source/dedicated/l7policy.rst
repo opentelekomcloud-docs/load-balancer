@@ -32,7 +32,7 @@ Request Parameters
 .. rest_parameters:: parameters.yaml
 
    - project_id: path-project-id
-   - admin_state_up: admin_state_up
+   - admin_state_up: admin_state_up-optional
    - action: l7policy-action
    - description: l7policy-description
    - listener_id: l7policy-listener_id
@@ -422,16 +422,16 @@ Request Parameters
    - project_id: path-project-id
    - policy_id: path-l7policy-id
 
+Response Parameters
+^^^^^^^^^^^^^^^^^^^
+
+None
+
 Example Requests
 ^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/l7policy-delete-curl
    :language: bash
-
-Response Parameters
-^^^^^^^^^^^^^^^^^^^
-
-None
 
 Error Codes
 ^^^^^^^^^^^
