@@ -1,0 +1,15 @@
+{
+  "member" : {
+    "name" : "My member",
+    "weight" : 10,
+    "admin_state_up" : false,
+    "subnet_cidr_id" : "c09f620e-3492-4429-ac15-445d5dd9ca74",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "address" : "120.10.10.16",
+    "protocol_port" : 89,
+    "id" : "1923923e-fe8a-484f-bdbc-e11559b1f48f",
+    "operating_status" : "NO_MONITOR",
+    "ip_version" : "v4"
+  },
+  "request_id" : "e7b569d4-15ad-494d-9dd9-8cd740eef8f6"
+}

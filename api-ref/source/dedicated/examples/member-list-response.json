@@ -1,0 +1,41 @@
+{
+  "members" : [ {
+    "name" : "quark-neutron",
+    "weight" : 100,
+    "admin_state_up" : false,
+    "subnet_cidr_id" : "c09f620e-3492-4429-ac15-445d5dd9ca74",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "address" : "120.10.10.2",
+    "protocol_port" : 2100,
+    "id" : "0aa23a52-1ac2-4a2d-8dfa-1e11cb26079d",
+    "operating_status" : "NO_MONITOR",
+    "ip_version" : "v4"
+  }, {
+    "name" : "quark-neutron",
+    "weight" : 100,
+    "admin_state_up" : false,
+    "subnet_cidr_id" : "c09f620e-3492-4429-ac15-445d5dd9ca74",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "address" : "120.10.10.2",
+    "protocol_port" : 2101,
+    "id" : "315b928b-39e4-4d5f-8e48-39e9108c1035",
+    "operating_status" : "NO_MONITOR",
+    "ip_version" : "v4"
+  }, {
+    "name" : "quark-neutron",
+    "weight" : 100,
+    "admin_state_up" : false,
+    "subnet_cidr_id" : "27e4ab69-a5ed-46c6-921a-5212be19ce87",
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "address" : "2001:db8:a583:6a::4",
+    "protocol_port" : 2101,
+    "id" : "53976f72-d2aa-47f5-baf4-4906ed6b42d6",
+    "operating_status" : "NO_MONITOR",
+    "ip_version" : "v6"
+  } ],
+  "page_info" : {
+    "previous_marker" : "0aa23a52-1ac2-4a2d-8dfa-1e11cb26079d",
+    "current_count" : 3
+  },
+  "request_id" : "87e29592-7ab8-401a-9bf4-66cf6747eab9"
+}

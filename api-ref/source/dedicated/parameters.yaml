@@ -25,6 +25,17 @@ path-l7rule-id:
   in: path
   required: true
   type: uuid
+path-member-id:
+  description: |
+    Specifies the Pool member ID.
+  in: path
+  required: true
+  type: uuid
+path-pool-id:
+  description: Specifies the ID of the backend server group.
+  in: path
+  required: true
+  type: uuid
 path-project-id:
   description: |
     Specifies the project ID.
@@ -382,6 +393,90 @@ marker:
   in: query
   required: no
   type: uuid
+member-address-query:
+  description: |
+    Specifies the IP address bound to the backend server.
+
+    The IP address must be in the subnet specified by subnet_cidr_id, for example, 192.168.3.11.
+
+    The IP address can be used only by the primary NIC.
+
+    Multiple IP addresses can be queried in the format of address=xxx&address=xxx.
+  in: query
+  required: false
+  type: string
+member-admin_state_up-query:
+  description: |
+    Specifies the administrative status of the backend server.
+
+    Although this parameter can be used in the APIs for creating and updating backend servers, its actual value depends on whether cloud servers that serve as the backend servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
+  in: query
+  required: false
+  type: bool
+member-id-query:
+  description: |
+    Specifies the backend server ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+member-ip_version-query:
+  description: |
+    Specifies the IP version. The value can be 4 (IPv4) or 6 (IPv6).
+  in: query
+  required: false
+  type: string
+member-name-query:
+  description: |
+    Specifies the backend server name.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
+member-operating_status-query:
+  description: |
+    Specifies the operating status of the backend server. The value can be one of the following:
+
+    - ONLINE: The backend server is running normally.
+    - NO_MONITOR: No health check is configured for the backend server group to which the backend server belongs.
+    - OFFLINE: The cloud server used as the backend server is stopped or does not exist.
+
+    Multiple operating statuses can be queried in the format of operating_status=xxx&operating_status=xxx.
+  in: query
+  required: false
+  type: string
+member-protocol_port-query:
+  description: |
+    Specifies the port used by the backend server.
+
+    Multiple ports can be queried in the format of protocol_port=xxx&protocol_port=xxx.
+  in: query
+  required: false
+  type: number
+member-subnet_cidr_id-query:
+  description: |
+    Specifies the ID of the subnet where the backend server works.
+
+    This subnet must be in the same VPC as the subnet of the load balancer with which the backend server is associated. Only IPv4 subnets are supported.
+
+    Multiple IDs can be queried in the format of subnet_cidr_id=xxx&subnet_cidr_id=xxx.
+  in: query
+  required: false
+  type: string
+member-weight-query:
+  description: |
+    Specifies the weight of the backend server.
+
+    Requests are routed to backend servers in the same backend server group based on their weights. If the weight is 0, the backend server will not accept new requests.
+
+    This parameter will not take effect when lb_algorithm is set to SOURCE_IP for the backend server group that contains the backend server.
+
+    Multiple weights can be queried in the format of weight=xxx&weight=xxx.
+  in: query
+  required: false
+  type: number
 page-reverse:
   description: |
     Specifies the page direction.
@@ -1160,6 +1255,180 @@ l7rule-value:
 l7rules:
   description: |
     Lists the forwarding rules.
+  in: body
+  required: true
+  type: array
+member:
+  description: |
+    Specifies the backend server.
+  in: body
+  required: true
+  type: object
+member-address:
+  description: |
+    Specifies the IP address of the backend server.
+
+    The IP address must be in the subnet specified by subnet_cidr_id, for example, 192.168.3.11.
+
+    The IP address can only be the IP address of the primary NIC.
+
+    If subnet_cidr_id is left blank, cross-VPC backend is enabled. In this case, these servers must use IPv4 addresses.
+
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: true
+  type: string
+member-address-optional:
+  description: |
+    Specifies the IP address of the backend server.
+
+    The IP address must be in the subnet specified by subnet_cidr_id, for example, 192.168.3.11.
+
+    The IP address can only be the IP address of the primary NIC.
+
+    If subnet_cidr_id is left blank, cross-VPC backend is enabled. In this case, these servers must use IPv4 addresses.
+
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: false
+  type: string
+member-admin_state_up:
+  descrption: |
+    Specifies the administrative status of the backend server.
+
+    Although this parameter can be used in the APIs for creating and updating backend servers, its actual value depends on whether cloud servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
+  in: body
+  required: true
+  type: bool
+member-admin_state_up-optional:
+  descrption: |
+    Specifies the administrative status of the backend server.
+
+    Although this parameter can be used in the APIs for creating and updating backend servers, its actual value depends on whether cloud servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
+  in: body
+  required: false
+  type: bool
+member-id:
+  description: |
+    Specifies the backend server ID.
+  in: body
+  required: true
+  type: uuid
+member-ip_version:
+  description: |
+    This is a read-only attribute, which is automatically generated based on the address parameter. The value can be v4 or v6.
+
+    Default: v4
+  in: body
+  required: true
+  type: string
+member-ip_version-optional:
+  description: |
+    This is a read-only attribute, which is automatically generated based on the address parameter. The value can be v4 or v6.
+
+    Default: v4
+  in: body
+  required: false
+  type: string
+member-name:
+  description: |
+    Specifies the backend server name.
+  in: body
+  required: true
+  type: string
+member-name-optional:
+  description: |
+    Specifies the backend server name.
+  in: body
+  required: false
+  type: string
+member-operating_status:
+  description: |
+    Specifies the operating status of the backend server. The value can be one of the following:
+
+    - ONLINE: The backend server is running normally.
+    - NO_MONITOR: No health check is configured for the backend server group to which the backend server belongs.
+    - OFFLINE: The cloud server used as the backend server is stopped or does not exist.
+  in: body
+  required: true
+  type: string
+member-operating_status-optional:
+  description: |
+    Specifies the operating status of the backend server. The value can be one of the following:
+
+    - ONLINE: The backend server is running normally.
+    - NO_MONITOR: No health check is configured for the backend server group to which the backend server belongs.
+    - OFFLINE: The cloud server used as the backend server is stopped or does not exist.
+  in: body
+  required: false
+  type: string
+member-protocol_port:
+  description: |
+    Specifies the port used by the backend server to receive requests.
+
+    Minimum: 1
+    Maximum: 65535
+  in: body
+  required: true
+  type: number
+member-protocol_port-optional:
+  description: |
+    Specifies the port used by the backend server to receive requests.
+
+    Minimum: 1
+    Maximum: 65535
+  in: body
+  required: false
+  type: number
+member-subnet_cidr_id:
+  description: |
+    Specifies the ID of the subnet where the backend server works. This subnet must be in the VPC as the subnet of the load balancer associated with the backend server. Only IPv4 subnets are supported. If the value is left blank, the backend server is not in the load balancer's VPC.
+  in: body
+  required: true
+  type: string
+member-subnet_cidr_id-optional:
+  description: |
+    Specifies the ID of the subnet where the backend server works. This subnet must be in the VPC as the subnet of the load balancer associated with the backend server. Only IPv4 subnets are supported. If the value is left blank, the backend server is not in the load balancer's VPC.
+  in: body
+  required: false
+  type: string
+member-weight:
+  description: |
+    Specifies the weight of the backend server.
+
+    Requests are routed to backend servers in the same backend server group based on their weights.
+
+    If the weight is 0, the backend server will not accept new requests.
+
+    This parameter is invalid when lb_algorithm is set to SOURCE_IP for the backend server group that contains the backend server.
+
+    Minimum: 0
+    Maximum: 100
+    Default: 1
+  in: body
+  required: true
+  type: number
+member-weight-optional:
+  description: |
+    Specifies the weight of the backend server.
+
+    Requests are routed to backend servers in the same backend server group based on their weights.
+
+    If the weight is 0, the backend server will not accept new requests.
+
+    This parameter is invalid when lb_algorithm is set to SOURCE_IP for the backend server group that contains the backend server.
+
+    Minimum: 0
+    Maximum: 100
+    Default: 1
+  in: body
+  required: false
+  type: number
+members:
+  description:  |
+    Lists the backend servers.
   in: body
   required: true
   type: array
