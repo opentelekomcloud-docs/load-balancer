@@ -25,6 +25,12 @@ path-l7rule-id:
   in: path
   required: true
   type: uuid
+path-loadbalancer-id:
+  description: |
+    Specifies the load balancer ID.
+  in: path
+  required: true
+  type: uuid
 path-member-id:
   description: |
     Specifies the Pool member ID.
@@ -390,6 +396,301 @@ limit:
   in: query
   required: no
   type: integer
+l7policy-redirect_pool_id-query:
+  description: |
+    Specifies the ID of the backend server group to which requests are forwarded. This parameter will take effect and is mandatory when action is set to REDIRECT_TO_POOL.
+
+    Multiple IDs can be queried in the format of redirect_pool_id=xxx&redirect_pool_id=xxx.
+  in: query
+  required: false
+  type: str
+l7policy-redirect_url-query:
+  description: |
+    Specifies the URL to which requests are forwarded.
+
+    Multiple URLs can be queried in the format of redirect_url=xxx&redirect_url=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7rule-admin_state_up-query:
+  description: |
+    Specifies the administrative status of the forwarding rule. The default value is true.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: bool
+l7rule-compare_type-query:
+  description: |
+    Specifies how requests are matched with the domain name or URL.
+
+    If type is set to HOST_NAME, this parameter can only be set to EQUAL_TO.
+
+    If type is set to PATH, this parameter can be set to REGEX, STARTS_WITH, or EQUAL_TO.
+
+    Multiple values can be queried in the format of compare_type=xxx&compare_type=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-id-query:
+  description: |
+    Specifies the forwarding rule ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+l7rule-invert-query:
+  description: |
+    Specifies whether reverse matching is supported. The value is fixed at false. This parameter can be updated but remains invalid.
+  in: query
+  required: false
+  type: bool
+l7rule-key-query:
+  description: |
+    Specifies the key of the match content that is used to identify the forwarding rule.
+
+    Multiple keys can be queried in the format of key=xxx&key=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: str
+l7rule-provisioning_status-query:
+  description: |
+    Specifies the provisioning status of the forwarding rule. The value can only be ACTIVE, indicating that the forwarding rule is provisioned successfully.
+
+    Multiple provisioning statuses can be queried in the format of provisioning_status=xxx&provisioning_status=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-type-query:
+  description: |
+    Specifies the match content. The value can be HOST_NAME or PATH.
+
+    HOST_NAME indicates that the domain name will be used for matching, and PATH indicates that the URL will be used for matching.
+
+    The type value must be unique for each forwarding rule in a forwarding policy.
+
+    Multiple values can be queried in the format of type=xxx&type=xxx.
+  in: query
+  required: false
+  type: str
+l7rule-value-query:
+  description: |
+    Specifies the value of the match content.
+
+    Multiple values can be queried in the format of value=xxx&value=xxx.
+  in: query
+  required: false
+  type: str
+limit:
+  description: |
+    Specifies the number of records on each page.
+    Minimum: 0
+    Maximum: 2000
+  in: query
+  required: no
+  type: integer
+loadbalancer-availability_zone_list-query:
+  description: |
+    Specifies the list of AZs where the load balancer is created. You can query the AZs by calling the API (/v3/{project_id}/elb/availability-zones).
+
+    Multiple AZs can be queried in the format of availability_zone_list=xxx&availability_zone_list=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-description-query:
+  description: |
+    Provides supplementary information about the load balancer.
+
+    Multiple descriptions can be queried in the format of description=xxx&description=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-eips-query:
+  description: |
+    Specifies the EIP bound to the load balancer.
+
+    The following is an example:
+
+    "eips": [ { "eip_id": "e9b72a9d-4275-455e-a724-853504e4d9c6", "eip_address": "88.88.14.122", "ip_version": 4 } ]
+
+    Multiple EIPs can be queried in the format of eips=eip_id=xxx&eips=eip_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-guaranteed-query:
+  description: |
+    Specifies whether the load balancer is a dedicated load balancer. The value can only be true.
+  in: query
+  required: false
+  type: string
+loadbalancer-id-query:
+  description: |
+    Specifies the load balancer ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+loadbalancer-ip_version-query:
+  description: |
+    Specifies the IP version. The value can be 4 (IPv4) or 6 (IPv6).
+
+    Multiple versions can be queried in the format of ip_version=xxx&ip_version=xxx.
+
+    IPv6 is unsupported. The value cannot be 6.
+  in: query
+  required: false
+  type: string
+loadbalancer-ipv6_vip_address-query:
+  description: |
+    Specifies the IPv6 address bound to the load balancer.
+
+    Multiple IPv6 addresses can be queried in the format of ipv6_vip_address=xxx&ipv6_vip_address=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+loadbalancer-ipv6_vip_port_id-query:
+  description: |
+    Specifies the ID of the port bound to the IPv6 address of the load balancer.
+
+    Multiple ports can be queried in the format of ipv6_vip_port_id=xxx&ipv6_vip_port_id=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+loadbalancer-ipv6_vip_virsubnet_id-query:
+  description: |
+    Specifies the ID of the IPv6 subnet where the load balancer works.
+
+    Multiple IDs can be queried in the format of ipv6_vip_virsubnet_id=xxx&ipv6_vip_virsubnet_id=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+loadbalancer-l4_flavor_id-query:
+  description: |
+    Specifies the ID of the flavor at Layer 4.
+
+    Multiple IDs can be queried in the format of l4_flavor_id=xxx&l4_flavor_id=xxx.
+  in: query
+  required: false
+  type: uuid
+loadbalancer-l4_scale_flavor_id-query:
+  description: |
+    Specifies the elastic flavor that is reserved for now.
+
+    Multiple flavors can be queried in the format of l4_scale_flavor_id=xxx&l4_scale_flavor_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-l7_flavor_id-query:
+  description: |
+    Specifies the ID of the flavor at Layer 4.
+
+    Multiple IDs can be queried in the format of l7_flavor_id=xxx&l7_flavor_id=xxx.
+  in: query
+  required: false
+  type: uuid
+loadbalancer-l7_scale_flavor_id-query:
+  description: |
+    Specifies the elastic flavor that is reserved for now.
+
+    Multiple flavors can be queried in the format of l7_scale_flavor_id=xxx&l7_scale_flavor_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-member_address-query:
+  description: |
+    Specifies the private IP address of the backend server. This parameter is used only as a query condition and is not included in the response.
+  in: query
+  required: false
+  type: string
+loadbalancer-member_device_id-query:
+  description: |
+    Specifies the ID of the cloud server that serves as a backend server. This parameter is used only as a query condition and is not included in the response.
+
+    Multiple IDs can be queried in the format of member_device_id=xxx&member_device_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-name-query:
+  description: |
+    Specifies the load balancer name.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-operating_status-query:
+  description: |
+    Specifies the operating status of the load balancer. The value can only be ONLINE, indicating that the load balancer is working normally.
+
+    Multiple operating statuses can be queried in the format of operating_status=xxx&operating_status=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-provisioning_status-query:
+  description: |
+    Specifies the provisioning status of the load balancer. The value can only be ACTIVE, indicating that the load balancer is provisioned successfully.
+
+    Multiple provisioning statuses can be queried in the format of provisioning_status=xxx&provisioning_status=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-publicips-query:
+  description: |
+    Specifies the public IP address bound to the load balancer.
+
+    The following is an example:
+
+    "publicips": [ { "publicip_id": "e9b72a9d-4275-455e-a724-853504e4d9c6", "publicip_address": "88.88.14.122", "publicip_ip_version": 4 } ]
+
+    Multiple EIPs can be queried in the format of publicips=publicip_id=xxx&publicips=publicip_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-vip_address-query:
+  description: |
+    Specifies the virtual IP address bound to the load balancer.
+
+    Multiple virtual IP addresses can be queried in the format of vip_address=xxx&vip_address=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-vip_port_id-query:
+  description: |
+    Specifies the ID of the port bound to the virtual IP address of the load balancer.
+
+    Multiple IDs can be queried in the format of vip_port_id=xxx&vip_port_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-vip_subnet_cidr_id-query:
+  description: |
+    Specifies the ID of the subnet where the load balancer works.
+
+    Multiple IDs can be queried in the format of vip_subnet_cidr_id=xxx&vip_subnet_cidr_id=xxx.
+  in: query
+  required: false
+  type: string
+loadbalancer-vpc_id-query:
+  description: |
+    Specifies the ID of the VPC where the load balancer works.
+
+    Multiple IDs can be queried in the format of vpc_id=xxx&vpc_id=xxx.
+  in: query
+  required: false
+  type: uuid
+
 marker:
   description: |
     Specifies the ID of the last record on the previous page.
@@ -605,6 +906,38 @@ availability_zone-state:
 availability_zones:
   description: |
     Specifies the AZs that are available during load balancer creation.
+  in: body
+  required: true
+  type: array
+created_at:
+  description: |
+    Specifies when the resource was created.
+  in: body
+  required: true
+  type: string
+eip-address:
+  description: |
+    Specifies the specific IP address.
+  in: body
+  required: true
+  type: string
+eip-id:
+  description: |
+    Specifies the EIP ID.
+  in: body
+  required: true
+  type: uuid
+eip-ip_version:
+  description: |
+    Specifies the IP version. 4 indicates IPv4, and 6 indicates IPv6.
+
+    IPv6 is unsupported. The value cannot be 6.
+  in: body
+  required: true
+  type: string
+eips:
+  description: |
+    Specifies the EIP bound to the load balancer.
   in: body
   required: true
   type: array
@@ -1253,6 +1586,71 @@ listener-id: &listener-id-def
 listener-id-optional:
   <<: *listener-id-def
   required: false
+loadbalancer:
+  description: |
+    Specifies the load balancer.
+  in: body
+  required: true
+  type: object
+loadbalancer-admin_state_up: &lb-asu-def
+  description: |
+    Specifies the administrative status of the load balancer. The value can only be true.
+
+    This parameter is unsupported. Please do not use it.
+    Default: true
+  in: body
+  required: true
+  type: bool
+loadbalancer-admin_state_up-optional:
+  <<: *lb-asu-def
+  required: false
+loadbalancer-availability_zone_list: &lb-azlist-def
+  description: |
+    Specifies the list of AZs where the load balancer can be created. You can query the AZs by calling the API (GET https://{ELB_Endpoint}/v3/{project_id}/elb/availability-zones). Select one or more AZs in the same set.
+  in: body
+  required: true
+  type: array
+loadbalancer-availability_zone_list-optional:
+  <<: *lb-azlist-def
+  required: false
+loadbalancer-description: &lb-description-def
+  description: |
+    Provides supplementary information about the load balancer.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+loadbalancer-description-optional:
+  <<: *lb-description-def
+  required: false
+loadbalancer-elb_virsubnet_ids:
+  description: |
+    Specifies the ID of the subnet on the downstream plane. The ports used by the load balancer dynamically occupy IP addresses in the subnet.
+  in: body
+  required: true
+  type: array
+loadbalancer-frozen_scene:
+  description: |
+    Specifies the scenario where the load balancer is frozen. Use commas to separate multiple scenarios.
+
+    If the value is ARREAR, the load balancer is frozen because your account is in arrears.
+  in: body
+  required: true
+  type: string
+loadbalancer-guaranteed: &lb-guaranteed-def
+  description: |
+    Specifies whether the load balancer is a dedicated load balancer. The value can only be true.
+
+    Default: true
+  in: body
+  required: true
+  type: bool
+loadbalancer-guaranteed-optional:
+  <<: *lb-guaranteed-def
+  required: false
+
 loadbalancer-id: &loadbalancer-id-def
   description: |
     Specifies the load balancer ID.
@@ -1262,6 +1660,380 @@ loadbalancer-id: &loadbalancer-id-def
 loadbalancer-id-optional:
   <<: *loadbalancer-id-def
   required: false
+loadbalancer-ip_target_enable:
+  description: |
+    Specifies whether to enable cross-VPC backend.
+
+    This parameter is unsupported. Please do not use it.
+    Default: false
+  in: body
+  required: true
+  type: bool
+loadbalancer-ipv6_bandwidth: &lb-ipv6b-def
+  description: |
+    Specifies the ID of the bandwidth. This parameter is available only when you create or update a dedicated load balancer that has an IPv6 address bound.
+
+    If you use a new IPv6 address and specify a shared bandwidth, the IPv6 address will be added to the shared bandwidth.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: object
+loadbalancer-ipv6_bandwidth-id:
+  description: |
+    Specifies the shared bandwidth ID.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-ipv6_bandwidth-optional:
+  <<: *lb-ipv6b-def
+  required: false
+loadbalancer-ipv6_vip_address:
+  description: |
+    Specifies the IPv6 address bound to the load balancer.
+
+    This parameter is unsupported. Please do not use it.
+
+    Default: None
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: true
+  type: string
+loadbalancer-ipv6_vip_port_id:
+  description: |
+    Specifies the ID of the port bound to the IPv6 address.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: string
+loadbalancer-ipv6_vip_virsubnet_id: &lb-ipv6_vsi-def
+  description: |
+    Specifies the ID of the IPv6 subnet where the load balancer works. You can query id in the response by calling the API (GET https://{VPC_Endpoint}/v1/{project_id}/subnets).
+
+    Note:
+
+    - ipv6_vip_virsubnet_id is required if you want to create a load balancer with a private IPv6 address.
+    - Both ipv6_vip_virsubnet_id and ipv6_bandwidth are required if you want to create a load balancer with a public IPv6 address.
+    - The subnet specified by ipv6_vip_virsubnet_id must be in the VPC specified by vpc_id if you specify both ipv6_vip_virsubnet_id and vpc_id.
+    - IPv6 must be enabled for the subnet where the load balancer works.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: string
+loadbalancer-ipv6_vip_virsubnet_id-optional:
+  <<: *lb-ipv6_vsi-def
+  required: false
+loadbalancer-l4_flavor_id: &lb-l4f-def
+  description: |
+    Specifies the ID of the Layer-4 flavor.
+
+    Specify either l4_flavor_id or l7_flavor_id or both l4_flavor_id and l7_flavor_id when you create a load balancer.
+  in: body
+  required: true
+  type: string
+loadbalancer-l4_flavor_id-optional:
+  <<: *lb-l4f-def
+  required: false
+loadbalancer-l4_scale_flavor_id:
+  description: |
+    Specifies the reserved Layer 4 flavor.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+loadbalancer-l7_flavor_id: &lb-l7f-def
+  description: |
+    Specifies the ID of the Layer-7 flavor.
+
+    Specify either l4_flavor_id or l7_flavor_id or both l4_flavor_id and l7_flavor_id when you create a load balancer.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: uuid
+loadbalancer-l7_flavor_id-optional:
+  <<: *lb-l7f-def
+  required: false
+loadbalancer-l7_scale_flavor_id:
+  description: |
+    Specifies the reserved Layer 7 flavor.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+loadbalancer-listeners:
+  description: |
+    Lists the IDs of listeners added to the load balancer.
+  in: body
+  required: true
+  type: array
+loadbalancer-name: &lb-name-def
+  description: |
+    Specifies the load balancer name.
+
+    Minimum: **0**
+    Maximum: **255**
+  in: body
+  required: true
+  type: string
+loadbalancer-name-optional:
+  <<: *lb-name-def
+  required: false
+loadbalancer-operating_status:
+  description: |
+    Specifies the operating status of the load balancer. The value can only be ONLINE.
+
+    Minimum: 1
+    Maximum: 16
+  in: body
+  required: true
+  type: string
+loadbalancer-pools:
+  description: |
+    Lists the IDs of backend server groups associated with the load balancer.
+  in: body
+  required: true
+  type: array
+loadbalancer-port_id:
+  description: |
+    Specifies the ID of the port bound to the virtual IP address (the value of vip_address) of the load balancer.
+
+    When you create a dedicated load balancer, the system automatically creates a port for the load balancer and associates the port with a default security group. However, security group rules containing the port will not affect traffic to and from the load balancer.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-provider: &lb-provider-def
+  description: |
+    Specifies the provider of the load balancer. The value can only be vlb.
+  in: body
+  required: true
+  type: string
+loadbalancer-provider-optional:
+  <<: *lb-provider-def
+  required: false
+loadbalancer-provisioning_status:
+  description: |
+    Specifies the provisioning status of the load balancer. The value can only be ACTIVE.
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip: &lb-pip
+  description: |
+    Provides information about the new IPv4 EIP that will be bound to the dedicated load balancer during load balancer creation.
+  in: body
+  required: true
+  type: array
+loadbalancer-publicip-address:
+  description: |
+    Specifies the IP address.
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip-bandwidth:
+  description: |
+    Provides supplementary information about the bandwidth.
+  in: body
+  required: true
+  type: object
+loadbalancer-publicip-bandwidth-charge_mode: &lb-pip-b-cm-def
+  description: |
+    Specifies how the bandwidth used by the EIP is billed.
+
+    Currently, the bandwidth can be billed only by traffic.
+
+    This parameter is mandatory if id is set to null.
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip-bandwidth-charge_mode-optional:
+  <<: *lb-pip-b-cm-def
+  required: false
+loadbalancer-publicip-bandwidth-id: &lb-pip-b-id-def
+  description: |
+    Specifies the ID of the shared bandwidth. You can add a load balancer to a shared bandwidth by specifying its ID.
+
+    If you have specified an ID, you do not need to pass other parameters. Even if you pass other parameters, the system will automatically ignore these parameters.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-publicip-bandwidth-id-optional:
+  <<: *lb-pip-b-id-def
+loadbalancer-publicip-bandwidth-name: &lb-pip-b-name-def
+  description: |
+    Specifies the bandwidth name.
+
+    Minimum: 1
+    Maximum: 64
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip-bandwidth-name-optional:
+  <<: *lb-pip-b-name-def
+  required: false
+loadbalancer-publicip-bandwidth-share_type: &lb-pip-b-st-def
+  description: |
+    Specifies the bandwidth type.
+
+    The value options are as follows:
+
+    - PER: indicates dedicated bandwidth.
+    - WHOLE: indicates shared bandwidth.
+
+    This parameter is mandatory when id is set to null. It will be ignored if the value of id is not null.
+  in: body
+  required: true
+  type: number
+loadbalancer-publicip-bandwidth-share_type-optional:
+  <<: *lb-pip-b-st-def
+  required: false
+loadbalancer-publicip-bandwidth-size: &lb-pip-b-size-def
+  description: |
+    Specifies the bandwidth range.
+
+    The default range is 1 Mbit/s to 2,000 Mbit/s. (The specific range may vary depending on the configuration in each region. You can see the available bandwidth range on the management console.)
+
+    Note:
+
+    The minimum increment for bandwidth adjustment varies depending on the bandwidth range. The following are the details:
+
+    - The minimum increment is 1 Mbit/s if the bandwidth range is from 0 Mbit/s to 300 Mbit/s.
+    - The minimum increment is 50 Mbit/s if the bandwidth range is from 300 Mbit/s to 1,000 Mbit/s.
+    - The minimum increment is 500 Mbit/s if the bandwidth is greater than 1,000 Mbit/s.
+
+    This parameter is mandatory if id is set to null.
+
+    Minimum: 0
+    Maximum: 99999
+  in: body
+  required: true
+  type: number
+loadbalancer-publicip-bandwidth-size-optional:
+  <<: *lb-pip-b-size-def
+  required: false
+loadbalancer-publicip-description: &lb-pip-descr-def
+  description: |
+    Provides supplementary information about the IPv4 EIP.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip-description-optional:
+  <<: *lb-pip-descr-def
+  required: false
+loadbalancer-publicip-id:
+  description: |
+    Specifies the EIP ID.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-publicip-ip_version: &lb-pip-ipv-def
+  description: |
+    Specifies the IP address version. The value can be 4 (IPv4) or 6 (IPv6).
+
+    IPv6 is unsupported. The value cannot be 6.
+
+    Default: 4
+  in: body
+  required: true
+  type: integer
+loadbalancer-publicip-ip_version-optional:
+  <<: *lb-pip-ipv-def
+  required: false
+loadbalancer-publicip-network_type: &lb-pip-nt-def
+  description: |
+    Specifies the EIP type. The value can be 5_bgp (default) and 5_mailbgp.
+    NOTE: In eu-de, the value of this parameter can only be 5_gray.
+
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: true
+  type: string
+loadbalancer-publicip-network_type-optional:
+  <<: *lb-pip-nt-def
+  required: false
+loadbalancer-publicip-optional:
+  <<: *lb-pip
+  required: false
+loadbalancer-publicip_ids: &lb-pip_id-ref
+  description: |
+    Specifies the ID of the EIP the system will automatically assign and bind to the load balancer during load balancer creation. Currently, only the first EIP will be bound to the load balancer although multiple EIP IDs can be set.
+  in: body
+  required: true
+  type: array
+loadbalancer-publicip_ids-optional:
+  <<: *lb-pip_id-ref
+  required: false
+loadbalancer-publicips:
+  description: |
+    Specifies the EIP bound to the load balancer.
+  in: body
+  required: true
+  type: array
+loadbalancer-tags: &lb-tags-def
+  description: |
+    Lists the tags added to the load balancer. Example: "tags":[{"key":"my_tag","value":"my_tag_value"}]
+  in: body
+  required: true
+  type: array
+loadbalancer-tags-optional:
+  <<: *lb-tags-def
+  required: false
+loadbalancer-vip_address: &lb-vip_address-def
+  description: |
+    Specifies the virtual IP address bound to the load balancer. The IP address must be from the IPv4 subnet of the VPC where the load balancer works and IP address should not be occupied by other services.
+
+    Note:
+    - If both vip_subnet_cidr_id and vip_address are specified, a dedicated load balancer with a private IPv4 address will be created, and the virtual IP address specified by vip_address is the private IP address of the load balancer.
+    - If only vip_subnet_cidr_id is specified, a dedicated load balancer with a private IPv4 address will be created, and the system will automatically assign a virtual IP address to the load balancer.
+  in: body
+  required: true
+  type: string
+loadbalancer-vip_address-optional:
+  <<: *lb-vip_address-def
+  required: false
+loadbalancer-vip_subnet_cidr_id: &lb-vip_subnet_cidr_id-def
+  description: |
+    Specifies the ID of the IPv4 subnet where the load balancer works. You can query neutron_subnet_id in the response by calling the API (GET https://{VPC_Endpoint}/v1/{project_id}/subnets).
+
+    Both vip_subnet_cidr_id and vip_address are required if you want to create a dedicated load balancer with a private IPv4 address.
+    publicip and either vpc_id or vip_subnet_cidr_id are required if you want to create a dedicated load balancer with a new IPv4 EIP.
+    publicip_ids and either vpc_id or vip_subnet_cidr_id are required if you want to with a dedicated load balancer with an existing IPv4 EIP.
+    The subnet specified by vip_subnet_cidr_id must be in the VPC specified by vpc_id if you specify both vpc_id and vip_subnet_cidr_id.
+  in: body
+  required: true
+  type: string
+loadbalancer-vip_subnet_cidr_id-optional:
+  <<: *lb-vip_subnet_cidr_id-def
+  required: false
+loadbalancer-vpc_id: &lb-vpc_id-def
+  description: |
+    Specifies the ID of the VPC where the load balancer works. You can query id in the response by calling the API (GET https://{VPC_Endpoint}/v1/{project_id}/vpcs).
+
+    The subnet specified by vip_subnet_cidr_id must be in the VPC specified by vpc_id if you specify both vip_subnet_cidr_id and vpc_id.
+    The subnet specified by ipv6_vip_virsubnet_id must be in the VPC specified by vpc_id if you specify both ipv6_vip_virsubnet_id and vpc_id.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-vpc_id-optional:
+  <<: *lb-vpc_id-def
+  required: false
+loadbalancers:
+  description: |
+    Lists the load balancers.
+  in: body
+  required: true
+  type: array
 member:
   description: |
     Specifies the backend server.
@@ -1617,3 +2389,9 @@ request_id:
   in: body
   type: string
   required: true
+updated_at:
+  description: |
+    Specifies when the resource was updated.
+  in: body
+  required: true
+  type: string

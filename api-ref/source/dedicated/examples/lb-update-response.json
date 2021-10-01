@@ -1,0 +1,35 @@
+{
+  "request_id" : "010dad1e-32a3-4405-ab83-62a1fc5f8722",
+  "loadbalancer" : {
+    "id" : "2e073bf8-edfe-4e51-a699-d915b0b8af89",
+    "project_id" : "b2782e6708b8475c993e6064bc456bf8",
+    "name" : "loadbalancer-update",
+    "description" : "loadbalancer",
+    "admin_state_up" : true,
+    "provisioning_status" : "ACTIVE",
+    "operating_status" : "ONLINE",
+    "listeners" : [ {
+      "id" : "41937176-bf64-4b58-8e0d-9ff2d0d32c54"
+    }, {
+      "id" : "abc6ac93-ad0e-4765-bd5a-eec632efde56"
+    }, {
+      "id" : "b9d8ba97-6d60-467d-838d-f3550b54c22a"
+    }, {
+      "id" : "fd797ebd-263d-4b18-96e9-e9188d36c69e"
+    } ],
+    "pools" : [ {
+      "id" : "0aabcaa8-c35c-4ddc-a60c-9032d0ac0b80"
+    }, {
+      "id" : "165d9092-396e-4a8d-b398-067496a447d2"
+    } ],
+    "tags" : [ ],
+    "provider" : "vlb",
+    "created_at" : "2019-04-20T03:10:37Z",
+    "updated_at" : "2019-05-24T02:11:58Z",
+    "vpc_id" : "2037c5bb-e04b-4de2-9300-9051af18e417",
+    "enterprise_project_id" : "0",
+    "availability_zone_list" : [ "AZ1", "AZ2", "dc3" ],
+    "eips" : [ ],
+    "guaranteed" : true
+  }
+}

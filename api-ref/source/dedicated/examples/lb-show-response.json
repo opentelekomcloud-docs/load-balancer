@@ -1,0 +1,35 @@
+{
+  "loadbalancer" : {
+    "id" : "3dbde7e5-c277-4ea3-a424-edd339357eff",
+    "project_id" : "060576782980d5762f9ec014dd2f1148",
+    "name" : "elb-l4-no-delete",
+    "vip_port_id" : "f079c7ee-65a9-44ef-be86-53d8927e59be",
+    "vip_address" : "10.0.0.196",
+    "admin_state_up" : true,
+    "provisioning_status" : "ACTIVE",
+    "operating_status" : "ONLINE",
+    "listeners" : [ ],
+    "pools" : [ {
+      "id" : "1d864dc9-f6ef-4366-b59d-7034cde2328f"
+    }, {
+      "id" : "c0a2e4a1-c028-4a24-a62f-e721c52f5513"
+    }, {
+      "id" : "79308896-6169-4c28-acbc-e139eb661996"
+    } ],
+    "tags" : [ ],
+    "created_at" : "2019-12-02T09:55:11Z",
+    "updated_at" : "2019-12-02T09:55:11Z",
+    "vpc_id" : "70711260-9de9-4d96-9839-0ae698e00109",
+    "enterprise_project_id" : "0",
+    "availability_zone_list" : [ ],
+    "publicips" : [ ],
+    "elb_virsubnet_ids" : [ "ad5d63bf-3b50-4e88-b4d9-e94a59aade48" ],
+    "eips" : [ ],
+    "guaranteed" : true,
+    
+    "l4_flavor_id" : "e5acacda-f861-404e-9871-df480c49d185",
+    "vip_subnet_cidr_id" : "396d918a-756e-4163-8450-3bdc860109cf"
+  },
+  "request_id" : "1a47cfbf-969f-4e40-8c0e-c2e60b14bcac"
+}
+

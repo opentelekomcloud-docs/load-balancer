@@ -1,0 +1,7 @@
+curl -H "X-Auth-Token: ${token}" -X PUT -d '{ \
+  "loadbalancer" : { \
+    "admin_state_up" : true, \
+    "description" : "loadbalancer", \
+    "name" : "loadbalancer-update" \
+  } \
+}' https://{elb_endpoint}/v3/{project_id}/elb/loadbalancers/{loadbalancer_id}

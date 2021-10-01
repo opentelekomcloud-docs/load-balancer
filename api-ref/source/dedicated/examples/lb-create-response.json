@@ -1,0 +1,40 @@
+{
+  "request_id" : "86bb342be098113734389bffcf593607",
+  "loadbalancer" : {
+    "id" : "badd5a4b-14cf-4319-ac91-4182a80dee9a",
+    "project_id" : "060576782980d5762f9ec014dd2f1148",
+    "name" : "elb-ipv4-public",
+    "description" : "",
+    "vip_port_id" : "265c13fb-49a9-4f51-b848-7f0cced0aef0",
+    "vip_address" : "192.168.0.151",
+    "admin_state_up" : true,
+    "provisioning_status" : "ACTIVE",
+    "operating_status" : "ONLINE",
+    "listeners" : [ ],
+    "pools" : [ ],
+    "tags" : [ ],
+    "provider" : "vlb",
+    "created_at" : "2021-03-29T02:44:47Z",
+    "updated_at" : "2021-03-29T02:44:47Z",
+    "vpc_id" : "e5a892ff-3c33-44ef-ada5-b713eb1f7a8b",
+    "enterprise_project_id" : "0",
+    "availability_zone_list" : [ "br-iaas-odin1a" ],
+    "publicips" : [ {
+      "publicip_id" : "448d497a-8f65-4c17-b2b2-f21279446e00",
+      "publicip_address" : "10.246.170.154",
+      "ip_version" : 4
+    } ],
+    "elb_virsubnet_ids" : [ "4df3e391-5ebf-4300-b614-cf5a4e793666" ],
+    "elb_virsubnet_type" : "dualstack",
+    "ip_target_enable" : false,
+    "eips" : [ {
+      "eip_id" : "448d497a-8f65-4c17-b2b2-f21279446e00",
+      "eip_address" : "10.246.170.154",
+      "ip_version" : 4
+    } ],
+    "guaranteed" : true,
+    "l4_flavor_id" : "e5acacda-f861-404e-9871-df480c49d185",
+    "l7_flavor_id" : "2f124f60-980a-42f3-b201-35461df1b936",
+    "vip_subnet_cidr_id" : "1800b6b8-a69f-4719-813d-24d62aaf32bd"
+  }
+}

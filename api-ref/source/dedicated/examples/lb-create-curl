@@ -1,0 +1,19 @@
+curl -H "X-Auth-Token: ${token}" -X POST -d '{ \
+  "loadbalancer" : { \
+    "vpc_id" : "e5a892ff-3c33-44ef-ada5-b713eb1f7a8b", \
+    "availability_zone_list" : [ "br-iaas-odin1a" ], \
+    "admin_state_up" : true, \
+    "vip_subnet_cidr_id" : "1800b6b8-a69f-4719-813d-24d62aaf32bd", \
+    "elb_virsubnet_ids" : [ "1fe8c0a8-d648-4294-8ea5-4d7f0c700e69" ], \
+    "name" : "elb-ipv4-public", \
+    "publicip" : { \
+      "network_type" : "5_bgp", \
+      "bandwidth" : { \
+        "size" : 2, \
+        "share_type" : "PER", \
+        "charge_mode" : "traffic", \
+        "name" : "elb_eip_traffic" \
+      } \
+    } \
+  } \
+}' https://{ELB_Endponit}/v3/060576782980d5762f9ec014dd2f1148/elb/loadbalancers
