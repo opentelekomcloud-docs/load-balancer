@@ -1,0 +1,11 @@
+curl -H "X-Auth-Token: ${token}" -X POST -d '{ \
+  "listener" : { \
+    "protocol_port" : 90, \
+    "protocol" : "HTTPS", \
+    "loadbalancer_id" : "ac82ca77-8be3-4d65-9c4d-155771b463df", \
+    "name" : "My listener", \
+    "admin_state_up" : true, \
+    "default_tls_container_ref" : "4e7761d7c7d141c389479f2641c8bff8" \
+  } \
+}' https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/listeners  
+

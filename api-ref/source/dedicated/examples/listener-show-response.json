@@ -1,0 +1,35 @@
+{
+  "listener" : {
+    "id" : "683cf917-3e51-4c41-830c-bc3a57e090f0",
+    "name" : "My listener",
+    "protocol_port" : 90,
+    "protocol" : "HTTPS",
+    "description" : "",
+    "default_tls_container_ref" : "4e7761d7c7d141c389479f2641c8bff8",
+    "admin_state_up" : true,
+    "loadbalancers" : [ {
+      "id" : "ac82ca77-8be3-4d65-9c4d-155771b463df"
+    } ],
+    "project_id" : "060576782980d5762f9ec014dd2f1148",
+    "sni_container_refs" : [ ],
+    "connection_limit" : -1,
+    "tls_ciphers_policy" : "tls-1-0",
+    "tags" : [ ],
+    "created_at" : "2021-04-02T07:48:38Z",
+    "updated_at" : "2021-04-02T07:48:38Z",
+    "http2_enable" : false,
+    "insert_headers" : {
+      "X-Forwarded-ELB-IP" : false,
+      "X-Forwarded-Host" : true,
+      "X-Forwarded-For-Port" : false,
+      "X-Forwarded-Port" : false
+    },
+    "member_timeout" : 60,
+    "client_timeout" : 60,
+    "keepalive_timeout" : 60,
+    "enable_member_retry" : true,
+    "transparent_client_ip_enable" : true,
+    "enhance_l7policy_enable" : false
+  },
+  "request_id" : "830de7c7c38232d925db168bfb3cb0e8"
+}

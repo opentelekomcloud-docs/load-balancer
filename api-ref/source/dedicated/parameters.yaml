@@ -25,6 +25,12 @@ path-l7rule-id:
   in: path
   required: true
   type: uuid
+path-listener-id:
+  description: |
+    Specifies the listener ID.
+  in: path
+  required: true
+  type: uuid
 path-loadbalancer-id:
   description: |
     Specifies the load balancer ID.
@@ -494,6 +500,170 @@ limit:
   in: query
   required: no
   type: integer
+listener-client_ca_tls_container_ref-query:
+  description: |
+    Specifies the ID of the CA certificate used by the listener.
+
+    Multiple IDs can be queried in the format of client_ca_tls_container_ref=xxx&client_ca_tls_container_ref=xxx.
+  in: query
+  required: false
+  type: string
+listener-client_timeout-query:
+  description: |
+    Specifies the timeout duration for waiting for a request from a client, in seconds.
+
+    This parameter is available only for HTTP and HTTPS listeners. The value ranges from 1 to 300.
+
+    Multiple durations can be queried in the format of client_timeout=xxx&client_timeout=xxx.
+  in: query
+  required: false
+  type: number
+listener-connection_limit-query:
+  description: |
+    Specifies the maximum number of connections that the load balancer can handle. The default value is -1.
+
+    Multiple values can be queried in the format of connection_limit=xxx&connection_limit=xxx.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: string
+listener-default_pool_id-query:
+  description: |
+    Specifies the ID of the default backend server group. If there is no matched forwarding policy, requests will be routed to the default backend server.
+
+    Multiple IDs can be queried in the format of default_pool_id=xxx&default_pool_id=xxx.
+  in: query
+  required: false
+  type: string
+listener-default_tls_container_ref-query:
+  description: |
+    Specifies the ID of the server certificate used by the listener.
+
+    Multiple IDs can be queried in the format of default_tls_container_ref=xxx&default_tls_container_ref=xxx.
+  in: query
+  required: false
+  type: string
+listener-description-query:
+  description: |
+    Provides supplementary information about the listener.
+
+    Multiple descriptions can be queried in the format of description=xxx&description=xxx.
+  in: query
+  required: false
+  type: string
+listener-enable_member_retry-query:
+  description: |
+    Specifies whether to enable health check retries for backend servers.
+  in: query
+  required: false
+  type: bool
+listener-http2_enable-query:
+  description: |
+    Specifies whether to use HTTP/2. This parameter is available only for HTTPS listeners. If you configure this parameter for other types of listeners, it will not take effect.
+
+    Enable HTTP/2 if you want the clients to use HTTP/2 to communicate with the load balancer. However, connections between the load balancer and backend servers use HTTP/1.x by default.
+  in: query
+  required: false
+  type: bool
+listener-id-query:
+  description: |
+    Specifies the listener ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+listener-keepalive_timeout-query:
+  description: |
+    Specifies the idle timeout duration, in seconds.
+
+    - For TCP listeners, the value ranges from 10 to 4000, and the default value is 300.
+    - For HTTP and HTTPS listeners, the value ranges from 0 to 4000, and the default value is 60.
+    - For UDP listeners, this parameter does not take effect.
+
+    Multiple durations can be queried in the format of keepalive_timeout=xxx&keepalive_timeout=xxx.
+  in: query
+  required: false
+  type: number
+listener-loadbalancer_id-query:
+  description: |
+    Specifies the ID of the load balancer that the listener is added to.
+
+    Multiple IDs can be queried in the format of loadbalancer_id=xxx&loadbalancer_id=xxx.
+  in: query
+  required: false
+  type: uuid
+listener-member_address-query:
+  description: |
+    Specifies the private IP address bound to the backend server. This parameter is used only as a query condition and is not included in the response.
+
+    Multiple IP addresses can be queried in the format of member_address=xxx&member_address=xxx.
+  in: query
+  required: false
+  type: string
+listener-member_device_id-query:
+  description: |
+    Specifies the ID of the cloud server that serves as a backend server. This parameter is used only as a query condition and is not included in the response.
+
+    Multiple IDs can be queried in the format of member_device_id=xxx&member_device_id=xxx.
+  in: query
+  required: false
+  type: string
+listener-member_timeout-query:
+  description: |
+    Specifies the timeout duration for waiting for a request from a backend server, in seconds.
+
+    This parameter is available only for HTTP and HTTPS listeners. The value ranges from 1 to 300.
+
+    Multiple durations can be queried in the format of member_timeout=xxx&member_timeout=xxx.
+  in: query
+  required: false
+  type: number
+listener-name-query:
+  description: |
+    Specifies the name of the listener added to the load balancer.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
+listener-protocol-query:
+  description: |
+    Specifies the protocol used by the listener. The protocol can be UDP, TCP, HTTP, or HTTPS.
+
+    Multiple protocols can be queried in the format of protocol=xxx&protocol=xxx.
+  in: query
+  required: false
+  type: string
+listener-protocol_port-query:
+  description: |
+    Specifies the port used by the listener.
+
+    Multiple ports can be queried in the format of protocol_port=xxx&protocol_port=xxx.
+  in: query
+  required: false
+  type: number
+listener-tls_ciphers_policy-query:
+  description: |
+    Specifies the security policy used by the listener. This parameter is available only for HTTPS listeners.
+
+    The value can be tls-1-0, tls-1-1, tls-1-2, or tls-1-2-strict, and the default value is tls-1-0.
+
+    Multiple security policies can be queried in the format of tls_ciphers_policy=xxx&tls_ciphers_policy=xxx.
+  in: query
+  required: false
+  type: string
+listener-transparent_client_ip_enable-query:
+  description: |
+    Specifies whether to pass source IP addresses of the clients to backend servers.
+
+    Shared load balancers: The value can be true or false, and the default value is false for TCP and UDP listeners. The value can only be true for HTTP and HTTPS listeners. If this parameter is not passed, the default value is true.
+
+    Dedicated load balancers: The value can only be true for all types of listeners. If this parameter is not passed, the default value is true.
+  in: query
+  required: false
+  type: boolean
 loadbalancer-availability_zone_list-query:
   description: |
     Specifies the list of AZs where the load balancer is created. You can query the AZs by calling the API (/v3/{project_id}/elb/availability-zones).
@@ -690,7 +860,6 @@ loadbalancer-vpc_id-query:
   in: query
   required: false
   type: uuid
-
 marker:
   description: |
     Specifies the ID of the last record on the previous page.
@@ -888,6 +1057,16 @@ admin_state_up: &admin_state_up-def
   in: body
   required: yes
   type: boolean
+admin_state_up-notsupported: &admin_state_up-nsp-def
+  description: |
+    Specifies the administrative status of the resource. The default value is true.
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: yes
+  type: boolean
+admin_state_up-notsupported-optional:
+  <<: *admin_state_up-nsp-def
+  required: no
 admin_state_up-optional:
   <<: *admin_state_up-def
   required: no
@@ -1577,6 +1756,132 @@ l7rules:
   in: body
   required: true
   type: array
+listener:
+  description: |
+    Specifies the listener.
+  in: body
+  required: true
+  type: object
+listener-client_ca_tls_container_ref: &lsnr-client_ca_tls-def
+  description: |
+    Specifies the ID of the CA certificate used by the listener.
+
+    Minimum: 1
+    Maximum: 128
+  in: body
+  required: true
+  type: string
+listener-client_ca_tls_container_ref-optional:
+  <<: *lsnr-client_ca_tls-def
+  required: false
+listener-client_timeout: &lsnr-client_timeout-def
+  description: |
+    Specifies the timeout duration for waiting for a request from a client, in seconds.
+
+    This parameter is available only for HTTP and HTTPS listeners. The value ranges from 1 to 300, and the default value is 60.
+
+    An error will be returned if you configure this parameter for TCP and UDP listeners.
+
+    Minimum: 1
+    Maximum: 300
+    Default: 60
+  in: body
+  required: true
+  type: number
+listener-client_timeout-optional:
+  <<: *lsnr-client_timeout-def
+listener-connection_limit:
+  description: |
+    Specifies the maximum number of connections. The default value is -1.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: integer
+listener-default_pool_id: &lsnr-default_pool_id-def
+  description: |
+    Specifies the ID of the default backend server group. If there is no matched forwarding policy, requests are forwarded to the default backend server for processing.
+
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: true
+  type: uuid
+listener-default_pool_id-optional:
+  <<: *lsnr-default_pool_id-def
+  required: false
+listener-default_tls_container_ref: &lsnr-default_tls_container_ref-def
+  description: |
+    Specifies the ID of the server certificate used by the listener.
+
+    Minimum: 1
+    Maximum: 128
+  in: body
+  required: true
+  type: uuid
+listener-default_tls_container_ref-optional:
+  <<: *lsnr-default_tls_container_ref-def
+listener-description: &lsnr-description
+  description: |
+    Provides supplementary information about the listener.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+listener-description-optional:
+  <<: *lsnr-description
+  required: false
+listener-enable_member_retry: &lsnr-enable_member_retry-def
+  description: |
+    Specifies whether to enable health check retries for backend servers.
+
+    This parameter is available only for HTTP and HTTPS listeners.
+
+    An error will be returned if you configure this parameter for TCP and UDP listeners.
+
+    Default: true
+  in: body
+  required: true
+  type: bool
+listener-enable_member_retry-optional:
+  <<: *lsnr-enable_member_retry-def
+  required: false
+listener-enhance_l7policy_enable: &lsnr-enhance-def
+  description: |
+    Specifies whether to enable advanced forwarding. The value can be true or false (default).
+
+    - true indicates that advanced forwarding will be enabled.
+    - false indicates that advanced forwarding will not be enabled.
+
+    The following parameters will be available only when advanced forwarding is enabled:
+
+    - redirect_url_config
+    - fixed_response_config
+    - priority
+    - conditions
+
+    For details, see the descriptions in the APIs of forwarding policies and forwarding rules.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: bool
+listener-enhance_l7policy_enable-optional:
+  <<: *lsnr-enhance-def
+  required: false
+listener-http2_enable: &lsnr-http2_enable-def
+  description: |
+    Specifies whether to use HTTP/2. This parameter is available only for HTTPS listeners. If you configure this parameter for other types of listeners, it will not take effect.
+
+    Enable HTTP/2 if you want the clients to use HTTP/2 to communicate with the load balancer. However, connections between the load balancer and backend servers use HTTP/1.x by default.
+  in: body
+  required: true
+  type: bool
+listener-http2_enable-optional:
+  <<: *lsnr-http2_enable-def
+  required: false
 listener-id: &listener-id-def
   description: |
     Specifies the listener ID.
@@ -1586,6 +1891,185 @@ listener-id: &listener-id-def
 listener-id-optional:
   <<: *listener-id-def
   required: false
+listener-insert_headers: &lsnr-insert_headers-def
+  description: |
+    Specifies the HTTP header fields. See :ref:`insert_headers`.
+  in: body
+  required: true
+  type: object
+listener-insert_headers-optional:
+  <<: *lsnr-insert_headers-def
+  required: false
+listener-ipgroup: &lsnr-ipgroup-def
+  description: |
+    Specifies the IP address group associated with the listener.
+
+    The value can be null or an empty JSON structure, indicating that no IP address group is associated with the listener.
+
+    ipgroup_id is also required if you want to associate an IP address group with the listener.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: string
+listener-ipgroup-enable: &lsnr-ipgrp-enable-def
+  description: |
+    Specifies whether to enable access control.
+
+    - true (default): Access control will be enabled.
+    - false: Access control will be disabled.
+
+    A listener with access control enabled can be directly deleted.
+  in: body
+  required: true
+  type: bool
+listener-ipgroup-enable-optional:
+  <<: *lsnr-ipgrp-enable-def
+  required: false
+listener-ipgroup-id:
+  desciption: |
+    Specifies the ID of the IP address group associated with the listener.
+
+    If ip_list is set to [] and type to whitelist, no IP addresses are allowed to access the listener.
+
+    If ip_list is set to [] and type to blacklist, any IP address is allowed to access the listener.
+
+    The specified IP address group must exist and this parameter cannot be set to null.
+
+    IP address groups are not supported for now.
+  in: body
+  required: true
+  type: uuid
+listener-ipgroup-optional:
+  <<: *lsnr-ipgroup-def
+  required: false
+listener-ipgroup-type: &lsnr-ipgrp-type-def
+  description: |
+    Specifies how access to the listener is controlled.
+
+    - white (default): A whitelist will be configured. Only IP addresses in the whitelist can access the listener.
+    - black: A blacklist will be configured. IP addresses in the blacklist are not allowed to access the listener.
+  in: body
+  required: true
+  type: string
+listener-ipgroup-type-optional:
+  <<: *lsnr-ipgrp-type-def
+  required: false
+listener-keepalive_timeout: &lsnr-keepalive_timeout-def
+  description: |
+    Specifies the idle timeout duration, in seconds.
+
+    - For TCP listeners, the value ranges from 10 to 4000, and the default value is 300.
+    - For HTTP and HTTPS listeners, the value ranges from 0 to 4000, and the default value is 60.
+    - For UDP listeners, this parameter is not available. An error will be returned if you configure this parameter for UDP listeners.
+  in: body
+  required: true
+  type: number
+listener-keepalive_timeout-optional:
+  <<: *lsnr-keepalive_timeout-def
+listener-loadbalancer_id:
+  description: |
+    Specifies the ID of the load balancer that the listener is added to.
+
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: true
+  type: uuid
+listener-loadbalancers:
+  description: |
+    Specifies the ID of the load balancer that the listener is added to.
+  in: body
+  required: true
+  type: array
+listener-member_timeout: &lsnr-member_timeout-def
+  description: |
+    Specifies the timeout duration for waiting for a request from a backend server, in seconds.
+
+    This parameter is available only for HTTP and HTTPS listeners. The value ranges from 1 to 300, and the default value is 60.
+
+    An error will be returned if you configure this parameter for TCP and UDP listeners.
+  in: body
+  required: true
+  type: number
+listener-member_timeout-optional:
+  <<: *lsnr-member_timeout-def
+  required: false
+listener-name: &lsnr-name-ref
+  description: |
+    Specifies the listener name.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+listener-name-optional:
+  <<: *lsnr-name-ref
+listener-protocol: &lsnr-protocol-ref
+  description: |
+    Specifies the protocol used by the listener. The protocol can be TCP, HTTP, UDP, or HTTPS.
+  in: body
+  required: true
+  type: string
+listener-protocol_port:
+  description: |
+    Specifies the port used by the listener.
+
+    Minimum: 1
+    Maximum: 65535
+  in: body
+  required: true
+  type: number
+listener-sni_container_refs: &lsnr-sni_container_refs-def
+  description: |
+    Lists the IDs of SNI certificates (server certificates with domain names) used by the listener.
+
+    Each SNI certificate can have up to 30 domain names, and each domain name in the SNI certificate must be unique.
+
+    This parameter will be ignored and an empty array will be returned if the listener's protocol is not HTTPS.
+  in: body
+  required: true
+  type: string
+listener-sni_container_refs-optional:
+  <<: *lsnr-sni_container_refs-def
+listener-tls_ciphers_policy: &lsnr-tlsciphers_policy-def
+  description: |
+    Specifies the security policy that will be used by the listener.
+
+    This parameter is available only for HTTPS listeners. The default value is tls-1-0.
+
+    An error will be returned if the protocol of the listener is not HTTPS.
+
+    Value options:
+    - tls-1-0
+    - tls-1-1
+    - tls-1-2
+    - tls-1-2-strict
+  in: body
+  required: true
+  type: string
+listener-tls_ciphers_policy-optional:
+  <<: *lsnr-tlsciphers_policy-def
+listener-transparent_client_ip_enable: &lsnr-tcie-def
+  description: |
+    Specifies whether to pass source IP addresses of the clients to backend servers.
+
+    Shared load balancers: The value can be true or false, and the default value is false for TCP and UDP listeners. The value can only be true for HTTP and HTTPS listeners. If this parameter is not passed, the default value is true.
+
+    Dedicated load balancers: The value can only be true for all types of listeners. If this parameter is not passed, the default value is true.
+  in: body
+  required: true
+  type: bool
+listener-transparent_client_ip_enable-optional:
+  <<: *lsnr-tcie-def
+  required: true
+listeners:
+  description: |
+    Lists the listeners.
+  in: body
+  required: true
+  type: array
 loadbalancer:
   description: |
     Specifies the load balancer.
@@ -1650,7 +2134,6 @@ loadbalancer-guaranteed: &lb-guaranteed-def
 loadbalancer-guaranteed-optional:
   <<: *lb-guaranteed-def
   required: false
-
 loadbalancer-id: &loadbalancer-id-def
   description: |
     Specifies the load balancer ID.
@@ -1980,15 +2463,6 @@ loadbalancer-publicips:
   in: body
   required: true
   type: array
-loadbalancer-tags: &lb-tags-def
-  description: |
-    Lists the tags added to the load balancer. Example: "tags":[{"key":"my_tag","value":"my_tag_value"}]
-  in: body
-  required: true
-  type: array
-loadbalancer-tags-optional:
-  <<: *lb-tags-def
-  required: false
 loadbalancer-vip_address: &lb-vip_address-def
   description: |
     Specifies the virtual IP address bound to the load balancer. The IP address must be from the IPv4 subnet of the VPC where the load balancer works and IP address should not be occupied by other services.
@@ -2377,18 +2851,41 @@ pools:
   in: body
   required: true
   type: array
-project_id:
+project_id: &project_id-def
   description: |
     Specifies the project ID.
   in: body
   required: true
   type: uuid
+project_id-optional:
+  <<: *project_id-def
+  required: false
 request_id:
   description: |
     Specifies the request ID. The value is automatically generated.
   in: body
   type: string
   required: true
+tag-key:
+  description: Specifies the tag key.
+  in: body
+  required: true
+  type: string
+tag-value:
+  description: Specifies the tag value.
+  in: body
+  required: true
+  type: string
+tags: &tags
+  description: |
+    Lists the tags.
+    Example: "tags":[{"key":"my_tag","value":"my_tag_value"}]
+  in: body
+  required: true
+  type: array
+tags-optional:
+  <<: *tags
+  required: false
 updated_at:
   description: |
     Specifies when the resource was updated.

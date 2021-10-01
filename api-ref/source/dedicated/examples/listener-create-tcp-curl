@@ -1,0 +1,13 @@
+curl -H "X-Auth-Token: ${token}" -X POST -d '{ \
+  "listener" : { \
+    "protocol_port" : 80, \
+    "protocol" : "TCP", \
+    "loadbalancer_id" : "098b2f68-af1c-41a9-8efd-69958722af62", \
+    "name" : "My listener", \
+    "admin_state_up" : true, \
+    "insert_headers" : { \
+      "X-Forwarded-ELB-IP" : true \
+    } \
+  } \
+}' https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/listeners  
+

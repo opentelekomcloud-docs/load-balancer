@@ -95,7 +95,7 @@ Request Parameters
    - guaranteed: loadbalancer-guaranteed-optional
    - vpc_id: loadbalancer-vpc_id-optional
    - availability_zone_list: loadbalancer-availability_zone_list
-   - tags: loadbalancer-tags-optional
+   - tags: tags-optional
    - admin_state_up: loadbalancer-admin_state_up-optional
    - l7_flavor_id: loadbalancer-l7_flavor_id-optional
    - ipv6_bandwidth: loadbalancer-ipv6_bandwidth-optional
@@ -133,7 +133,7 @@ Response Parameters
    - vip_subnet_cidr_id: loadbalancer-vip_subnet_cidr_id
    - name: loadbalancer-name
    - vip_port_id: loadbalancer-port_id
-   - tags: loadbalancer-tags
+   - tags: tags
    - created_at: created_at
    - updated_at: updated_at
    - guaranteed: loadbalancer-guaranteed
@@ -258,7 +258,7 @@ Response Parameters
    - vip_subnet_cidr_id: loadbalancer-vip_subnet_cidr_id
    - name: loadbalancer-name
    - vip_port_id: loadbalancer-port_id
-   - tags: loadbalancer-tags
+   - tags: tags
    - created_at: created_at
    - updated_at: updated_at
    - guaranteed: loadbalancer-guaranteed
@@ -338,7 +338,7 @@ Response Parameters
    - vip_subnet_cidr_id: loadbalancer-vip_subnet_cidr_id
    - name: loadbalancer-name
    - vip_port_id: loadbalancer-port_id
-   - tags: loadbalancer-tags
+   - tags: tags
    - created_at: created_at
    - updated_at: updated_at
    - guaranteed: loadbalancer-guaranteed
@@ -430,7 +430,7 @@ Response Parameters
    - vip_subnet_cidr_id: loadbalancer-vip_subnet_cidr_id
    - name: loadbalancer-name
    - vip_port_id: loadbalancer-port_id
-   - tags: loadbalancer-tags
+   - tags: tags
    - created_at: created_at
    - updated_at: updated_at
    - guaranteed: loadbalancer-guaranteed

@@ -1,0 +1,7 @@
+curl -H "X-Auth-Token: ${token}" -X PUT -d '{ \
+  "listener" : { \
+    "description" : "My listener update.", \
+    "name" : "listener-1", \
+    "http2_enable" : true \
+  } \
+}' https://{elb_endpoint}/v3/99a3fff0d03c428eac3678da6a7d0f24/elb/listeners/0b11747a-b139-492f-9692-2df0b1c87193
