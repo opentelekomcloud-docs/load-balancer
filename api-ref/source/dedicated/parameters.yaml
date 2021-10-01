@@ -3016,6 +3016,62 @@ project_id: &project_id-def
 project_id-optional:
   <<: *project_id-def
   required: false
+quota-certificate:
+  description: |
+    Specifies the certificate quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-healthmonitor:
+  description: |
+    Specifies the health check quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-ipgroup:
+  description: |
+    Specifies the IP address group quota. -1 indicates that the quota is not limited.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: number
+quota-l7policy:
+  description: |
+    Specifies the forwarding policy quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-listener:
+  description: |
+    Specifies the listener quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-loadbalancer:
+  description: |
+    Specifies the load balancer quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-member:
+  description: |
+    Specifies the backend server quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-members_per_pool:
+  description: |
+    Specifies the quota of backend servers in a backend server group. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
+quota-pool:
+  description: |
+    Specifies the backend server group quota. -1 indicates that the quota is not limited.
+  in: body
+  required: true
+  type: number
 request_id:
   description: |
     Specifies the request ID. The value is automatically generated.

@@ -1,0 +1,16 @@
+{
+  "quota" : {
+    "member" : 500,
+    "members_per_pool" : 500,
+    "certificate" : 120,
+    "l7policy" : 500,
+    "listener" : 100,
+    "loadbalancer" : 50,
+    "healthmonitor" : -1,
+    "ipgroup" : 50,
+    "pool" : 500,
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24"
+  },
+  "request_id" : "8d7eba6f-ec79-42d2-8d8c-16149645549d"
+}
+
