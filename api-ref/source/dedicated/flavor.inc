@@ -1,6 +1,4 @@
-=======
-Flavors
-=======
+.. -*- rst -*-
 
 Querying Flavors
 ================

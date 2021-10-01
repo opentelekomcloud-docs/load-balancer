@@ -1,18 +1,98 @@
+.. -*- rst -*-
+
+API Call Precaution
+===================
+By default, load balancers created in the eu-nl region
+are dedicated load balancers. APIs for dedicated load
+balancers are only available in this region. Shared load
+balancers and dedicated load balancers are called elastic
+load balancers collectively.
+
+.. _insert_headers:
+
+Supported Headers
+=================
+
++----------------------+---------+---------------------------------------+
+| Parameter            | Type    | Description                           |
++======================+=========+=======================================+
+| X-Forwarded-ELB-IP   | Boolean | Specifies whether to transparently    |
+|                      |         | transmit the load balancer EIP to     |
+|                      |         | backend servers. If                   |
+|                      |         | **X-Forwarded-ELB-IP** is set to      |
+|                      |         | **true**, the load balancer EIP will  |
+|                      |         | be stored in the HTTP header and      |
+|                      |         | passed to backend servers.            |
+|                      |         |                                       |
+|                      |         | Default: **false**                    |
++----------------------+---------+---------------------------------------+
+| X-Forwarded-Port     | Boolean | Specifies whether to transparently    |
+|                      |         | transmit the listening port of the    |
+|                      |         | load balancer to backend servers. If  |
+|                      |         | **X-Forwarded-Port** is set to        |
+|                      |         | **true**, the listening port of the   |
+|                      |         | load balancer will be stored in the   |
+|                      |         | HTTP header and passed to backend     |
+|                      |         | servers.                              |
+|                      |         |                                       |
+|                      |         | Default: **false**                    |
++----------------------+---------+---------------------------------------+
+| X-Forwarded-For-Port | Boolean | Specifies whether to transparently    |
+|                      |         | transmit the source port of the       |
+|                      |         | client to backend servers. If         |
+|                      |         | **X-Forwarded-For-Port** is set to    |
+|                      |         | **true**, the source port of the      |
+|                      |         | client will be stored in the HTTP     |
+|                      |         | header and passed to backend servers. |
+|                      |         |                                       |
+|                      |         | Default: **false**                    |
++----------------------+---------+---------------------------------------+
+| X-Forwarded-Host     | Boolean | Specifies whether to rewrite the      |
+|                      |         | **X-Forwarded-Host** header. If       |
+|                      |         | **X-Forwarded-Host** is set to        |
+|                      |         | **true**, **X-Forwarded-Host** in the |
+|                      |         | request header from the clients can   |
+|                      |         | be set to **Host** in the request     |
+|                      |         | header sent from the load balancer to |
+|                      |         | backend servers.                      |
+|                      |         |                                       |
+|                      |         | Default: **true**                     |
++----------------------+---------+---------------------------------------+
+
+.. _op_status:
+
+Operating Status Codes
+======================
+
++------------+------------------------------------------------------------+
+| Code       | Description                                                |
++============+============================================================+
+| ONLINE     | - Entity is operating normally                             |
+|            | - All pool members are healthy                             |
++------------+------------------------------------------------------------+
+| DRAINING   | - The member is not accepting new connections              |
++------------+------------------------------------------------------------+
+| OFFLINE    | - Entity is administratively disabled                      |
++------------+------------------------------------------------------------+
+| DEGRADED   | - One or more of the entity's components are in ERROR      |
++------------+------------------------------------------------------------+
+| ERROR      | - The entity has failed                                    |
+|            | - The member is failing it's health monitoring checks      |
+|            | - All of the pool members are in ERROR                     |
++------------+------------------------------------------------------------+
+| NO_MONITOR | - No health monitor is configured for this entity and it's |
+|            |   status is unknown                                        |
++------------+------------------------------------------------------------+
+| DISABLED   | This status is displayed only when admin_state_up of the   |
+|            | resource is set to false.                                  |
++------------+------------------------------------------------------------+
+
 .. _dsc:
 
-==============================================
-HTTP Status Codes for Dedicated Load Balancers
-==============================================
+HTTP Status Codes
+=================
 
 The following code descriptions are only suitable for dedicated load balancers.
-
-=========== ========== ========================================
-Status Code Type       Description
-=========== ========== ========================================
-200         OK         Normal response to GET and PUT requests.
-201         Created    Normal response to POST requests.
-204         No Content Normal response to DELETE requests.
-=========== ========== ========================================
 
 +-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 | Module                | Status Code           | Type                  | Error Code            | Possible Cause        |

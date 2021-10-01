@@ -2628,6 +2628,18 @@ members:
   in: body
   required: true
   type: array
+name:
+  description: |
+    Resource name
+  in: body
+  required: true
+  type: string
+operating_status:
+  description: |
+    Operating status of the resource. See :ref:`op_status`
+  in: body
+  required: true
+  type: string
 page_info:
   description: |
     Shows pagination information
@@ -2866,6 +2878,12 @@ request_id:
   in: body
   type: string
   required: true
+statuses:
+  description: |
+    Provides information about the load balancer status tree.
+  in: body
+  required: true
+  type: object
 tag-key:
   description: Specifies the tag key.
   in: body
@@ -2886,6 +2904,12 @@ tags: &tags
 tags-optional:
   <<: *tags
   required: false
+type:
+  description: |
+    The type associated with the resource.
+  in: body
+  required: true
+  type: string
 updated_at:
   description: |
     Specifies when the resource was updated.

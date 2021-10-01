@@ -1,6 +1,4 @@
-=======
-Memeber
-=======
+.. -*- rst -*-
 
 Adding a Backend Server
 =======================

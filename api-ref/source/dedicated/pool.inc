@@ -1,6 +1,4 @@
-===========
-Member Pool
-===========
+.. -*- rst -*-
 
 Creating a Backend Server Group
 ===============================

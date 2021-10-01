@@ -1,6 +1,4 @@
-========
-Listener
-========
+.. -*- rst -*-
 
 Adding a Listener
 =================
@@ -59,58 +57,6 @@ Request Parameters
    - ipgroup: listener-ipgroup-optional
    - transparent_client_ip_enable: listener-transparent_client_ip_enable-optional
    - enhance_l7policy_enable: listener-enhance_l7policy_enable-optional
-
-.. _insert_headers:
-
-.. table:: Supported Headers
-
-   +----------------------+---------+---------------------------------------+
-   | Parameter            | Type    | Description                           |
-   +======================+=========+=======================================+
-   | X-Forwarded-ELB-IP   | Boolean | Specifies whether to transparently    |
-   |                      |         | transmit the load balancer EIP to     |
-   |                      |         | backend servers. If                   |
-   |                      |         | **X-Forwarded-ELB-IP** is set to      |
-   |                      |         | **true**, the load balancer EIP will  |
-   |                      |         | be stored in the HTTP header and      |
-   |                      |         | passed to backend servers.            |
-   |                      |         |                                       |
-   |                      |         | Default: **false**                    |
-   +----------------------+---------+---------------------------------------+
-   | X-Forwarded-Port     | Boolean | Specifies whether to transparently    |
-   |                      |         | transmit the listening port of the    |
-   |                      |         | load balancer to backend servers. If  |
-   |                      |         | **X-Forwarded-Port** is set to        |
-   |                      |         | **true**, the listening port of the   |
-   |                      |         | load balancer will be stored in the   |
-   |                      |         | HTTP header and passed to backend     |
-   |                      |         | servers.                              |
-   |                      |         |                                       |
-   |                      |         | Default: **false**                    |
-   +----------------------+---------+---------------------------------------+
-   | X-Forwarded-For-Port | Boolean | Specifies whether to transparently    |
-   |                      |         | transmit the source port of the       |
-   |                      |         | client to backend servers. If         |
-   |                      |         | **X-Forwarded-For-Port** is set to    |
-   |                      |         | **true**, the source port of the      |
-   |                      |         | client will be stored in the HTTP     |
-   |                      |         | header and passed to backend servers. |
-   |                      |         |                                       |
-   |                      |         | Default: **false**                    |
-   +----------------------+---------+---------------------------------------+
-   | X-Forwarded-Host     | Boolean | Specifies whether to rewrite the      |
-   |                      |         | **X-Forwarded-Host** header. If       |
-   |                      |         | **X-Forwarded-Host** is set to        |
-   |                      |         | **true**, **X-Forwarded-Host** in the |
-   |                      |         | request header from the clients can   |
-   |                      |         | be set to **Host** in the request     |
-   |                      |         | header sent from the load balancer to |
-   |                      |         | backend servers.                      |
-   |                      |         |                                       |
-   |                      |         | Default: **true**                     |
-   +----------------------+---------+---------------------------------------+
-
-
 
 Response Parameters
 ^^^^^^^^^^^^^^^^^^^

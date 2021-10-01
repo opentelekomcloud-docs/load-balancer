@@ -1,6 +1,4 @@
-===============
-Forwarding Rule
-===============
+.. -*- rst -*-
 
 Adding a Forwarding Rule
 ========================

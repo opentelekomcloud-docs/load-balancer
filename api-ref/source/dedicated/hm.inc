@@ -1,6 +1,4 @@
-============
-Health Check
-============
+.. -*- rst -*-
 
 Creating a Health Check
 =======================

@@ -1,6 +1,4 @@
-=====
-Quota
-=====
+.. -*- rst -*-
 
 Querying Quotas
 ===============

@@ -1,0 +1,55 @@
+{
+  "statuses" : {
+    "loadbalancer" : {
+      "name" : "lb-jy",
+      "provisioning_status" : "ACTIVE",
+      "listeners" : [ {
+        "name" : "listener-jy-1",
+        "provisioning_status" : "ACTIVE",
+        "pools" : [ {
+          "name" : "pool-jy-1",
+          "provisioning_status" : "ACTIVE",
+          "healthmonitor" : {
+            "type" : "TCP",
+            "id" : "7422b51a-0ed2-4702-9429-4f88349276c6",
+            "name" : "",
+            "provisioning_status" : "ACTIVE"
+          },
+          "members" : [ {
+            "protocol_port" : 80,
+            "address" : "192.168.44.11",
+            "id" : "7bbf7151-0dce-4087-b316-06c7fa17b894",
+            "operating_status" : "ONLINE",
+            "provisioning_status" : "ACTIVE"
+          } ],
+          "id" : "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+          "operating_status" : "ONLINE"
+        } ],
+        "l7policies" : [ ],
+        "id" : "eb84c5b4-9bc5-4bee-939d-3900fb05dc7b",
+        "operating_status" : "ONLINE"
+      } ],
+      "pools" : [ {
+        "name" : "pool-jy-1",
+        "provisioning_status" : "ACTIVE",
+        "healthmonitor" : {
+          "type" : "TCP",
+          "id" : "7422b51a-0ed2-4702-9429-4f88349276c6",
+          "name" : "",
+          "provisioning_status" : "ACTIVE"
+        },
+        "members" : [ {
+          "protocol_port" : 80,
+          "address" : "192.168.44.11",
+          "id" : "7bbf7151-0dce-4087-b316-06c7fa17b894",
+          "operating_status" : "ONLINE",
+          "provisioning_status" : "ACTIVE"
+        } ],
+        "id" : "c54b3286-2349-4c5c-ade1-e6bb0b26ad18",
+        "operating_status" : "ONLINE"
+      } ],
+      "id" : "38278031-cfca-44be-81be-a412f618773b",
+      "operating_status" : "ONLINE"
+    }
+  }
+}

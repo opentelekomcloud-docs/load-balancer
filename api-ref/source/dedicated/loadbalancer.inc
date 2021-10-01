@@ -1,6 +1,4 @@
-=============
-Load Balancer
-=============
+.. -*- rst -*-
 
 Creating a Load Balancer
 ========================
@@ -518,3 +516,61 @@ Error Codes
 ^^^^^^^^^^^
 
 See :ref:`dsc`.
+
+Get the Load Balancer status tree
+=================================
+
+.. rest_method:: GET /v3/{project_id}/elb/loadbalancers/{loadbalancer_id}/statuses
+
+This API is used to query the status tree of a load balancer and show information about all resources associated with the load balancer.
+
+When admin_state_up is set to false and operating_status to OFFLINE for a backend server, DISABLED is returned for operating_status of the backend server in the response of this API.
+
+.. rest_status_code:: success ../http-status.yaml
+
+   - 200
+
+.. rest_status_code:: error ../http-status.yaml
+
+   - 401
+   - 403
+   - 404
+   - 500
+
+Request Parameters
+^^^^^^^^^^^^^^^^^^
+
+.. rest_parameters:: parameters.yaml
+
+   - project_id: path-project-id
+   - loadbalancer_id: path-loadbalancer-id
+
+Response Parameters
+^^^^^^^^^^^^^^^^^^^
+
+
+.. rest_parameters:: parameters.yaml
+
+   - request_id: request_id
+   - statuses: statuses
+   - loadbalancer: loadbalancer
+   - listeners: listeners
+   - pools: pools
+   - members: members
+   - name: name
+   - operating_status: operating_status
+   - type: type
+
+Example Requests
+^^^^^^^^^^^^^^^^
+
+.. literalinclude:: examples/lb-show-statuses-curl
+   :language: bash
+
+
+Example Responses
+^^^^^^^^^^^^^^^^^
+
+.. literalinclude:: examples/lb-show-statuses-response.json
+   :language: javascript
+

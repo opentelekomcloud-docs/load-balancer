@@ -1,6 +1,4 @@
-=================
-Forwarding Policy
-=================
+.. -*- rst -*-
 
 Adding a Forwarding Policy
 ==========================
