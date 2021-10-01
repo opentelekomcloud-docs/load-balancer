@@ -1,0 +1,6 @@
+curl -H "X-Auth-Token: ${token}" -X PUT -d '{ \
+  "certificate" : { \
+    "name" : "My Certificate", \
+    "description" : "Update my Certificate." \
+  } \
+}' https://{elb_endponit}/v3/{project_id}/elb/certificates/{certificate_id}

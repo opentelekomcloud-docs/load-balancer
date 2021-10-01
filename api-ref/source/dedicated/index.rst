@@ -67,3 +67,9 @@ Quotas
 ------
 
 .. include:: quota.inc
+
+------------
+Certificates
+------------
+
+.. include:: cert.inc

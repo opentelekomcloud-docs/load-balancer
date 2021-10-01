@@ -1,6 +1,12 @@
 ###
 # Path fields
 ###
+path-certificate-id:
+  description: |
+    Specifies the certificate ID.
+  in: path
+  required: true
+  type: uuid
 path-flavor-id:
   description: |
     Specifies the flavor ID.
@@ -65,6 +71,32 @@ admin_state_up-unsupported-query:
   in: query
   required: false
   type: bool
+certificate-domain-query:
+  description: |
+    Specifies the domain names used by the server certificate. This parameter is available only when type is set to server.
+
+    Multiple domain names can be queried in the format of domain=xxx&domain=xxx.
+  in: query
+  required: false
+  type: string
+certificate-type-query:
+  description: |
+    Specifies the certificate type.
+
+    The value can be server or client. server indicates server certificates, and client indicates CA certificates.
+
+    Multiple types can be queried in the format of type=xxx&type=xxx.
+  in: query
+  required: false
+  type: string
+description-query:
+  description: |
+    Provides supplementary information (description) about the resource.
+
+    Multiple descriptions can be queried in the format of description=xxx&description=xxx.
+  in: query
+  required: false
+  type: string
 flavor-id-query:
   description: |
     Specifies the flavor ID.
@@ -205,6 +237,14 @@ healthmonitor-url_path-query:
   in: query
   required: false
   type: string
+id-query:
+  description: |
+    Specifies resource ID.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
 l7policy-action-query:
   description: |
     Specifies where requests will be forwarded. The value can be one of the following:
@@ -955,6 +995,14 @@ member-weight-query:
   in: query
   required: false
   type: number
+name-query:
+  description: |
+    Specifies the resourcename.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
 page-reverse:
   description: |
     Specifies the page direction.
@@ -1085,6 +1133,96 @@ availability_zone-state:
 availability_zones:
   description: |
     Specifies the AZs that are available during load balancer creation.
+  in: body
+  required: true
+  type: array
+certificate:
+  description: |
+    Specifies the certificate.
+  in: body
+  required: true
+  type: object
+certificate-certificate:
+  description: |
+    Specifies the private key of the certificate. The value must be PEM encoded.
+  in: body
+  required: true
+  type: string
+certificate-description: &cert-cert-def
+  description: |
+    Provides supplementary information about the certificate.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+certificate-description-optional:
+  <<: *cert-cert-def
+  required: false
+certificate-domain: &cert-domain-def
+  description: |
+    Specifies the domain names used by the server certificate.
+
+    - This parameter will take effect only when type is set to server, and its default value is "".
+    - This parameter will not take effect even if it is passed and type is set to client. However, domain names will still be verified.
+
+    Note:
+
+    - The value can contain 0 to 1024 characters and consists of multiple common domain names or wildcard domain names separated by commas. A maximum of 30 domain names are allowed.
+    - A common domain name consists of several labels separated by periods (.). Each label can contain a maximum of 63 characters, including letters, digits, and hyphens (-), and must start and end with a letter or digit. Example: www.test.com
+    - A wildcard domain name is a domain name starts with an asterisk (\*). Example: \*.test.com
+  in: body
+  required: true
+  type: string
+certificate-domain-optional:
+  <<: *cert-domain-def
+  required: false
+certificate-expire_time:
+  description: |
+    Specifies the time when the certificate expires.
+  in: body
+  required: true
+  type: string
+certificate-name: &cert-name-def
+  description: |
+    Specifies the certificate name. Only letters, digits, underscores, and hyphens are allowed.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+certificate-name-optional:
+  <<: *cert-name-def
+  required: true
+certificate-private_key: &cert-pk-def
+  description: |
+    Specifies the private key of the server certificate. The value must be PEM encoded.
+
+    This parameter will be ignored if type is set to client. A CA server can still be created and used normally. This parameter will be left blank even if you enter a private key that is not PEM encoded.
+
+    This parameter is valid and mandatory only when type is set to server. If you enter an invalid private key, an error is returned.
+  in: body
+  required: true
+  type: string
+certificate-private_key-optional:
+  <<: *cert-pk-def
+  required: false
+certificate-type: &cert-type
+  description: |
+    Specifies the certificate type.
+
+    The value can be server or client. server indicates server certificates, and client indicates CA certificates. The default value is server.
+  in: body
+  required: true
+  type: string
+certificate-type-optional:
+  <<: *cert-type
+  required: false
+certificates:
+  description: |
+    Lists the certificates.
   in: body
   required: true
   type: array
@@ -1386,6 +1524,12 @@ healthmonitors:
   in: body
   required: true
   type: array
+id:
+  description: |
+    Specifies the resource ID.
+  in: body
+  required: true
+  type: uuid
 l7policies:
   description: |
     Lists the forwarding policies.
