@@ -1,0 +1,1 @@
+curl -H "X-Auth-Token: ${token}" https://{elb_endpoint}/v3/{project_id}/elb/pools?limit=2

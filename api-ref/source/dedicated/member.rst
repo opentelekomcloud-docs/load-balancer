@@ -79,7 +79,6 @@ Example Responses
 .. literalinclude:: examples/member-create-response.json
    :language: javascript
 
-
 Error Codes
 ^^^^^^^^^^^
 

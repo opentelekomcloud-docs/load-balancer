@@ -1,0 +1,24 @@
+{
+  "pool" : {
+    "lb_algorithm" : "LEAST_CONNECTIONS",
+    "protocol" : "TCP",
+    "description" : "My pool update",
+    "admin_state_up" : true,
+    "loadbalancers" : [ {
+      "id" : "098b2f68-af1c-41a9-8efd-69958722af62"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "listeners" : [ {
+      "id" : "0b11747a-b139-492f-9692-2df0b1c87193"
+    }, {
+      "id" : "61942790-2367-482a-8b0e-93840ea2a1c6"
+    }, {
+      "id" : "fd8f954c-f0f8-4d39-bb1d-41637cd6b1be"
+    } ],
+    "members" : [ ],
+    "id" : "36ce7086-a496-4666-9064-5ba0e6840c75",
+    "name" : "My pool.",
+    "ip_version" : "dualstack"
+  },
+  "request_id" : "8f40128b-c72b-4b64-986a-f7e2c633d75f"
+}

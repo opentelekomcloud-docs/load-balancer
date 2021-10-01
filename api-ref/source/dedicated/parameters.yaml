@@ -45,6 +45,14 @@ path-project-id:
 ###
 # Query parameters
 ###
+admin_state_up-unsupported-query:
+  description: |
+    Specifies the administrative status of the resource.
+
+    This parameter is unsupported. Please do not use it.
+  in: query
+  required: false
+  type: bool
 flavor-id-query:
   description: |
     Specifies the flavor ID.
@@ -387,9 +395,9 @@ marker:
     Specifies the ID of the last record on the previous page.
 
     Note:
-      - This parameter must be used together with limit.
-      - If this parameter is not specified, the first page will be queried.
-      - This parameter cannot be left blank or set to an invalid ID.
+    - This parameter must be used together with limit.
+    - If this parameter is not specified, the first page will be queried.
+    - This parameter cannot be left blank or set to an invalid ID.
   in: query
   required: no
   type: uuid
@@ -486,6 +494,90 @@ page-reverse:
   in: query
   required: no
   type: boolean
+pool-description-query:
+  description: |
+    Provides supplementary information about the backend server group.
+
+    Multiple descriptions can be queried in the format of description=xxx&description=xxx.
+  in: query
+  required: false
+  type: string
+pool-healthmonitor_id-query:
+  description: |
+    Specifies the ID of the health check configured for the backend server group.
+
+    Multiple IDs can be queried in the format of healthmonitor_id=xxx&healthmonitor_id=xxx.
+  in: query
+  required: false
+  type: uuid
+pool-id-query:
+  description: |
+    Specifies the ID of the backend server group.
+
+    Multiple IDs can be queried in the format of id=xxx&id=xxx.
+  in: query
+  required: false
+  type: uuid
+pool-ip_version-query:
+  description: |
+    Specifies the IP address version of the backend server group. The value can be dualstack, v4, or v6.
+
+    Multiple versions can be queried in the format of ip_version=xxx&ip_version=xxx.
+  in: query
+  required: false
+  type: string
+pool-lb_algorithm-query:
+  description: |
+    Specifies the load balancing algorithm used by the load balancer to route requests to backend servers in the backend server group.
+
+    The value can be ROUND_ROBIN (weighted round robin), LEAST_CONNECTIONS (weighted least connections), or SOURCE_IP (source IP hash).
+
+    If the value is SOURCE_IP, weight will not take effect.
+
+    Multiple algorithms can be queried in the format of lb_algorithm=xxx&lb_algorithm=xxx.
+  in: query
+  required: false
+  type: string
+pool-loadbalancer_id-query:
+  description: |
+    Specifies the ID of the load balancer associated with the backend server group.
+
+    Multiple IDs can be queried in the format of loadbalancer_id=xxx&loadbalancer_id=xxx.
+  in: query
+  required: false
+  type: uuid
+pool-member_address-query:
+  description: |
+    Specifies the private IP address bound to the backend server. This parameter is used only as a query condition and is not included in the response.
+
+    Multiple IP addresses can be queried in the format of member_address=xxx&member_address=xxx.
+  in: query
+  required: false
+  type: string
+pool-member_device_id-query:
+  description: |
+    Specifies the ID of the cloud server that serves as a backend server. This parameter is used only as a query condition and is not included in the response.
+
+    Multiple IDs can be queried in the format of member_device_id=xxx&member_device_id=xxx.
+  in: query
+  required: false
+  type: string
+pool-name-query:
+  description: |
+    Specifies the backend server group name.
+
+    Multiple names can be queried in the format of name=xxx&name=xxx.
+  in: query
+  required: false
+  type: string
+pool-protocol-query:
+  description: |
+    Specifies the protocol used by the backend server group to receive requests.
+
+    Multiple protocols can be queried in the format of protocol=xxx&protocol=xxx.
+  in: query
+  required: false
+  type: string
 ###
 # Body fields
 ###
@@ -1152,6 +1244,24 @@ l7rules:
   in: body
   required: true
   type: array
+listener-id: &listener-id-def
+  description: |
+    Specifies the listener ID.
+  in: body
+  required: true
+  type: uuid
+listener-id-optional:
+  <<: *listener-id-def
+  required: false
+loadbalancer-id: &loadbalancer-id-def
+  description: |
+    Specifies the load balancer ID.
+  in: body
+  required: true
+  type: uuid
+loadbalancer-id-optional:
+  <<: *loadbalancer-id-def
+  required: false
 member:
   description: |
     Specifies the backend server.
@@ -1278,6 +1388,223 @@ page_info:
   in: body
   type: array
   required: true
+pool:
+  description: |
+    Specifies the backend server group.
+  in: body
+  required: true
+  type: object
+pool-description: &pool-description-def
+  description: |
+    Provides supplementary information about the backend server group.
+  in: body
+  required: true
+  type: string
+pool-description-optional:
+  <<: *pool-description-def
+  required: false
+pool-healthmonitor_id: &pool-hm_id-def
+  description: |
+    Specifies the ID of the health check configured for the backend server group.
+  in: body
+  required: true
+  type: uuid
+pool-id:
+  description: |
+    Specifies the backend server group ID.
+  in: body
+  required: true
+  type: uuid
+pool-ip_version:
+  description: |
+    Specifies the IP version supported by the backend server group.
+
+    Shared load balancers: The default value is v4.
+    Dedicated load balancers: The value can be dualstack, v4, or v6.
+
+    When the protocol of the backend server group is TCP or UDP, ip_version is set to dualstack, indicating that both IPv4 and IPv6 are supported.
+
+    When the protocol of the backend server group is HTTP, ip_version is set to v4.
+
+    IPv6 is unsupported. Only v4 is returned.
+
+    Default: dualstack
+  in: body
+  required: true
+  type: string
+pool-lb_algorithm: &pool-lbalgo-def
+  description: |
+    Specifies the load balancing algorithm used by the load balancer to route requests to backend servers.
+
+    The value can be one of the following:
+
+    - ROUND_ROBIN: weighted round robin
+    - LEAST_CONNECTIONS: weighted least connections
+    - SOURCE_IP: source IP hash
+
+    When the value is SOURCE_IP, the weights of backend servers are invalid.
+  in: body
+  required: true
+  type: string
+pool-listener_id: &pool-listener_id-def
+  description: |
+    Specifies the ID of the listener associated with the backend server group. Specify either listener_id or loadbalancer_id, or both of them.
+
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: true
+  type: uuid
+pool-listener_id-optional:
+  <<: *pool-listener_id-def
+  required: false
+pool-listeners:
+  description: |
+    Lists the listeners associated with the backend server group.
+  in: body
+  required: true
+  type: array
+pool-loadbalancer_id: &pool-lbid-def
+  description: |
+    Specifies the ID of the associated load balancer. Specify either listener_id or loadbalancer_id, or both of them.
+
+    Minimum: 1
+    Maximum: 36
+  in: body
+  required: true
+  type: uuid
+pool-loadbalancer_id-optional:
+  <<: *pool-lbid-def
+  required: false
+pool-loadbalancers:
+  description: |
+    Lists the IDs of load balancers associated with the backend server group.
+
+    If only listener_id is specified during the creation of the backend server group, the ID of the loadbalancers parameter in the response is the ID of the load balancer to which the listener is added.
+  in: body
+  required: true
+  type: array
+pool-members:
+  description: |
+    Lists the backend servers in the backend server group.
+  in: body
+  required: true
+  type: array
+pool-name: &pool-name-def
+  description: |
+    Specifies the backend server group name.
+
+    Minimum: 0
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+pool-name-optional:
+  <<: *pool-name-def
+  required: false
+pool-protocol: &pool-protocol-def
+  description: |
+    Specifies the protocol used by the backend server group to receive requests. TCP, UDP, and HTTP are supported.
+
+    For UDP listeners, the protocol of the backend server group must be UDP.
+
+    For TCP listeners, the protocol of the backend server group must be TCP.
+
+    For HTTP or HTTPS listeners, the protocol of the backend server group must be HTTP.
+
+    Minimum: 1
+    Maximum: 255
+  in: body
+  required: true
+  type: string
+pool-session_persistence: &pool-sp-def
+  description: Specifies whether to enable sticky sessions.
+  in: body
+  required: true
+  type: object
+pool-session_persistence-cookie_name: &pool-ss-cn-def
+  description: |
+    Specifies the cookie name. This parameter will take effect only when type is set to APP_COOKIE. Otherwise, an error will be returned.
+
+    The value can contain only letters, digits, hyphens (-), underscores (_), and periods (.).
+
+    Minimum: 0
+    Maximum: 1024
+  in: body
+  required: true
+  type: string
+pool-session_persistence-cookie_name-optional:
+  <<: *pool-ss-cn-def
+  required: false
+pool-session_persistence-optional:
+  <<: *pool-sp-def
+  required: false
+pool-session_persistence-timeout: &pool-ss-timeout-def
+  description: |
+    Specifies the stickiness duration, in minutes. This parameter will not take effect when type is set to APP_COOKIE.
+
+    If the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60, and the default value is 1.
+
+    If the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440, and the default value is 1440.
+  in: body
+  required: true
+  type: number
+pool-session_persistence-timeout-optional:
+  <<: *pool-ss-timeout-def
+  required: false
+pool-session_persistence-type: &pool-ss-type-def
+  description: |
+    Specifies the sticky session type. The value can be SOURCE_IP, HTTP_COOKIE, or APP_COOKIE.
+
+    If the protocol of the backend server group is TCP or UDP, only SOURCE_IP takes effect.
+
+    For dedicated load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can only be HTTP_COOKIE.
+
+    For shared load balancers, if the protocol of the backend server group is HTTP or HTTPS, the value can be HTTP_COOKIE or APP_COOKIE.
+  in: body
+  required: true
+  type: string
+pool-slow_start: &pool-ss-def
+  description: |
+    Specifies whether to enable slow start. After you enable slow start, new backend servers added to the backend server group are warmed up, and the number of requests they can receive increases linearly during the configured slow start duration.
+
+    This parameter can be used when the protocol of the backend server group is HTTP or HTTPS. An error will be returned if the protocol is not HTTP or HTTPS.
+
+    This parameter is unsupported. Please do not use it.
+  in: body
+  required: true
+  type: object
+pool-slow_start-duration:
+  description: |
+    Specifies the slow start duration, in seconds.
+
+    The value ranges from 30 to 1200, and the default value is 30.
+
+    Minimum: 30
+    Maximum: 1200
+    Default: 30
+  in: body
+  required: true
+  type: number
+pool-slow_start-enable:
+  description: |
+    Specifies whether to enable slow start.
+
+    true indicates that this function is enabled, and false indicates this function is disabled.
+
+    Default: false
+  in: body
+  required: true
+  type: bool
+pool-slow_start-optional:
+  <<: *pool-ss-def
+  required: false
+pools:
+  description: |
+    Lists the backend server groups.
+  in: body
+  required: true
+  type: array
 project_id:
   description: |
     Specifies the project ID.

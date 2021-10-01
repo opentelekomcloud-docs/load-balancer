@@ -1,0 +1,51 @@
+{
+  "pools" : [ {
+    "lb_algorithm" : "ROUND_ROBIN",
+    "protocol" : "HTTP",
+    "description" : "",
+    "admin_state_up" : true,
+    "loadbalancers" : [ {
+      "id" : "309a0f61-0b62-45f2-97d1-742f3434338e"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "session_persistence" : {
+      "cookie_name" : "my_cookie",
+      "type" : "APP_COOKIE",
+      "persistence_timeout" : 1
+    },
+    "healthmonitor_id" : "",
+    "listeners" : [ ],
+    "members" : [ ],
+    "id" : "73bd4fe0-ffbb-4b56-aab4-4f26ddf7a103",
+    "name" : "",
+    "ip_version" : "v4"
+  }, {
+    "lb_algorithm" : "SOURCE_IP",
+    "protocol" : "TCP",
+    "description" : "",
+    "admin_state_up" : true,
+    "loadbalancers" : [ {
+      "id" : "d9763e59-64b7-4e93-aec7-0ff7881ef9bc"
+    } ],
+    "project_id" : "99a3fff0d03c428eac3678da6a7d0f24",
+    "session_persistence" : {
+      "cookie_name" : "",
+      "type" : "SOURCE_IP",
+      "persistence_timeout" : 1
+    },
+    "healthmonitor_id" : "",
+    "listeners" : [ {
+      "id" : "8d21db6f-b475-429e-a9cb-90439b0413b2"
+    } ],
+    "members" : [ ],
+    "id" : "74db02d1-5711-4c77-b383-a450e2b93142",
+    "name" : "pool_tcp_001",
+    "ip_version" : "dualstack"
+  } ],
+  "page_info" : {
+    "next_marker" : "74db02d1-5711-4c77-b383-a450e2b93142",
+    "previous_marker" : "73bd4fe0-ffbb-4b56-aab4-4f26ddf7a103",
+    "current_count" : 2
+  },
+  "request_id" : "a1a7e852-1928-48f7-bbc9-ca8469898713"
+}
