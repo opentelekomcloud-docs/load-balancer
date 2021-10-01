@@ -489,20 +489,15 @@ page-reverse:
 ###
 # Body fields
 ###
-admin_state_up:
+admin_state_up: &admin_state_up-def
   description: |
-    Specifies the administrative status of the forwarding policy. The default value is true.
-    This parameter is unsupported. Please do not use it.
+    Specifies the administrative status of the resource. The default value is true.
   in: body
   required: yes
   type: boolean
 admin_state_up-optional:
-  description: |
-    Specifies the administrative status of the forwarding policy. The default value is true.
-    This parameter is unsupported. Please do not use it.
-  in: body
+  <<: *admin_state_up-def
   required: no
-  type: boolean
 availability_zone-code:
   description: |
     Specifies the AZ code.
@@ -598,7 +593,7 @@ healthmonitor:
   in: body
   required: true
   type: object
-healthmonitor-admin_state_up:
+healthmonitor-admin_state_up: &hm-admin_state_up-def
   description: |
     Specifies the administrative status of the health check. Two value options are available. true indicates that the health check is enabled, and false indicates that the health check is disabled.
 
@@ -607,14 +602,9 @@ healthmonitor-admin_state_up:
   required: true
   type: bool
 healthmonitor-admin_state_up-optional:
-  description: |
-    Specifies the administrative status of the health check. Two value options are available. true indicates that the health check is enabled, and false indicates that the health check is disabled.
-
-    Default: true
-  in: body
+  <<: *hm-admin_state_up-def
   required: false
-  type: bool
-healthmonitor-delay:
+healthmonitor-delay: &hm-delay-def
   description: |
     Specifies the interval between health checks, in seconds.
 
@@ -624,15 +614,9 @@ healthmonitor-delay:
   required: true
   type: integer
 healthmonitor-delay-optional:
-  description: |
-    Specifies the interval between health checks, in seconds.
-
-    Minimum: 1
-    Maximum: 50
-  in: body
+  <<: *hm-delay-def
   required: false
-  type: integer
-healthmonitor-domain_name:
+healthmonitor-domain_name: &hm-domain_name-def
   description: |
     Specifies the domain name that HTTP requests are sent to during the health check.
 
@@ -648,21 +632,9 @@ healthmonitor-domain_name:
   required: true
   type: string
 healthmonitor-domain_name-optional:
-  description: |
-    Specifies the domain name that HTTP requests are sent to during the health check.
-
-    This parameter is available only when type is set to HTTP.
-
-    The value is left blank by default, indicating that the virtual IP address of the load balancer is used as the destination address of HTTP requests.
-
-    The value can contain only digits, letters, hyphens (-), and periods (.) and must start with a digit or letter.
-
-    Minimum: 1
-    Maximum: 100
-  in: body
+  <<: *hm-domain_name-def
   required: false
-  type: string
-healthmonitor-expected_codes:
+healthmonitor-expected_codes: &hm-expected_codes-def
   description: |
     Specifies the expected HTTP status code. This parameter will take effect only when type is set to HTTP.
 
@@ -681,24 +653,9 @@ healthmonitor-expected_codes:
   required: true
   type: string
 healthmonitor-expected_codes-optional:
-  description: |
-    Specifies the expected HTTP status code. This parameter will take effect only when type is set to HTTP.
-
-    The value options are as follows:
-
-    - A specific value, for example, 200
-    - A list of values that are separated with commas (,), for example, 200, 202
-    - A value range, for example, 200-204
-
-    This parameter is unsupported. Please do not use it.
-
-    Default: 200
-    Minimum: 1
-    Maximum: 64
-  in: body
+  <<: *hm-expected_codes-def
   required: false
-  type: string
-healthmonitor-http_method:
+healthmonitor-http_method: &hm-http_method-def
   description: |
     Specifies the HTTP method.
 
@@ -715,28 +672,15 @@ healthmonitor-http_method:
   required: true
   type: string
 healthmonitor-http_method-optional:
-  description: |
-    Specifies the HTTP method.
-
-    The value can be GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, or PATCH.
-
-    This parameter will take effect only when type is set to HTTP.
-
-    This parameter is unsupported. Please do not use it.
-
-    Default: GET
-    Minimum: 1
-    Maximum: 16
-  in: body
+  <<: *hm-http_method-def
   required: false
-  type: string
 healthmonitor-id:
   description: |
     Specifies the health check ID.
   in: body
   required: true
   type: uuid
-healthmonitor-max_retries:
+healthmonitor-max_retries: &hm-max_retries-def
   description: |
     Specifies the number of consecutive health checks when the health check result of a backend server changes from OFFLINE to ONLINE. The value ranges from 1 to 10.
 
@@ -746,15 +690,9 @@ healthmonitor-max_retries:
   required: true
   type: number
 healthmonitor-max_retries-optional:
-  description: |
-    Specifies the number of consecutive health checks when the health check result of a backend server changes from OFFLINE to ONLINE. The value ranges from 1 to 10.
-
-    Minimum: 1
-    Maximum: 10
-  in: body
+  <<: *hm-max_retries-def
   required: false
-  type: number
-healthmonitor-max_retries_down:
+healthmonitor-max_retries_down: &hm-max_retries_down-def
   description: |
     Specifies the number of consecutive health checks when the health check result of a backend server changes from ONLINE to OFFLINE.
 
@@ -765,16 +703,9 @@ healthmonitor-max_retries_down:
   required: true
   type: number
 healthmonitor-max_retries_down-optional:
-  description: |
-    Specifies the number of consecutive health checks when the health check result of a backend server changes from ONLINE to OFFLINE.
-
-    Minimum: 1
-    Maximum: 10
-    Default: 3
-  in: body
+  <<: *hm-max_retries_down-def
   required: false
-  type: number
-healthmonitor-monitor_port:
+healthmonitor-monitor_port: &hm-monitor_port-def
   description: |
     Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.
 
@@ -784,15 +715,9 @@ healthmonitor-monitor_port:
   required: true
   type: number
 healthmonitor-monitor_port-optional:
-  description: |
-    Specifies the port used for the health check. If this parameter is left blank, the port of the backend server group will be used by default.
-
-    Minimum: 1
-    Maximum: 65535
-  in: body
+  <<: *hm-monitor_port-def
   required: false
-  type: number
-healthmonitor-name:
+healthmonitor-name: &hm-name-def
   description: |
     Specifies the health check name.
     Minimum: 0
@@ -801,21 +726,8 @@ healthmonitor-name:
   required: true
   type: string
 healthmonitor-name-optional:
-  description: |
-    Specifies the health check name.
-    Minimum: 0
-    Maximum: 255
-  in: body
+  <<: *hm-name-def
   required: false
-  type: string
-healthmonitor-name-optional:
-  description: |
-    Specifies the health check name.
-    Minimum: 0
-    Maximum: 255
-  in: body
-  required: false
-  type: string
 healthmonitor-pool_id:
   description: |
     Specifies the ID of the backend server group for which the health check is configured.
@@ -828,7 +740,7 @@ healthmonitor-pools:
   in: body
   required: true
   type: array
-healthmonitor-timeout:
+healthmonitor-timeout: &hm-timeout-def
   description: |
     Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter delay.
 
@@ -838,15 +750,9 @@ healthmonitor-timeout:
   required: true
   type: number
 healthmonitor-timeout-optional:
-  description: |
-    Specifies the maximum time required for waiting for a response from the health check, in seconds. It is recommended that you set the value less than that of parameter delay.
-
-    Minimum: 1
-    Maximum: 50
-  in: body
+  <<: *hm-timeout-def
   required: false
-  type: number
-healthmonitor-type:
+healthmonitor-type: &hm-type-def
   description: |
     Specifies the health check protocol.
 
@@ -855,14 +761,9 @@ healthmonitor-type:
   required: true
   type: string
 healthmonitor-type-optional:
-  description: |
-    Specifies the health check protocol.
-
-    The value can be TCP, UDP_CONNECT, HTTP, HTTPS, or PING.
-  in: body
+  <<: *hm-type-def
   required: false
-  type: string
-healthmonitor-url_path:
+healthmonitor-url_path: &hm-url_path-def
   description: |
     Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when type is set to HTTP.
 
@@ -873,15 +774,8 @@ healthmonitor-url_path:
   required: true
   type: string
 healthmonitor-url_path-optional:
-  description: |
-    Specifies the HTTP request path for the health check. The value must start with a slash (/), and the default value is /. This parameter is available only when type is set to HTTP.
-
-    Default: /
-    Minimum: 1
-    Maximum: 255
-  in: body
+  <<: *hm-url_path-def
   required: false
-  type: string
 healthmonitors:
   description: |
     Specifies the health check.
@@ -1264,7 +1158,7 @@ member:
   in: body
   required: true
   type: object
-member-address:
+member-address: &member-address-def
   description: |
     Specifies the IP address of the backend server.
 
@@ -1280,22 +1174,10 @@ member-address:
   required: true
   type: string
 member-address-optional:
-  description: |
-    Specifies the IP address of the backend server.
-
-    The IP address must be in the subnet specified by subnet_cidr_id, for example, 192.168.3.11.
-
-    The IP address can only be the IP address of the primary NIC.
-
-    If subnet_cidr_id is left blank, cross-VPC backend is enabled. In this case, these servers must use IPv4 addresses.
-
-    Minimum: 1
-    Maximum: 64
-  in: body
+  <<: *member-address-def
   required: false
-  type: string
-member-admin_state_up:
-  descrption: |
+member-admin_state_up: &member-admin_state_up-def
+  description: |
     Specifies the administrative status of the backend server.
 
     Although this parameter can be used in the APIs for creating and updating backend servers, its actual value depends on whether cloud servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
@@ -1303,20 +1185,15 @@ member-admin_state_up:
   required: true
   type: bool
 member-admin_state_up-optional:
-  descrption: |
-    Specifies the administrative status of the backend server.
-
-    Although this parameter can be used in the APIs for creating and updating backend servers, its actual value depends on whether cloud servers exist. If cloud servers exist, the value is true. Otherwise, the value is false.
-  in: body
+  <<: *member-admin_state_up-def
   required: false
-  type: bool
 member-id:
   description: |
     Specifies the backend server ID.
   in: body
   required: true
   type: uuid
-member-ip_version:
+member-ip_version: &member-ip_version-def
   description: |
     This is a read-only attribute, which is automatically generated based on the address parameter. The value can be v4 or v6.
 
@@ -1325,26 +1202,18 @@ member-ip_version:
   required: true
   type: string
 member-ip_version-optional:
-  description: |
-    This is a read-only attribute, which is automatically generated based on the address parameter. The value can be v4 or v6.
-
-    Default: v4
-  in: body
+  <<: *member-ip_version-def
   required: false
-  type: string
-member-name:
+member-name: &member-name-def
   description: |
     Specifies the backend server name.
   in: body
   required: true
   type: string
 member-name-optional:
-  description: |
-    Specifies the backend server name.
-  in: body
+  <<: *member-name-def
   required: false
-  type: string
-member-operating_status:
+member-operating_status: &member-operating_status-def
   description: |
     Specifies the operating status of the backend server. The value can be one of the following:
 
@@ -1355,16 +1224,9 @@ member-operating_status:
   required: true
   type: string
 member-operating_status-optional:
-  description: |
-    Specifies the operating status of the backend server. The value can be one of the following:
-
-    - ONLINE: The backend server is running normally.
-    - NO_MONITOR: No health check is configured for the backend server group to which the backend server belongs.
-    - OFFLINE: The cloud server used as the backend server is stopped or does not exist.
-  in: body
+  <<: *member-operating_status-def
   required: false
-  type: string
-member-protocol_port:
+member-protocol_port: &member-protocol_port-def
   description: |
     Specifies the port used by the backend server to receive requests.
 
@@ -1374,27 +1236,18 @@ member-protocol_port:
   required: true
   type: number
 member-protocol_port-optional:
-  description: |
-    Specifies the port used by the backend server to receive requests.
-
-    Minimum: 1
-    Maximum: 65535
-  in: body
+  <<: *member-protocol_port-def
   required: false
-  type: number
-member-subnet_cidr_id:
+member-subnet_cidr_id: &member-subnet_cidr_id-def
   description: |
     Specifies the ID of the subnet where the backend server works. This subnet must be in the VPC as the subnet of the load balancer associated with the backend server. Only IPv4 subnets are supported. If the value is left blank, the backend server is not in the load balancer's VPC.
   in: body
   required: true
   type: string
 member-subnet_cidr_id-optional:
-  description: |
-    Specifies the ID of the subnet where the backend server works. This subnet must be in the VPC as the subnet of the load balancer associated with the backend server. Only IPv4 subnets are supported. If the value is left blank, the backend server is not in the load balancer's VPC.
-  in: body
+  <<: *member-subnet_cidr_id-def
   required: false
-  type: string
-member-weight:
+member-weight: &member-weight-def
   description: |
     Specifies the weight of the backend server.
 
@@ -1411,21 +1264,8 @@ member-weight:
   required: true
   type: number
 member-weight-optional:
-  description: |
-    Specifies the weight of the backend server.
-
-    Requests are routed to backend servers in the same backend server group based on their weights.
-
-    If the weight is 0, the backend server will not accept new requests.
-
-    This parameter is invalid when lb_algorithm is set to SOURCE_IP for the backend server group that contains the backend server.
-
-    Minimum: 0
-    Maximum: 100
-    Default: 1
-  in: body
+  <<: *member-weight-def
   required: false
-  type: number
 members:
   description:  |
     Lists the backend servers.
