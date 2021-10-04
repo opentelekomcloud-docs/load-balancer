@@ -14,17 +14,15 @@ import os
 import sys
 
 extensions = [
-    'os_api_ref',
     'otcdocstheme'
 ]
 
 
 html_theme = 'otcdocs'
 html_theme_options = {
-#    "sidebar_dropdown": "api_ref",
-    "sidebar_mode": "toctree"
 }
 otcdocs_auto_name = False
+otcdocs_auto_version = False
 project = 'Load Balancer Service'
 otcdocs_repo_name = 'opentelekomcloud-docs/elb'
 
@@ -69,13 +67,6 @@ copyright = u'2021-present, Open Telekom Cloud'
 # for all documents.
 # default_role = None
 
-# If true, '()' will be appended to :func: etc. cross-reference text.
-# add_function_parentheses = True
-
-# If true, the current module name will be prepended to all description
-# unit titles (such as .. function::).
-add_module_names = False
-
 # If true, sectionauthor and moduleauthor directives will be shown in the
 # output. They are ignored by default.
 show_authors = False
@@ -106,7 +97,7 @@ pygments_style = 'native'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-# html_title = None
+html_title = "Elastic Load Balancing UMN"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
