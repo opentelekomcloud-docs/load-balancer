@@ -97,11 +97,11 @@ Request
    |                      |           |         | -  When **action** is set         |
    |                      |           |         |    to                             |
    |                      |           |         |                                   |
-   |                      |           |         |   **REDIRECT_TO_LISTENER**,       |
-   |                      |           |         |    forwarding policies can        |
-   |                      |           |         |    be added to a listener         |
-   |                      |           |         |    with **protocol** set to       |
-   |                      |           |         |    **HTTP**.                      |
+   |                      |           |         | **REDIRECT_TO_LISTENER**,         |
+   |                      |           |         | forwarding policies can           |
+   |                      |           |         | e added to a listener             |
+   |                      |           |         | ith **protocol** set to           |
+   |                      |           |         | *HTTP**.                          |
    +----------------------+-----------+---------+-----------------------------------+
    | action               | Yes       | String  | Specifies whether requests        |
    |                      |           |         | are forwarded to another          |
