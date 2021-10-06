@@ -9,8 +9,6 @@ Function
 ^^^^^^^^
 
 This API is used to configure a health check for a backend server group to check the status of backend servers. If the health check result is **OFFLINE**, backend servers are considered unhealthy. You need to check the server configuration.
-AND HERE IS THE EXPLICIT ERROR.
-
 
 Constraints
 ^^^^^^^^^^^
