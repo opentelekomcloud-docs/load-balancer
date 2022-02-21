@@ -2,4 +2,7 @@
     merge-mode: squash-merge
     default-branch: main
     templates:
-      - api-ref-jobs
+      - api-ref-hc-jobs
+    check:
+      jobs:
+        - noop
