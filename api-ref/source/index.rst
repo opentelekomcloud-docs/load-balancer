@@ -1,11 +1,8 @@
-Elastic Load Balancing
-######################
-
+======================================
+Elastic Load Balancing - API Reference
+======================================
 
 .. toctree::
    :maxdepth: 1
 
-   classic/index
-   shared/index
-   dedicated/index
-   version
+   api_usage_guidelines
