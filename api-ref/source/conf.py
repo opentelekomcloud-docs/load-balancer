@@ -93,7 +93,7 @@ html_static_path = ['_static']
 
 # -- Options for PDF output --------------------------------------------------
 latex_documents = [
-('index',
+    ('index',
      'elb-api-ref.tex',
      u'Elastic Load Balancing - API Reference',
      u'OpenTelekomCloud', 'manual'),
