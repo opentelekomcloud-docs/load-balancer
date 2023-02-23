@@ -19,6 +19,6 @@ Certificate
    overview
    certificate_and_private_key_format
    converting_certificate_formats
-   creating,_modifying,_or_deleting_a_certificate
+   creating_modifying_or_deleting_a_certificate
    replacing_a_certificate
    querying_a_listener_by_certificate
