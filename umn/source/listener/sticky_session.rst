@@ -19,7 +19,7 @@ You have selected **Weighted round robin** for **Load Balancing Algorithm**.
 Constraints and Limitations
 ---------------------------
 
-If you use **Direct Connect**, **VPN**, or **Cloud Connect connection** to access ELB, you must select **Source IP hash** as the load balancing algorithm and disable sticky sessions for ELB.
+If you use **Direct Connect**, **VPN**, to access ELB, you must select **Source IP hash** as the load balancing algorithm and disable sticky sessions for ELB.
 
 Differences Between Sticky Sessions at Layer 4 and Layer 7
 ----------------------------------------------------------
@@ -58,5 +58,5 @@ Enabling Sticky Sessions
    You can also configure sticky sessions when adding a listener or creating a backend server group.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0167649598.png

@@ -14,6 +14,25 @@ After a backend server is removed, it cannot receive requests from the load bala
 
 If the load balancer is associated with an AS group, instances in the AS group are automatically added to the backend server group associated with the load balancer. If instances are removed from the AS group, they will be automatically removed from the backend server group.
 
+Prerequisites
+-------------
+
+If you want to add IP as backend servers to handle requests, you must configure the routes correctly to ensure requests are routed to these backend servers.
+
+Constraints and Limitations
+---------------------------
+
+When you add IP as backend servers, note the following:
+
+-  If you do not enable the function when you create a load balancer, you can still enable it on the **Summary** page of the load balancer.
+-  IP as backend servers must use IPv4 addresses.
+-  To add IP as backend servers, you must configure the routes correctly to ensure requests are routed to backend servers.
+-  If you enable IP as a backend for a load balancer, you can add only TCP, HTTP, and HTTPS listeners to the load balancer.
+-  The subnet where the load balancer works must have sufficient IP addresses (at least 16 IP addresses). If the IP addresses are insufficient, you can add more backend subnets on the **Summary** page of the load balancer.
+-  Security group rules configured for IP as backend servers must allow traffic from the subnet of the load balancer. Otherwise, health checks will fail.
+-  IP as a backend cannot be disabled after it is enabled.
+-  If you add IP addresses as backend servers, the source IP addresses of the clients cannot be passed to these servers.
+
 Adding Backend Servers
 ----------------------
 
@@ -22,7 +41,11 @@ Adding Backend Servers
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Backend Server Groups**, locate the backend server group, and click its name.
-#. Click **Backend Servers**.
+#. On the **Basic Information** page, click **Backend Servers**, or **IP as Backend Servers**.
+#. Perform either of the following operations based on the type of the backend servers you want to add.
+
+   -  Backend servers in the same VPC as the load balancer: Click **Add Backend Server**. In the displayed dialog box, select the subnet where the backend servers reside, select the backend servers to be added, select the private IP address, and click **Next**. Add backend ports and configure the server weights, and click **Finish**.
+   -  IP as backend servers: Click **Add IP as Backend Server**. In the displayed dialog box, specify the IP addresses, ports, and weights, and click **OK**.
 
 Removing Backend Servers
 ------------------------
@@ -32,8 +55,15 @@ Removing Backend Servers
 #. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Backend Server Groups**, locate the backend server group, and click its name.
-#. In the **Basic Information** area, locate the target backend server and click **Remove** in the **Operation** column. To remove multiple backend servers, select the backend servers you want to remove and click **Remove** above the server list.
-#. Click **Yes**.
+#. On the **Basic Information** page, click **Backend Servers**, or **IP as Backend Servers**.
+#. Perform either of the following operations based on the type of the backend servers you want to remove.
+
+   -  Select the cloud servers you want to remove and click **Remove**. In the displayed dialog box, click **Yes**.
+   -  Select the IP as backend servers you want to remove and click **Remove**. In the displayed dialog box, click **Yes**.
+
+.. note::
+
+   Disable **Removal Protection** if you want to remove servers from the backend server group.
 
 Adding a Backend Server Group
 -----------------------------
@@ -63,7 +93,7 @@ Adding a Backend Server Group
       +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Backend Protocol          | Specifies the protocol used by backend servers to receive requests.                                                                                                                                                                                                                                                                                                                                                                           | HTTP                  |
       |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                               |                       |
-      |                           | The backend protocol can be TCP, UDP, or HTTP.                                                                                                                                                                                                                                                                                                                                                                                                |                       |
+      |                           | The backend protocol can be HTTPS, TCP, UDP, or HTTP.                                                                                                                                                                                                                                                                                                                                                                                         |                       |
       +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Load Balancing Algorithm  | Specifies the algorithm used by the load balancer to distribute traffic. The following options are available:                                                                                                                                                                                                                                                                                                                                 | Weighted round robin  |
       |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                               |                       |
@@ -101,6 +131,14 @@ Adding a Backend Server Group
       |                           |    -  Maximum: 24 hours                                                                                                                                                                                                                                                                                                                                                                                                                       |                       |
       |                           |    -  Range: 1 minute to 1,440 minutes                                                                                                                                                                                                                                                                                                                                                                                                        |                       |
       +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Slow Start                | Specifies whether to enable slow start, which is disabled by default.                                                                                                                                                                                                                                                                                                                                                                         | ``-``                 |
+      |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                               |                       |
+      |                           | After you enable slow start, the load balancer linearly increases the proportion of requests to send to backend servers in this mode. When the slow start duration elapses, the load balancer sends full share of requests to backend servers and exits the slow start mode. For details, see :ref:`Configuring Slow Start (Dedicated Load Balancers) <elb_ug_hd_0006>`.                                                                      |                       |
+      +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Slow Start Duration       | Specifies how long the slow start will last.                                                                                                                                                                                                                                                                                                                                                                                                  | 30                    |
+      |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                               |                       |
+      |                           | The duration ranges from **30** to **1200**, in seconds, and the default value is **30**.                                                                                                                                                                                                                                                                                                                                                     |                       |
+      +---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Description               | Provides supplementary information about the backend server group.                                                                                                                                                                                                                                                                                                                                                                            | ``-``                 |
       |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                               |                       |
       |                           | You can enter a maximum of 255 characters.                                                                                                                                                                                                                                                                                                                                                                                                    |                       |
@@ -110,25 +148,38 @@ Adding a Backend Server Group
 
    .. table:: **Table 2** Parameters for configuring a health check
 
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Parameter             | Description                                                                                                                                                                                        | Example Value         |
-      +=======================+====================================================================================================================================================================================================+=======================+
-      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                         | N/A                   |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Protocol              | Specifies the protocol used by the load balancer to perform health checks on backend servers. You can select HTTPS, HTTP or TCP. A selected protocol cannot be changed.                            | HTTP                  |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | **Advanced Settings** |                                                                                                                                                                                                    |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Interval (s)          | The maximum time between two consecutive health checks, in seconds.                                                                                                                                | 5                     |
-      |                       |                                                                                                                                                                                                    |                       |
-      |                       | The interval ranges from **1** to **50**.                                                                                                                                                          |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Timeout (s)           | Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from **1** to **50**.                                                | 3                     |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Check Path            | Specifies the destination path for health checks. Configure this parameter only if you have set **Protocol** to **HTTP**. The path can contain 1 to 80 characters and must start with a slash (/). | /index.html           |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Maximum Retries       | Specifies the maximum number of health check retries. The value ranges from **1** to **10**.                                                                                                       | 3                     |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Parameter             | Description                                                                                                                                                                                                                                           | Example Value         |
+      +=======================+=======================================================================================================================================================================================================================================================+=======================+
+      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                                                                            | N/A                   |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Protocol              | -  If the frontend protocol is TCP, HTTP, or HTTPS, the health check protocol can be TCP, HTTP, or HTTPS. The health check protocol cannot be changed once it is set.                                                                                 | HTTP                  |
+      |                       | -  If the frontend protocol is UDP, the health check protocol is UDP by default.                                                                                                                                                                      |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Domain Name           | Specifies the domain name that will be used for health checks.                                                                                                                                                                                        | www.elb.com           |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. Configure this parameter only if you have set **Protocol** to **HTTP**.                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Port                  | Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.                                                                                                                     | 80                    |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | .. note::                                                                                                                                                                                                                                             |                       |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       |    If you do not specify a health check port, the backend port will be used for health checks by default. If you specify a port, it will be used for health checks.                                                                                   |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Check Path            | Specifies the health check URL, which is the destination on backend servers for health checks. Configure this parameter only if you have set **Protocol** to **HTTP**. The check path must start with a slash (/) and can contain 1 to 80 characters. | /index.html           |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The value can contain letters, digits, hyphens (-), slashes (/), periods (.), percent signs (%), ampersands (&), and the following special characters: ``_~';@$*+,=!:()``                                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | **Advanced Settings** |                                                                                                                                                                                                                                                       |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Interval (s)          | The maximum time between two consecutive health checks, in seconds.                                                                                                                                                                                   | 5                     |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The interval ranges from **1** to **50**.                                                                                                                                                                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Timeout (s)           | Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from **1** to **50**.                                                                                                   | 3                     |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Maximum Retries       | Specifies the maximum number of health check retries. The value ranges from **1** to **10**.                                                                                                                                                          | 3                     |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
 
 #. Click **OK**.
 
@@ -153,14 +204,14 @@ Deleting a Backend Server Group
 #. Click **Yes**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image9| image:: /_static/images/en-us_image_0000001205955477.png
 .. |image10| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image11| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image11| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image12| image:: /_static/images/en-us_image_0000001206035439.png

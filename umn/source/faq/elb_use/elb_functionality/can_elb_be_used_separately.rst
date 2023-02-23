@@ -7,4 +7,4 @@ Can ELB Be Used Separately?
 
 ELB cannot be used alone.
 
-ELB is a service that distributes incoming traffic across servers and is generally used together with the ECS or BMS service.
+ELB distributes incoming traffic to multiple backend servers based on the forwarding policy to balance workloads. So, it can expand external service capabilities of your applications and eliminate single points of failure (SPOFs) to improve service availability. To use a load balancer, you must associated backend servers (such as ECSs) with it.

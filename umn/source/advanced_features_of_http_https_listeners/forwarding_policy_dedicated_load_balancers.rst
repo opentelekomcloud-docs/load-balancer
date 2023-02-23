@@ -5,6 +5,8 @@
 Forwarding Policy (Dedicated Load Balancers)
 ============================================
 
+If advanced forwarding is not enabled, perform the following operations to add forwarding policies to HTTP or HTTPS listeners of dedicated load balancers.
+
 Scenarios
 ---------
 
@@ -47,53 +49,63 @@ Adding a Forwarding Policy
 
 #. Click **Listeners**, locate the listener, and click its name.
 
-#. Click **Add** on the right of **Forwarding Policies**. Configure the parameters based on :ref:`Table 1 <elb_ug_jt_0023__table1569805974113>`.
+#. Click |image3| on the right of the listener name and select **Configure Forwarding Policy**.
 
-   .. _elb_ug_jt_0023__table1569805974113:
+   Alternatively, click **Forwarding Policies** on the right of the page.
 
-   .. table:: **Table 1** Parameters required for configuring a forwarding policy
+#. On the **Forwarding Policies** tab page, click **Add Forwarding Policy**. Configure the parameters based on :ref:`Table 1 <elb_ug_jt_0023__elb_ug_jt_0023_table10859681016>`.
 
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
-      | Parameter             | Description                                                                                                                           | Example Value          |
-      +=======================+=======================================================================================================================================+========================+
-      | Name                  | Specifies the forwarding policy name.                                                                                                 | forwarding_policy-e370 |
-      |                       |                                                                                                                                       |                        |
-      |                       | Only letters, digits, underscores (_), hyphens (-), and periods (.) are supported.                                                    |                        |
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
-      | Domain Name           | Route requests based on the domain name. The domain name in the request must exactly match that in the forwarding policy.             | www.test.com           |
-      |                       |                                                                                                                                       |                        |
-      |                       | Note that you must specify either a domain name or URL.                                                                               |                        |
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
-      | URL Matching Rule     | There are three URL matching rules:                                                                                                   | Exact match            |
-      |                       |                                                                                                                                       |                        |
-      |                       | -  Exact match                                                                                                                        |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       |    The request URL is identical to the URL specified in the forwarding policy.                                                        |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       | -  Prefix match                                                                                                                       |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       |    The requested URL starts with the specified URL string.                                                                            |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       | -  Regular expression match                                                                                                           |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       |    The specified URL matches the URL in the request based on the regular expression.                                                  |                        |
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
-      | URL                   | Specifies the relative URL for traffic routing. The load balancer routes traffic based on the combination of the domain name and URL. | /login.php             |
-      |                       |                                                                                                                                       |                        |
-      |                       | The URL can contain only letters, digits, and special characters \_~?;@^- ``%#&$.*+?,=!:|\/()[]{}``                                   |                        |
-      |                       |                                                                                                                                       |                        |
-      |                       | If **Exact match** or **Prefix match** is selected, the URL must start with a slash (/).                                              |                        |
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
-      | Description           | Provides supplementary information about the forwarding policy.                                                                       | ``-``                  |
-      |                       |                                                                                                                                       |                        |
-      |                       | You can enter up to 255 characters.                                                                                                   |                        |
-      +-----------------------+---------------------------------------------------------------------------------------------------------------------------------------+------------------------+
+#. Click Save.
 
-#. Click **Next** and add a backend server group.
+.. _elb_ug_jt_0023__elb_ug_jt_0023_table10859681016:
 
-   :ref:`Table 2 <elb_ug_jt_0011__table02842501376>` describes the parameters required for adding a backend server group, and :ref:`Table 3 <elb_ug_jt_0011__table172911502712>` describes the parameters required for configuring health check.
+.. table:: **Table 1** Forwarding policy parameters
 
-#. Click **Finish**.
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   | Parameter            |                                   | Description                                                                                                                                                                                                                                                                              | Example Value                     |
+   +======================+===================================+==========================================================================================================================================================================================================================================================================================+===================================+
+   | Forwarding Rule      | Domain Name                       | Route requests based on the domain name. The domain name in the request must exactly match that in the forwarding policy.                                                                                                                                                                | www.test.com                      |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | You need to specify either a domain name or URL.                                                                                                                                                                                                                                         |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | .. note::                                                                                                                                                                                                                                                                                |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    Advanced forwarding policies support wildcard domain names. For details, see :ref:`Advanced Forwarding <elb_ug_jt_060300>`.                                                                                                                                                           |                                   |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   |                      | URL                               | Route requests based on the URL. There are three URL matching rules:                                                                                                                                                                                                                     | /login.php                        |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | -  Exact match                                                                                                                                                                                                                                                                           |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    The request URL is identical to the URL specified in the forwarding policy.                                                                                                                                                                                                           |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | -  Prefix match                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    The requested URL starts with the specified URL string.                                                                                                                                                                                                                               |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | -  Regular expression match                                                                                                                                                                                                                                                              |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    The requested URL matches the specified URL string based on the regular expression.                                                                                                                                                                                                   |                                   |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   | Action               | Forward to a backend server group | If the request matches the configured forwarding rule, the request is forwarded to the specified backend server group.                                                                                                                                                                   | Forward to a backend server group |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   |                      | Redirect to another listener      | If the request matches the configured forwarding rule, the request is redirected to the specified HTTPS listener.                                                                                                                                                                        | ``-``                             |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | This action can be configured only for HTTP listeners.                                                                                                                                                                                                                                   |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | .. note::                                                                                                                                                                                                                                                                                |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    If you select **Redirect to another listener** and create a redirect for the current listener, this listener will not route requests and will redirect the requests to the specified HTTPS listener, but access control configured for the listener will still take effect.           |                                   |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   |    For example, if you configure a redirect for an HTTP listener, HTTP requests to access a web page will be redirected to the HTTPS listener you select and handled by the backend servers associated with the HTTPS listener. As a result, the clients access the web page over HTTPS. |                                   |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   | Backend Server Group |                                   | Select a backend server group that will receive requests from the load balancer.                                                                                                                                                                                                         | ``-``                             |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | This parameter is mandatory when you set **Action** to **Forward to a backend server group**.                                                                                                                                                                                            |                                   |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+   | Listener             |                                   | Select an HTTPS listener that will receive requests redirected from the current HTTP listener.                                                                                                                                                                                           | ``-``                             |
+   |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
+   |                      |                                   | This parameter is mandatory when **Action** is set to **Redirect to another listener**.                                                                                                                                                                                                  |                                   |
+   +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
 
 URL Matching Example
 --------------------
@@ -127,12 +139,22 @@ Modifying a Forwarding Policy
 -----------------------------
 
 #. Log in to the management console.
-#. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+
+#. In the upper left corner of the page, click |image4| and select the desired region and project.
+
+#. Hover on |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+
 #. Locate the load balancer and click its name.
+
 #. Click **Listeners**, locate the listener, and click its name.
-#. Click |image5| on the right of **Forwarding Policies**.
-#. Modify the parameters and click **OK**.
+
+#. Click |image6| on the right of the listener name and select **Configure Forwarding Policy**.
+
+   Alternatively, click **Forwarding Policies** in the right pane.
+
+#. On the **Forwarding Policies** tab page, select the forwarding policy you want to modify and click **Edit**.
+
+#. Modify the parameters and click Save.
 
 Deleting a Forwarding Policy
 ----------------------------
@@ -142,18 +164,29 @@ You can delete a forwarding policy if you no longer need it.
 Deleted forwarding policies cannot be recovered.
 
 #. Log in to the management console.
-#. In the upper left corner of the page, click |image6| and select the desired region and project.
-#. Hover on |image7| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+
+#. In the upper left corner of the page, click |image7| and select the desired region and project.
+
+#. Hover on |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+
 #. Locate the load balancer and click its name.
+
 #. Click **Listeners**, locate the listener, and click its name.
-#. Click |image8| on the right of **Forwarding Policies**.
-#. Click **Yes**.
+
+#. Click |image9| on the right of the listener name and select **Configure Forwarding Policy**.
+
+   Alternatively, click **Forwarding Policies** in the right pane.
+
+#. On the **Forwarding Policies** tab page, select the forwarding policy you want to delete and click **Delete**.
+
+#. In the displayed dialog box, click **Yes**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image5| image:: /_static/images/en-us_image_0000001203245516.png
-.. |image6| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image7| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image8| image:: /_static/images/en-us_image_0000001202965458.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image3| image:: /_static/images/en-us_image_0000001127832787.png
+.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
+.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image6| image:: /_static/images/en-us_image_0000001127715643.png
+.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
+.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image9| image:: /_static/images/en-us_image_0000001127598405.png

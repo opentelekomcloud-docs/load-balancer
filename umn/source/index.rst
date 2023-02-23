@@ -14,10 +14,8 @@ Elastic Load Balancing - User Guide
    health_check/index
    certificate/index
    tag
-   access_logging
+   ip_address_group_whitelist_or_blacklist
    monitoring/index
-   auditing/index
    quotas
    faq/index
-   appendix/index
    change_history

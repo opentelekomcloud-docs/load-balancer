@@ -8,7 +8,9 @@ Viewing Metrics
 Scenarios
 ---------
 
-Cloud Eye allows you to monitor your resources, including load balancers. You can view metrics on either the ELB console or the Cloud Eye console
+Cloud Eye provided by the public cloud platform monitors the running statuses of load balancers.
+
+You can view the metrics of each load balancer on the ELB console or the Cloud Eye console.
 
 The transmission of monitoring data takes a while, so the status of each load balancer displayed on the Cloud Eye dashboard is not its real-time status. For a newly created load balancer or a newly added listener, you need to wait for about 5 minutes to 10 minutes before you can view its metrics.
 

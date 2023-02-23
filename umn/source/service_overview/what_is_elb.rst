@@ -7,7 +7,11 @@ What Is ELB?
 
 Elastic Load Balancing (ELB) automatically distributes incoming traffic across multiple backend servers based on the listening rules you configure. ELB expands the service capabilities of your applications and improves their availability by eliminating single points of failure (SPOFs).
 
-|image1|
+
+.. figure:: /_static/images/en-us_image_0000001376874584.png
+   :alt: **Figure 1** Using a load balancer
+
+   **Figure 1** Using a load balancer
 
 .. _en-us_topic_0015479966__section031725010213:
 
@@ -28,20 +32,20 @@ ELB consists of the following components:
 
 
 .. figure:: /_static/images/en-us_image_0202311381.png
-   :alt: **Figure 1** ELB components
+   :alt: **Figure 2** ELB components
 
-   **Figure 1** ELB components
+   **Figure 2** ELB components
 
 Load Balancer Types
 -------------------
 
-ELB provides the following types of load balancers.
+ELB provides shared load balancers and dedicated load balancers.
 
 
 .. figure:: /_static/images/en-us_image_0000001252691727.png
-   :alt: **Figure 2** Load balancer types
+   :alt: **Figure 3** Load balancer types
 
-   **Figure 2** Load balancer types
+   **Figure 3** Load balancer types
 
 -  Dedicated load balancers have exclusive use of underlying resources, so that the performance of a dedicated load balancer is not affected by other load balancers. In addition, there are a wide range of specifications available for selection.
 
@@ -63,7 +67,7 @@ You can use either of the following methods to access ELB:
 
 -  Management console
 
-   Log in to the management console and choose **Elastic Load Balancing (ELB)**.
+   Log in to the management console and choose **Elastic Load Balance (ELB)**.
 
 -  APIs
 
@@ -74,5 +78,3 @@ You can use either of the following methods to access ELB:
       In the eu-de region, you can create both dedicated and shared load balancers, and you can create either type of load balancers on the management console or by calling APIs.
 
       In the eu-nl region, you can only create dedicated load balancers, either on the console or by calling APIs.
-
-.. |image1| image:: /_static/images/en-us_image_0198606126.png

@@ -12,9 +12,9 @@ When you add a backend server to a backend server group, ensure that the rules o
 
 If you have no VPCs when creating a server, the system will automatically create a VPC with default security rules. Default security group rules allow only communications among the servers in the VPC. You also need to configure inbound rules to enable the load balancer to communicate with these servers over the frontend port and health check port.
 
-.. caution::
+.. note::
 
-   -  Shared load balancers: If **Obtain Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
+   If **IP as a Backend** is not enabled for the dedicated load balancer that has a TCP or UDP listener, security group rules and network ACL rules will not take effect. To control traffic to backend servers, you can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`access control <en-us_elb_03_0003>`.
 
 Procedure
 ---------
@@ -59,7 +59,7 @@ Configure an inbound firewall rule to allow traffic from the VPC where the load 
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Virtual Private Cloud**.
+#. Click |image4| in the upper left corner of the page and choose **Network** > **Virtual Private Cloud**.
 #. In the navigation pane on the left, choose **Access Control** > **Firewall**.
 #. In the firewall list, click the name of the firewall to switch to the page showing its details.
 #. On the **Inbound Rules** or **Outbound Rules** tab page, click **Add Rule** to add a rule.
@@ -77,4 +77,4 @@ Configure an inbound firewall rule to allow traffic from the VPC where the load 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
 .. |image2| image:: /_static/images/en-us_image_0000001167495475.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001508946757.png

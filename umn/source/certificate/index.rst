@@ -8,7 +8,7 @@ Certificate
 -  :ref:`Overview <elb_ug_zs_0001>`
 -  :ref:`Certificate and Private Key Format <en-us_topic_0092382555>`
 -  :ref:`Converting Certificate Formats <elb_ug_zs_0003>`
--  :ref:`Creating, Modifying, or Deleting a Certificate <en-us_elb_03_0005>`
+-  :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`
 -  :ref:`Replacing a Certificate <elb_ug_zs_0005>`
 -  :ref:`Querying a Listener by Certificate <elb_ug_zs_0006>`
 

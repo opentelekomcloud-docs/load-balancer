@@ -17,7 +17,7 @@ A maximum of 30 SNI certificates can be bound to each HTTPS listener.
 Prerequisites
 -------------
 
-You have created a certificate by performing the operations in :ref:`Creating, Modifying, or Deleting a Certificate <en-us_elb_03_0005>`.
+You have created a certificate by performing the operations in :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`.
 
 -
 
@@ -39,4 +39,4 @@ Procedure
 7. Click **OK**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

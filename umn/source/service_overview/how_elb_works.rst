@@ -14,11 +14,11 @@ How ELB Works
 The following describes how ELB works:
 
 #. A client sends a request to your application.
-#. The listeners added to your load balancer use the protocols and ports you configure to receive the request.
+#. The listeners added to your load balancer use the protocols and ports you have configured to receive the request.
 #. The listener forwards the request to the associated backend server group based on your configuration. If you have configured a forwarding policy for the listener, the listener evaluates the request based on the forwarding policy. If the request matches the forwarding policy, the listener forwards the request to the backend server group configured for the forwarding policy.
-#. Health backend servers in the backend server group receive the request based on the load balancing algorithm and the routing rules you specify in the forwarding policy, handle the request, and return a result to the client.
+#. Healthy backend servers in the backend server group receive the request based on the load balancing algorithm and the routing rules you specify in the forwarding policy, handle the request, and return a result to the client.
 
-How requests are routed depends on the :ref:`load balancing algorithms <elb_pro_0003__section12605144013346>` configured for each backend server group. If the listener uses HTTP or HTTPS, how requests are routed also depends on the **forwarding policies** configured for the listener.
+How requests are routed depends on the :ref:`load balancing algorithms <elb_pro_0003__section12605144013346>` configured for each backend server group. If the listener uses HTTP or HTTPS, how requests are routed also depends on the forwarding policies configured for the listener.
 
 .. _elb_pro_0003__section12605144013346:
 

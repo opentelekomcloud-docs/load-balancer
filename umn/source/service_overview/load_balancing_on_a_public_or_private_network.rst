@@ -1,6 +1,6 @@
-:original_name: en-us_elb_01_0004.html
+:original_name: elb_pro_01_0004.html
 
-.. _en-us_elb_01_0004:
+.. _elb_pro_01_0004:
 
 Load Balancing on a Public or Private Network
 =============================================
@@ -29,23 +29,18 @@ A load balancer has only a private IP address to receive requests from clients i
 
    **Figure 2** Load balancing on a private network
 
-Network Types and Load Balancer Types
--------------------------------------
+Network Types and Load Balancers
+--------------------------------
 
 .. table:: **Table 1** Dedicated load balancers and their network types
 
-   +--------------------------+-----------------------+----------------------------------------------------------------------------------------------------------------+
-   | Load Balancer Type       | Network Type          | Network Type                                                                                                   |
-   +==========================+=======================+================================================================================================================+
-   | Dedicated load balancers | Public IPv4 network   | Each load balancer has an IPv4 EIP bound to enable it to route requests over the Internet.                     |
-   +--------------------------+-----------------------+----------------------------------------------------------------------------------------------------------------+
-   |                          | Private IPv4 network  | Each load balancer has only a private IPv4 address and can route requests in a VPC.                            |
-   +--------------------------+-----------------------+----------------------------------------------------------------------------------------------------------------+
-   |                          | IPv6 network          | Each load balancer has an IPv6 address bound.                                                                  |
-   |                          |                       |                                                                                                                |
-   |                          |                       | -  If the IPv6 address is added to a shared bandwidth, the load balancer can route requests over the Internet. |
-   |                          |                       | -  If the IPv6 address is not added to a shared bandwidth, the load balancer can route requests only in a VPC. |
-   +--------------------------+-----------------------+----------------------------------------------------------------------------------------------------------------+
+   +--------------------------+----------------------+--------------------------------------------------------------------------------------------+
+   | Load Balancer Type       | Network Type         | Description                                                                                |
+   +==========================+======================+============================================================================================+
+   | Dedicated load balancers | Public IPv4 network  | Each load balancer has an IPv4 EIP bound to enable it to route requests over the Internet. |
+   +--------------------------+----------------------+--------------------------------------------------------------------------------------------+
+   |                          | Private IPv4 network | Each load balancer has only a private IPv4 address and can route requests in a VPC.        |
+   +--------------------------+----------------------+--------------------------------------------------------------------------------------------+
 
 .. table:: **Table 2** Shared load balancers and their network types
 
