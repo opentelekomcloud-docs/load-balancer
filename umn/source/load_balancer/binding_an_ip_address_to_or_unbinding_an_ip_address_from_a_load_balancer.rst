@@ -15,8 +15,22 @@ You can bind an IP address to a load balancer or unbind the IP address from a lo
 
 .. note::
 
+   Note the following before unbinding an IP address:
+
    -  Load balancers without IPv4 EIPs cannot route requests over the public IPv4 network.
+
    -  Load balancers without private IPv4 addresses cannot route requests over the private IPv4 network.
+
+   Note the following when you use EIPs of dedicated load balancers (**5_gray**):
+
+   -  In **eu-de**, EIPs of dedicated load balancers (**5_gray**) type cannot be created. The optimal **5_bgp** EIP is recommended.
+   -  Existing EIPs of dedicated load balancers (**5_gray**) type can be bound to dedicated or shared load balancers.
+
+      -  You cannot bind EIPs to or unbind them from dedicated load balancers on ELB console.
+      -  You can use APIs to bind EIPs to or unbind them from dedicated load balancers. For details, see "Binding an EIP" and "Unbinding an EIP" in "API V3" section in the *Elastic IP API Reference*.
+      -  EIPs can be bound to or unbound from shared load balancers using the ELB console or EIP APIs.
+
+   -  Do not add EIPs of the dedicated load balancers (**5_gray**) and EIPs bound to other instances to the same shared bandwidth. Otherwise, the bandwidth limit policy will not take effect.
 
 Binding an IPv4 EIP
 -------------------
@@ -73,10 +87,10 @@ Only dedicated load balancers support this function.
       After the private IPv4 address is unbound, the load balancer cannot route requests over the private IPv4 network.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image8| image:: /_static/images/en-us_image_0000001417088430.png

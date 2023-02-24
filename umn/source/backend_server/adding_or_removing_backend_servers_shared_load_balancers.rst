@@ -56,6 +56,10 @@ Removing Backend Servers
 #. On the Basic Information page of the backend server group, select the backend servers to be removed and click Remove above the server list.
 #. Click **Yes**.
 
+.. note::
+
+   Disable **Removal Protection** if you want to remove servers from the backend server group.
+
 Adding a Backend Server Group
 -----------------------------
 
@@ -143,36 +147,38 @@ Adding a Backend Server Group
 
    .. table:: **Table 2** Parameters for configuring a health check
 
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Parameter             | Description                                                                                                                                                                                        | Example Value         |
-      +=======================+====================================================================================================================================================================================================+=======================+
-      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                         | N/A                   |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Protocol              | -  If the frontend protocol is TCP, HTTP or HTTPS, the health check protocol can be TCP or HTTP. The health check protocol cannot be changed once it is set.                                       | HTTP                  |
-      |                       | -  If the frontend protocol is UDP, the health check protocol is UDP by default.                                                                                                                   |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Domain Name           | Specifies the domain name that will be used for health checks.                                                                                                                                     | www.elb.com           |
-      |                       |                                                                                                                                                                                                    |                       |
-      |                       | The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. Configure this parameter only if you have set **Protocol** to **HTTP**.          |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Port                  | Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.                                                                  | 80                    |
-      |                       |                                                                                                                                                                                                    |                       |
-      |                       | .. note::                                                                                                                                                                                          |                       |
-      |                       |                                                                                                                                                                                                    |                       |
-      |                       |    If you do not specify a health check port, the backend port will be used for health checks by default. If you specify a port, it will be used for health checks.                                |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | **Advanced Settings** |                                                                                                                                                                                                    |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Interval (s)          | Specifies the maximum time between two consecutive health checks, in seconds.                                                                                                                      | 5                     |
-      |                       |                                                                                                                                                                                                    |                       |
-      |                       | The interval ranges from **1** to **50**.                                                                                                                                                          |                       |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Timeout (s)           | Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from **1** to **50**.                                                | 3                     |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Check Path            | Specifies the destination path for health checks. Configure this parameter only if you have set **Protocol** to **HTTP**. The path can contain 1 to 80 characters and must start with a slash (/). | /index.html           |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Maximum Retries       | Specifies the maximum number of health check retries. The value ranges from **1** to **10**.                                                                                                       | 3                     |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Parameter             | Description                                                                                                                                                                                                                                           | Example Value         |
+      +=======================+=======================================================================================================================================================================================================================================================+=======================+
+      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                                                                            | N/A                   |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Protocol              | -  If the frontend protocol is TCP, HTTP or HTTPS, the health check protocol can be TCP or HTTP. The health check protocol cannot be changed once it is set.                                                                                          | HTTP                  |
+      |                       | -  If the frontend protocol is UDP, the health check protocol is UDP by default.                                                                                                                                                                      |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Domain Name           | Specifies the domain name that will be used for health checks.                                                                                                                                                                                        | www.elb.com           |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The domain name can contain digits, letters, hyphens (-), and periods (.), and must start with a digit or letter. Configure this parameter only if you have set **Protocol** to **HTTP**.                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Port                  | Specifies the port used by the load balancer to perform health checks on backend servers. The port number ranges from 1 to 65535.                                                                                                                     | 80                    |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | .. note::                                                                                                                                                                                                                                             |                       |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       |    If you do not specify a health check port, the backend port will be used for health checks by default. If you specify a port, it will be used for health checks.                                                                                   |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Check Path            | Specifies the health check URL, which is the destination on backend servers for health checks. Configure this parameter only if you have set **Protocol** to **HTTP**. The check path must start with a slash (/) and can contain 1 to 80 characters. | /index.html           |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The value can contain letters, digits, hyphens (-), slashes (/), periods (.), percent signs (%), ampersands (&), and the following special characters: ``_~';@$*+,=!:()``                                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | **Advanced Settings** |                                                                                                                                                                                                                                                       |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Interval (s)          | Specifies the maximum time between two consecutive health checks, in seconds.                                                                                                                                                                         | 5                     |
+      |                       |                                                                                                                                                                                                                                                       |                       |
+      |                       | The interval ranges from **1** to **50**.                                                                                                                                                                                                             |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Timeout (s)           | Specifies the maximum time required for waiting for a response from the health check, in seconds. The timeout duration ranges from **1** to **50**.                                                                                                   | 3                     |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Maximum Retries       | Specifies the maximum number of health check retries. The value ranges from **1** to **10**.                                                                                                                                                          | 3                     |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
 
 #. Click **OK**.
 
@@ -196,15 +202,19 @@ Deleting a Backend Server Group
 #. Click **Backend Server Groups**, locate the backend server group, and click |image12| on the right of its name.
 #. Click **Yes**.
 
+.. note::
+
+   Disable **Removal Protection** if you want to remove servers from the backend server group.
+
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image9| image:: /_static/images/en-us_image_0238408794.png
 .. |image10| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image11| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image11| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image12| image:: /_static/images/en-us_image_0169513446.png

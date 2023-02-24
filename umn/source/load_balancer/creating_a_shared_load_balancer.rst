@@ -15,12 +15,11 @@ Load balancers receive requests from clients and route the requests to backend s
 Constraints and Limitations
 ---------------------------
 
-After a load balancer is created, the VPC cannot be changed. If you want to change the VPC, create another load balancer and select the VPC during creation.
+-  After a load balancer is created, the VPC cannot be changed. If you want to change the VPC, create another load balancer and select the VPC during creation.
+-  To ping the IP address of a load balancer, you need to add a listener and associate a backend server to it.
 
-.. _en-us_topic_0015479967__section19343262431:
-
-Creating a Shared Load Balancera Load Balancer
-----------------------------------------------
+Procedure
+---------
 
 #. Log in to the management console.
 
@@ -67,7 +66,11 @@ Creating a Shared Load Balancera Load Balancer
       |                       |                                                                                                                                                                                                      |                                   |
       |                       | -  **Use existing**: Select an existing EIP.                                                                                                                                                         |                                   |
       |                       |                                                                                                                                                                                                      |                                   |
-      |                       |    A shared load balancer can use any type of EIPs.                                                                                                                                                  |                                   |
+      |                       |    The optimal **5_bgp** EIP is recommended.                                                                                                                                                         |                                   |
+      +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
+      | Billed By             | Specifies the bandwidth type of the EIP.                                                                                                                                                             | Dedicated                         |
+      |                       |                                                                                                                                                                                                      |                                   |
+      |                       | **Dedicated**: You specify a maximum bandwidth and pay for the total traffic you use.                                                                                                                |                                   |
       +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
       | Bandwidth             | Specifies the bandwidth when a new EIP is used, in the unit of Mbit/s.                                                                                                                               | 10 Mbit/s                         |
       +-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
@@ -111,4 +114,4 @@ Creating a Shared Load Balancera Load Balancer
 #. Confirm the configuration and submit your request.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

@@ -5,47 +5,44 @@
 Access Control
 ==============
 
-Access control allows you to whitelist certain IP addresses to allow them to access a listener.
+Access control allows you to add a whitelist or blacklist to specify IP addresses that are allowed or denied to access a listener. A whitelist allows specified IP addresses to access the listener, while a blacklist denies access from specified IP addresses.
 
 .. important::
 
-   -  You can add whitelists only to listeners of shared load balancers. Adding whitelists may interrupt services. Once a whitelist is added, only IP addresses in the whitelist can access the listener.
-   -  If access control is enabled but no whitelist is added, the listener cannot be accessed.
-   -  Whitelists do not conflict with inbound security group rules. Whitelists control access to listeners based on IP addresses or CIDR blocks, whereas inbound security group rules control access to backend servers based on the protocol, ports, and IP addresses.
+   -  Whitelists and blacklists do not conflict with inbound security group rules. Whitelists define the IP addresses that are allowed to access the listeners, while blacklists specify IP addresses that are denied to access the listeners. Inbound security group rules control access to backend servers by specifying the protocol, ports, and IP addresses.
+   -  Access control does not restrict the ping command. You can still ping backend servers from the restricted IP addresses.
+   -  Access control policies only take effect for new connections, but not for connections that have been established. If a whitelist is configured for a listener but IP addresses that are not in the whitelist can access the backend server associated with the listener, one possible reason is that a persistent connection is established between the client and the backend server. To deny IP addresses that are not in the whitelist from accessing the listener, the persistent connection between the client and the backend server needs to be disconnected.
 
-Adding a Whitelist
-------------------
+Configuring Access Control
+--------------------------
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 4. Locate the load balancer and click its name.
-5. Click **Listeners**, locate the listener, and click its name. In the **Basic Information** area, click **Configure** next to **Access Control**.
+5. Click **Listeners** and locate the listener. On the **Basic Information** page of the listener, click **Configure** on the right of **Access Control**. In the displayed dialog box, configure access control.
 
    .. table:: **Table 1** Parameter description
 
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------------+
-      | Parameter             | Description                                                                                                                | Example Value              |
-      +=======================+============================================================================================================================+============================+
-      | Access Control        | Enabled                                                                                                                    | N/A                        |
-      |                       |                                                                                                                            |                            |
-      |                       | -  If access control is enabled and no whitelist is set, no IP address can access the listener.                            |                            |
-      |                       | -  If access control is enabled and a whitelist is set, only IP addresses in the whitelist can access the listener.        |                            |
-      |                       |                                                                                                                            |                            |
-      |                       | Disabled                                                                                                                   |                            |
-      |                       |                                                                                                                            |                            |
-      |                       | -  If access control is disabled, the listener can be accessed from any IP address.                                        |                            |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------------+
-      | Whitelist             | Lists the IP addresses that can access the listener.                                                                       | 10.168.2.24,10.168.16.0/24 |
-      |                       |                                                                                                                            |                            |
-      |                       | .. note::                                                                                                                  |                            |
-      |                       |                                                                                                                            |                            |
-      |                       |    -  A maximum of 300 IP addresses or IP address ranges are supported. A comma (,) is used to separate every two entries. |                            |
-      |                       |    -  The whitelist cannot contain IPv6 addresses.                                                                         |                            |
-      +-----------------------+----------------------------------------------------------------------------------------------------------------------------+----------------------------+
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Parameter             | Description                                                                                                                                                                                     | Example Value         |
+      +=======================+=================================================================================================================================================================================================+=======================+
+      | Access Policy         | Specifies how access to the listener is controlled. Three options are available:                                                                                                                | Blacklist             |
+      |                       |                                                                                                                                                                                                 |                       |
+      |                       | -  **All IP addresses**: All IP addresses can access the listener.                                                                                                                              |                       |
+      |                       | -  **Whitelist**: Only IP addresses in the IP address group can access the listener.                                                                                                            |                       |
+      |                       | -  **Blacklist**: IP addresses in the IP address group are not allowed to access the listener.                                                                                                  |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | IP Address Group      | Specifies the IP address group associated with a whitelist or blacklist. If there is no IP address group, create one first. For more information, see :ref:`IP Address Group <elb_ug_ip_0000>`. | ipGroup-b2            |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Access Control        | If you have set **Access Policy** to **Whitelist** or **Blacklist**, you can enable or disable access control.                                                                                  | N/A                   |
+      |                       |                                                                                                                                                                                                 |                       |
+      |                       | -  Only after you enable access control, the whitelist or blacklist takes effect.                                                                                                               |                       |
+      |                       | -  If you disable access control, the whitelist or blacklist does not take effect.                                                                                                              |                       |
+      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
 
 6. Click **OK**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

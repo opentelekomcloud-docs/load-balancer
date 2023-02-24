@@ -32,7 +32,7 @@ For an application that has predictable peaks and troughs in traffic volumes, EL
 Zero SPOFs
 ----------
 
-ELB routinely performs health checks on backend servers to monitor their healthy state. If any backend server is detected unhealthy, ELB will not route requests to this server until it recovers.
+ELB routinely performs health checks on backend servers to monitor their health. If any backend server is detected unhealthy, ELB will not route requests to this server until it recovers.
 
 This makes ELB a good choice for running services that require high reliability, such as websites and toll collection systems.
 

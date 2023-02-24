@@ -19,12 +19,12 @@ If the certificate is also used by other services such as WAF, replace the certi
 Prerequisites
 -------------
 
-You have created a certificate by following the instructions in :ref:`Creating a Certificate <en-us_elb_03_0005__section26868475171830>`.
+You have created a certificate by following the instructions in :ref:`Creating a Certificate <elb_ug_zs_0004__section26868475171830>`.
 
 Binding a Certificate
 ---------------------
 
-You can bind certificates when you add an HTTPS listener. For details, see :ref:`Adding a Listener <elb_ug_jt_0011>`.
+You can bind certificates when you add an HTTPS listener. For details, see :ref:`Adding an HTTPS Listener <elb_ug_jt_0009>`.
 
 
 Replacing a Certificate
@@ -34,15 +34,10 @@ Replacing a Certificate
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
-#. Click **Listeners**.
-
-   -  Shared load balancers: Locate the listener and click |image3| on the right of its name. In the **Modify Listener** dialog box, select the certificate.
-   -  Dedicated load balancers: Locate the listener, click |image4| on the right of its name, and click **Modify Listener**. In the **Modify Listener** dialog box, select the certificate.
-
+#. On the **Listeners** tab page, locate the listener that you want to associate the backend server group with, click |image3| next to the listener name, and select **Modify Listener**.
 #. Select a server certificate and click **Next**.
 #. In the **Configure Backend Server Group** dialog box, click **Finish**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image3| image:: /_static/images/en-us_image_0000001179564316.png
-.. |image4| image:: /_static/images/en-us_image_0000001246898749.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image3| image:: /_static/images/en-us_image_0000001447040000.png

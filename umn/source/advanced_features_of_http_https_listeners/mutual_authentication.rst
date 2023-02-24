@@ -12,6 +12,8 @@ In common HTTPS service scenarios, only the server certificate is required for a
 
 This section uses self-signed certificates as an example to describe how to configure mutual authentication. Self-signed certificates do not provide all the security properties provided by certificates signed by a CA. It is recommended that you purchase certificates from other CAs.
 
+.. _en_us_elb_03_0006__section1271620810310:
+
 Creating a CA Certificate Using OpenSSL
 ---------------------------------------
 
@@ -57,8 +59,6 @@ Creating a CA Certificate Using OpenSSL
       :alt: **Figure 2** Creating a self-signed CA certificate
 
       **Figure 2** Creating a self-signed CA certificate
-
-.. _en_us_elb_03_0006__section780514219136:
 
 Issuing a Server Certificate Using the CA Certificate
 -----------------------------------------------------
@@ -191,12 +191,20 @@ Configuring the CA Certificate
 ------------------------------
 
 #. Log in to the management console.
+
 #. In the navigation pane on the left, choose **Certificates**.
-#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created in :ref:`Issuing a Server Certificate Using the CA Certificate <en_us_elb_03_0006__section780514219136>` to the **Certificate** area, and click **OK**.
+
+#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created :ref:`Creating a CA Certificate Using OpenSSL <en_us_elb_03_0006__section1271620810310>` in to the **Certificate** area, and click **OK**.
 
    .. note::
 
       Delete the last newline character before you copy the content.
+
+
+   .. figure:: /_static/images/en-us_image_0000001125219677.png
+      :alt: **Figure 7** Creating a certificate
+
+      **Figure 7** Creating a certificate
 
    .. note::
 
@@ -207,13 +215,13 @@ Configuring Mutual Authentication
 
 #. Log in to the management console.
 
-#. Locate the load balancer and click its name. Under **Listeners**, click **Add Listener**. Select **HTTPS** for **Frontend Protocol**, enable **Mutual Authentication**, and select the CA certificate and server certificate.
+#. Locate the load balancer and click its name. Under **Listeners**, click **Add Listener**. Select **HTTPS** for **Frontend Protocol**, enable **Mutual Authentication**, select **Mutual authentication**, and select the CA certificate and server certificate.
 
 
    .. figure:: /_static/images/en-us_image_0000001125463277.png
-      :alt: **Figure 7** Add Listener
+      :alt: **Figure 8** Adding a listener
 
-      **Figure 7** Add Listener
+      **Figure 8** Adding a listener
 
 **Add backend servers**.
 
@@ -234,9 +242,9 @@ Importing and Testing the Client Certificate
 
 
       .. figure:: /_static/images/en-us_image_0280246566.png
-         :alt: **Figure 8** Importing the **client.p12** certificate
+         :alt: **Figure 9** Importing the **client.p12** certificate
 
-         **Figure 8** Importing the **client.p12** certificate
+         **Figure 9** Importing the **client.p12** certificate
 
 #. Verify the import.
 
@@ -244,9 +252,9 @@ Importing and Testing the Client Certificate
 
 
    .. figure:: /_static/images/en-us_image_0280246602.png
-      :alt: **Figure 9** Accessing the website
+      :alt: **Figure 10** Accessing the website
 
-      **Figure 9** Accessing the website
+      **Figure 10** Accessing the website
 
 **Method 2: Using cURL**
 
@@ -266,6 +274,6 @@ Importing and Testing the Client Certificate
 
 
    .. figure:: /_static/images/en-us_image_0280169359.png
-      :alt: **Figure 10** Example of a correct response code
+      :alt: **Figure 11** Example of a correct response code
 
-      **Figure 10** Example of a correct response code
+      **Figure 11** Example of a correct response code
