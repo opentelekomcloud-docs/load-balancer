@@ -15,7 +15,7 @@ If there is no version added to the URL, all available versions are returned.
 URI
 ---
 
-GET /
+GET /versions
 
 Request
 -------
@@ -34,23 +34,25 @@ Example
 
    .. code-block:: text
 
-      GET /
+      GET /versions
 
 -  Example response
 
    .. code-block::
 
       {
-         "versions": [
-            {
-                "status": "CURRENT",
-                "id": "v2.0",
-                "links": [
-               {
-                  "href": "http://192.168.82.231:9696/v2.0",
-                  "rel": "self"
-               }
-              ]
-             }
-           ]
+        "versions": [
+          {
+            "id": "v3",
+            "status": "CURRENT"
+          },
+          {
+            "id": "v2",
+            "status": "STABLE"
+          },
+          {
+            "id": "v2.0",
+            "status": "STABLE"
+          }
+        ]
       }

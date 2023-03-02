@@ -6,11 +6,11 @@ Elastic Load Balancing - API Reference
    :maxdepth: 1
 
    api_usage_guidelines
-   classic_load_balancer_apis/index
-   shared_load_balancer_apis/index
-   dedicated_load_balancer_apis/index
+   apis_v2.0/index
+   apis_v3/index
    querying_versions
    examples/index
    common_parameters/index
+   historical_apis/index
    appendix/index
    change_history
