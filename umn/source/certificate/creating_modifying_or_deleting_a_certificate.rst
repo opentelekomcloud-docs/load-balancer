@@ -1,6 +1,6 @@
-:original_name: en-us_elb_03_0005.html
+:original_name: elb_ug_zs_0004.html
 
-.. _en-us_elb_03_0005:
+.. _elb_ug_zs_0004:
 
 Creating, Modifying, or Deleting a Certificate
 ==============================================
@@ -14,7 +14,7 @@ To enable authentication for securing data transmission over HTTPS, you can crea
 
    -  A certificate can be bound to only one type of load balancer. Ensure that you have selected the correct type.
 
-.. _en-us_elb_03_0005__section26868475171830:
+.. _elb_ug_zs_0004__section26868475171830:
 
 Creating a Certificate
 ----------------------
@@ -129,8 +129,8 @@ Only certificates that are not in use can be deleted.
 #. Click **Yes**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image6| image:: /_static/images/en-us_image_0000001417088430.png

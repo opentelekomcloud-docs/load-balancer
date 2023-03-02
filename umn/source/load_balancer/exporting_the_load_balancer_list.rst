@@ -19,5 +19,5 @@ Procedure
 #. In the upper right corner of the load balancer list, click |image3|.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001195393079.png

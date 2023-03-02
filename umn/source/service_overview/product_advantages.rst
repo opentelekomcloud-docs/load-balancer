@@ -10,7 +10,7 @@ Advantages of Dedicated Load Balancers
 
 -  Robust performance
 
-   Each dedicated load balancer has exclusive use of isolated resources and can provide guaranteed performance, meeting your requirements for handling a massive number of requests. A single dedicated load balancer deployed in one AZ can handle up to 20 million concurrent connections.
+   Each dedicated load balancer has exclusive use of isolated resources, meeting your requirements for handling a massive number of requests. A single dedicated load balancer deployed in one AZ can handle up to 20 million concurrent connections.
 
    If you deploy a dedicated load balancer in multiple AZs, its performance such as the number of new connections and the number of concurrent connections will multiply. For example, if you deploy a dedicated load balancer in two AZs, it can handle up to 40 million concurrent connections.
 
@@ -24,30 +24,26 @@ Advantages of Dedicated Load Balancers
 
 -  High availability
 
-   Dedicated load balancers can route traffic uninterruptedly. If your servers in one AZ are unhealthy, dedicated load balancers automatically route traffic to healthy servers in other AZs. Dedicated load balancers provide a comprehensive health check system to ensure that incoming traffic is routed only to healthy backend servers, improving the availability of your applications.
+   ELB can route traffic uninterruptedly. If your servers in one AZ are unhealthy, it automatically routes traffic to healthy servers in other AZs. ELB provides a comprehensive health check system to ensure that incoming traffic is routed only to healthy backend servers, improving the availability of your applications.
 
--  Ultra security
+-  Ultra-high security
 
-   Dedicated load balancers support TLS 1.3 and can route HTTPS requests to backend servers. Dedicated load balancers also allow you to select security policies that fit your security requirements.
+   ELB supports TLS 1.3 and can route HTTPS requests to backend servers. You can select security policies or customize security policies that fit your security requirements.
 
 -  Multiple protocols
 
-   Dedicated load balancers support the following protocols, including TCP, UDP, HTTP, and HTTPS, so that they can route requests from different types of applications.
+   ELB supports , TCP, UDP, HTTP, and HTTPS, so that they can route requests to different types of applications.
+
+-  No limits
+
+   ELB can route requests to both servers on the cloud and on premises, allowing you to leverage cloud resources to handle burst traffic.
 
 -  Ease-of-use
 
-   Dedicated load balancers provide a diverse set of algorithms that allow you to configure different traffic routing policies to meet your requirements while keeping deployments simple.
-
--  High reliability
-
-   Dedicated load balancers can be deployed across AZs and can distribute traffic more evenly.
+   ELB provides a diverse set of algorithms that allow you to configure different traffic routing policies to meet your requirements while keeping deployments simple.
 
 Advantages of Shared Load Balancers
 -----------------------------------
-
--  Robust performance
-
-   Shared load balancers are deployed in clusters, which can handle up to 100 million concurrent connections and 1 million new connections per second, meeting your requirements for handling huge numbers of concurrent requests.
 
 -  High availability
 
@@ -55,7 +51,7 @@ Advantages of Shared Load Balancers
 
 -  Multiple protocols
 
-   Shared load balancers support the following protocols: TCP, UDP, HTTP, and HTTPS, so that they can route requests from different types of applications.
+   ELB supports TCP, UDP, HTTP, and HTTPS protocols to route requests to different types of applications.
 
 -  Ease-of-use
 

@@ -11,7 +11,7 @@ Service Overview
 -  :ref:`Application Scenarios <elb_pro_0006>`
 -  :ref:`Differences Between Dedicated and Shared Load Balancers <elb_pro_0004>`
 -  :ref:`Specifications of Dedicated Load Balancers <en-us_topic_0287737145>`
--  :ref:`Load Balancing on a Public or Private Network <en-us_elb_01_0004>`
+-  :ref:`Load Balancing on a Public or Private Network <elb_pro_01_0004>`
 -  :ref:`Network Traffic Paths <elb_ug_fz_0003_01>`
 -  :ref:`Product Concepts <en-us_topic_0195131496>`
 -  :ref:`How ELB Works with Other Services <elb_pro_0008>`

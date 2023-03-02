@@ -1,13 +1,13 @@
-:original_name: en-us_elb_05_0008.html
+:original_name: elb_faq_05_0008.html
 
-.. _en-us_elb_05_0008:
+.. _elb_faq_05_0008:
 
 What Are the Relationships Between Load Balancing Algorithms and Sticky Session Types?
 ======================================================================================
 
 ELB supports three types of sticky sessions that can send requests from the same client to the same backend server. The following tables list the types of sticky sessions corresponding to each load balancing algorithm.
 
-.. _en-us_elb_05_0008__table169631166584:
+.. _elb_faq_05_0008__table169631166584:
 
 .. table:: **Table 1** Sticky sessions supported by dedicated load balancers
 

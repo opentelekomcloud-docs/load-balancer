@@ -17,7 +17,7 @@ You can add a tag to a load balancer in either of the following scenarios:
 
 -  Add a tag when you create a load balancer.
 
-   For details about the procedure and parameters, see :ref:`Creating a Dedicated Load Balancer <elb_lb_000006>` and :ref:`Creating a Shared Load Balancera Load Balancer <en-us_topic_0015479967__section19343262431>`.
+   For details about the procedure and parameters, see :ref:`Creating a Dedicated Load Balancer <elb_lb_000006>` and :ref:`Creating a Shared Load Balancer <en-us_topic_0015479967>`.
 
 -  Add a tag to an existing load balancer.
 
@@ -50,7 +50,7 @@ To add a tag to an existing listener, perform the following steps:
 
    .. note::
 
-      -  A maximum of 1020 tags can be added to a listener.
+      -  A maximum of 20 tags can be added to a listener.
       -  Each tag is a key-value pair, and the tag key is unique.
 
 Modifying a Tag
@@ -83,10 +83,10 @@ Deleting a Tag
 The operations for deleting a listener tag are not detailed here. Refer to the operations of deleting a load balancer tag.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
 .. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image8| image:: /_static/images/en-us_image_0000001417088430.png

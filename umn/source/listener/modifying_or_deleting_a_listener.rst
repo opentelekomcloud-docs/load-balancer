@@ -23,19 +23,15 @@ Modifying a Listener
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
-#. Click **Listeners**.
-
-   -  Shared load balancers: Locate the listener and click |image3| on the right of its name. In the **Modify Listener** dialog box, modify the parameters as needed.
-   -  Dedicated load balancers: Locate the listener and click |image4| on the right of its name. In the **Modify Listener** dialog box, modify the parameters as needed.
-
+#. On the **Listeners** tab page, locate the listener, click |image3| next to the listener name, and select **Modify Listener**.
 #. Click **OK**.
 
 Deleting a Listener
 -------------------
 
 #. Log in to the management console.
-#. In the upper left corner of the page, click |image5| and select the desired region and project.
-#. Hover on |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. In the upper left corner of the page, click |image4| and select the desired region and project.
+#. Hover on |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 
    .. note::
@@ -45,16 +41,12 @@ Deleting a Listener
       -  If the listener has a forwarding policy, delete the forwarding policy before deleting the listener.
       -  After a listener is deleted, the associated backend server group is also deleted.
 
-#. Click **Listeners**.
-
-   -  Shared or dedicated load balancers: Locate the listener and click |image7| on the right of its name.
-
+#. Click **Listeners**, locate the listener, and click |image6| on the right of its name.
 #. Click **Yes**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image3| image:: /_static/images/en-us_image_0238446387.png
-.. |image4| image:: /_static/images/en-us_image_0000001202965532.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001120894978.png
-.. |image7| image:: /_static/images/en-us_image_0000001163728097.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image3| image:: /_static/images/en-us_image_0000001454495702.png
+.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
+.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image6| image:: /_static/images/en-us_image_0238393764.png

@@ -21,14 +21,6 @@ How ELB Works with Other Services
 
    Provides cloud servers to run your applications in the cloud. Configure load balancers to route traffic to the servers or containers.
 
--  Log Tank Service (LTS)
-
-   Stores access logs of HTTP or HTTPS requests to your load balancer for query and analysis later if you have enabled access logging.
-
--  Cloud Trace Service (CTS)
-
-   Records the operations performed on ELB resources.
-
 -  Cloud Eye
 
    Monitors the status of load balancers and listeners, without any additional plug-in.

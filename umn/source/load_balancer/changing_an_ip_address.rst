@@ -8,7 +8,9 @@ Changing an IP Address
 Scenarios
 ---------
 
-ELB allows you to change private IPv4 addresses of load balancers. New private IPv4 addresses can be from the current subnet or other subnets.
+You can change the private IPv4 IP address and IPv6 IP address bound to each load balancer.
+
+Only dedicated load balancers support this function.
 
 Changing a Private IPv4 Address
 -------------------------------
@@ -25,4 +27,4 @@ Changing a Private IPv4 Address
 #. Click **OK**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

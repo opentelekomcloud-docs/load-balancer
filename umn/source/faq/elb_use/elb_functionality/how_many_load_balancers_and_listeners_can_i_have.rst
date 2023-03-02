@@ -1,6 +1,6 @@
-:original_name: en-us_elb_05_0004.html
+:original_name: elb_faq_05_0004.html
 
-.. _en-us_elb_05_0004:
+.. _elb_faq_05_0004:
 
 How Many Load Balancers and Listeners Can I Have?
 =================================================

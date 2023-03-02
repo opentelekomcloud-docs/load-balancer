@@ -34,7 +34,7 @@ Shared load balancers: To ensure that health checks can be performed normally, e
       -  Dedicated load balancers: Ensure that security group rules allow access from IP addresses in the VPC where the backend server resides. For details about how to configure security groups for backend servers associated with dedicated load balancers, see :ref:`Configuring Security Group Rules for Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0007>`.
       -  Shared load balancers: Ensure that security group rules allow access from IP addresses in 100.125.0.0/16. For details, see :ref:`Configuring a Security Group for Backend Servers (Shared Load Balancers) <elb_ug_hd_0002>`.
 
-   -  Shared load balancers: If **Obtain Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
+   -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
 
 If a backend server is considered unhealthy, ELB will not route traffic to it until it is declared healthy again.
 
@@ -44,16 +44,16 @@ If you change the weight of a healthy backend server to 0, the health check resu
 
    -  When a backend server is detected as unhealthy, the load balancer will stop routing requests to this server.
    -  If health checks are disabled, the load balancer will consider the backend server healthy by default and still route requests to it.
-   -  If **Obtain Client IP Address** is enabled for TCP and UDP listeners of both dedicated and shared load balancers, client IP addresses instead of IP addresses in 100.125.0.0/16 are used to communicate with the backend server.
+   -  If **Transfer Client IP Address** is enabled for TCP and UDP listeners of both dedicated and shared load balancers, client IP addresses instead of IP addresses in 100.125.0.0/16 are used to communicate with the backend server.
    -  ELB uses IP addresses in 100.125.0.0/16 to perform health checks and route requests to backend servers.
    -  Traffic will not be routed to a backend server with a weight of 0, so the health check result for this backend server is not relevant.
 
 Troubleshooting
 ---------------
 
-Possible causes are described here in order of their probability.
+Possible causes are described here in order of how likely they are to occur.
 
-Check these causes one by one until the cause of the fault is determined.
+Check these causes one by one until you find the cause of this issue.
 
 .. note::
 
@@ -162,7 +162,7 @@ Checking Security Group Rules
    -  **TCP, HTTP, or HTTPS listeners**: Verify that the inbound security group rule allows TCP traffic from the VPC where the dedicated load balancer resides to the backend server over the health check port.
 
       -  If the health check port is the same as the backend port, the inbound rule must allow traffic over the backend port, for example, port 80.
-      -  If the health check port is different from the backend port, the inbound rule must allow traffic over both the health check port and backend port, for example, ports 443 and 80.
+      -  If the port (port 80 as an example) for health check is different from that used by the backend server (port 443 as an example), inbound security group rules must allow traffic over the both ports.
 
          .. note::
 
@@ -187,7 +187,7 @@ Checking Security Group Rules
    -  **TCP, HTTP, or HTTPS listeners**: Verify that the inbound rule of the security group containing the backend server allows access from 100.125.0.0/16 and allows the traffic from the health check port.
 
       -  If the health check port is the same as the backend port, the inbound rule must allow traffic over the backend port, for example, port 80.
-      -  If the health check port is different from the backend port, the inbound rule must allow traffic over both the health check port and backend port, for example, ports 443 and 80.
+      -  If the port (port 80 as an example) for health check is different from that used by the backend server (port 443 as an example), inbound security group rules must allow traffic over the both ports.
 
          .. note::
 
@@ -218,7 +218,7 @@ Checking Security Group Rules
 Checking Firewall Rules
 -----------------------
 
--  **Dedicated load balancers**
+-
 
    To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
@@ -226,7 +226,7 @@ Checking Firewall Rules
 
    #. Log in to the management console.
    #. In the upper left corner of the page, click |image1| and select the desired region and project.
-   #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Virtual Private Cloud**.
+   #. Click |image2| in the upper left corner of the page and choose **Network** > **Virtual Private Cloud**.
    #. In the navigation pane on the left, choose **Access Control** > **Firewall**.
    #. In the firewall list, click the name of the firewall to switch to the page showing its details.
    #. On the **Inbound Rules** or **Outbound Rules** tab page, click **Add Rule** to add a rule.
@@ -249,7 +249,7 @@ Checking Firewall Rules
 
    #. Log in to the management console.
    #. In the upper left corner of the page, click |image3| and select the desired region and project.
-   #. Under **Network**, click **Virtual Private Cloud**.
+   #. Click |image4| in the upper left corner of the page and choose **Network** > **Virtual Private Cloud**.
    #. In the navigation pane on the left, choose **Access Control** > **Firewall**.
    #. In the firewall list, click the name of the firewall to switch to the page showing its details.
    #. On the **Inbound Rules** or **Outbound Rules** tab page, click **Add Rule** to add a rule.
@@ -308,9 +308,9 @@ Checking the Backend Server
 
    TCP listeners: 200
 
-   Dedicated load balancers: 200 for TCP/UDP/HTTP/HTTPS health checks
+   Dedicated load balancers: 200 for HTTP/HTTPS health checks
 
-   Shared load balancers: 200, 202, or 401 for HTTP health checks, and 200 for TCP health checks
+   Shared load balancers: 200, 202, or 401 for HTTP health check
 
 
    .. figure:: /_static/images/en-us_image_0277560436.png
@@ -333,7 +333,7 @@ Checking the Backend Server
 Checking the Firewall on the Backend Server
 -------------------------------------------
 
-If the firewall or other security software is enabled in the backend server, the software may block the IP addresses in the VPC CIDR block or 100.125.0.0/16.
+If the firewall or other security software is enabled in the backend server, the software may block the IP addresses in 100.125.0.0/16.
 
 For dedicated load balancers, configure inbound firewall rules to allow traffic from the VPC to which the load balancers work to backend servers.
 
@@ -396,5 +396,6 @@ For dedicated load balancers, verify that the IP addresses from the VPC where th
 For shared load balancers, verify that IP addresses from 100.125.0.0/16 are not written into the file.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001120894978.png
+.. |image2| image:: /_static/images/en-us_image_0000001508946757.png
 .. |image3| image:: /_static/images/en-us_image_0000001211126503.png
+.. |image4| image:: /_static/images/en-us_image_0000001458986782.png
