@@ -9,6 +9,7 @@ Access control allows you to add a whitelist or blacklist to specify IP addresse
 
 .. important::
 
+   -  Adding the whitelist or blacklist may cause risks. Once a whitelist is added, only IP addresses in the whitelist can access the listener. After a blacklist is added, IP addresses in the blacklist cannot access the listener.
    -  Whitelists and blacklists do not conflict with inbound security group rules. Whitelists define the IP addresses that are allowed to access the listeners, while blacklists specify IP addresses that are denied to access the listeners. Inbound security group rules control access to backend servers by specifying the protocol, ports, and IP addresses.
    -  Access control does not restrict the ping command. You can still ping backend servers from the restricted IP addresses.
    -  Access control policies only take effect for new connections, but not for connections that have been established. If a whitelist is configured for a listener but IP addresses that are not in the whitelist can access the backend server associated with the listener, one possible reason is that a persistent connection is established between the client and the backend server. To deny IP addresses that are not in the whitelist from accessing the listener, the persistent connection between the client and the backend server needs to be disconnected.
