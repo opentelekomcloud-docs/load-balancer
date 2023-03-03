@@ -32,7 +32,7 @@ Adding a Security Policy
 
    .. _elb_ug_jt_0022__table1247813103533:
 
-   .. table:: **Table 1** Default security policiesSecurity policies
+   .. table:: **Table 1** Default security policies
 
       +----------------------------------------------------+-------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------+
       | Security Policy                                    | Description                                                                                                 | TLS Versions    | Cipher Suites                    |

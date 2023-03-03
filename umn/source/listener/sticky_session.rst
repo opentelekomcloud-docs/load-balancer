@@ -38,7 +38,7 @@ Differences Between Sticky Sessions at Layer 4 and Layer 7
    |             |                     |                                                                                                                                                                                                                                                                                                                                                                                                                          | -  Range: 1 minute to 1,440 minutes |                                                                                                   |
    +-------------+---------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+---------------------------------------------------------------------------------------------------+
 
-Dedicated load balancers support two types of sticky sessions: **Source IP address** and **Load balancer cookie**
+Dedicated load balancers support two types of sticky session: **Source IP address** and **Load balancer cookie**.
 
 Shared load balancers support three types of sticky session, including **Source IP address**, **Load balancer cookie**, and **Application cookie**.
 
@@ -49,7 +49,7 @@ Enabling Sticky Sessions
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
-#. For a shared load balancer and a dedicated load balancer, click **Backend Server Groups**, locate the backend server group, and click |image3| on the right of its name.
+#. Click **Backend Server Groups**, locate the backend server group, and click |image3| on the right of its name.
 #. Enable **Sticky Session**, select the sticky session type, and set the session stickiness duration.
 #. Click **OK**.
 
@@ -59,4 +59,4 @@ Enabling Sticky Sessions
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
 .. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0167649598.png
+.. |image3| image:: /_static/images/en-us_image_0167649597.png
