@@ -12,6 +12,10 @@ Access control allows you to add a whitelist or blacklist to specify IP addresse
    -  Adding the whitelist or blacklist may cause risks. Once a whitelist is added, only IP addresses in the whitelist can access the listener. After a blacklist is added, IP addresses in the blacklist cannot access the listener.
    -  Whitelists and blacklists do not conflict with inbound security group rules. Whitelists define the IP addresses that are allowed to access the listeners, while blacklists specify IP addresses that are denied to access the listeners. Inbound security group rules control access to backend servers by specifying the protocol, ports, and IP addresses.
    -  Access control does not restrict the ping command. You can still ping backend servers from the restricted IP addresses.
+
+      -  To ping the IP address of a shared load balancer, you need to add a listener and associate a backend server to it.
+      -  To ping the IP address of a dedicated load balancer, you only need to add a listener to it.
+
    -  Access control policies only take effect for new connections, but not for connections that have been established. If a whitelist is configured for a listener but IP addresses that are not in the whitelist can access the backend server associated with the listener, one possible reason is that a persistent connection is established between the client and the backend server. To deny IP addresses that are not in the whitelist from accessing the listener, the persistent connection between the client and the backend server needs to be disconnected.
 
 Configuring Access Control
@@ -22,6 +26,7 @@ Configuring Access Control
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 4. Locate the load balancer and click its name.
+
 5. Click **Listeners** and locate the listener. On the **Basic Information** page of the listener, click **Configure** on the right of **Access Control**. In the displayed dialog box, configure access control.
 
    .. table:: **Table 1** Parameter description

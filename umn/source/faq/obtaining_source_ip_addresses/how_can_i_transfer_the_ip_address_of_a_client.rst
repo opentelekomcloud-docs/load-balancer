@@ -275,29 +275,31 @@ For load balancing at Layer 4 (TCP/UDP), you can enable **Transfer Client IP Add
 
 -  **Method 1 (for TCP or UDP listeners)**: Enable **Transfer Client IP Address**.
 
+   .. caution::
+
+      -  After this function is enabled, traffic, such as unidirectional download or push traffic, may be interrupted when backend servers are being migrated during the migration of the associated classic load balancer. After backend servers are migrated, retransmit the packets to restore the traffic.
+      -  After this function is enabled, the associated backend servers cannot be used as clients to access the listener.
+      -  If a backend server has been associated with the listener and health checks are enabled, enabling this function will check the health of the backend server, and traffic to this server will be interrupted for two health check intervals.
+
    #. Perform the following steps to enable the function:
 
       a. Log in to the management console.
       b. In the upper left corner of the page, click |image1| and select the desired region and project.
-      c. Click **Service List**. Under **Network**, click **Elastic Load Balance**.
+      c. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
       d. In the load balancer list, click the name of the load balancer.
       e. Click **Listeners**.
 
          -  To add a listener, click **Add Listener**.
-         -  To modify a listener, locate the listener, click |image2| on the right of its name, and click **Modify Listener**. In the **Modify Listener** dialog box, modify the parameters as needed.
+         -  To modify a listener, locate the listener, click |image3| on the right of its name, and click **Modify Listener**. In the **Modify Listener** dialog box, modify the parameters as needed.
 
       f. Enable **Transfer Client IP Address**.
 
    #. Configure security groups, network ACLs, and OS and software security policies so that IP addresses of the clients can access these backend servers.
-
-      .. caution::
-
-         -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-         -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from the VPC where the load balancer works to the backend servers associated with TCP or UDP listener.
 
       .. note::
 
          If you enable this function, a server cannot be used as both the client and the backend server. If the client and the backend server use the same server and the **Transfer Client IP Address** option is enabled, the backend server will think the packet from the client is sent by itself and will not return a response packet to the load balancer. As a result, the return traffic will be interrupted.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001454530030.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image3| image:: /_static/images/en-us_image_0000001454530030.png

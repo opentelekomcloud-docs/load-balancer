@@ -14,7 +14,7 @@ If you have no VPCs when creating a server, the system will automatically create
 
 .. note::
 
-   If **Transfer Client IP Address** is enabled for the TCP or UDP listener, security group rules and network ACL rules will not take effect. To control traffic to backend servers, you can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`access control <en-us_elb_03_0003>`.
+   If **Transfer Client IP Address** is enabled for the TCP or UDP listeners, firewall rules and security group rules will not take effect. To control traffic to backend servers, you can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`access control <en-us_elb_03_0003>`.
 
 Procedure
 ---------
@@ -35,28 +35,34 @@ Procedure
 
    The security group details page is displayed.
 
-#. Under **Inbound Rules**, click **Add Rule**.
+#. On the **Inbound Rules** tab page, click **Add Rule**. Configure an inbound rule based on :ref:`Table 1 <elb_ug_hd_0002__en-us_topic_0000001434422737_table22703095416>`.
 
-   -  **TCP, HTTP, or HTTPS listeners**
+   .. _elb_ug_hd_0002__en-us_topic_0000001434422737_table22703095416:
 
-      -  If the health check port is not the one used by each backend server, add inbound rules to allow TCP traffic over the health check port and the ports used by backend servers.
+   .. table:: **Table 1** Security group rules
 
-      -  If you do not specify a health check port, add inbound rules to allow TCP traffic over the ports used by backend servers.
-      -  The inbound rules must also allow access from 100.125.0.0/16. Otherwise, health checks will fail.
-
-   -  **UDP listeners**
-
-      -  If the health check port is not the one used by each backend server, add inbound rules to allow UDP traffic over the health check port and the ports used by backend servers.
-      -  If you do not specify a health check port, add inbound rules to allow UDP traffic over the ports used by backend servers.
-      -  The inbound rules must also allow access from 100.125.0.0/16. Otherwise, health checks will fail.
-      -  You need also to add an inbound rule to allow ICMP traffic.
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------+
+      | Backend Protocol | Policy          | Protocol & Port                                                     | Source IP Address |
+      +==================+=================+=====================================================================+===================+
+      | HTTP             | Allow           | **Protocol**: TCP                                                   | 100.125.0.0/16    |
+      |                  |                 |                                                                     |                   |
+      |                  |                 | **Port**: the port used by the backend server and health check port |                   |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------+
+      | TCP              | Allow           | **Protocol**: TCP                                                   | 100.125.0.0/16    |
+      |                  |                 |                                                                     |                   |
+      |                  |                 | **Port**: health check port                                         |                   |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------+
+      | UDP              | Allow           | **Protocol**: UDP and ICMP                                          | 100.125.0.0/16    |
+      |                  |                 |                                                                     |                   |
+      |                  |                 | **Port**: health check port                                         |                   |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------+
 
 #. Click **OK**.
 
 Configuring Firewall Rules
 --------------------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to permit access from 100.125.0.0/16.
 

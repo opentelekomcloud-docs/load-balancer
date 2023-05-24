@@ -5,7 +5,7 @@
 Certificate
 ===========
 
--  :ref:`Overview <elb_ug_zs_0001>`
+-  :ref:`Introduction to Certificates <elb_ug_zs_0001>`
 -  :ref:`Certificate and Private Key Format <en-us_topic_0092382555>`
 -  :ref:`Converting Certificate Formats <elb_ug_zs_0003>`
 -  :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`
@@ -16,7 +16,7 @@ Certificate
    :maxdepth: 1
    :hidden: 
 
-   overview
+   introduction_to_certificates
    certificate_and_private_key_format
    converting_certificate_formats
    creating_modifying_or_deleting_a_certificate

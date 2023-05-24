@@ -24,4 +24,4 @@ Procedure
    Disable deletion protection before you delete a load balancer.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001167509179.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

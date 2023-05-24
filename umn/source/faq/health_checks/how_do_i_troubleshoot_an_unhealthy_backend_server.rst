@@ -21,9 +21,9 @@ If a client cannot access a backend server through a load balancer, the backend 
 Background
 ----------
 
-To check the health of backend servers, dedicated load balancers use the IP addresses from the VPC where they work to send heartbeat requests to backend servers, while shared load balancers use IP addresses in 100.125.0.0/16.
+To check the health of backend servers, dedicated load balancers use the IP addresses from the backend subnet where they work to send heartbeat requests to backend servers, while shared load balancers use IP addresses in 100.125.0.0/16.
 
-Dedicated load balancers: To ensure that health checks can be performed normally, ensure that traffic is allowed from the VPC where the load balancer is working to the backend servers.
+Dedicated load balancers: To ensure that health checks can be performed normally, ensure that traffic is allowed from the backend subnet where the load balancer is working to the backend servers.
 
 Shared load balancers: To ensure that health checks can be performed normally, ensure that traffic is allowed from 100.125.0.0/16 to the backend servers.
 
@@ -218,9 +218,9 @@ Checking Security Group Rules
 Checking Firewall Rules
 -----------------------
 
--
+-  **Dedicated load balancers**
 
-   To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+   To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
    Configure an inbound firewall rule to allow traffic from the VPC where the load balancer works to backend servers.
 
@@ -243,7 +243,7 @@ Checking Firewall Rules
 
 -  **Shared load balancers**
 
-   To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+   To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
    Configure an inbound firewall rule to permit access from 100.125.0.0/16.
 

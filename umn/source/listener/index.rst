@@ -15,7 +15,7 @@ Listener
 -  :ref:`Adding an HTTP Listener <elb_ug_jt_0008>`
 -  :ref:`Adding an HTTPS Listener <elb_ug_jt_0009>`
 -  :ref:`Adding a UDP Listener (with a QUIC Backend Server Group Associated) <elb_ug_jt_0018>`
--  :ref:`Configuring or Modifying Timeout Durations <elb_ug_jt_0014>`
+-  :ref:`Configuring Timeout Durations <elb_ug_jt_0014>`
 -  :ref:`Modifying or Deleting a Listener <elb_ug_jt_0012>`
 -  :ref:`Transfer Client IP Address <elb_ug_jt_0514>`
 
@@ -33,6 +33,6 @@ Listener
    adding_an_http_listener
    adding_an_https_listener
    adding_a_udp_listener_with_a_quic_backend_server_group_associated
-   configuring_or_modifying_timeout_durations
+   configuring_timeout_durations
    modifying_or_deleting_a_listener
    transfer_client_ip_address

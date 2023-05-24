@@ -2,8 +2,8 @@
 
 .. _elb_ug_zs_0001:
 
-Overview
-========
+Introduction to Certificates
+============================
 
 ELB supports two types of certificates. If you need an HTTPS listener, you need to bind a server certificate to it. To enable mutual authentication, you also need to bind a CA certificate to the listener.
 

@@ -8,7 +8,7 @@ Adding a UDP Listener (with a QUIC Backend Server Group Associated)
 Scenarios
 ---------
 
-If you use UDP as the frontend protocol, you can select QUIC as the backend protocol. QUIC has the advantages of low latency, high reliability, and no head-of-line blocking (HOL blocking), and is very suitable for the mobile Internet. No new connections need to be established when you switch between a Wi-Fi and a mobile data network.
+If you use UDP as the frontend protocol, you can select QUIC as the backend protocol and select the connection ID to route requests with the same connection ID to the same backend server. QUIC has the advantages of low latency, high reliability, and no head-of-line blocking (HOL blocking), and is very suitable for the mobile Internet. No new connections need to be established when you switch between a Wi-Fi and a mobile data network.
 
 .. note::
 
@@ -37,11 +37,11 @@ Adding a UDP Listener with a QUIC Backend Server Group Associated
 
 #. Under **Listeners**, click **Add Listener**.
 
-#. In the **Configure Listener** step, set **Frontend Protocol** to **UDP**, configure other parameters based on the site requirements, and click **Next**.
+#. In the **Configure Listener** step, set **Frontend Protocol** to **UDP**, configure other parameters based on the site requirements, and click **Next: Configure Request Routing Policy**.
 
 #. In the **Configure Routing Policy** step, set **Backend Protocol** to **QUIC** and configure other parameters as required.
 
-#. Configure the parameters and click **Submit**.
+#. Configure the parameters and click **Submit.**
 
 Follow-Up Operations
 --------------------

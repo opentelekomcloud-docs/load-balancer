@@ -10,7 +10,7 @@ Scenarios
 
 You have a web application, which often needs to handle heavy traffic and is deployed on two ECSs for load balancing.
 
-You can create a shared load balancer to distribute traffic evenly across the two ECSs, which eliminates SPOFs and makes your application more available.
+You can create a shared load balancer to distribute traffic across the two ECSs, which eliminates SPOFs and makes your application more available.
 
 Prerequisites
 -------------
@@ -21,7 +21,7 @@ Prerequisites
    .. caution::
 
       -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from the VPC where the load balancer works to the backend servers associated with TCP or UDP listener.
+      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with TCP or UDP listener.
 
 Creating ECSs
 -------------
@@ -243,7 +243,7 @@ After the load balancer is configured, you can access the domain name to check w
 
 #. Modify the **C:\\Windows\\System32\\drivers\\etc\\hosts** file on your PC to map the domain name to the load balancer EIP.
 
-   View the load balancer EIP on the **Basic Information** page of the load balancer.
+   View the load balancer EIP on the **Summary** page of the load balancer.
 
 
    .. figure:: /_static/images/en-us_image_0167652140.png

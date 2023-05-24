@@ -16,10 +16,13 @@ Advantages of Dedicated Load Balancers
 
    .. note::
 
-      -  If requests are from the Internet, the load balancer in each AZ you select routes the requests based on source IP addresses.
+      -  If requests are from the Internet, the load balancer in each AZ you select routes the requests based on source IP addresses. If you deploy a load balancer in two AZs, the requests the load balancers can handle will be doubled.
       -  For requests from a private network:
 
-         -  If clients are in an AZ you select when you create the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer is unavailable, requests are distributed by the load balancer in another AZ you select.
+         -  If clients are in an AZ you have selected when you create the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer is unhealthy, requests are distributed by the load balancer in another AZ you have selected.
+
+            If the load balancer is healthy but the connections that the load balancer need to handle exceed the amount defined in the specifications, service may be interrupted. To address this issue, you need upgrade specifications.
+
          -  If clients are in an AZ that is not selected when you create the load balancer, requests are distributed by the load balancer in each AZ you select based on source IP addresses.
 
 -  High availability
@@ -32,7 +35,11 @@ Advantages of Dedicated Load Balancers
 
 -  Multiple protocols
 
-   ELB supports , TCP, UDP, HTTP, and HTTPS, so that they can route requests to different types of applications.
+   ELB supports Quick UDP Internet Connection (QUIC), TCP, UDP, HTTP, and HTTPS, so that they can route requests to different types of applications.
+
+-  High flexibility
+
+   ELB can route requests based on their content, such as the request method, header, URL, path, and source IP address. They can also redirect requests to another listener or URL, or return a fixed response to the clients.
 
 -  No limits
 
@@ -48,6 +55,12 @@ Advantages of Shared Load Balancers
 -  High availability
 
    Shared load balancers can route traffic across AZs, ensuring that your services are uninterrupted. If servers in an AZ are unhealthy, ELB automatically routes traffic to healthy servers in other AZs. Shared load balancers provide a comprehensive health check mechanism to ensure that incoming traffic is routed to only healthy backend servers, improving the availability of your applications.
+
+
+   .. figure:: /_static/images/en-us_image_0000001200220428.png
+      :alt: **Figure 1** High availability
+
+      **Figure 1** High availability
 
 -  Multiple protocols
 

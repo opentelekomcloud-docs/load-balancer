@@ -10,7 +10,7 @@ Scenarios
 
 You have two web applications that are deployed on separated ECSs but use the same domain name for access. You can set different URLs to process requests.
 
-To forward requests based on URLs, you need to create a shared load balancer, add an HTTP or HTTPS listener, and add forwarding policies to specify the URLs.
+To forward requests based on URLs, you need to create a load balancer, add an HTTP or HTTPS listener, and add forwarding policies to specify the URLs. You can add forwarding policies to HTTP and HTTPS listeners.
 
 An HTTP listener is used as an example to describe how to route requests from two URLs (**/ELB01** and **/ELB02**) of the same domain name (www.example.com) to different backend servers.
 
@@ -23,7 +23,7 @@ Prerequisites
    .. caution::
 
       -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from the VPC where the load balancer works to the backend servers associated with TCP or UDP listener.
+      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with TCP or UDP listener.
 
 Creating ECSs
 -------------
@@ -289,7 +289,7 @@ After the load balancer is configured, you can access the domain name or the spe
 
 #. Modify the **C:\\Windows\\System32\\drivers\\etc\\hosts** file on your PC to map the domain name to the load balancer EIP.
 
-   View the load balancer EIP on the **Basic Information** page of the load balancer.
+   View the load balancer EIP on the **Summary** page of the load balancer.
 
 
    .. figure:: /_static/images/en-us_image_0166358967.png
