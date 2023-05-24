@@ -13,11 +13,11 @@ If you have a large number of cloud resources, you can assign different tags to 
 Adding a Tag to a Load Balancer
 -------------------------------
 
-You can add a tag to a load balancer in either of the following scenarios:
+You can add a tag to a load balancer in the following method:
 
 -  Add a tag when you create a load balancer.
 
-   For details about the procedure and parameters, see :ref:`Creating a Dedicated Load Balancer <elb_lb_000006>` and :ref:`Creating a Shared Load Balancer <en-us_topic_0015479967>`.
+   For detailed operations, see :ref:`Creating a Dedicated Load Balancer <elb_lb_000006>` and :ref:`Creating a Shared Load Balancer <en-us_topic_0015479967>`.
 
 -  Add a tag to an existing load balancer.
 

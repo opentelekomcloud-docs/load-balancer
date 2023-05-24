@@ -14,7 +14,7 @@ If you have no VPCs when creating a server, the system will automatically create
 
 .. note::
 
-   If **IP as a Backend** is not enabled for the dedicated load balancer that has a TCP or UDP listener, security group rules and network ACL rules will not take effect. To control traffic to backend servers, you can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`access control <en-us_elb_03_0003>`.
+   If the load balancer has a TCP or UDP listener and IP as a backend is disabled, security group rules and firewall rules will not take effect. To control traffic to backend servers, you can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`access control <en-us_elb_03_0003>`.
 
 Procedure
 ---------
@@ -33,27 +33,34 @@ Procedure
 
 #. Click the security group rule ID or **Modify Security Group Rule**. The security group details page is displayed.
 
-#. Under **Inbound Rules**, click **Add Rule**.
+#. On the **Inbound Rules** tab page, click **Add Rule**. Configure an inbound rule based on :ref:`Table 1 <elb_ug_hd_0007__en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416>`.
 
-   **TCP, HTTP, or HTTPS listeners**
+   .. _elb_ug_hd_0007__en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416:
 
-   -  If the health check port is not the one used by each backend server, add an inbound rule to allow TCP traffic over the health check port and the ports used by backend servers.
-   -  If you do not specify a health check port, add inbound rules to allow TCP traffic over the ports used by backend servers.
-   -  To ensure normal health checks, ensure that security group rules allow traffic from the CIDR block of the subnet where the load balancer resides and traffic from the health check port and from the ports used by backend servers.
+   .. table:: **Table 1** Security group rules
 
-   **UDP listeners**
-
-   -  If the health check port is not the one used by each backend server, add an inbound rule to allow UDP traffic over the health check port and the ports used by backend servers.
-   -  If you do not specify a health check port, add inbound rules to allow UDP traffic over the ports used by backend servers.
-   -  To ensure normal health checks, ensure that security group rules allow traffic from the CIDR block of the subnet where the load balancer resides and traffic from the health check port and from the ports used by backend servers.
-   -  You need also to add an inbound rule to allow ICMP traffic.
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | Backend Protocol | Policy          | Protocol & Port                                                     | Source IP Address                   |
+      +==================+=================+=====================================================================+=====================================+
+      | HTTP or HTTPS    | Allow           | **Protocol**: TCP                                                   | Backend subnet of the load balancer |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: the port used by the backend server and health check port |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | TCP              | Allow           | **Protocol**: TCP                                                   |                                     |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: health check port                                         |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | UDP              | Allow           | **Protocol**: UDP and ICMP                                          |                                     |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: health check port                                         |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
 
 #. Click **OK**.
 
 Configuring Firewall Rules
 --------------------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to allow traffic from the VPC where the load balancer works to backend servers.
 

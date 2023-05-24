@@ -194,7 +194,7 @@ Configuring the CA Certificate
 
 #. In the navigation pane on the left, choose **Certificates**.
 
-#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created :ref:`Creating a CA Certificate Using OpenSSL <en_us_elb_03_0006__section1271620810310>` in to the **Certificate** area, and click **OK**.
+#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created in :ref:`Creating a CA Certificate Using OpenSSL <en_us_elb_03_0006__section1271620810310>` to the **Certificate** area, and click **OK**.
 
    .. note::
 

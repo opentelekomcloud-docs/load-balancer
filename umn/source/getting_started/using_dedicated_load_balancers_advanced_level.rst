@@ -22,7 +22,7 @@ Prerequisites
 
    .. note::
 
-      Dedicated load balancers: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules to allow traffic from the VPC where the load balancer works to the backend servers associated with TCP or UDP listener.
+      If **IP as a Backend** is not enabled for a dedicated load balancer that has a TCP or UDP listener, there is no need to configure security group rules to allow traffic from the VPC where the load balancer backend subnet works to the backend servers.
 
 Creating ECSs
 -------------
@@ -230,27 +230,34 @@ Procedure
 
 #. Click the security group rule ID or **Modify Security Group Rule**. The security group details page is displayed.
 
-#. Under **Inbound Rules**, click **Add Rule**.
+#. On the **Inbound Rules** tab page, click **Add Rule**. Configure an inbound rule based on :ref:`Table 2 <elb_qs_0003__elb_ug_hd_0007_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416>`.
 
-   **TCP, HTTP, or HTTPS listeners**
+   .. _elb_qs_0003__elb_ug_hd_0007_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416:
 
-   -  If the health check port is not the one used by each backend server, add an inbound rule to allow TCP traffic over the health check port and the ports used by backend servers.
-   -  If you do not specify a health check port, add inbound rules to allow TCP traffic over the ports used by backend servers.
-   -  To ensure normal health checks, ensure that security group rules allow traffic from the CIDR block of the subnet where the load balancer resides and traffic from the health check port and from the ports used by backend servers.
+   .. table:: **Table 2** Security group rules
 
-   **UDP listeners**
-
-   -  If the health check port is not the one used by each backend server, add an inbound rule to allow UDP traffic over the health check port and the ports used by backend servers.
-   -  If you do not specify a health check port, add inbound rules to allow UDP traffic over the ports used by backend servers.
-   -  To ensure normal health checks, ensure that security group rules allow traffic from the CIDR block of the subnet where the load balancer resides and traffic from the health check port and from the ports used by backend servers.
-   -  You need also to add an inbound rule to allow ICMP traffic.
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | Backend Protocol | Policy          | Protocol & Port                                                     | Source IP Address                   |
+      +==================+=================+=====================================================================+=====================================+
+      | HTTP or HTTPS    | Allow           | **Protocol**: TCP                                                   | Backend subnet of the load balancer |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: the port used by the backend server and health check port |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | TCP              | Allow           | **Protocol**: TCP                                                   |                                     |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: health check port                                         |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
+      | UDP              | Allow           | **Protocol**: UDP and ICMP                                          |                                     |
+      |                  |                 |                                                                     |                                     |
+      |                  |                 | **Port**: health check port                                         |                                     |
+      +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
 
 #. Click **OK**.
 
 Firewall Rules
 --------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewalls control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to allow traffic from the VPC where the load balancer works to backend servers.
 
@@ -350,7 +357,7 @@ After the load balancer is configured, you can access the domain name or the spe
 
 #. Modify the **C:\\Windows\\System32\\drivers\\etc\\hosts** file on your PC to map the domain name to the load balancer EIP.
 
-   View the load balancer EIP on the **Basic Information** page of the load balancer.
+   View the load balancer EIP on the **Summary** page of the load balancer.
 
 
    .. figure:: /_static/images/en-us_image_0166358967.png

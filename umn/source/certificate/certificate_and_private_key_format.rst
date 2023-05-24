@@ -12,7 +12,7 @@ You can copy and paste the certificate body to create a certificate or directly 
 
 A certificate issued by the Root CA is unique, and no additional certificates are required. The configured site is considered trustable by access devices such as a browser.
 
-The body of the server and CA certificates must meet the requirements as described bellow.
+The body of the server and CA certificates must meet the requirements as described below.
 
 -  The content starts with **-----BEGIN CERTIFICATE-----** and ends with **-----END CERTIFICATE-----**.
 -  Each row contains 64 characters except the last row.
@@ -49,7 +49,11 @@ When creating a server certificate, you also need to upload the private key of t
 
 Private keys must be unencrypted and meet the following requirements:
 
--  The content must start with **-----BEGIN RSA PRIVATE KEY-----** and end with **-----END RSA PRIVATE KEY-----**.
+-  The value must be in PEM format.
+
+   -  The content must start with **-----BEGIN RSA PRIVATE KEY-----** and end with **-----END RSA PRIVATE KEY-----**.
+   -  The content must start with **-----BEGIN EC PRIVATE KEY-----** and end with **-----END EC PRIVATE KEY-----**.
+
 -  There are no empty rows. Each row must contain 64 characters except the last row.
 
 The following is an example:

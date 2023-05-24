@@ -25,4 +25,4 @@ Procedure
    Disable **Removal Protection** if you want to delete a backend server group or remove a cloud server or an IP address from the backend server group.
 
 .. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001167509179.png
+.. |image2| image:: /_static/images/en-us_image_0000001417088430.png

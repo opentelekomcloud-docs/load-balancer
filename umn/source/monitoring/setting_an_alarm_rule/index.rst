@@ -5,7 +5,7 @@
 Setting an Alarm Rule
 =====================
 
-You can add, modify, and delete alarm rules. For details, see the .
+You can add, modify, and delete alarm rules. For details, see the Cloud Eye User Guide.
 
 -  :ref:`Creating an Alarm Rule <elb_ug_jk_0003>`
 -  :ref:`Modifying an Alarm Rule <elb_ug_jk_0004>`

@@ -37,10 +37,13 @@ If disaster recovery is required, create load balancers based on the scenario:
 
 .. note::
 
-   -  If requests are from the Internet, the load balancer in each AZ you select routes the requests based on source IP addresses.
+   -  If requests are from the Internet, the load balancer in each AZ you select routes the requests based on source IP addresses. If you deploy a load balancer in two AZs, the requests the load balancers can handle will be doubled.
    -  For requests from a private network:
 
-      -  If clients are in an AZ you select when you create the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer is unavailable, requests are distributed by the load balancer in another AZ you select.
+      -  If clients are in an AZ you have selected when you create the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer is unhealthy, requests are distributed by the load balancer in another AZ you have selected.
+
+         If the load balancer is healthy but the connections that the load balancer need to handle exceed the amount defined in the specifications, service may be interrupted. To address this issue, you need upgrade specifications.
+
       -  If clients are in an AZ that is not selected when you create the load balancer, requests are distributed by the load balancer in each AZ you select based on source IP addresses.
 
 Network Type

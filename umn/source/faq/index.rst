@@ -15,6 +15,7 @@ FAQ
 -  :ref:`HTTP/HTTPS Listeners <elb_faq_0180>`
 -  :ref:`Sticky Sessions <elb_faq_0190>`
 -  :ref:`Certificates <elb_faq_0205>`
+-  :ref:`Monitoring <elb_faq_0207>`
 
 .. toctree::
    :maxdepth: 1
@@ -30,3 +31,4 @@ FAQ
    http_https_listeners/index
    sticky_sessions/index
    certificates/index
+   monitoring/index

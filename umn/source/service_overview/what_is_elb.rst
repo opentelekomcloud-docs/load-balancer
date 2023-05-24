@@ -7,6 +7,8 @@ What Is ELB?
 
 Elastic Load Balancing (ELB) automatically distributes incoming traffic across multiple backend servers based on the listening rules you configure. ELB expands the service capabilities of your applications and improves their availability by eliminating single points of failure (SPOFs).
 
+As shown in the example in the following figure, ELB distributes incoming traffic to three application servers, and each server processes one third of the requests. ELB also provides health checks, which can detect unhealthy servers. Traffic is distributed only to servers that are running normally, improving the availability of applications.
+
 
 .. figure:: /_static/images/en-us_image_0000001376874584.png
    :alt: **Figure 1** Using a load balancer
@@ -31,7 +33,7 @@ ELB consists of the following components:
    You can also configure health checks for a backend server group to check the health of each backend server. When a backend server is unhealthy, the load balancer stops routing new requests to this server.
 
 
-.. figure:: /_static/images/en-us_image_0202311381.png
+.. figure:: /_static/images/en-us_image_0000001322756757.png
    :alt: **Figure 2** ELB components
 
    **Figure 2** ELB components

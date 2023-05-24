@@ -46,17 +46,18 @@ When you enable slow start, note the following:
 IP as Backend Servers
 ---------------------
 
-If you enable IP as a backend, you can add backend servers that are not in the VPC of the load balancer, using their private IP addresses. The backend servers can be in a VPC connected through a VPC peering connection,, or in an on-premises data center at the other end of a Direct Connect or VPN connection.
+If you enable IP as a backend, you can add backend servers that are not in the VPC of the load balancer, using their private IP addresses. The backend servers can be in a VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection.
 
 When you add IP as backend servers, note the following:
 
--  If you do not enable the function when you create a load balancer, you can still enable it on the **Basic Information** page of the load balancer.
+-  If you do not enable the function when you create a load balancer, you can still enable it on the **Summary** page of the load balancer.
 -  IP as backend servers must use IPv4 addresses.
 -  Configure the VPC routes correctly to ensure that backend servers are reachable. For details, see :ref:`Adding or Removing Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0003>`.
 -  If you enable IP as a backend for a load balancer, you can add only TCP, HTTP, and HTTPS listeners to the load balancer.
--  The subnet where the load balancer works must have sufficient IP addresses (at least 16 IP addresses). You can add more subnets for more IP addresses on the **Basic Information** page of the load balancer.
+-  The subnet where the load balancer works must have sufficient IP addresses (at least 16 IP addresses). You can add more subnets for more IP addresses on the **Summary** page of the load balancer.
 -  Security group rules of IP as backend servers must allow traffic from the subnet of the load balancer. Otherwise, health checks will fail.
 -  IP as backend cannot be disabled after it is enabled.
+-  A maximum of 492 servers can be associated with a load balancer.
 -  Source IP addresses of the clients cannot be passed to IP as backend servers.
 
 .. note::

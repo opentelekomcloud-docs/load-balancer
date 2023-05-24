@@ -16,6 +16,7 @@ Elastic Load Balancing - User Guide
    tag
    ip_address_group_whitelist_or_blacklist
    monitoring/index
+   permissions_management/index
    quotas
    faq/index
    change_history

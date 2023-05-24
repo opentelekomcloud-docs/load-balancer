@@ -8,7 +8,7 @@ Configuring Hybrid Load Balancing
 Scenarios
 ---------
 
-You can add servers in the VPC where the load balancer is created, in a different VPC, or in an on-premise data center, by using private IP addresses of the servers. In this way, incoming traffic can be flexibly distributed to cloud servers and on-premises servers for hybrid load balancing.
+You can add servers in the VPC where the load balancer is created, in a different VPC, or in an on-premises data center, by using private IP addresses of the servers. In this way, incoming traffic can be flexibly distributed to cloud servers and on-premises servers for hybrid load balancing.
 
 -  To add servers in the same VPC as the load balancer, see :ref:`Adding or Removing Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0003>`.
 -  To add backend servers in a different VPC from where the load balancer is running, you need to establish a VPC peering connection between the two VPCs. For details about how to set up a VPC peering connection, see the Virtual Private Cloud User Guide.
@@ -27,6 +27,18 @@ Prerequisites
 -  A listener has been added to the load balancer.
 -  VPC routes have been correctly configured to make backend servers accessible. IP as backend servers can be in a VPC connected using a VPC peering connection, or in an on-premises data center connected using a Direct Connect or VPN connection.
 
+Constraints and Limitations
+---------------------------
+
+When you add IP as backend servers, note the following:
+
+-  IP as a backend cannot be disabled after it is enabled.
+-  If you do not enable the function when you create a load balancer, you can still enable it on the **Summary** page of the load balancer.
+-  IP as backend servers must use IPv4 addresses.
+-  If you enable IP as a backend for a load balancer, you can add only TCP, HTTP, and HTTPS listeners to the load balancer.
+-  The subnet where the load balancer works must have sufficient IP addresses. Otherwise, IP as backend servers cannot be added. You can add more subnets for more IP addresses on the **Summary** page of the load balancer.
+-  Security group rules of IP as backend servers must allow traffic from the subnet of the load balancer. Otherwise, health checks will fail.
+
 Enabling IP as a Backend
 ------------------------
 
@@ -34,7 +46,7 @@ Enabling IP as a Backend
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. On the **Load Balancers** page, locate the load balancer and click its name.
-#. On the **Basic Information** tab page, click **Enable** next to **IP as a Backend**.
+#. On the **Summary** tab page, click **Enable** next to **IP as a Backend**.
 #. Click **OK**.
 
 Adding IP as Backend Servers

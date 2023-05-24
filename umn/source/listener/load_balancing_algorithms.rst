@@ -11,7 +11,7 @@ Load balancers receive requests from clients and forward them to backend servers
 Load Balancing Algorithms
 -------------------------
 
-Both dedicated and shared load balancers support weighted round robin, weighted least connections, and source IP hash.
+Dedicated load balancers support four load balancing algorithms: weighted round robin, weighted least connections, source IP hash, and connection ID. Shared load balancers support three load balancing algorithms: weighted round robin, weighted least connections, and source IP hash.
 
 -  Weighted round robin: Requests are routed to backend servers using the round robin algorithm. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests. This algorithm is often used for short connections, such as HTTP connections.
 
@@ -42,6 +42,21 @@ Both dedicated and shared load balancers support weighted round robin, weighted 
       :alt: **Figure 3** Traffic distribution using the source IP hash algorithm
 
       **Figure 3** Traffic distribution using the source IP hash algorithm
+
+-  Connection ID: The connection ID in the packet is calculated using the consistent hash algorithm to obtain a specific value, and backend servers are numbered. The generated value determines to which backend server the requests are routed. This allows requests with different connection IDs to be routed to different backend servers and ensures that requests with the same connection ID are routed to the same backend server. This algorithm applies to QUIC requests.
+
+   .. note::
+
+      Currently, only dedicated load balancers support the Connection ID algorithm.
+
+   :ref:`Figure 4 <elb_ug_jt_0003__elb_pro_0003_en-us_topic_0236111231_fig3381171135617>` shows an example of how requests are distributed using the connection ID algorithm. Two backend servers are in the same AZ and have the same weight. If backend server 01 has processed a request from client A, the load balancer will route new requests from client A to backend server 01.
+
+   .. _elb_ug_jt_0003__elb_pro_0003_en-us_topic_0236111231_fig3381171135617:
+
+   .. figure:: /_static/images/en-us_image_0000001205894887.png
+      :alt: **Figure 4** Traffic distribution using the connection ID algorithm
+
+      **Figure 4** Traffic distribution using the connection ID algorithm
 
 Changing the Load Balancing Algorithm
 -------------------------------------
