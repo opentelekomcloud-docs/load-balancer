@@ -159,7 +159,7 @@ GET /v3/{project_id}/elb/pools
    |                                   |                 |                 |                                                                                                                                                                                                                                  |
    |                                   |                 |                 | -  **instance**: Any type of backend servers can be added. **vpc_id** is mandatory.                                                                                                                                              |
    |                                   |                 |                 |                                                                                                                                                                                                                                  |
-   |                                   |                 |                 | -  **ip**: Only cross-VPC backend servers can be added. **vpc_id** cannot be specified.                                                                                                                                          |
+   |                                   |                 |                 | -  **ip**: Only IP as Backend servers can be added. **vpc_id** cannot be specified.                                                                                                                                              |
    |                                   |                 |                 |                                                                                                                                                                                                                                  |
    |                                   |                 |                 | -  **""**: Any type of backend servers can be added.                                                                                                                                                                             |
    +-----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -196,15 +196,15 @@ Response Parameters
 
 .. table:: **Table 5** PageInfo
 
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Type    | Description                                                                                                         |
-   +=================+=========+=====================================================================================================================+
-   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. Set this parameter to query the previous page. |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | next_marker     | String  | Specifies the ID of the last record in the pagination query result. Set this to marker when query the next page.    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | current_count   | Integer | Specifies the number of records.                                                                                    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
+   +-----------------+---------+----------------------------------------------------------------------+
+   | Parameter       | Type    | Description                                                          |
+   +=================+=========+======================================================================+
+   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | next_marker     | String  | Specifies the ID of the last record in the pagination query result.  |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | current_count   | Integer | Specifies the number of records.                                     |
+   +-----------------+---------+----------------------------------------------------------------------+
 
 .. _listpools__response_pool:
 
@@ -307,7 +307,7 @@ Response Parameters
    |                                   |                                                                               |                                                                                                                                                                                                                                           |
    |                                   |                                                                               | -  **instance**: Any type of backend servers can be added. **vpc_id** is mandatory.                                                                                                                                                       |
    |                                   |                                                                               |                                                                                                                                                                                                                                           |
-   |                                   |                                                                               | -  **ip**: Only cross-VPC backend servers can be added. **vpc_id** cannot be specified.                                                                                                                                                   |
+   |                                   |                                                                               | -  **ip**: Only IP as Backend servers can be added. **vpc_id** cannot be specified.                                                                                                                                                       |
    |                                   |                                                                               |                                                                                                                                                                                                                                           |
    |                                   |                                                                               | -  **""**: Any type of backend servers can be added.                                                                                                                                                                                      |
    +-----------------------------------+-------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

@@ -33,7 +33,7 @@ There are some constraints when you create a dedicated load balancer:
 
 -  **vpc_id**, **vip_subnet_cidr_id**, and **ipv6_vip_virsubnet_id** cannot be left blank at the same time.
 
--  **ip_target_enable** specifies whether to enable cross-VPC backend. If you enable this function for a dedicated load balancer, you can associate servers in a VPC connected through a VPC peering connection, in a VPC connected through a cloud connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection, by using server IP addresses.
+-  **ip_target_enable** specifies whether to enable **IP as a Backend Server**. If you enable this function for a dedicated load balancer, you can associate servers in a VPC connected through a VPC peering connection, in a VPC connected through a cloud connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection, by using server IP addresses.
 
 -  **admin_state_up** must be set to **true**.
 
@@ -222,13 +222,13 @@ Request Parameters
    |                            |                 |                                                                                                               |                                                                                                                                                                                                                                                                                                                          |
    |                            |                 |                                                                                                               | IPv6 is unsupported.                                                                                                                                                                                                                                                                                                     |
    +----------------------------+-----------------+---------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ip_target_enable           | No              | Boolean                                                                                                       | Specifies whether to enable cross-VPC backend.                                                                                                                                                                                                                                                                           |
+   | ip_target_enable           | No              | Boolean                                                                                                       | Specifies whether to enable **IP as a Backend Server**.                                                                                                                                                                                                                                                                  |
    |                            |                 |                                                                                                               |                                                                                                                                                                                                                                                                                                                          |
    |                            |                 |                                                                                                               | If you enable this function, you can add servers in a peer VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection, by using their IP addresses.                                                                                         |
    |                            |                 |                                                                                                               |                                                                                                                                                                                                                                                                                                                          |
    |                            |                 |                                                                                                               | This function is supported only by dedicated load balancers.                                                                                                                                                                                                                                                             |
    |                            |                 |                                                                                                               |                                                                                                                                                                                                                                                                                                                          |
-   |                            |                 |                                                                                                               | The value can be **true** (enable cross-VPC backend) or **false** (disable cross-VPC backend).                                                                                                                                                                                                                           |
+   |                            |                 |                                                                                                               | The value can be **true** (enable **IP as a Backend Server**) or **false** (disable **IP as a Backend Server**).                                                                                                                                                                                                         |
    |                            |                 |                                                                                                               |                                                                                                                                                                                                                                                                                                                          |
    |                            |                 |                                                                                                               | The value can only be update to **true**. This parameter is not available in **eu-nl** region. Please do not use it.                                                                                                                                                                                                     |
    +----------------------------+-----------------+---------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -401,70 +401,12 @@ Request Parameters
    |                 |                 |                 | Maximum: **36**                                                                                                                                                                                  |
    +-----------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-.. table:: **Table 9** PrepaidCreateOption
-
-   +-----------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Mandatory       | Type            | Description                                                                                                                                 |
-   +=================+=================+=================+=============================================================================================================================================+
-   | period_type     | Yes             | String          | Specifies the subscription period.                                                                                                          |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **month**: monthly subscription                                                                                                          |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **year**: yearly subscription                                                                                                            |
-   +-----------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | period_num      | No              | Integer         | Specifies the number of subscription periods. The value varies with the operation policy.                                                   |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  If **period_type** is set to **month**, the value ranges from **1** to **9**.                                                            |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  If **period_type** is set to **year**, the value ranges from **1** to **3**.                                                             |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | Minimum: **1**                                                                                                                              |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | Maximum: **9**                                                                                                                              |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | Default: **1**                                                                                                                              |
-   +-----------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | auto_renew      | No              | Boolean         | Specifies whether to automatically renew the subscription.                                                                                  |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **true**: Enable automatic renewal.                                                                                                      |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **False** (default): Disable automatic renewal.                                                                                          |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | Default: **false**                                                                                                                          |
-   +-----------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-   | auto_pay        | No              | Boolean         | Specifies whether the payment will be automatically deducted from the customer's account after an order is placed.                          |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **true**: The payment will be automatically deducted from the customer's account.                                                        |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | -  **false** (default): The payment will not be automatically deducted from the customer's account.                                         |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | If you want to use coupons, submit your request. The system automatically will switch to the billing center, where you can use the coupons. |
-   |                 |                 |                 |                                                                                                                                             |
-   |                 |                 |                 | Default: **false**                                                                                                                          |
-   +-----------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------------------------------------+
-
-.. table:: **Table 10** CreateLoadbalancerAutoscalingOption
-
-   +------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter        | Mandatory       | Type            | Description                                                                                                                                   |
-   +==================+=================+=================+===============================================================================================================================================+
-   | enable           | Yes             | Boolean         | Specifies whether to enable elastic scaling for the load balancer.                                                                            |
-   |                  |                 |                 |                                                                                                                                               |
-   |                  |                 |                 | Default: **false**                                                                                                                            |
-   +------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | min_l7_flavor_id | No              | String          | Specifies the ID of the minimum Layer-7 flavor for elastic scaling. This parameter cannot be left blank if there are HTTP or HTTPS listeners. |
-   |                  |                 |                 |                                                                                                                                               |
-   |                  |                 |                 | Minimum: **1**                                                                                                                                |
-   |                  |                 |                 |                                                                                                                                               |
-   |                  |                 |                 | Maximum: **36**                                                                                                                               |
-   +------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-
 Response Parameters
 -------------------
 
 **Status code: 201**
 
-.. table:: **Table 11** Response body parameters
+.. table:: **Table 9** Response body parameters
 
    +-----------------------+------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------+
    | Parameter             | Type                                                                   | Description                                                                                                                |
@@ -496,7 +438,7 @@ Response Parameters
 
 .. _createloadbalancer__response_loadbalancer:
 
-.. table:: **Table 12** LoadBalancer
+.. table:: **Table 10** LoadBalancer
 
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Parameter                  | Type                                                                             | Description                                                                                                                                                                                                                                                                             |
@@ -535,7 +477,7 @@ Response Parameters
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | vip_port_id                | String                                                                           | Specifies the ID of the port bound to the private IPv4 address of the load balancer.                                                                                                                                                                                                    |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | The security group associated with the port will not take effect.                                                                                                                                                                                                                       |
+   |                            |                                                                                  | The default security group associated with the port will take effect only after at least one backend server is associated with load balancer.                                                                                                                                           |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | tags                       | Array of :ref:`Tag <createloadbalancer__response_tag>` objects                   | Lists the tags added to the load balancer.                                                                                                                                                                                                                                              |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -619,27 +561,17 @@ Response Parameters
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | "dualstack" is not supported.                                                                                                                                                                                                                                                           |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ip_target_enable           | Boolean                                                                          | Specifies whether to enable cross-VPC backend.                                                                                                                                                                                                                                          |
+   | ip_target_enable           | Boolean                                                                          | Specifies whether to enable **IP as a Backend Server**.                                                                                                                                                                                                                                 |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | If you enable this function, you can add servers in a peer VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection, by using their IP addresses.                                                        |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | This function is supported only by dedicated load balancers.                                                                                                                                                                                                                            |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | The value can be **true** (enable cross-VPC backend) or **false** (disable cross-VPC backend).                                                                                                                                                                                          |
+   |                            |                                                                                  | The value can be **true** (enable **IP as a Backend Server**) or **false** (disable **IP as a Backend Server**).                                                                                                                                                                        |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | The value can only be update to **true**. This parameter is not available in **eu-nl** region. Please do not use it.                                                                                                                                                                    |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | frozen_scene               | String                                                                           | Specifies the scenario where the load balancer is frozen. Multiple values are separated using commas (,).                                                                                                                                                                               |
-   |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | -  **POLICE**: The load balancer is frozen due to security reasons.                                                                                                                                                                                                                     |
-   |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | -  **ILLEGAL**: The load balancer is frozen due to violation of laws and regulations.                                                                                                                                                                                                   |
-   |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | -  **VERIFY**: Your account has not completed real-name authentication.                                                                                                                                                                                                                 |
-   |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | -  **PARTNER**: The load balancer is frozen by the partner.                                                                                                                                                                                                                             |
-   |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                  | -  **ARREAR**: Your account is in arrears.                                                                                                                                                                                                                                              |
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | This parameter is unsupported. Please do not use it.                                                                                                                                                                                                                                    |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -661,12 +593,10 @@ Response Parameters
    |                            |                                                                                  |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                  | This parameter is not available in **eu-nl** region. Please do not use it.                                                                                                                                                                                                              |
    +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | public_border_group        | String                                                                           | Specifies the AZ group to which the load balancer belongs.                                                                                                                                                                                                                              |
-   +----------------------------+----------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _createloadbalancer__response_poolref:
 
-.. table:: **Table 13** PoolRef
+.. table:: **Table 11** PoolRef
 
    ========= ====== =============================================
    Parameter Type   Description
@@ -676,7 +606,7 @@ Response Parameters
 
 .. _createloadbalancer__response_listenerref:
 
-.. table:: **Table 14** ListenerRef
+.. table:: **Table 12** ListenerRef
 
    ========= ====== ==========================
    Parameter Type   Description
@@ -686,7 +616,7 @@ Response Parameters
 
 .. _createloadbalancer__response_tag:
 
-.. table:: **Table 15** Tag
+.. table:: **Table 13** Tag
 
    +-----------------------+-----------------------+--------------------------+
    | Parameter             | Type                  | Description              |
@@ -706,7 +636,7 @@ Response Parameters
 
 .. _createloadbalancer__response_eipinfo:
 
-.. table:: **Table 16** EipInfo
+.. table:: **Table 14** EipInfo
 
    +-----------------------+-----------------------+---------------------------------------------------------------------------+
    | Parameter             | Type                  | Description                                                               |
@@ -722,7 +652,7 @@ Response Parameters
 
 .. _createloadbalancer__response_publicipinfo:
 
-.. table:: **Table 17** PublicIpInfo
+.. table:: **Table 15** PublicIpInfo
 
    +-----------------------+-----------------------+--------------------------------------------------------------------------+
    | Parameter             | Type                  | Description                                                              |
@@ -736,7 +666,7 @@ Response Parameters
    |                       |                       | IPv6 is unsupported. The value cannot be **6**.                          |
    +-----------------------+-----------------------+--------------------------------------------------------------------------+
 
-.. table:: **Table 18** GlobalEipInfo
+.. table:: **Table 16** GlobalEipInfo
 
    +--------------------+---------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | Parameter          | Type    | Description                                                                                                                                                                                    |
@@ -750,33 +680,13 @@ Response Parameters
 
 .. _createloadbalancer__response_bandwidthref:
 
-.. table:: **Table 19** BandwidthRef
+.. table:: **Table 17** BandwidthRef
 
    ========= ====== ==================================
    Parameter Type   Description
    ========= ====== ==================================
    id        String Specifies the shared bandwidth ID.
    ========= ====== ==================================
-
-.. table:: **Table 20** AutoscalingRef
-
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter             | Type                  | Description                                                                                                                                   |
-   +=======================+=======================+===============================================================================================================================================+
-   | enable                | Boolean               | Specifies whether to enable elastic scaling for the load balancer.                                                                            |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | -  **true**: Enable elastic scaling.                                                                                                          |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | -  **false**: Disable elastic scaling.                                                                                                        |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Default: **false**                                                                                                                            |
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | min_l7_flavor_id      | String                | Specifies the ID of the minimum Layer-7 flavor for elastic scaling. This parameter cannot be left blank if there are HTTP or HTTPS listeners. |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Minimum: **1**                                                                                                                                |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Maximum: **36**                                                                                                                               |
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
 
 Example Requests
 ----------------
@@ -862,10 +772,6 @@ Normal response to POST requests.
        "elb_virsubnet_ids" : [ "7f817f9c-8731-4002-9e47-18cb8d431787" ],
        "elb_virsubnet_type" : "dualstack",
        "ip_target_enable" : false,
-       "autoscaling" : {
-         "enable" : false,
-         "min_l7_flavor_id" : ""
-       },
        "frozen_scene" : null,
        "eips" : [ {
          "eip_id" : "0c07e04d-e2f9-41ad-b934-f58a65b6734d",

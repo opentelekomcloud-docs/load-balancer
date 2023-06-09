@@ -89,11 +89,11 @@ Response Parameters
    |                       |                       |                                                                                                                                                                                                                                                  |
    |                       |                       | Maximum: **255**                                                                                                                                                                                                                                 |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | private_key           | String                | Specifies the private key of the server certificate. The value must be PEM encoded.                                                                                                                                                              |
+   | private_key           | String                | Specifies the private key of the certificate used by HTTPS listeners. The value can contain up to 8,192 PEM encoded characters.                                                                                                                  |
    |                       |                       |                                                                                                                                                                                                                                                  |
-   |                       |                       | -  This parameter will be ignored even if **type** is set to **client**. A CA certificate can still be created and used normally. This parameter will be left blank even if you enter a private key that is not PEM encoded.                     |
+   |                       |                       | -  This parameter is valid and mandatory only when **type** is set to **server**.                                                                                                                                                                |
    |                       |                       |                                                                                                                                                                                                                                                  |
-   |                       |                       | -  This parameter is valid and mandatory only when **type** is set to **server**. If you enter an invalid private key, an error is returned.                                                                                                     |
+   |                       |                       | -  This parameter will be ignored even if **type** is set to **client**. A CA certificate can still be created and used normally.                                                                                                                |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | type                  | String                | Specifies the certificate type. The value can be **server** or **client**. **server** indicates server certificates, and **client** indicates CA certificates. The default value is **server**.                                                  |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -143,17 +143,11 @@ Successful request.
 Status Codes
 ------------
 
-=========== ==========================================
+=========== ===================
 Status Code Description
-=========== ==========================================
+=========== ===================
 200         Successful request.
-400         Invalid request parameter.
-403         Failed to verify the token.
-404         The queried resource does not exist.
-431         The request headers are too large.
-494         The request header or cookie is too large.
-500         System error.
-=========== ==========================================
+=========== ===================
 
 Error Codes
 -----------

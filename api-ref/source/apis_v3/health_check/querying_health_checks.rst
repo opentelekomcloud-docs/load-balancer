@@ -174,15 +174,15 @@ Response Parameters
 
 .. table:: **Table 5** PageInfo
 
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Type    | Description                                                                                                         |
-   +=================+=========+=====================================================================================================================+
-   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. Set this parameter to query the previous page. |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | next_marker     | String  | Specifies the ID of the last record in the pagination query result. Set this to marker when query the next page.    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | current_count   | Integer | Specifies the number of records.                                                                                    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
+   +-----------------+---------+----------------------------------------------------------------------+
+   | Parameter       | Type    | Description                                                          |
+   +=================+=========+======================================================================+
+   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | next_marker     | String  | Specifies the ID of the last record in the pagination query result.  |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | current_count   | Integer | Specifies the number of records.                                     |
+   +-----------------+---------+----------------------------------------------------------------------+
 
 .. _listhealthmonitors__response_healthmonitor:
 
