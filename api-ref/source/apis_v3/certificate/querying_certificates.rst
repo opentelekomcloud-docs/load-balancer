@@ -126,15 +126,15 @@ Response Parameters
 
 .. table:: **Table 5** PageInfo
 
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Type    | Description                                                                                                         |
-   +=================+=========+=====================================================================================================================+
-   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. Set this parameter to query the previous page. |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | next_marker     | String  | Specifies the ID of the last record in the pagination query result. Set this to marker when query the next page.    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | current_count   | Integer | Specifies the number of records.                                                                                    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
+   +-----------------+---------+----------------------------------------------------------------------+
+   | Parameter       | Type    | Description                                                          |
+   +=================+=========+======================================================================+
+   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | next_marker     | String  | Specifies the ID of the last record in the pagination query result.  |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | current_count   | Integer | Specifies the number of records.                                     |
+   +-----------------+---------+----------------------------------------------------------------------+
 
 .. _listcertificates__response_certificateinfo:
 
@@ -175,11 +175,11 @@ Response Parameters
    |                       |                       |                                                                                                                                                                                                                                                  |
    |                       |                       | Maximum: **255**                                                                                                                                                                                                                                 |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | private_key           | String                | Specifies the private key of the server certificate. The value must be PEM encoded.                                                                                                                                                              |
+   | private_key           | String                | Specifies the private key of the certificate used by HTTPS listeners. The value can contain up to 8,192 PEM encoded characters.                                                                                                                  |
    |                       |                       |                                                                                                                                                                                                                                                  |
-   |                       |                       | -  This parameter will be ignored even if **type** is set to **client**. A CA certificate can still be created and used normally. This parameter will be left blank even if you enter a private key that is not PEM encoded.                     |
+   |                       |                       | -  This parameter is valid and mandatory only when **type** is set to **server**.                                                                                                                                                                |
    |                       |                       |                                                                                                                                                                                                                                                  |
-   |                       |                       | -  This parameter is valid and mandatory only when **type** is set to **server**. If you enter an invalid private key, an error is returned.                                                                                                     |
+   |                       |                       | -  This parameter will be ignored even if **type** is set to **client**. A CA certificate can still be created and used normally.                                                                                                                |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | type                  | String                | Specifies the certificate type. The value can be **server** or **client**. **server** indicates server certificates, and **client** indicates CA certificates. The default value is **server**.                                                  |
    +-----------------------+-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

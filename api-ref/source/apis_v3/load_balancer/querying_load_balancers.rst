@@ -187,12 +187,6 @@ GET /v3/{project_id}/elb/loadbalancers
    +----------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | l7_scale_flavor_id         | No              | Array           | Specifies the ID of the elastic flavor at Layer 7. Multiple flavors can be queried in the format of *l7_scale_flavor_id=xxx&l7_scale_flavor_id=xxx*. This parameter is unsupported. Please do not use it.                        |
    +----------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | billing_info               | No              | Array           | Provides resource billing information.                                                                                                                                                                                           |
-   |                            |                 |                 |                                                                                                                                                                                                                                  |
-   |                            |                 |                 | Multiple values can be queried in the format of *billing_info=xxx&billing_info=xxx*.                                                                                                                                             |
-   |                            |                 |                 |                                                                                                                                                                                                                                  |
-   |                            |                 |                 | This parameter is unsupported. Please do not use it.                                                                                                                                                                             |
-   +----------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | member_device_id           | No              | Array           | Specifies the ID of the cloud server that is associated with the load balancer as a backend server. This is a query parameter and will not be included in the response.                                                          |
    |                            |                 |                 |                                                                                                                                                                                                                                  |
    |                            |                 |                 | Multiple IDs can be queried in the format of *member_device_id=xxx&member_device_id=xxx*.                                                                                                                                        |
@@ -305,7 +299,7 @@ Response Parameters
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | vip_port_id                | String                                                                          | Specifies the ID of the port bound to the private IPv4 address of the load balancer.                                                                                                                                                                                                    |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | The security group associated with the port will not take effect.                                                                                                                                                                                                                       |
+   |                            |                                                                                 | The default security group associated with the port will take effect only after at least one backend server is associated with load balancer.                                                                                                                                           |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | tags                       | Array of :ref:`Tag <listloadbalancers__response_tag>` objects                   | Lists the tags added to the load balancer.                                                                                                                                                                                                                                              |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -389,27 +383,17 @@ Response Parameters
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | "dualstack" is not supported.                                                                                                                                                                                                                                                           |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | ip_target_enable           | Boolean                                                                         | Specifies whether to enable cross-VPC backend.                                                                                                                                                                                                                                          |
+   | ip_target_enable           | Boolean                                                                         | Specifies whether to enable **IP as a Backend Server**.                                                                                                                                                                                                                                 |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | If you enable this function, you can add servers in a peer VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection, by using their IP addresses.                                                        |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | This function is supported only by dedicated load balancers.                                                                                                                                                                                                                            |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | The value can be **true** (enable cross-VPC backend) or **false** (disable cross-VPC backend).                                                                                                                                                                                          |
+   |                            |                                                                                 | The value can be **true** (enable **IP as a Backend Server**) or **false** (disable **IP as a Backend Server**).                                                                                                                                                                        |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | The value can only be update to **true**. This parameter is not available in **eu-nl** region. Please do not use it.                                                                                                                                                                    |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
    | frozen_scene               | String                                                                          | Specifies the scenario where the load balancer is frozen. Multiple values are separated using commas (,).                                                                                                                                                                               |
-   |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | -  **POLICE**: The load balancer is frozen due to security reasons.                                                                                                                                                                                                                     |
-   |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | -  **ILLEGAL**: The load balancer is frozen due to violation of laws and regulations.                                                                                                                                                                                                   |
-   |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | -  **VERIFY**: Your account has not completed real-name authentication.                                                                                                                                                                                                                 |
-   |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | -  **PARTNER**: The load balancer is frozen by the partner.                                                                                                                                                                                                                             |
-   |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
-   |                            |                                                                                 | -  **ARREAR**: Your account is in arrears.                                                                                                                                                                                                                                              |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | This parameter is unsupported. Please do not use it.                                                                                                                                                                                                                                    |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -430,8 +414,6 @@ Response Parameters
    |                            |                                                                                 | This parameter is returned only when deletion protection is enabled at the site.                                                                                                                                                                                                        |
    |                            |                                                                                 |                                                                                                                                                                                                                                                                                         |
    |                            |                                                                                 | This parameter is not available in **eu-nl** region. Please do not use it.                                                                                                                                                                                                              |
-   +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | public_border_group        | String                                                                          | Specifies the AZ group to which the load balancer belongs.                                                                                                                                                                                                                              |
    +----------------------------+---------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _listloadbalancers__response_poolref:
@@ -528,50 +510,30 @@ Response Parameters
    id        String Specifies the shared bandwidth ID.
    ========= ====== ==================================
 
-.. table:: **Table 13** AutoscalingRef
-
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter             | Type                  | Description                                                                                                                                   |
-   +=======================+=======================+===============================================================================================================================================+
-   | enable                | Boolean               | Specifies whether to enable elastic scaling for the load balancer.                                                                            |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | -  **true**: Enable elastic scaling.                                                                                                          |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | -  **false**: Disable elastic scaling.                                                                                                        |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Default: **false**                                                                                                                            |
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-   | min_l7_flavor_id      | String                | Specifies the ID of the minimum Layer-7 flavor for elastic scaling. This parameter cannot be left blank if there are HTTP or HTTPS listeners. |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Minimum: **1**                                                                                                                                |
-   |                       |                       |                                                                                                                                               |
-   |                       |                       | Maximum: **36**                                                                                                                               |
-   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+
-
 .. _listloadbalancers__response_pageinfo:
 
-.. table:: **Table 14** PageInfo
+.. table:: **Table 13** PageInfo
 
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Type    | Description                                                                                                         |
-   +=================+=========+=====================================================================================================================+
-   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. Set this parameter to query the previous page. |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | next_marker     | String  | Specifies the ID of the last record in the pagination query result. Set this to marker when query the next page.    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
-   | current_count   | Integer | Specifies the number of records.                                                                                    |
-   +-----------------+---------+---------------------------------------------------------------------------------------------------------------------+
+   +-----------------+---------+----------------------------------------------------------------------+
+   | Parameter       | Type    | Description                                                          |
+   +=================+=========+======================================================================+
+   | previous_marker | String  | Specifies the ID of the first record in the pagination query result. |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | next_marker     | String  | Specifies the ID of the last record in the pagination query result.  |
+   +-----------------+---------+----------------------------------------------------------------------+
+   | current_count   | Integer | Specifies the number of records.                                     |
+   +-----------------+---------+----------------------------------------------------------------------+
 
 Example Requests
 ----------------
 
--  Querying load balancers on each page
+-  Querying load balancers using multiple IDs
 
    .. code-block:: text
 
       GET https://{ELB_Endpoint}/v3/b2782e6708b8475c993e6064bc456bf8/elb/loadbalancers?id=87627cb6-9ff1-4580-984f-cc564fa9fc34&id=09e86f09-03fc-440e-8132-03f3e149e979
 
--  Querying load balancers using multiple IDs
+-  Querying load balancers on each page
 
    .. code-block:: text
 
@@ -618,10 +580,6 @@ Successful request.
        "elb_virsubnet_ids" : [ "0b9e3c5e-3ec8-46b3-bab9-80b1450e59ee" ],
        "elb_virsubnet_type" : "dualstack",
        "ip_target_enable" : false,
-       "autoscaling" : {
-         "enable" : false,
-         "min_l7_flavor_id" : ""
-       },
        "frozen_scene" : null,
        "eips" : [ ],
        "guaranteed" : true,
@@ -666,10 +624,6 @@ Successful request.
        "elb_virsubnet_ids" : [ "7f817f9c-8731-4002-9e47-18cb8d431787" ],
        "elb_virsubnet_type" : "dualstack",
        "ip_target_enable" : false,
-       "autoscaling" : {
-         "enable" : false,
-         "min_l7_flavor_id" : ""
-       },
        "frozen_scene" : null,
        "eips" : [ {
          "eip_id" : "0c07e04d-e2f9-41ad-b934-f58a65b6734d",
