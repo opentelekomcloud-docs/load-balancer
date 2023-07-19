@@ -12,8 +12,6 @@ This API is used to update an IP address group. All IP addresses in the IP addre
 
 IPv6 is unsupported.
 
-This function is not supported in **eu-nl** region. Please do not use it.
-
 URI
 ---
 

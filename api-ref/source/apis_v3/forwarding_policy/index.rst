@@ -10,6 +10,7 @@ Forwarding Policy
 -  :ref:`Viewing Details of a Forwarding Policy <showl7policy>`
 -  :ref:`Updating a Forwarding Policy <updatel7policy>`
 -  :ref:`Deleting a Forwarding Policy <deletel7policy>`
+-  :ref:`Batch Updating Forwarding Policy Priorities <batchupdatepoliciespriority>`
 
 .. toctree::
    :maxdepth: 1
@@ -20,3 +21,4 @@ Forwarding Policy
    viewing_details_of_a_forwarding_policy
    updating_a_forwarding_policy
    deleting_a_forwarding_policy
+   batch_updating_forwarding_policy_priorities

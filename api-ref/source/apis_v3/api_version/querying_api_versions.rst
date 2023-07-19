@@ -73,14 +73,14 @@ Example Responses
 
 Successful request.
 
-.. code-block::
+-  .. code-block::
 
-   {
-     "versions" : [ {
-       "id" : "v3",
-       "status" : "CURRENT"
-     } ]
-   }
+      {
+        "versions" : [ {
+          "id" : "v3",
+          "status" : "CURRENT"
+        } ]
+      }
 
 Status Codes
 ------------
