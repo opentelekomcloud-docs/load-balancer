@@ -8,7 +8,7 @@ Updating IP Addresses in an IP Address Group
 Function
 --------
 
-This API is used to update the IP addresses in an IP address group.This API is not available in **eu-nl** region
+This API is used to update the IP addresses in an IP address group.
 
 URI
 ---

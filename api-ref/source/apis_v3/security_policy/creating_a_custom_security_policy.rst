@@ -8,7 +8,7 @@ Creating a Custom Security Policy
 Function
 --------
 
-This API is used to create a custom security policy. If you need a custom security policy, you need to specify **security_policy_id** when you add an HTTPS listener to your load balancer. Customizing security policy is not supported in **eu-nl** region. Please do not use it.
+This API is used to create a custom security policy. If you need a custom security policy, you need to specify **security_policy_id** when you add an HTTPS listener to your load balancer.
 
 URI
 ---

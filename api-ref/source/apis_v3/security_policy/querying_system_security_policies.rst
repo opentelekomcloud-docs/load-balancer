@@ -10,7 +10,7 @@ Function
 
 This API is used to query system security policies.
 
-System security policies are available to all users and cannot be created or modified. Customizing security policy is not supported in **eu-nl** region. Please do not use it.
+System security policies are available to all users and cannot be created or modified.
 
 URI
 ---

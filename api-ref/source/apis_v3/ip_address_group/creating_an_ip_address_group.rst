@@ -12,8 +12,6 @@ This API is used to create an IP address group. The IP address can contain IP ad
 
 IPv6 is unsupported.
 
-This function is not supported in **eu-nl** region. Please do not use it.
-
 URI
 ---
 

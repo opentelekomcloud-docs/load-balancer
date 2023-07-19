@@ -8,7 +8,7 @@ Querying Custom Security Policies
 Function
 --------
 
-This API is used to query custom security policies.Customizing security policy is not supported in **eu-nl** region. Please do not use it.
+This API is used to query custom security policies.
 
 Constraints
 -----------

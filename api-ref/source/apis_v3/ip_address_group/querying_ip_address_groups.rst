@@ -8,7 +8,7 @@ Querying IP Address Groups
 Function
 --------
 
-This API is used to query IP address groups.This function is not supported in **eu-nl** region. Please do not use it.
+This API is used to query IP address groups.
 
 Constraints
 -----------

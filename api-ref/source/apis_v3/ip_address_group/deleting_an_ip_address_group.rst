@@ -8,7 +8,7 @@ Deleting an IP Address Group
 Function
 --------
 
-This API is used to delete an IP address group.This function is not supported in **eu-nl** region. Please do not use it.
+This API is used to delete an IP address group.
 
 URI
 ---
