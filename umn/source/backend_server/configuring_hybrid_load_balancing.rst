@@ -15,7 +15,7 @@ You can add servers in the VPC where the load balancer is created, in a differen
 -  To add on-premises servers to a backend server group, you need to connect the on-premises data center to the VPC where the load balancer is running through Direct Connect or VPN. For details about how to connect on-premises data centers to the cloud, see the Direct Connect User Guide or Virtual Private Network User Guide.
 
 
-.. figure:: /_static/images/en-us_image_0000001260652397.png
+.. figure:: /_static/images/en-us_image_0000001747381168.png
    :alt: **Figure 1** Routing requests to cloud and on-premises servers
 
    **Figure 1** Routing requests to cloud and on-premises servers
@@ -34,7 +34,7 @@ When you add IP as backend servers, note the following:
 
 -  IP as a backend cannot be disabled after it is enabled.
 -  If you do not enable the function when you create a load balancer, you can still enable it on the **Summary** page of the load balancer.
--  IP as backend servers must use IPv4 addresses.
+-  Only IPv4 addresses can be added as backend servers.
 -  If you enable IP as a backend for a load balancer, you can add only TCP, HTTP, and HTTPS listeners to the load balancer.
 -  The subnet where the load balancer works must have sufficient IP addresses. Otherwise, IP as backend servers cannot be added. You can add more subnets for more IP addresses on the **Summary** page of the load balancer.
 -  Security group rules of IP as backend servers must allow traffic from the subnet of the load balancer. Otherwise, health checks will fail.
@@ -66,7 +66,7 @@ Adding IP as Backend Servers
 
 #. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png

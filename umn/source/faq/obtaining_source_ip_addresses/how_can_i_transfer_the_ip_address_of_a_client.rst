@@ -55,7 +55,7 @@ If you use this method, the first IP address obtained is the IP address of the c
       RemoteIPInternalProxy 100.125.0.0/16
 
 
-   .. figure:: /_static/images/en-us_image_0174899056.jpg
+   .. figure:: /_static/images/en-us_image_0000001794660973.jpg
       :alt: **Figure 1** Content to be added
 
       **Figure 1** Content to be added
@@ -113,7 +113,7 @@ For example, if CentOS 7.5 is used as the OS, run the following command to insta
       real_ip_header X-Forwarded-For;
 
 
-   .. figure:: /_static/images/en-us_image_0174914269.jpg
+   .. figure:: /_static/images/en-us_image_0000001794820077.jpg
       :alt: **Figure 2** Adding information
 
       **Figure 2** Adding information
@@ -152,7 +152,7 @@ In the following operations, the Tomcat installation path is **/usr/tomcat/tomca
       netstat -anpt|grep java
 
 
-   .. figure:: /_static/images/en-us_image_0276143526.png
+   .. figure:: /_static/images/en-us_image_0000001747381248.png
       :alt: **Figure 3** Tomcat running properly
 
       **Figure 3** Tomcat running properly
@@ -170,7 +170,7 @@ In the following operations, the Tomcat installation path is **/usr/tomcat/tomca
       pattern="%{X-FORWARDED-FOR}i %l %u %t %r %s %b %D %q %{User-Agent}i %T" resolveHosts="false" />
 
 
-   .. figure:: /_static/images/en-us_image_0276220702.png
+   .. figure:: /_static/images/en-us_image_0000001747381228.png
       :alt: **Figure 4** Example configuration
 
       **Figure 4** Example configuration
@@ -184,7 +184,7 @@ In the following operations, the Tomcat installation path is **/usr/tomcat/tomca
    **/usr/tomcat/tomcat8/** is where Tomcat is installed. Change it based on site requirements.
 
 
-   .. figure:: /_static/images/en-us_image_0276225173.png
+   .. figure:: /_static/images/en-us_image_0000001747740104.png
       :alt: **Figure 5** Restarting the Tomcat service
 
       **Figure 5** Restarting the Tomcat service
@@ -201,7 +201,7 @@ In the following operations, the Tomcat installation path is **/usr/tomcat/tomca
    In this command, **localhost_access_log..2021-11-29.txt** indicates the log path of the current day. Change it based on site requirements.
 
 
-   .. figure:: /_static/images/en-us_image_0276223899.png
+   .. figure:: /_static/images/en-us_image_0000001794660969.png
       :alt: **Figure 6** Querying the source IP address
 
       **Figure 6** Querying the source IP address
@@ -217,13 +217,13 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. Open the Server Manager and choose **Modules** > **Configure Native Modules**.
 
 
-   .. figure:: /_static/images/en-us_image_0267429969.png
+   .. figure:: /_static/images/en-us_image_0000001747381224.png
       :alt: **Figure 7** Selecting modules
 
       **Figure 7** Selecting modules
 
 
-   .. figure:: /_static/images/en-us_image_0267431325.png
+   .. figure:: /_static/images/en-us_image_0000001747740108.png
       :alt: **Figure 8** Configure Native Modules
 
       **Figure 8** Configure Native Modules
@@ -231,7 +231,7 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. Click **Register** to register the x86 and x64 plug-ins.
 
 
-   .. figure:: /_static/images/en-us_image_0267432483.png
+   .. figure:: /_static/images/en-us_image_0000001794660981.png
       :alt: **Figure 9** Registering plug-ins
 
       **Figure 9** Registering plug-ins
@@ -239,7 +239,7 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. In the **Modules** dialog box, verify that the registered plug-ins are displayed in the list.
 
 
-   .. figure:: /_static/images/en-us_image_0267434399.png
+   .. figure:: /_static/images/en-us_image_0000001747381232.png
       :alt: **Figure 10** Confirming the registration
 
       **Figure 10** Confirming the registration
@@ -247,7 +247,7 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. Select **ISAPI Filters** on the Server Manager homepage and authorize two plug-ins to run ISAPI and CGI extensions.
 
 
-   .. figure:: /_static/images/en-us_image_0267440227.png
+   .. figure:: /_static/images/en-us_image_0000001747381236.png
       :alt: **Figure 11** Adding authorization
 
       **Figure 11** Adding authorization
@@ -255,7 +255,7 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. Select **ISAPI and CGI Restriction** to set the execution permission for the two plug-ins.
 
 
-   .. figure:: /_static/images/en-us_image_0267442311.png
+   .. figure:: /_static/images/en-us_image_0000001747381244.png
       :alt: **Figure 12** Allowing the plug-ins to execute
 
       **Figure 12** Allowing the plug-ins to execute
@@ -263,7 +263,7 @@ The following uses Windows Server 2012 with IIS7 as an example to describe how t
 #. Click **Restart** on the homepage to restart IIS. The configuration will take effect after the restart.
 
 
-   .. figure:: /_static/images/en-us_image_0267446611.png
+   .. figure:: /_static/images/en-us_image_0000001747740120.png
       :alt: **Figure 13** Restarting IIS
 
       **Figure 13** Restarting IIS
@@ -300,6 +300,6 @@ For load balancing at Layer 4 (TCP/UDP), you can enable **Transfer Client IP Add
 
          If you enable this function, a server cannot be used as both the client and the backend server. If the client and the backend server use the same server and the **Transfer Client IP Address** option is enabled, the backend server will think the packet from the client is sent by itself and will not return a response packet to the load balancer. As a result, the return traffic will be interrupted.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001454530030.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747740100.png

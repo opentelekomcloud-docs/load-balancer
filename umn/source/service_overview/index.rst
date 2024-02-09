@@ -13,8 +13,9 @@ Service Overview
 -  :ref:`Load Balancing on a Public or Private Network <elb_pro_01_0004>`
 -  :ref:`Network Traffic Paths <elb_ug_fz_0003_01>`
 -  :ref:`Specifications of Dedicated Load Balancers <en-us_topic_0287737145>`
+-  :ref:`Quotas and Constraints <elb_pro_0019>`
 -  :ref:`Permissions <en-us_topic_0171274900>`
--  :ref:`Product Concepts <en-us_topic_0195131496>`
+-  :ref:`Product Concepts <elb_pro_0210>`
 -  :ref:`How ELB Works with Other Services <elb_pro_0008>`
 
 .. toctree::
@@ -29,6 +30,7 @@ Service Overview
    load_balancing_on_a_public_or_private_network
    network_traffic_paths
    specifications_of_dedicated_load_balancers
+   quotas_and_constraints
    permissions
    product_concepts/index
    how_elb_works_with_other_services

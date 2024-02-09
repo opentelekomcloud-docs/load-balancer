@@ -41,7 +41,7 @@ Creating a CA Certificate Using OpenSSL
    **openssl genrsa -out ca.key 2048**
 
 
-   .. figure:: /_static/images/en-us_image_0275826373.jpg
+   .. figure:: /_static/images/en-us_image_0000001747381096.jpg
       :alt: **Figure 1** Private key of the CA certificate
 
       **Figure 1** Private key of the CA certificate
@@ -55,7 +55,7 @@ Creating a CA Certificate Using OpenSSL
    **openssl x509 -req -in ca.csr -out ca.crt -sha1 -days 5000 -signkey ca.key**
 
 
-   .. figure:: /_static/images/en-us_image_0275826374.jpg
+   .. figure:: /_static/images/en-us_image_0000001747739988.jpg
       :alt: **Figure 2** Creating a self-signed CA certificate
 
       **Figure 2** Creating a self-signed CA certificate
@@ -102,7 +102,7 @@ The server certificate can be a CA signed certificate or a self-signed one. In t
    **openssl x509 -req -in server.csr -out server.crt -sha1 -CAcreateserial -days 5000** **-CA ../ca/ca.crt -CAkey ../ca/ca.key**
 
 
-   .. figure:: /_static/images/en-us_image_0275816100.jpg
+   .. figure:: /_static/images/en-us_image_0000001794660833.jpg
       :alt: **Figure 3** Issuing a server certificate
 
       **Figure 3** Issuing a server certificate
@@ -139,7 +139,7 @@ Issuing a Client Certificate Using the CA Certificate
    **openssl genrsa -out client.key 2048**
 
 
-   .. figure:: /_static/images/en-us_image_0275818423.jpg
+   .. figure:: /_static/images/en-us_image_0000001747739980.jpg
       :alt: **Figure 4** Creating a client certificate private key
 
       **Figure 4** Creating a client certificate private key
@@ -149,7 +149,7 @@ Issuing a Client Certificate Using the CA Certificate
    **openssl req -out client.csr -key client.key -new -config ./client_cert.conf**
 
 
-   .. figure:: /_static/images/en-us_image_0275818458.jpg
+   .. figure:: /_static/images/en-us_image_0000001747739976.jpg
       :alt: **Figure 5** Creating a client certificate CSR file
 
       **Figure 5** Creating a client certificate CSR file
@@ -159,7 +159,7 @@ Issuing a Client Certificate Using the CA Certificate
    **openssl x509 -req -in client.csr -out client.crt -sha1 -CAcreateserial -days 5000** **-CA ../ca/ca.crt -CAkey ../ca/ca.key**
 
 
-   .. figure:: /_static/images/en-us_image_0275818808.jpg
+   .. figure:: /_static/images/en-us_image_0000001747739964.jpg
       :alt: **Figure 6** Issuing a client certificate
 
       **Figure 6** Issuing a client certificate
@@ -175,9 +175,9 @@ Issuing a Client Certificate Using the CA Certificate
 Configuring the Server Certificate and Private Key
 --------------------------------------------------
 
-#. Log in to the management console.
+#. Log in to the load balancer management console.
 #. In the navigation pane on the left, choose **Certificates**.
-#. In the navigation pane on the left, choose **Certificates**. On the displayed page, click **Create Certificate**. In the **Create Certificate** dialog box, select **Server certificate**, copy the content of server certificate **server.crt** to the **Certificate** area and the content of private key file **server.key** to the **Private Key** area, and click **OK**.
+#. In the navigation pane on the left, choose **Certificates**. On the displayed page, click **Create Certificate**. In the **Create Certificate** dialog box, select **Server certificate**, copy the content of server certificate **server.crt** to the **Certificate Content** area and the content of private key file **server.key** to the **Private Key** area, and click **OK**.
 
    .. note::
 
@@ -190,18 +190,18 @@ Configuring the Server Certificate and Private Key
 Configuring the CA Certificate
 ------------------------------
 
-#. Log in to the management console.
+#. Log in to the load balancer management console.
 
 #. In the navigation pane on the left, choose **Certificates**.
 
-#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created in :ref:`Creating a CA Certificate Using OpenSSL <en_us_elb_03_0006__section1271620810310>` to the **Certificate** area, and click **OK**.
+#. Click **Create Certificate**. In the **Create Certificate** dialog box, select **CA certificate**, copy the content of CA certificate **ca.crt** created in :ref:`Creating a CA Certificate Using OpenSSL <en_us_elb_03_0006__section1271620810310>` to the **Certificate Content** area, and click **OK**.
 
    .. note::
 
       Delete the last newline character before you copy the content.
 
 
-   .. figure:: /_static/images/en-us_image_0000001125219677.png
+   .. figure:: /_static/images/en-us_image_0000001747739968.png
       :alt: **Figure 7** Creating a certificate
 
       **Figure 7** Creating a certificate
@@ -213,12 +213,12 @@ Configuring the CA Certificate
 Configuring Mutual Authentication
 ---------------------------------
 
-#. Log in to the management console.
+#. Log in to the load balancer management console.
 
-#. Locate the load balancer and click its name. Under **Listeners**, click **Add Listener**. Select **HTTPS** for **Frontend Protocol**, enable **Mutual Authentication**, select **Mutual authentication**, and select the CA certificate and server certificate.
+#. Locate the load balancer and click its name. Under **Listeners**, click **Add Listener**. Select **HTTPS** for **Frontend Protocol**, enable **Mutual Authentication**, and select the CA certificate and server certificate.
 
 
-   .. figure:: /_static/images/en-us_image_0000001125463277.png
+   .. figure:: /_static/images/en-us_image_0000001747739972.png
       :alt: **Figure 8** Adding a listener
 
       **Figure 8** Adding a listener
@@ -241,7 +241,7 @@ Importing and Testing the Client Certificate
    c. Click **Certificates** and then **Import** to import the **client.p12** certificate.
 
 
-      .. figure:: /_static/images/en-us_image_0280246566.png
+      .. figure:: /_static/images/en-us_image_0000001794660809.png
          :alt: **Figure 9** Importing the **client.p12** certificate
 
          **Figure 9** Importing the **client.p12** certificate
@@ -251,7 +251,7 @@ Importing and Testing the Client Certificate
    Enter the access address in the address box of your browser. A window is displayed asking you to select the certificate. Select the client certificate and click **OK**. If the website can be accessed, the certificate is successfully imported.
 
 
-   .. figure:: /_static/images/en-us_image_0280246602.png
+   .. figure:: /_static/images/en-us_image_0000001747381076.png
       :alt: **Figure 10** Accessing the website
 
       **Figure 10** Accessing the website
@@ -273,7 +273,7 @@ Importing and Testing the Client Certificate
    Ensure that the certificate address, private key address, IP address and listening port of the load balancer are correct. Replace **https://XXX.XXX.XXX.XXX:XXX** with the actual IP address and port number. If the expected response code is returned, the certificate is successfully imported.
 
 
-   .. figure:: /_static/images/en-us_image_0280169359.png
+   .. figure:: /_static/images/en-us_image_0000001794660817.png
       :alt: **Figure 11** Example of a correct response code
 
       **Figure 11** Example of a correct response code

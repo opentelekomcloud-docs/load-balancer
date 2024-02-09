@@ -8,7 +8,7 @@ Configuring Advanced Forwarding
 Scenarios
 ---------
 
-Add advanced forwarding policies to HTTP or HTTPS listeners of dedicated load balancers to route requests more specifically.
+You can add advanced forwarding policies to HTTP or HTTPS listeners of dedicated load balancers to route requests more specifically.
 
 Each advanced forwarding policy consists of one or more forwarding rules and an action.
 
@@ -21,7 +21,9 @@ Each advanced forwarding policy consists of one or more forwarding rules and an 
 Constraints and Limitations
 ---------------------------
 
-Advanced forwarding cannot be disabled once enabled.
+-  Advanced forwarding cannot be disabled once enabled.
+-  A maximum of 100 forwarding policies can be configured for a listener. If the number of forwarding policies exceeds the quota, the excess forwarding policies will not be applied.
+-  An advanced forwarding policy can contain a maximum of 10 conditions.
 
 Enabling Advanced Forwarding
 ----------------------------
@@ -53,11 +55,11 @@ Adding an Advanced Forwarding Policy
 
 #. On the **Forwarding Policies** tab page, click **Add Forwarding Policy**.
 
-   Configure the parameters based on :ref:`Table 1 <elb_ug_jt_060303__en-us_topic_0000001168961119_elb_ug_jt_0023_table10859681016>`.
+   Configure the parameters based on :ref:`Table 1 <elb_ug_jt_060303__en-us_topic_0000001168961119_en-us_topic_0000001127292335_table10859681016>`.
 
 #. Click **Save**.
 
-.. _elb_ug_jt_060303__en-us_topic_0000001168961119_elb_ug_jt_0023_table10859681016:
+.. _elb_ug_jt_060303__en-us_topic_0000001168961119_en-us_topic_0000001127292335_table10859681016:
 
 .. table:: **Table 1** Forwarding policy parameters
 
@@ -195,7 +197,7 @@ URL Matching Examples
    +-----------------+----------------------+------------------------------+--------------------------+----------------------------+-----------------------------------+
    | Request URL     | Forwarding Policy    | URL in the Forwarding Policy | Matching Mode            | Forwarding Policy Priority | Forward to a backend server group |
    +=================+======================+==============================+==========================+============================+===================================+
-   | /elb/abc.html   | Forwarding policy 01 | /elb/php.html                | Prefix match             | 1                          | Backend server group 01           |
+   | /elb/abc.html   | Forwarding policy 01 | /elb/abc.html                | Prefix match             | 1                          | Backend server group 01           |
    +-----------------+----------------------+------------------------------+--------------------------+----------------------------+-----------------------------------+
    |                 | Forwarding policy 02 | /elb                         | Prefix match             | 2                          | Backend server group 02           |
    +-----------------+----------------------+------------------------------+--------------------------+----------------------------+-----------------------------------+
@@ -258,17 +260,17 @@ Deleted forwarding policies cannot be recovered.
 
 #. In the displayed dialog box, click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001151017456.png
-.. |image6| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image7| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image8| image:: /_static/images/en-us_image_0000001197017121.png
-.. |image9| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image10| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image11| image:: /_static/images/en-us_image_0000001151177270.png
-.. |image12| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image13| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image14| image:: /_static/images/en-us_image_0000001151017458.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739992.png
+.. |image6| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image7| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image8| image:: /_static/images/en-us_image_0000001747739984.png
+.. |image9| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image10| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image11| image:: /_static/images/en-us_image_0000001747381100.png
+.. |image12| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image13| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image14| image:: /_static/images/en-us_image_0000001794660837.png

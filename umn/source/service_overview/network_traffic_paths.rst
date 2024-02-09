@@ -16,7 +16,7 @@ Inbound Network Traffic Paths
 The listeners' configurations determine how load balancers distribute incoming traffic.
 
 
-.. figure:: /_static/images/en-us_image_0000001181376003.png
+.. figure:: /_static/images/en-us_image_0000001747739656.png
    :alt: **Figure 1** Inbound network traffic
 
    **Figure 1** Inbound network traffic
@@ -37,7 +37,7 @@ Outbound Network Traffic Paths
 The outbound traffic is routed back the same way the traffic came in.
 
 
-.. figure:: /_static/images/en-us_image_0000001135576398.png
+.. figure:: /_static/images/en-us_image_0000001794819605.png
    :alt: **Figure 2** Outbound network traffic
 
    **Figure 2** Outbound network traffic

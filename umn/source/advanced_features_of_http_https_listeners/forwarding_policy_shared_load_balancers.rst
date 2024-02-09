@@ -22,6 +22,8 @@ Constraints and Limitations
 ---------------------------
 
 -  Forwarding policies can be added only to HTTP and HTTPS listeners.
+-  Forwarding policies must be unique.
+-  A maximum of 100 forwarding policies can be configured for a listener. If the number of forwarding policies exceeds the quota, the excess forwarding policies will not be applied.
 -  When you add a forwarding policy, note the following:
 
    -  Each URL path must exist on the backend server. If the path does not exist, the backend server will return 404 Not Found.
@@ -35,7 +37,7 @@ Constraints and Limitations
 
 .. caution::
 
-   If you add a forwarding policy that is the same as an existing one, there will be a conflict. Even if you delete the existing forwarding policy, the newly-added forwarding policy is still in the **Faulty** state. Delete the newly-added forwarding policy and add a different one.
+   If you add a forwarding policy that is the same as an existing one by calling APIs, there will be a conflict. Even if you delete the existing forwarding policy, the new forwarding policy is still faulty. Delete the newly-added forwarding policy and add a different one.
 
 Adding a Forwarding Policy
 --------------------------
@@ -67,7 +69,7 @@ Adding a Forwarding Policy
    +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
    | Parameter            |                                   | Description                                                                                                                                                                                                                                                                                                                                          | Example Value                     |
    +======================+===================================+======================================================================================================================================================================================================================================================================================================================================================+===================================+
-   | Forwarding Rule      | Domain Name                       | Specifies the domain name used for forwarding requests. The domain name in the request must exactly match that in the forwarding policy.                                                                                                                                                                                                             | www.test.com                      |
+   | Forwarding Rule      | Domain name                       | Specifies the domain name used for forwarding requests. The domain name in the request must exactly match that in the forwarding policy.                                                                                                                                                                                                             | www.test.com                      |
    |                      |                                   |                                                                                                                                                                                                                                                                                                                                                      |                                   |
    |                      |                                   | You need to specify either a domain name or URL.                                                                                                                                                                                                                                                                                                     |                                   |
    +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
@@ -127,7 +129,7 @@ The following table lists how a URL is matched, and :ref:`Figure 1 <en-us_topic_
 
 .. _en-us_topic_0114694934__fig87121434403:
 
-.. figure:: /_static/images/en-us_image_0114721717.jpg
+.. figure:: /_static/images/en-us_image_0000001747740012.jpg
    :alt: **Figure 1** Request forwarding
 
    **Figure 1** Request forwarding
@@ -155,6 +157,8 @@ Modifying a Forwarding Policy
 
 #. Modify the parameters and click **Save**.
 
+.. _en-us_topic_0114694934__section4306132117396:
+
 Deleting a Forwarding Policy
 ----------------------------
 
@@ -176,12 +180,12 @@ Deleting a Forwarding Policy
 
 #. In the displayed dialog box, click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001241130263.png
-.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image6| image:: /_static/images/en-us_image_0000001447007950.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image9| image:: /_static/images/en-us_image_0000001496848813.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001794660873.png
+.. |image4| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image5| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image6| image:: /_static/images/en-us_image_0000001794819961.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image9| image:: /_static/images/en-us_image_0000001794819965.png

@@ -14,7 +14,7 @@ Elastic Load Balancing - User Guide
    health_check/index
    certificate/index
    tag
-   ip_address_group_whitelist_or_blacklist
+   managing_ip_address_groups/index
    monitoring/index
    permissions_management/index
    quotas

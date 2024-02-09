@@ -10,8 +10,6 @@ Scenario
 
 This section guides you on how to change the specifications of a dedicated load balancer.
 
-You can change the specifications of a dedicated load balancer as required on the console.
-
 .. note::
 
    You can only change the specifications of dedicated load balancers.
@@ -34,6 +32,13 @@ Changing Specifications
    |                                         |                          |                            | -  If you select the application load balancing (HTTP/HTTPS), you can only create an HTTP or HTTPS listener. If the specification is downgraded, new connections may not be able to be established and some persistent connections may be interrupted. |
    +-----------------------------------------+--------------------------+----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. note::
+
+   Downgrading specifications will temporarily affect services.
+
+   -  Network load balancing (TCP/UDP): New connections may fail to establish.
+   -  Application load balancing (HTTP/HTTPS): New connections may not be able to be established and some persistent connections may be interrupted.
+
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
@@ -41,5 +46,5 @@ Changing Specifications
 #. Select the new specifications and click **Next**.
 #. Confirm the information and click **Submit**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png

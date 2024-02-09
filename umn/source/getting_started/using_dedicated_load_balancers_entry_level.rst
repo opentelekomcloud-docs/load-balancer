@@ -92,7 +92,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    e. Enter **http://**\ *EIP bound to the ECS* in the address box of your browser. If the following page is displayed, Nginx has been installed.
 
 
-      .. figure:: /_static/images/en-us_image_0000001251062297.png
+      .. figure:: /_static/images/en-us_image_0000001747381136.png
          :alt: **Figure 1** Nginx installed successfully
 
          **Figure 1** Nginx installed successfully
@@ -172,7 +172,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    -  HTML page of ECS01
 
 
-      .. figure:: /_static/images/en-us_image_0167655332.png
+      .. figure:: /_static/images/en-us_image_0000001794819981.png
          :alt: **Figure 2** Nginx successfully deployed on ECS01
 
          **Figure 2** Nginx successfully deployed on ECS01
@@ -180,7 +180,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    -  HTML page of ECS02
 
 
-      .. figure:: /_static/images/en-us_image_0167655334.png
+      .. figure:: /_static/images/en-us_image_0000001794660869.png
          :alt: **Figure 3** Nginx successfully deployed on ECS02
 
          **Figure 3** Nginx successfully deployed on ECS02
@@ -218,9 +218,9 @@ Procedure
 
 #. Click the security group rule ID or **Modify Security Group Rule**. The security group details page is displayed.
 
-#. On the **Inbound Rules** tab page, click **Add Rule**. Configure an inbound rule based on :ref:`Table 2 <elb_qs_0002__elb_ug_hd_0007_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416>`.
+#. On the **Inbound Rules** tab page, click **Add Rule**. Configure an inbound rule based on :ref:`Table 2 <elb_qs_0002__en-us_topic_0000001125381517_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416>`.
 
-   .. _elb_qs_0002__elb_ug_hd_0007_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416:
+   .. _elb_qs_0002__en-us_topic_0000001125381517_en-us_topic_0000001420502298_en-us_topic_0000001390784280_table22703095416:
 
    .. table:: **Table 2** Security group rules
 
@@ -240,12 +240,17 @@ Procedure
       |                  |                 | **Port**: health check port                                         |                                     |
       +------------------+-----------------+---------------------------------------------------------------------+-------------------------------------+
 
+   .. note::
+
+      -  After a load balancer is created, do not change the subnet. If the subnet is changed, the IP addresses occupied by the load balancer will not be released, and traffic from the previous backend subnet is still need to be allowed to backend servers.
+      -  Traffic from the new backend subnet is also need to be allowed to backend servers.
+
 #. Click **OK**.
 
 Firewall Rules
 --------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to allow traffic from the VPC where the load balancer works to backend servers.
 
@@ -272,7 +277,7 @@ Adding a Listener
 Add a listener to the created load balancer. When you add the listener, create a backend server group, configure a health check, and add the two ECSs to the created backend server group.
 
 
-.. figure:: /_static/images/en-us_image_0198607824.png
+.. figure:: /_static/images/en-us_image_0000001794660861.png
    :alt: **Figure 4** Traffic forwarding
 
    **Figure 4** Traffic forwarding
@@ -283,7 +288,14 @@ Add a listener to the created load balancer. When you add the listener, create a
 #. Configure the listener and click **Next**.
 
    -  **Name**: Enter a name, for example, **listener-HTTP**.
+
    -  **Frontend Protocol/Port**: Select a protocol and enter a port for the load balancer to receive requests. For example, set it to **HTTP** and **80**.
+
+
+      .. figure:: /_static/images/en-us_image_0000001747381140.png
+         :alt: **Figure 5** Adding a listener
+
+         **Figure 5** Adding a listener
 
 #. Create a backend server group and configure a health check.
 
@@ -294,7 +306,7 @@ Add a listener to the created load balancer. When you add the listener, create a
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
+      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example.
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, **www.example.com**.
       -  **Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
 
@@ -314,10 +326,10 @@ After the load balancer is configured, you can access the domain name to check w
    View the load balancer EIP on the **Summary** page of the load balancer.
 
 
-   .. figure:: /_static/images/en-us_image_0167652140.png
-      :alt: **Figure 5** **hosts** file on your PC
+   .. figure:: /_static/images/en-us_image_0000001747740024.png
+      :alt: **Figure 6** **hosts** file on your PC
 
-      **Figure 5** **hosts** file on your PC
+      **Figure 6** **hosts** file on your PC
 
 #. On the CLI of your PC, run the following command to check whether the domain name is mapped to the load balancer EIP:
 
@@ -328,25 +340,25 @@ After the load balancer is configured, you can access the domain name to check w
 #. Use your browser to access **http://www.example.com**. If the following page is displayed, the load balancer has routed the request to ECS01.
 
 
-   .. figure:: /_static/images/en-us_image_0167652142.png
-      :alt: **Figure 6** Accessing ECS01
+   .. figure:: /_static/images/en-us_image_0000001794660889.png
+      :alt: **Figure 7** Accessing ECS01
 
-      **Figure 6** Accessing ECS01
+      **Figure 7** Accessing ECS01
 
 #. Use your browser to access **http://www.example.com**. If the following page is displayed, the load balancer has routed the request to ECS02.
 
 
-   .. figure:: /_static/images/en-us_image_0167652143.png
-      :alt: **Figure 7** Accessing ECS02
+   .. figure:: /_static/images/en-us_image_0000001794819973.png
+      :alt: **Figure 8** Accessing ECS02
 
-      **Figure 7** Accessing ECS02
+      **Figure 8** Accessing ECS02
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001206511791.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001167495475.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001508946757.png
-.. |image9| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001747380972.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image6| image:: /_static/images/en-us_image_0000001794820117.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001747739880.png
+.. |image9| image:: /_static/images/en-us_image_0000001794660485.png

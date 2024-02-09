@@ -12,10 +12,8 @@ If you set the **Network Type** of a load balancer to **Public IPv4 network** or
 
 .. note::
 
-   When changing bandwidth, you need to change the specifications of the dedicated load balancer to avoid speed limit due to insufficient bandwidth.
-
+   -  When changing bandwidth, you need to change the specifications of the dedicated load balancer to avoid speed limit due to insufficient bandwidth.
    -  The bandwidth of the EIP bound to the load balancer is the limit for traffic required by the clients to access the load balancer.
-   -  The bandwidth of dedicated load balancers is the maximum value of the total inbound and outbound traffic of the load balancer.
 
 
 Modifying the Bandwidth
@@ -41,5 +39,5 @@ When you modify the bandwidth, traffic routing will not be interrupted.
 
 #. Confirm the modified bandwidth and click **Submit**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png

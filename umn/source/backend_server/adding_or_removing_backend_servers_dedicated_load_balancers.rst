@@ -22,12 +22,12 @@ If you want to add IP as backend servers to handle requests, you must configure 
 IP as Backend Servers
 ---------------------
 
-If you enable IP as a backend, you can add backend servers that are not in the VPC of the load balancer, using their private IP addresses. The backend servers can be in a VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection.
+If you enable the IP as a Backend feature, in addition to ECSs and BMSs, you can also add IP as backend servers that are NOT in the VPC of the load balancer. The backend servers can be in a VPC connected through a VPC peering connection, or in an on-premises data center at the other end of a Direct Connect or VPN connection.
 
 When you add IP as backend servers, note the following:
 
 -  If you do not enable the function when you create a load balancer, you can still enable it on the **Summary** page of the load balancer.
--  IP as backend servers must use IPv4 addresses.
+-  Only IPv4 addresses can be added as backend servers.
 -  Configure the VPC routes correctly to ensure that backend servers are reachable. For details, see :ref:`Adding or Removing Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0003>`.
 -  If you enable IP as a backend for a load balancer, you can add only TCP, HTTP, and HTTPS listeners to the load balancer.
 -  The subnet where the load balancer works must have sufficient IP addresses (at least 16 IP addresses). You can add more subnets for more IP addresses on the **Summary** page of the load balancer.
@@ -145,7 +145,7 @@ Adding a Backend Server Group
       +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Slow Start Duration       | Specifies how long the slow start will last.                                                                                                                                                                                                                                                                                                                                                                                                                                             | 30                    |
       |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                       |
-      |                           | The duration ranges from **30** to **1200**, in seconds, and the default value is **30**.                                                                                                                                                                                                                                                                                                                                                                                                |                       |
+      |                           | The duration ranges from **30** to **1,200**, in seconds, and the default value is **30**.                                                                                                                                                                                                                                                                                                                                                                                               |                       |
       +---------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Description               | Provides supplementary information about the backend server group.                                                                                                                                                                                                                                                                                                                                                                                                                       | ``-``                 |
       |                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |                       |
@@ -159,7 +159,7 @@ Adding a Backend Server Group
       +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Parameter             | Description                                                                                                                                                                                                                                           | Example Value         |
       +=======================+=======================================================================================================================================================================================================================================================+=======================+
-      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                                                                            | N/A                   |
+      | Health Check          | Specifies whether to enable health checks.                                                                                                                                                                                                            | N/A                   |
       +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Protocol              | -  If the frontend protocol is TCP, HTTP, or HTTPS, the health check protocol can be TCP, HTTP, or HTTPS. The health check protocol cannot be changed once it is set.                                                                                 | HTTP                  |
       |                       | -  If the frontend protocol is UDP, the health check protocol is UDP by default.                                                                                                                                                                      |                       |
@@ -211,15 +211,15 @@ Deleting a Backend Server Group
 #. Click **Backend Server Groups**, locate the backend server group, and click |image12| on the right of its name.
 #. Click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image9| image:: /_static/images/en-us_image_0000001205955477.png
-.. |image10| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image11| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image12| image:: /_static/images/en-us_image_0000001206035439.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image6| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image9| image:: /_static/images/en-us_image_0000001747381052.png
+.. |image10| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image11| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image12| image:: /_static/images/en-us_image_0000001794660785.png

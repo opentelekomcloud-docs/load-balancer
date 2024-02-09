@@ -9,14 +9,14 @@ Process Flowchart
 
 .. _elb_qs_0005__fig46765314196:
 
-.. figure:: /_static/images/en-us_image_0000001252868753.png
+.. figure:: /_static/images/en-us_image_0000001794660729.png
    :alt: **Figure 1** Getting started - entry level
 
    **Figure 1** Getting started - entry level
 
 .. _elb_qs_0005__fig262625831911:
 
-.. figure:: /_static/images/en-us_image_0000001253028753.png
+.. figure:: /_static/images/en-us_image_0000001747381000.png
    :alt: **Figure 2** Getting started - advanced level
 
    **Figure 2** Getting started - advanced level

@@ -20,5 +20,4 @@ Precautions
 -  You do not need to configure certificates for both the shared load balancer and the associated backend servers. If you configure a certificate for backend servers, HTTPS listeners cannot be added to the load balancer. In this case, you can add a TCP listener to transparently transmit HTTPS traffic to backend servers. This restriction does not apply to dedicated load balancers.
 -  You can use self-signed certificates. However, note that self-signed certificates pose security risks. Therefore, it is recommended that you use certificates issued by third parties.
 -  ELB supports certificates only in PEM format. If you have a certificate in any other format, you must convert it to a PEM-encoded certificate.
--  Currently, ELB does not check certificate validity.
 -  If a certificate has expired, you need to manually replace or delete it.

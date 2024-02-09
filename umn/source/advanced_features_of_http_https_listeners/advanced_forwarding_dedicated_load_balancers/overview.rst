@@ -10,7 +10,7 @@ Advanced forwarding policies are available only for dedicated load balancers. If
 You can add advanced forwarding policies to HTTP or HTTPS listeners of dedicated load balancers to route requests more specifically.
 
 
-.. figure:: /_static/images/en-us_image_0000001197097021.png
+.. figure:: /_static/images/en-us_image_0000001794660773.png
    :alt: **Figure 1** How advanced forwarding works
 
    **Figure 1** How advanced forwarding works

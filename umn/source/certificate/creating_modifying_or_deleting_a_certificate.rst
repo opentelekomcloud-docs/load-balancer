@@ -32,7 +32,7 @@ Creating a Certificate
       -  **Server certificate**: used for SSL handshake negotiations if an HTTPS listener is used. Both the certificate content and private key are required.
       -  **CA certificate**: issued by a certificate authority (CA) and used to verify the certificate issuer. If HTTPS mutual authentication is required, HTTPS connections can be established only when the client provides a certificate issued by a specific CA.
 
-   -  **Certificate**: The content must be in PEM format. This parameter is mandatory when **Certificate Type** is set to **Server certificate** or **CA certificate**.
+   -  **Certificate Content**: The content must be in PEM format. This parameter is mandatory when **Certificate Type** is set to **Server certificate** or **CA certificate**.
 
       Click **Upload** and select the certificate to be uploaded. Ensure that your browser is of the latest version.
 
@@ -48,7 +48,7 @@ Creating a Certificate
 
       Click **Upload** and select the private key to be uploaded. Ensure that your browser is of the latest version.
 
-      **Private Key**: This must be an unencrypted private key. The format is as follows:
+      The value must be an unencrypted private key. The private key must be in PEM format. The format is as follows:
 
       .. code-block::
 
@@ -116,6 +116,8 @@ Modifying a Certificate
 #. Modify the parameters as required.
 #. Click **OK**.
 
+.. _elb_ug_zs_0004__section8343547171830:
+
 Deleting a Certificate
 ----------------------
 
@@ -128,9 +130,9 @@ Only certificates that are not in use can be deleted.
 #. Locate the certificate and click **Delete** in the **Operation** column.
 #. Click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image6| image:: /_static/images/en-us_image_0000001794660485.png

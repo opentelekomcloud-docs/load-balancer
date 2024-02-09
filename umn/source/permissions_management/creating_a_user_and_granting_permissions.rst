@@ -24,7 +24,7 @@ Process Flow
 ------------
 
 
-.. figure:: /_static/images/en-us_image_0171320637.jpg
+.. figure:: /_static/images/en-us_image_0000001747739752.jpg
    :alt: **Figure 1** Process for granting ELB permissions
 
    **Figure 1** Process for granting ELB permissions

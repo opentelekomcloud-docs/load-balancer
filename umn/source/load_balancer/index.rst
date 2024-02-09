@@ -13,6 +13,7 @@ Load Balancer
 -  :ref:`Changing the Specifications of a Dedicated Load Balancer <elb_ug_fz_0016>`
 -  :ref:`Changing an IP Address <elb_lb_000010>`
 -  :ref:`Binding an IP Address to or Unbinding an IP Address from a Load Balancer <elb_ug_fz_0009>`
+-  :ref:`Adding to or Removing from an IPv6 Shared Bandwidth <elb_lb_000011>`
 -  :ref:`Exporting the Load Balancer List <elb_ug_fz_0011>`
 -  :ref:`Deleting a Load Balancer <elb_ug_fz_0008>`
 
@@ -28,5 +29,6 @@ Load Balancer
    changing_the_specifications_of_a_dedicated_load_balancer
    changing_an_ip_address
    binding_an_ip_address_to_or_unbinding_an_ip_address_from_a_load_balancer
+   adding_to_or_removing_from_an_ipv6_shared_bandwidth
    exporting_the_load_balancer_list
    deleting_a_load_balancer
