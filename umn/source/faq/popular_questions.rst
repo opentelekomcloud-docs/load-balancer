@@ -6,7 +6,6 @@ Popular Questions
 =================
 
 -  :ref:`How Can I Transfer the IP Address of a Client? <elb_faq_0090>`
--  :ref:`How Do I Troubleshoot an Unhealthy Backend Server? <en-us_topic_0018127975>`
 -  :ref:`How Does ELB Perform UDP Health Checks? What Are the Precautions for UDP Health Checks? <elb_faq_0024>`
 -  :ref:`What Types of Sticky Sessions Does ELB Support? <elb_faq_0085>`
 -  :ref:`How Is WebSocket Used? <elb_faq_0111>`

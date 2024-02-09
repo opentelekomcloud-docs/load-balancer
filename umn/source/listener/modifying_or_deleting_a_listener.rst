@@ -24,7 +24,9 @@ Modifying a Listener
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. On the **Listeners** tab page, locate the listener, click |image3| next to the listener name, and select **Modify Listener**.
-#. Click **OK**.
+#. Modify the parameters as needed and click **OK**.
+
+.. _elb_ug_jt_0012__section630190201235:
 
 Deleting a Listener
 -------------------
@@ -44,9 +46,9 @@ Deleting a Listener
 #. Click **Listeners**, locate the listener, and click |image6| on the right of its name.
 #. Click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001454495702.png
-.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image6| image:: /_static/images/en-us_image_0238393764.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001794819953.png
+.. |image4| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image5| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image6| image:: /_static/images/en-us_image_0000001747381124.png

@@ -18,6 +18,6 @@ Procedure
 #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the upper right corner of the load balancer list, click |image3|.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001195393079.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001794660541.png

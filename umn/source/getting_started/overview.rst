@@ -12,7 +12,7 @@ Two examples are given to show how you can quickly create a shared load balancer
 -  **Entry level**: An application deployed on separated ECSs needs to handle a large number of requests. Health checks are required to monitor the health of the servers to ensure that incoming traffic is routed only to healthy servers to eliminate SPOFs and improve service availability.
 
 
-   .. figure:: /_static/images/en-us_image_0198607819.png
+   .. figure:: /_static/images/en-us_image_0000001794660637.png
       :alt: **Figure 1** Entry level
 
       **Figure 1** Entry level
@@ -22,7 +22,7 @@ Two examples are given to show how you can quickly create a shared load balancer
 -  **Advanced level**: An application deployed on separated servers uses one domain name but different URLs to provide services, and requests are routed to different servers based on the URLs. Forwarding policies are required to forward requests from different URLs to the servers in the corresponding backend server groups.
 
 
-   .. figure:: /_static/images/en-us_image_0198607873.png
+   .. figure:: /_static/images/en-us_image_0000001747380896.png
       :alt: **Figure 2** Advanced level
 
       **Figure 2** Advanced level

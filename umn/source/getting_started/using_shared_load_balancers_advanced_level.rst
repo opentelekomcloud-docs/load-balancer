@@ -23,7 +23,7 @@ Prerequisites
    .. caution::
 
       -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with TCP or UDP listener.
+      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with the TCP or UDP listener.
 
 Creating ECSs
 -------------
@@ -93,7 +93,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    e. Enter **http://**\ *EIP bound to the ECS* in the address box of your browser. If the following page is displayed, Nginx has been installed.
 
 
-      .. figure:: /_static/images/en-us_image_0000001206435130.png
+      .. figure:: /_static/images/en-us_image_0000001747739872.png
          :alt: **Figure 1** Nginx installed successfully
 
          **Figure 1** Nginx installed successfully
@@ -185,7 +185,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    -  HTML page of ECS01
 
 
-      .. figure:: /_static/images/en-us_image_0166358924.png
+      .. figure:: /_static/images/en-us_image_0000001747380964.png
          :alt: **Figure 2** Nginx successfully deployed on ECS01
 
          **Figure 2** Nginx successfully deployed on ECS01
@@ -193,7 +193,7 @@ Deploy Nginx on the two ECSs and edit two HTML pages so that a page with message
    -  HTML page of ECS02
 
 
-      .. figure:: /_static/images/en-us_image_0166358926.png
+      .. figure:: /_static/images/en-us_image_0000001794660689.png
          :alt: **Figure 3** Nginx successfully deployed on ECS02
 
          **Figure 3** Nginx successfully deployed on ECS02
@@ -218,7 +218,7 @@ Add a listener to the created load balancer. When you add the listener, create a
 Configure two forwarding policies to forward HTTP requests to the two ECSs, for example, requests from **www.example.com/ELB01/** to ECS01, and those from **www.example.com/ELB02/** to ECS02.
 
 
-.. figure:: /_static/images/en-us_image_0198607881.png
+.. figure:: /_static/images/en-us_image_0000001747739860.png
    :alt: **Figure 4** Traffic forwarding
 
    **Figure 4** Traffic forwarding
@@ -280,7 +280,7 @@ Adding Forwarding Policies
    -  Backend server: ECS01
    -  Backend port: Set it to **80**. Backend servers will use this port to communicate with the load balancer.
 
-#. Repeat :ref:`1 <en-us_elb_02_0001__li1279175813279>` to :ref:`5 <en-us_elb_02_0001__li19903154544217>` to add another forwarding policy, create a backend server group, and add ECS02 to the backend server group. Configure the parameters.
+#. Repeat :ref:`1 <en-us_elb_02_0001__li1279175813279>` to :ref:`5 <en-us_elb_02_0001__li19903154544217>` to add another forwarding policy, create a backend server group, and add ECS02 to the backend server group.
 
 Verifying Load Balancing
 ------------------------
@@ -292,7 +292,7 @@ After the load balancer is configured, you can access the domain name or the spe
    View the load balancer EIP on the **Summary** page of the load balancer.
 
 
-   .. figure:: /_static/images/en-us_image_0166358967.png
+   .. figure:: /_static/images/en-us_image_0000001794660705.png
       :alt: **Figure 5** **hosts** file on your PC
 
       **Figure 5** **hosts** file on your PC
@@ -306,7 +306,7 @@ After the load balancer is configured, you can access the domain name or the spe
 #. Use your browser to access **http://www.example.com/ELB01/**. If the following page is displayed, the load balancer has routed the request to ECS01.
 
 
-   .. figure:: /_static/images/en-us_image_0166358972.png
+   .. figure:: /_static/images/en-us_image_0000001794819797.png
       :alt: **Figure 6** Accessing ECS01
 
       **Figure 6** Accessing ECS01
@@ -318,13 +318,13 @@ After the load balancer is configured, you can access the domain name or the spe
 #. Use your browser to access **http://www.example.com/ELB02/**. If the following page is displayed, the load balancer has routed the request to ECS02.
 
 
-   .. figure:: /_static/images/en-us_image_0166358975.png
+   .. figure:: /_static/images/en-us_image_0000001794660721.png
       :alt: **Figure 7** Accessing ECS02
 
       **Figure 7** Accessing ECS02
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001206511791.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001747380972.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001794660485.png

@@ -8,7 +8,7 @@ Transfer Client IP Address
 Scenarios
 ---------
 
-Generally, load balancers use IP addresses in the 100.125.0.0.16 IP address range to communicate with backend servers. If you want a load balancer to communicate with backend servers using real IP addresses of the clients, you can enable **Transfer Client IP Address** to pass the IP addresses of the clients to backend servers.
+Generally, load balancers use IP addresses in 100.125.0.0/16 to communicate with backend servers. If you want a load balancer to communicate with backend servers using real IP addresses of the clients, you can enable **Transfer Client IP Address** to pass the IP addresses of the clients to backend servers.
 
 .. note::
 
@@ -60,9 +60,9 @@ Disabling the Function
 #. Disable **Transfer Client IP Address**.
 #. Confirm the configuration and click **Finish**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001554446585.png
-.. |image2| image:: /_static/images/en-us_image_0000001503246934.png
-.. |image3| image:: /_static/images/en-us_image_0000001503087026.png
-.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image6| image:: /_static/images/en-us_image_0000001504215037.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739996.png
+.. |image2| image:: /_static/images/en-us_image_0000001794819937.png
+.. |image3| image:: /_static/images/en-us_image_0000001794660853.png
+.. |image4| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image5| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image6| image:: /_static/images/en-us_image_0000001794819945.png

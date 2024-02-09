@@ -43,7 +43,7 @@ Configuring a Health Check for a Load Balancer
       +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Parameter             | Description                                                                                                                                                                                                                                      | Example Value         |
       +=======================+==================================================================================================================================================================================================================================================+=======================+
-      | Enable Health Check   | Specifies whether to enable health checks.                                                                                                                                                                                                       | N/A                   |
+      | Health Check          | Specifies whether to enable health checks.                                                                                                                                                                                                       | N/A                   |
       +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
       | Protocol              | -  Specifies the protocol used by the load balancer to perform health checks on backend servers. You can select TCP, HTTP, or HTTPS. .                                                                                                           | HTTP                  |
       |                       | -  If the frontend protocol is UDP, the health check protocol is UDP by default.                                                                                                                                                                 |                       |
@@ -73,5 +73,5 @@ Configuring a Health Check for a Load Balancer
 
 #. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png

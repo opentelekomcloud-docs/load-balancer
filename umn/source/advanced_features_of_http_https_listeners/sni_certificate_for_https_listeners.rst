@@ -12,19 +12,25 @@ If you have an application that can be accessed through multiple domain names an
 
 SNI, an extension to Transport Layer Security (TLS), enables a server to present multiple certificates on the same IP address and port number. SNI allows the client to indicate the domain name of the website while sending an SSL handshake request. Once receiving the request, the load balancer queries the right certificate based on the hostname or domain name and returns the certificate to the client. If no certificate is found, the load balancer will return the default certificate.
 
-A maximum of 30 SNI certificates can be bound to each HTTPS listener.
+You can enable SNI only when you add HTTPS listeners. Load balancers can have multiple SNI certificates bound.
+
+Constraints
+-----------
+
+An HTTPS listener can have up to 30 SNI certificates.
 
 Prerequisites
 -------------
 
-You have created a certificate by performing the operations in :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`.
+-  You have created an SNI certificate by performing the operations in :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`.
 
--
+-  You have added an HTTPS listener to the load balancer by performing the operations in :ref:`Adding an HTTPS Listener <elb_ug_jt_0009>`.
 
-   .. note::
+.. note::
 
-      -  You must specify at least one domain name for each certificate. The domain name must be the same as that in the certificate.
-      -  If a certificate has expired, you need to manually replace or delete it by following the instructions in :ref:`Replacing a Certificate <elb_ug_zs_0005>`.
+   -  You must specify at least one domain name for each certificate. The domain name must be the same as that in the certificate.
+   -  A domain name can be used by both an ECC certificate and an RSA certificate. If there are two SNI certificates that use the same domain name, the ECC certificate is displayed preferentially.
+   -  If a certificate has expired, you need to manually replace or delete it by following the instructions in :ref:`Creating, Modifying, or Deleting a Certificate <elb_ug_zs_0004>`.
 
 Procedure
 ---------
@@ -38,5 +44,5 @@ Procedure
 6. Enable SNI and select the SNI certificate.
 7. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png

@@ -6,7 +6,7 @@ How ELB Works
 =============
 
 
-.. figure:: /_static/images/en-us_image_0000001253004159.png
+.. figure:: /_static/images/en-us_image_0000001794819721.png
    :alt: **Figure 1** How ELB works
 
    **Figure 1** How ELB works
@@ -25,14 +25,14 @@ How requests are routed depends on the :ref:`load balancing algorithms <elb_pro_
 Load Balancing Algorithms
 -------------------------
 
-Dedicated load balancers support four load balancing algorithms: weighted round robin, weighted least connections, source IP hash, and connection ID. Shared load balancers support three load balancing algorithms: weighted round robin, weighted least connections, and source IP hash.
+Dedicated load balancers support weighted round robin, weighted least connections, source IP hash, and connection ID algorithms. Shared load balancers support weighted round robin, weighted least connections, and source IP hash algorithms.
 
 -  Weighted round robin: Requests are routed to backend servers using the round robin algorithm. Backend servers with higher weights receive proportionately more requests, whereas equal-weighted servers receive the same number of requests. This algorithm is often used for short connections, such as HTTP connections.
 
    The following figure shows an example of how requests are distributed using the weighted round robin algorithm. Two backend servers are in the same AZ and have the same weight, and each server receives the same proportion of requests.
 
 
-   .. figure:: /_static/images/en-us_image_0000001160373426.png
+   .. figure:: /_static/images/en-us_image_0000001794660629.png
       :alt: **Figure 2** Traffic distribution using the weighted round robin algorithm
 
       **Figure 2** Traffic distribution using the weighted round robin algorithm
@@ -42,7 +42,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
    The following figure shows an example of how requests are distributed using the weighted least connections algorithm. Two backend servers are in the same AZ and have the same weight, 100 connections have been established with backend server 01, and 50 connections have been connected with backend server 02. New requests are preferentially routed to backend server 02.
 
 
-   .. figure:: /_static/images/en-us_image_0000001160533378.png
+   .. figure:: /_static/images/en-us_image_0000001794819729.png
       :alt: **Figure 3** Traffic distribution using the weighted least connections algorithm
 
       **Figure 3** Traffic distribution using the weighted least connections algorithm
@@ -52,7 +52,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
    The following figure shows an example of how requests are distributed using the source IP hash algorithm. Two backend servers are in the same AZ and have the same weight. If backend server 01 has processed a request from IP address A, the load balancer will route new requests from IP address A to backend server 01.
 
 
-   .. figure:: /_static/images/en-us_image_0000001205974859.png
+   .. figure:: /_static/images/en-us_image_0000001747380892.png
       :alt: **Figure 4** Traffic distribution using the source IP hash algorithm
 
       **Figure 4** Traffic distribution using the source IP hash algorithm
@@ -67,7 +67,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
 
    .. _elb_pro_0003__en-us_topic_0236111231_fig3381171135617:
 
-   .. figure:: /_static/images/en-us_image_0000001205894887.png
+   .. figure:: /_static/images/en-us_image_0000001747739776.png
       :alt: **Figure 5** Traffic distribution using the connection ID algorithm
 
       **Figure 5** Traffic distribution using the connection ID algorithm

@@ -18,7 +18,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
    The following figure shows an example of how requests are distributed using the weighted round robin algorithm. Two backend servers are in the same AZ and have the same weight, and each server receives the same proportion of requests.
 
 
-   .. figure:: /_static/images/en-us_image_0000001160373426.png
+   .. figure:: /_static/images/en-us_image_0000001794660629.png
       :alt: **Figure 1** Traffic distribution using the weighted round robin algorithm
 
       **Figure 1** Traffic distribution using the weighted round robin algorithm
@@ -28,7 +28,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
    The following figure shows an example of how requests are distributed using the weighted least connections algorithm. Two backend servers are in the same AZ and have the same weight, 100 connections have been established with backend server 01, and 50 connections have been connected with backend server 02. New requests are preferentially routed to backend server 02.
 
 
-   .. figure:: /_static/images/en-us_image_0000001160533378.png
+   .. figure:: /_static/images/en-us_image_0000001794819729.png
       :alt: **Figure 2** Traffic distribution using the weighted least connections algorithm
 
       **Figure 2** Traffic distribution using the weighted least connections algorithm
@@ -38,7 +38,7 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
    The following figure shows an example of how requests are distributed using the source IP hash algorithm. Two backend servers are in the same AZ and have the same weight. If backend server 01 has processed a request from IP address A, the load balancer will route new requests from IP address A to backend server 01.
 
 
-   .. figure:: /_static/images/en-us_image_0000001205974859.png
+   .. figure:: /_static/images/en-us_image_0000001747380892.png
       :alt: **Figure 3** Traffic distribution using the source IP hash algorithm
 
       **Figure 3** Traffic distribution using the source IP hash algorithm
@@ -49,11 +49,11 @@ Dedicated load balancers support four load balancing algorithms: weighted round 
 
       Currently, only dedicated load balancers support the Connection ID algorithm.
 
-   :ref:`Figure 4 <elb_ug_jt_0003__elb_pro_0003_en-us_topic_0236111231_fig3381171135617>` shows an example of how requests are distributed using the connection ID algorithm. Two backend servers are in the same AZ and have the same weight. If backend server 01 has processed a request from client A, the load balancer will route new requests from client A to backend server 01.
+   :ref:`Figure 4 <elb_ug_jt_0003__en-us_topic_0093253454_en-us_topic_0236111231_fig3381171135617>` shows an example of how requests are distributed using the connection ID algorithm. Two backend servers are in the same AZ and have the same weight. If ECS 01 has processed a request from client A, the load balancer will route new requests from client A to ECS 01.
 
-   .. _elb_ug_jt_0003__elb_pro_0003_en-us_topic_0236111231_fig3381171135617:
+   .. _elb_ug_jt_0003__en-us_topic_0093253454_en-us_topic_0236111231_fig3381171135617:
 
-   .. figure:: /_static/images/en-us_image_0000001205894887.png
+   .. figure:: /_static/images/en-us_image_0000001747739776.png
       :alt: **Figure 4** Traffic distribution using the connection ID algorithm
 
       **Figure 4** Traffic distribution using the connection ID algorithm
@@ -74,6 +74,6 @@ Changing the Load Balancing Algorithm
 
 #. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001205813423.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001794819881.png

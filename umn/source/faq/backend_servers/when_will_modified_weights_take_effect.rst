@@ -10,3 +10,6 @@ The new weights for backend servers take effect immediately after the weights ar
 .. note::
 
    If the weight of a backend server is changed to 0, the new weight does not take effect immediately, and requests are still routed to this backend server. This is because a persistent connection is established between the load balancer and the backend server and requests are routed to this server until the connection times out.
+
+   -  TCP and UDP listeners: Persistent connections are disconnected after the idle timeout duration expires.
+   -  HTTP and HTTPS listeners: Persistent connections are disconnected after the response timeout duration expires.

@@ -10,7 +10,7 @@ Elastic Load Balancing (ELB) automatically distributes incoming traffic across m
 As shown in the example in the following figure, ELB distributes incoming traffic to three application servers, and each server processes one third of the requests. ELB also provides health checks, which can detect unhealthy servers. Traffic is distributed only to servers that are running normally, improving the availability of applications.
 
 
-.. figure:: /_static/images/en-us_image_0000001376874584.png
+.. figure:: /_static/images/en-us_image_0000001747381220.png
    :alt: **Figure 1** Using a load balancer
 
    **Figure 1** Using a load balancer
@@ -33,7 +33,7 @@ ELB consists of the following components:
    You can also configure health checks for a backend server group to check the health of each backend server. When a backend server is unhealthy, the load balancer stops routing new requests to this server.
 
 
-.. figure:: /_static/images/en-us_image_0000001322756757.png
+.. figure:: /_static/images/en-us_image_0000001794820049.png
    :alt: **Figure 2** ELB components
 
    **Figure 2** ELB components
@@ -44,7 +44,7 @@ Load Balancer Types
 ELB provides shared load balancers and dedicated load balancers.
 
 
-.. figure:: /_static/images/en-us_image_0000001252691727.png
+.. figure:: /_static/images/en-us_image_0000001794660965.png
    :alt: **Figure 3** Load balancer types
 
    **Figure 3** Load balancer types
@@ -58,7 +58,7 @@ ELB provides shared load balancers and dedicated load balancers.
 
 -  Shared load balancers are deployed in clusters and share underlying resources, so that the performance of a load balancer is affected by other load balancers. Shared load balancers were previously named enhanced load balancers.
 
-For details, see :ref:`Differences Between Dedicated and Shared Load Balancers <elb_pro_0004>`.
+For details about the differences between dedicated and shared load balancers, see :ref:`Differences Between Dedicated and Shared Load Balancers <elb_pro_0004>`.
 
 .. _en-us_topic_0015479966__section17818164132517:
 

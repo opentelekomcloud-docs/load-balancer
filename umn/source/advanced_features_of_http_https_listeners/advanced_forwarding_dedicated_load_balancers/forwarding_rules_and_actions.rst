@@ -27,7 +27,7 @@ Advanced forwarding policies support the following types of forwarding rules: do
 
    Route requests based on the domain name. Exact match domains and wildcard domains are supported.
 
-   -  You can configure multiple domain names in a forwarding policy. Each domain name can contain a maximum of 46 characters.
+   -  You can configure multiple domain names in a forwarding policy. Each domain name can contain a maximum of 100 characters.
 
    -  Each domain name contains at least two labels separated by dots (.). Each label can contain letters, digits, hyphens (-), periods (.), and asterisks (*), must start with a letter, digit, or asterisk (*), and cannot end with a hyphen (-). An asterisk (*) must be used as the leftmost label if you want to configure a wildcard domain name.
 
@@ -58,7 +58,7 @@ Advanced forwarding policies support the following types of forwarding rules: do
 
       -  Regular expression match
 
-         The requested URL matches the specified URL string based on the regular expression.
+         The request URL matches the specified URL string based on the regular expression.
 
    -  Example
 
@@ -122,6 +122,10 @@ Advanced forwarding policies support the following types of forwarding rules: do
 
    Route requests based on source IP addresses from where the requests originate.
 
+   .. note::
+
+      Both IPv4 and IPv6 addresses are supported.
+
    Example
 
    .. code-block::
@@ -155,7 +159,7 @@ There are four types of actions: forward to a backend server group, redirect to 
 
    When clients access website A, the load balancer returns 302 or any other 3xx status code and automatically redirects the clients to website B. You can custom the redirection URL that will be returned to the clients.
 
-   -  A URL consists of the following components:
+   -  Configure the following components:
 
       -  **Protocol**: ${protocol}, HTTP, or HTTPS. ${protocol}: retains the protocol of the request.
 

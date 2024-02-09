@@ -24,6 +24,8 @@ Constraints and Limitations
 
 -  Forwarding policies can be added only to HTTP and HTTPS listeners.
 -  Redirection to another listener is supported only by HTTP listeners.
+-  Forwarding policies must be unique.
+-  A maximum of 100 forwarding policies can be configured for a listener. If the number of forwarding policies exceeds the quota, the excess forwarding policies will not be applied.
 -  When you add a forwarding policy, note the following:
 
    -  Each URL path must exist on the backend server. If the path does not exist, the backend server will return 404 Not Found.
@@ -33,8 +35,8 @@ Constraints and Limitations
 
 -  After you add a forwarding policy, the load balancer forwards requests based on the specified domain name or URL:
 
-   -  If the domain name or URL in a request matches that specified in the forwarding policy, the request is forwarded to the backend server group you select when you add the forwarding policy.
-   -  If the domain name or URL in a request does not match that specified in the forwarding policy, the request is forwarded to the default backend server group of the listener.
+   -  If the domain name or URL in a request matches the value specified in the forwarding policy, the request is forwarded to the backend server group you select when you add the forwarding policy.
+   -  If the domain name or URL in a request does not match the value specified in the forwarding policy, the request is forwarded to the default backend server group of the listener.
 
 Adding a Forwarding Policy
 --------------------------
@@ -53,18 +55,18 @@ Adding a Forwarding Policy
 
    Alternatively, click **Forwarding Policies** on the right of the page.
 
-#. On the **Forwarding Policies** tab page, click **Add Forwarding Policy**. Configure the parameters based on :ref:`Table 1 <elb_ug_jt_0023__elb_ug_jt_0023_table10859681016>`.
+#. On the **Forwarding Policies** tab page, click **Add Forwarding Policy**. Configure the parameters based on :ref:`Table 1 <elb_ug_jt_0023__en-us_topic_0000001127292335_table10859681016>`.
 
-#. Click Save.
+#. Click **Save**.
 
-.. _elb_ug_jt_0023__elb_ug_jt_0023_table10859681016:
+.. _elb_ug_jt_0023__en-us_topic_0000001127292335_table10859681016:
 
 .. table:: **Table 1** Forwarding policy parameters
 
    +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
    | Parameter            |                                   | Description                                                                                                                                                                                                                                                                              | Example Value                     |
    +======================+===================================+==========================================================================================================================================================================================================================================================================================+===================================+
-   | Forwarding Rule      | Domain Name                       | Route requests based on the domain name. The domain name in the request must exactly match that in the forwarding policy.                                                                                                                                                                | www.test.com                      |
+   | Forwarding Rule      | Domain name                       | Specifies the domain name used for forwarding requests. The domain name in the request must exactly match that in the forwarding policy.                                                                                                                                                 | www.test.com                      |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
    |                      |                                   | You need to specify either a domain name or URL.                                                                                                                                                                                                                                         |                                   |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
@@ -72,11 +74,11 @@ Adding a Forwarding Policy
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
    |                      |                                   |    Advanced forwarding policies support wildcard domain names. For details, see :ref:`Advanced Forwarding <elb_ug_jt_060300>`.                                                                                                                                                           |                                   |
    +----------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+
-   |                      | URL                               | Route requests based on the URL. There are three URL matching rules:                                                                                                                                                                                                                     | /login.php                        |
+   |                      | URL                               | Specifies the URL used for forwarding requests. There are three URL matching rules:                                                                                                                                                                                                      | /login.php                        |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
    |                      |                                   | -  Exact match                                                                                                                                                                                                                                                                           |                                   |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
-   |                      |                                   |    The request URL is identical to the URL specified in the forwarding policy.                                                                                                                                                                                                           |                                   |
+   |                      |                                   |    The request URL must exactly match the value specified in the forwarding policy.                                                                                                                                                                                                      |                                   |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
    |                      |                                   | -  Prefix match                                                                                                                                                                                                                                                                          |                                   |
    |                      |                                   |                                                                                                                                                                                                                                                                                          |                                   |
@@ -110,7 +112,9 @@ Adding a Forwarding Policy
 URL Matching Example
 --------------------
 
-The following table lists how a URL is matched, and :ref:`Figure 1 <elb_ug_jt_0023__fig87121434403>` shows how a request is forwarded to a backend server group.
+:ref:`Table 2 <elb_ug_jt_0023__table5831113119590>` shows an example of URL matching.
+
+.. _elb_ug_jt_0023__table5831113119590:
 
 .. table:: **Table 2** URL matching
 
@@ -126,14 +130,16 @@ The following table lists how a URL is matched, and :ref:`Figure 1 <elb_ug_jt_00
    | Regular expression match |                 | Y                            | ``-`` | Y            | ``-``       |
    +--------------------------+-----------------+------------------------------+-------+--------------+-------------+
 
+:ref:`Figure 1 <elb_ug_jt_0023__fig87121434403>` shows an example of how a URL is matched and requests are forwarded.
+
 .. _elb_ug_jt_0023__fig87121434403:
 
-.. figure:: /_static/images/en-us_image_0000001080630400.jpg
+.. figure:: /_static/images/en-us_image_0000001794819773.jpg
    :alt: **Figure 1** Request forwarding
 
    **Figure 1** Request forwarding
 
-In this figure, the system first searches for an exact match of the requested URL (/elb_gls/glossary.html). If there is no exact match, the system searches for a prefix match. If a match is found, the request is forwarded to backend server group 2 even if a regular expression match is also found, because the prefix match has a higher priority.
+In this example, the request URL /elb_gls/glossary.html is searched using the **Exact match** rule first. If no precisely matched URL is found, the **Prefix match** rule is used. If a URL matches the prefix of the request URL, the request is forwarded to backend server group 2 based on the URL. Although the request URL matches rule 3 in **Regular expression match**, the request is forwarded to backend server group 2 because of the higher priority of **Prefix match**.
 
 Modifying a Forwarding Policy
 -----------------------------
@@ -154,7 +160,7 @@ Modifying a Forwarding Policy
 
 #. On the **Forwarding Policies** tab page, select the forwarding policy you want to modify and click **Edit**.
 
-#. Modify the parameters and click Save.
+#. Modify the parameters and click **Save**.
 
 Deleting a Forwarding Policy
 ----------------------------
@@ -181,12 +187,12 @@ Deleted forwarding policies cannot be recovered.
 
 #. In the displayed dialog box, click **Yes**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001127832787.png
-.. |image4| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image5| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image6| image:: /_static/images/en-us_image_0000001127715643.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image9| image:: /_static/images/en-us_image_0000001127598405.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747380940.png
+.. |image4| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image5| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image6| image:: /_static/images/en-us_image_0000001794660677.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image9| image:: /_static/images/en-us_image_0000001747739820.png

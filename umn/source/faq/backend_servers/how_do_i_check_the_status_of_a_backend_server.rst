@@ -18,7 +18,7 @@ How Do I Check the Status of a Backend Server?
          For Windows ECSs, use **netstat -ano** on the CLI to view the port status or server software status.
 
 
-         .. figure:: /_static/images/en-us_image_0168612036.jpg
+         .. figure:: /_static/images/en-us_image_0000001794819597.jpg
             :alt: **Figure 1** Port status
 
             **Figure 1** Port status
@@ -29,4 +29,4 @@ How Do I Check the Status of a Backend Server?
 
    |image1|
 
-.. |image1| image:: /_static/images/en-us_image_0238256358.jpg
+.. |image1| image:: /_static/images/en-us_image_0000001794819593.jpg

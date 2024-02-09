@@ -62,7 +62,7 @@ Procedure
 Configuring Firewall Rules
 --------------------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Similar to security groups, firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Firewall rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to permit access from 100.125.0.0/16.
 
@@ -85,7 +85,7 @@ ELB translates public IP addresses that access backend servers into IP addresses
 
 #. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001167495475.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001458986782.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794820117.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794819601.png

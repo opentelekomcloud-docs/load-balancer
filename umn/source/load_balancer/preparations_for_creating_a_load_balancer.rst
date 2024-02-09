@@ -21,7 +21,7 @@ AZ
 
 Dedicated load balancers can be deployed across AZs. If you select multiple AZs, a load balancer is created in each selected AZ.
 
-Load balancers in these AZs work in active-active or multi-active mode and follow the proximity principle to route traffic. For example, traffic to backend servers in AZ 1 is distributed by the load balancer in AZ 1 or a load balancer in an AZ close to AZ 1.
+Load balancers in these AZs work in active-active or multi-active mode and requests are distributed by the nearest load balancer in the same AZ.
 
 Select the AZ where backend servers reside to reduce network latency and improve access speed.
 
@@ -33,28 +33,32 @@ If disaster recovery is required, create load balancers based on the scenario:
 
 -  **Multiple load balancers and each load balancer in multiple AZs (disaster recovery at both the load balancer and AZ level)**
 
-   If the number of requests exceeds what the largest specifications (large II) can handle, you can create multiple load balancers and select multiple AZs for each load balancer. In this way, if a single load balancer is abnormal, other load balancers can distribute the traffic, and disaster recovery can be implemented among multiple load balancers and AZs.
+   If the number of requests exceeds what the largest specifications (large II) can handle, you can create multiple dedicated load balancers and select multiple AZs for each load balancer. In this way, if a single load balancer is abnormal, other load balancers can distribute the traffic, and disaster recovery can be implemented among multiple load balancers and AZs.
 
 .. note::
 
    -  If requests are from the Internet, the load balancer in each AZ you select routes the requests based on source IP addresses. If you deploy a load balancer in two AZs, the requests the load balancers can handle will be doubled.
    -  For requests from a private network:
 
-      -  If clients are in an AZ you have selected when you create the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer is unhealthy, requests are distributed by the load balancer in another AZ you have selected.
+      -  If clients are in an AZ you have selected when you created the load balancer, requests are distributed by the load balancer in this AZ. If the load balancer becomes unavailable, requests are distributed by the load balancer in another AZ you have selected.
 
-         If the load balancer is healthy but the connections that the load balancer need to handle exceed the amount defined in the specifications, service may be interrupted. To address this issue, you need upgrade specifications.
+         If the load balancer is available but the connections that the load balancer needs to handle exceed the amount defined in the specifications, service may be interrupted. To address this issue, you need upgrade specifications.
 
-      -  If clients are in an AZ that is not selected when you create the load balancer, requests are distributed by the load balancer in each AZ you select based on source IP addresses.
+      -  If clients are in an AZ that is not selected when you created the load balancer, requests are distributed by the load balancer in each AZ you select based on source IP addresses.
+
+   -  If requests are from a Direct Connect connection, the load balancer in the same AZ as the Direct Connect connection routes the requests. If the load balancer is unavailable, requests are distributed by the load balancer in another AZ.
+   -  If clients are in a VPC that is different from where the load balancer works, the load balancer in the AZ where the original VPC subnet resides routes the requests. If the load balancer is unavailable, requests are distributed by the load balancer in another AZ.
 
 Network Type
 ------------
 
-The network type can be any of the following:
+**Dedicated load balancers support public IPv4 network, IPv6 network, and private IPv4 network.**
 
 -  If you select the public IPv4 network, the load balancer will have an IPv4 EIP bound to route requests over the Internet.
--  If you select the private IPv4 network, a private IPv4 IP address will be assigned to the load balancer to route requests within a VPC.
+-  If you select the private IPv4 network, a private IPv4 address will be assigned to the load balancer to route requests within a VPC.
+-  If you select the IPv6 network, the load balancer will have an IPv6 address, which allows the load balancer to route requests within a VPC. If you add the IPv6 address to a shared bandwidth, the load balancer can also process requests over the Internet.
 
-Shared load balancers can work in both public and private networks.
+**Shared load balancers can work in both public IPv4 networks and private IPv4 networks.**
 
 -  To route requests over the Internet, you need to bind an EIP to the load balancer. The load balancer also has a private IP address and can route requests in a VPC.
 -  To route requests in a VPC, bind only a private IP address to the load balancer.
@@ -65,7 +69,7 @@ Specifications
 Dedicated load balancers provide a broad range of specifications to meet your requirements in different scenarios. Specifications for network load balancing are suitable for TCP or UDP requests, while specifications for application load balancing are broadly used to handle HTTP or HTTPS requests. Select appropriate specifications based on your traffic volume and service requirements. The following are some principles for you to select the specifications:
 
 -  For TCP or UDP load balancing, pay attention to the number of concurrent persistent connections, and consider Maximum Connections as a key metric. Estimate the maximum number of concurrent connections that a load balancer can handle in the actual service scenario and select the corresponding specification.
--  For HTTP or HTTPS load balancers, focus more on queries per second (QPS), which determines the service throughput of an application system. Estimate the QPS that a load balancer can handle in the actual service scenario and select the corresponding specification.
+-  For HTTP or HTTPS load balancing, focus more on queries per second (QPS), which determines the service throughput of an application system. Estimate the QPS that a load balancer can handle in the actual service scenario and select the corresponding specification.
 -  Use the monitoring data from Cloud Eye to analyze the peak traffic, trend and regularity of the traffic to select the specifications more accurately.
 
 Protocol
@@ -76,7 +80,7 @@ ELB provides load balancing at both Layer 4 and Layer 7.
 -  If you choose TCP or UDP, the load balancer routes requests directly to backend servers. In this process, the destination IP address in the packets is changed to the IP address of the backend server, and the source IP address to the private IP address of the load balancer. A connection is established after a three-way handshake between the client and the backend server, and the load balancer only forwards the data.
 
 
-   .. figure:: /_static/images/en-us_image_0238395032.png
+   .. figure:: /_static/images/en-us_image_0000001794660761.png
       :alt: **Figure 1** Layer-4 load balancing
 
       **Figure 1** Layer-4 load balancing
@@ -84,7 +88,7 @@ ELB provides load balancing at both Layer 4 and Layer 7.
 -  Load balancing at Layer 7 is also called "content exchange". After the load balancer receives a request, it works as a proxy of backend servers to establish a connection (three-way handshake) with the client and then determines to which backend server the request is to be routed based on the fields in the HTTP/HTTPS request header and the load balancing algorithm you selected when you add the listener.
 
 
-   .. figure:: /_static/images/en-us_image_0238395033.png
+   .. figure:: /_static/images/en-us_image_0000001747381024.png
       :alt: **Figure 2** Layer-7 load balancing
 
       **Figure 2** Layer-7 load balancing

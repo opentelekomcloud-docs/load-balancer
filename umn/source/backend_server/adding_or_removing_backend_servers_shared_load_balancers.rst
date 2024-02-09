@@ -206,15 +206,15 @@ Deleting a Backend Server Group
 
    Disable **Removal Protection** if you want to remove servers from the backend server group.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image9| image:: /_static/images/en-us_image_0238408794.png
-.. |image10| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image11| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image12| image:: /_static/images/en-us_image_0169513446.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image6| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image9| image:: /_static/images/en-us_image_0000001794819709.png
+.. |image10| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image11| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image12| image:: /_static/images/en-us_image_0000001794660609.png

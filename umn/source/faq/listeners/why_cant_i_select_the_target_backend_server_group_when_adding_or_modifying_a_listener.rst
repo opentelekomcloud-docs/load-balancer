@@ -5,7 +5,7 @@
 Why Can't I Select the Target Backend Server Group When Adding or Modifying a Listener?
 =======================================================================================
 
-The backend server group's protocol (backend protocol) you want to select is not supported by the listener's protocol (frontend protocol). There are some constraints on the backend protocol when you associate a backend server group with a listener.
+The backend server group's protocol (backend protocol) you want to select is not supported by the listener protocol (frontend protocol). There are some constraints on the backend protocol when you associate a backend server group with a listener.
 
 .. table:: **Table 1** Frontend and backend protocols of dedicated load balancers
 

@@ -44,6 +44,6 @@ How Do I Test Sticky Sessions Using Linux Curl Commands?
 
    |image3|
 
-.. |image1| image:: /_static/images/en-us_image_0193109154.jpg
-.. |image2| image:: /_static/images/en-us_image_0193109171.jpg
-.. |image3| image:: /_static/images/en-us_image_0193109172.jpg
+.. |image1| image:: /_static/images/en-us_image_0000001747739620.jpg
+.. |image2| image:: /_static/images/en-us_image_0000001747380744.jpg
+.. |image3| image:: /_static/images/en-us_image_0000001794819569.jpg

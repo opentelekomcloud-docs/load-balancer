@@ -5,6 +5,6 @@
 Why Can't I Add a Forwarding Policy to a Listener?
 ==================================================
 
-Check the listener's protocol.
+Check the listener protocol.
 
 Forwarding policies can only be added to HTTP and HTTPS listeners.

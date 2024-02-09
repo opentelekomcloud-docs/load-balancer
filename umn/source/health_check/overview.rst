@@ -20,7 +20,7 @@ TCP Health Check
 For TCP, HTTP, and HTTPS listeners, you can use TCP to initiate three-way handshakes to obtain the statuses of backend servers.
 
 
-.. figure:: /_static/images/en-us_image_0164706640.png
+.. figure:: /_static/images/en-us_image_0000001794819841.png
    :alt: **Figure 1** TCP health check
 
    **Figure 1** TCP health check
@@ -46,7 +46,7 @@ UDP Health Check
 For UDP listeners, ELB sends ICMP and UDP probe packets to backend servers to check their health.
 
 
-.. figure:: /_static/images/en-us_image_0164706641.png
+.. figure:: /_static/images/en-us_image_0000001794660753.png
    :alt: **Figure 2** UDP health check
 
    **Figure 2** UDP health check
@@ -66,7 +66,7 @@ HTTP Health Check
 You can also configure HTTP health checks for TCP, HTTP, or HTTPS listeners. ELB uses HTTP GET requests to obtain the health statuses of backend servers. For HTTPS listeners, ELB offloads the SSL/TLS encryption and decryption processing from backend servers and uses HTTP to communicate with backend servers by default.
 
 
-.. figure:: /_static/images/en-us_image_0164706642.png
+.. figure:: /_static/images/en-us_image_0000001794660745.png
    :alt: **Figure 3** HTTP health check
 
    **Figure 3** HTTP health check
@@ -102,7 +102,7 @@ As shown in :ref:`Figure 4 <elb_ug_hc_0001__fig7858105712204>`, if the health ch
 
 .. _elb_ug_hc_0001__fig7858105712204:
 
-.. figure:: /_static/images/en-us_image_0227675449.png
+.. figure:: /_static/images/en-us_image_0000001794819845.png
    :alt: **Figure 4** Health check time window
 
    **Figure 4** Health check time window

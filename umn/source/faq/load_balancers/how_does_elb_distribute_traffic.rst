@@ -12,13 +12,13 @@ ELB uses FullNAT to forward the incoming traffic. For load balancing at Layer 4,
    In FullNAT, LVS translates source IP addresses and destination IP addresses of the clients.
 
 
-.. figure:: /_static/images/en-us_image_0168438373.jpg
+.. figure:: /_static/images/en-us_image_0000001794819813.jpg
    :alt: **Figure 1** Load balancing at Layer 4
 
    **Figure 1** Load balancing at Layer 4
 
 
-.. figure:: /_static/images/en-us_image_0168438378.jpg
+.. figure:: /_static/images/en-us_image_0000001747380980.jpg
    :alt: **Figure 2** Load balancing at Layer 7
 
    **Figure 2** Load balancing at Layer 7

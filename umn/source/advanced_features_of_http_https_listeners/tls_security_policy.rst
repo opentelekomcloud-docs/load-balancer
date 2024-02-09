@@ -28,7 +28,9 @@ Adding a Security Policy
 
 #. In the **Add Listener** dialog box, set **Frontend Protocol** to **HTTPS**.
 
-#. In the **Add Listener** dialog box, expand **Advanced Settings** and select a security policy. You can select a default or custom security policy. If no custom security policies are available in the list, you can :ref:`create a security group <elb_ug_jt_0022__section9832162313111>`. :ref:`Table 1 <elb_ug_jt_0022__table1247813103533>` lists the default security policies.
+#. In the **Add Listener** dialog box, expand **Advanced Settings** and select a security policy.
+
+   Select a default security policy or create a custom security policy by referring to :ref:`Creating a Custom Security Policy <elb_ug_jt_0022__section9832162313111>`. :ref:`Table 1 <elb_ug_jt_0022__table1247813103533>` describes the default policies.
 
    .. _elb_ug_jt_0022__table1247813103533:
 
@@ -56,11 +58,43 @@ Adding a Security Policy
       |                                                    |                                                                                                                       |                 | -  AES128-SHA                    |
       |                                                    |                                                                                                                       |                 | -  AES256-SHA                    |
       +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------+
-      | TLS-1-1                                            | TLS 1.1 and TLS 1.2 and supported cipher suites (moderate compatibility and moderate security)                        | TLS 1.2         |                                  |
-      |                                                    |                                                                                                                       |                 |                                  |
-      |                                                    |                                                                                                                       | TLS 1.1         |                                  |
+      | TLS-1-1                                            | TLS 1.1 and TLS 1.2 and supported cipher suites (moderate compatibility and moderate security)                        | TLS 1.2         | -  ECDHE-RSA-AES256-GCM-SHA384   |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-GCM-SHA256   |
+      |                                                    |                                                                                                                       | TLS 1.1         | -  ECDHE-ECDSA-AES256-GCM-SHA384 |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-GCM-SHA256 |
+      |                                                    |                                                                                                                       |                 | -  AES128-GCM-SHA256             |
+      |                                                    |                                                                                                                       |                 | -  AES256-GCM-SHA384             |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-SHA256     |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-SHA256       |
+      |                                                    |                                                                                                                       |                 | -  AES128-SHA256                 |
+      |                                                    |                                                                                                                       |                 | -  AES256-SHA256                 |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES256-SHA384     |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES256-SHA384       |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-SHA        |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-SHA          |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES256-SHA          |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES256-SHA        |
+      |                                                    |                                                                                                                       |                 | -  AES128-SHA                    |
+      |                                                    |                                                                                                                       |                 | -  AES256-SHA                    |
       +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------+
-      | TLS-1-2                                            | TLS 1.2 and supported cipher suites (moderate compatibility and high security)                                        | TLS 1.2         |                                  |
+      | TLS-1-2                                            | TLS 1.2 and supported cipher suites (moderate compatibility and high security)                                        | TLS 1.2         | -  ECDHE-RSA-AES256-GCM-SHA384   |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-GCM-SHA256   |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES256-GCM-SHA384 |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-GCM-SHA256 |
+      |                                                    |                                                                                                                       |                 | -  AES128-GCM-SHA256             |
+      |                                                    |                                                                                                                       |                 | -  AES256-GCM-SHA384             |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-SHA256     |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-SHA256       |
+      |                                                    |                                                                                                                       |                 | -  AES128-SHA256                 |
+      |                                                    |                                                                                                                       |                 | -  AES256-SHA256                 |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES256-SHA384     |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES256-SHA384       |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES128-SHA        |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-SHA          |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES256-SHA          |
+      |                                                    |                                                                                                                       |                 | -  ECDHE-ECDSA-AES256-SHA        |
+      |                                                    |                                                                                                                       |                 | -  AES128-SHA                    |
+      |                                                    |                                                                                                                       |                 | -  AES256-SHA                    |
       +----------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-----------------+----------------------------------+
       | TLS-1-0-Inherit                                    | TLS 1.0, TLS 1.1, and TLS 1.2 and supported cipher suites (high compatibility and moderate security)                  | TLS 1.2         | -  ECDHE-RSA-AES256-GCM-SHA384   |
       |                                                    |                                                                                                                       |                 | -  ECDHE-RSA-AES128-GCM-SHA256   |
@@ -336,14 +370,14 @@ When you change a security policy, ensure that the security group containing bac
 #. Click **Next**.
 #. Click **Finish**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image3| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image4| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image5| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image6| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image7| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image8| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image9| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image10| image:: /_static/images/en-us_image_0000001417088430.png
-.. |image11| image:: /_static/images/en-us_image_0000001501069089.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image5| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image6| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image9| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image10| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image11| image:: /_static/images/en-us_image_0000001747380864.png

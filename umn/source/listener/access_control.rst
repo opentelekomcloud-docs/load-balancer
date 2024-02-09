@@ -18,6 +18,8 @@ Access control allows you to add a whitelist or blacklist to specify IP addresse
 
    -  Access control policies only take effect for new connections, but not for connections that have been established. If a whitelist is configured for a listener but IP addresses that are not in the whitelist can access the backend server associated with the listener, one possible reason is that a persistent connection is established between the client and the backend server. To deny IP addresses that are not in the whitelist from accessing the listener, the persistent connection between the client and the backend server needs to be disconnected.
 
+.. _en-us_elb_03_0003__section109371640175915:
+
 Configuring Access Control
 --------------------------
 
@@ -31,24 +33,24 @@ Configuring Access Control
 
    .. table:: **Table 1** Parameter description
 
-      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Parameter             | Description                                                                                                                                                                                     | Example Value         |
-      +=======================+=================================================================================================================================================================================================+=======================+
-      | Access Policy         | Specifies how access to the listener is controlled. Three options are available:                                                                                                                | Blacklist             |
-      |                       |                                                                                                                                                                                                 |                       |
-      |                       | -  **All IP addresses**: All IP addresses can access the listener.                                                                                                                              |                       |
-      |                       | -  **Whitelist**: Only IP addresses in the IP address group can access the listener.                                                                                                            |                       |
-      |                       | -  **Blacklist**: IP addresses in the IP address group are not allowed to access the listener.                                                                                                  |                       |
-      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | IP Address Group      | Specifies the IP address group associated with a whitelist or blacklist. If there is no IP address group, create one first. For more information, see :ref:`IP Address Group <elb_ug_ip_0000>`. | ipGroup-b2            |
-      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
-      | Access Control        | If you have set **Access Policy** to **Whitelist** or **Blacklist**, you can enable or disable access control.                                                                                  | N/A                   |
-      |                       |                                                                                                                                                                                                 |                       |
-      |                       | -  Only after you enable access control, the whitelist or blacklist takes effect.                                                                                                               |                       |
-      |                       | -  If you disable access control, the whitelist or blacklist does not take effect.                                                                                                              |                       |
-      +-----------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Parameter             | Description                                                                                                                                                                                                                    | Example Value         |
+      +=======================+================================================================================================================================================================================================================================+=======================+
+      | Access Policy         | Specifies how access to the listener is controlled. Three options are available:                                                                                                                                               | Blacklist             |
+      |                       |                                                                                                                                                                                                                                |                       |
+      |                       | -  **All IP addresses**: All IP addresses can access the listener.                                                                                                                                                             |                       |
+      |                       | -  **Whitelist**: Only IP addresses in the IP address group can access the listener.                                                                                                                                           |                       |
+      |                       | -  **Blacklist**: IP addresses in the IP address group are not allowed to access the listener.                                                                                                                                 |                       |
+      +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | IP Address Group      | Specifies the IP address group associated with a whitelist or blacklist. If there is no IP address group, create one first. For more information, see :ref:`IP Address Group Overview <elb_ug_ip_0000__section1143912015382>`. | ipGroup-b2            |
+      +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
+      | Access Control        | If you have set **Access Policy** to **Whitelist** or **Blacklist**, you can enable or disable access control.                                                                                                                 | N/A                   |
+      |                       |                                                                                                                                                                                                                                |                       |
+      |                       | -  Only after you enable access control, the whitelist or blacklist takes effect.                                                                                                                                              |                       |
+      |                       | -  If you disable access control, the whitelist or blacklist does not take effect.                                                                                                                                             |                       |
+      +-----------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------+
 
 6. Click **OK**.
 
-.. |image1| image:: /_static/images/en-us_image_0000001211126503.png
-.. |image2| image:: /_static/images/en-us_image_0000001417088430.png
+.. |image1| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image2| image:: /_static/images/en-us_image_0000001794660485.png
