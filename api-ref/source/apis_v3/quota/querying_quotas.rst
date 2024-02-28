@@ -76,9 +76,21 @@ Response Parameters
    |                       |                       |                                                                                               |
    |                       |                       | -  If the value is **-1**, the quota is not limited.                                          |
    +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------+
+   | listeners_per_pool    | Integer               | Specifies the quota of listeners related to a backend server group.                           |
+   |                       |                       |                                                                                               |
+   |                       |                       | -  If the value is greater than or equal to 0, it indicates the listener quota.               |
+   |                       |                       |                                                                                               |
+   |                       |                       | -  If the value is **-1**, the quota is not limited.                                          |
+   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------+
    | l7policy              | Integer               | Specifies the forwarding policy quota.                                                        |
    |                       |                       |                                                                                               |
    |                       |                       | -  If the value is greater than or equal to 0, it indicates the forwarding policy quota.      |
+   |                       |                       |                                                                                               |
+   |                       |                       | -  If the value is **-1**, the quota is not limited.                                          |
+   +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------+
+   | condition_per_policy  | Integer               | Specifies the quota of conditions in a l7policy.                                              |
+   |                       |                       |                                                                                               |
+   |                       |                       | -  If the value is greater than or equal to 0, it indicates the condition quota.              |
    |                       |                       |                                                                                               |
    |                       |                       | -  If the value is **-1**, the quota is not limited.                                          |
    +-----------------------+-----------------------+-----------------------------------------------------------------------------------------------+
@@ -150,22 +162,24 @@ Successful request.
 .. code-block::
 
    {
+     "request_id" : "c6f3d7fe99bb1d8aa29e148097dab0d0",
      "quota" : {
-       "member" : 500,
-       "members_per_pool" : 500,
-       "certificate" : 120,
-       "l7policy" : 500,
-       "listener" : 100,
-       "loadbalancer" : 50,
+       "member" : 10000,
+       "members_per_pool" : 1000,
+       "certificate" : -1,
+       "l7policy" : 2000,
+       "listener" : 1500,
+       "loadbalancer" : 100000,
        "healthmonitor" : -1,
-       "ipgroup" : 50,
-       "pool" : 500,
-       "security_policy" : 500,
+       "pool" : 5000,
+       "ipgroup" : 1000,
        "ipgroup_bindings" : 50,
        "ipgroup_max_length" : 300,
-       "project_id" : "99a3fff0d03c428eac3678da6a7d0f24"
-     },
-     "request_id" : "8d7eba6f-ec79-42d2-8d8c-16149645549d"
+       "security_policy" : 50,
+       "condition_per_policy" : 10,
+       "listeners_per_pool" : 50,
+       "project_id" : "060576798a80d5762fafc01a9b5eedc7"
+     }
    }
 
 Status Codes
