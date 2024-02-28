@@ -319,44 +319,6 @@ Example Response
           ]
       }
 
--  Example response 2
-
-   .. code-block::
-
-      {
-          "pools": [
-              {
-                  "lb_algorithm": "SOURCE_IP",
-                  "protocol": "TCP",
-                  "description": "",
-                  "admin_state_up": true,
-                  "loadbalancers": [
-                      {
-                          "id": "07d28d4a-4899-40a3-a939-5d09d69019e1"
-                      }
-                  ],
-                  "tenant_id": "1867112d054b427e808cc6096d8193a1",
-                  "session_persistence": null,
-                  "healthmonitor_id": null,
-                  "listeners": [
-                      {
-                          "id": "1b421c2d-7e78-4a78-9ee4-c8ccba41f15b"
-                      }
-                  ],
-                  "members": [
-                      {
-                          "id": "88f9c079-29cb-435a-b98f-0c5c0b90c2bd"
-                      },
-                      {
-                          "id": "2f4c9644-d5d2-4cf8-a3c0-944239a4f58c"
-                      }
-                  ],
-                  "id": "3a9f50bb-f041-4eac-a117-82472d8a0007",
-                  "name": "my-pool"
-              }
-          ]
-      }
-
 Status Codes
 ------------
 

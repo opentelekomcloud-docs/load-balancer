@@ -11,6 +11,6 @@ Elastic Load Balancing - API Reference
    querying_versions
    examples/index
    common_parameters/index
-   historical_apis/index
+   permissions_and_supported_actions/index
    appendix/index
    change_history

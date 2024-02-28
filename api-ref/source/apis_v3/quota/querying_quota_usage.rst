@@ -25,19 +25,19 @@ GET /v3/{project_id}/elb/quotas/details
 
 .. table:: **Table 2** Query Parameters
 
-   +-----------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter       | Mandatory       | Type            | Description                                                                                                                                                                                                                                                    |
-   +=================+=================+=================+================================================================================================================================================================================================================================================================+
-   | quota_key       | No              | Array           | Specifies the resource type. The value can be **loadbalancer**, **listener**, **ipgroup**, **pool**, **member**, **members_per_pool**, **healthmonitor**, **l7policy**, **certificate**, **security_policy**, **ipgroup_bindings**, or **ipgroup_max_length**. |
-   |                 |                 |                 |                                                                                                                                                                                                                                                                |
-   |                 |                 |                 | **members_per_pool** indicates the maximum number of backend servers that can be added to a backend server group.                                                                                                                                              |
-   |                 |                 |                 |                                                                                                                                                                                                                                                                |
-   |                 |                 |                 | **ipgroup_bindings** indicates the maximum number of listeners that can be bound to a ipgroup.                                                                                                                                                                 |
-   |                 |                 |                 |                                                                                                                                                                                                                                                                |
-   |                 |                 |                 | **ipgroup_max_length** indicates the maximum number of ip addresses that can be added to a ipgroup.                                                                                                                                                            |
-   |                 |                 |                 |                                                                                                                                                                                                                                                                |
-   |                 |                 |                 | Multiple values can be queried in the format of *quota_key=xxx&quota_key=xxx.*                                                                                                                                                                                 |
-   +-----------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Parameter       | Mandatory       | Type            | Description                                                                                                                                                                                                                                                      |
+   +=================+=================+=================+==================================================================================================================================================================================================================================================================+
+   | quota_key       | No              | Array           | Specifies the resource type. The value can be **loadbalancer**, **listener**, **ipgroup**, **pool**, **member**, **healthmonitor**, **l7policy**, **certificate**,*\* security_policy**,\ **members_per_pool**, **ipgroup_bindings**, or **ipgroup_max_length**. |
+   |                 |                 |                 |                                                                                                                                                                                                                                                                  |
+   |                 |                 |                 | **members_per_pool** indicates the maximum number of backend servers that can be added to a backend server group.                                                                                                                                                |
+   |                 |                 |                 |                                                                                                                                                                                                                                                                  |
+   |                 |                 |                 | **ipgroup_bindings** indicates the maximum number of listeners that can be bound to a ipgroup.                                                                                                                                                                   |
+   |                 |                 |                 |                                                                                                                                                                                                                                                                  |
+   |                 |                 |                 | **ipgroup_max_length** indicates the maximum number of ip addresses that can be added to a ipgroup.                                                                                                                                                              |
+   |                 |                 |                 |                                                                                                                                                                                                                                                                  |
+   |                 |                 |                 | Multiple values can be queried in the format of *quota_key=xxx&quota_key=xxx.*                                                                                                                                                                                   |
+   +-----------------+-----------------+-----------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Request Parameters
 ------------------
@@ -69,27 +69,31 @@ Response Parameters
 
 .. table:: **Table 5** QuotaInfo
 
-   +-----------------------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Parameter             | Type                  | Description                                                                                                                                                                                                                                                    |
-   +=======================+=======================+================================================================================================================================================================================================================================================================+
-   | quota_key             | String                | Specifies the resource type. The value can be **loadbalancer**, **listener**, **ipgroup**, **pool**, **member**, **members_per_pool**, **healthmonitor**, **l7policy**, **certificate**, **security_policy**, **ipgroup_bindings**, or **ipgroup_max_length**. |
-   |                       |                       |                                                                                                                                                                                                                                                                |
-   |                       |                       | **members_per_pool** indicates the maximum number of backend servers that can be added to a backend server group.                                                                                                                                              |
-   |                       |                       |                                                                                                                                                                                                                                                                |
-   |                       |                       | **ipgroup_bindings** indicates the maximum number of listeners that can be bound to a ipgroup.                                                                                                                                                                 |
-   |                       |                       |                                                                                                                                                                                                                                                                |
-   |                       |                       | **ipgroup_max_length** indicates the maximum number of ip addresses that can be added to a ipgroup.                                                                                                                                                            |
-   +-----------------------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | quota_limit           | Integer               | Specifies the total quota. Values:                                                                                                                                                                                                                             |
-   |                       |                       |                                                                                                                                                                                                                                                                |
-   |                       |                       | -  If the value is greater than or equal to 0, it indicates the current quota.                                                                                                                                                                                 |
-   |                       |                       |                                                                                                                                                                                                                                                                |
-   |                       |                       | -  **-1** indicates that the quota is not limited.                                                                                                                                                                                                             |
-   +-----------------------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | used                  | Integer               | Specifies the used quota.                                                                                                                                                                                                                                      |
-   +-----------------------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | unit                  | String                | Specifies the quota unit. The value can only be **count**.                                                                                                                                                                                                     |
-   +-----------------------+-----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +-----------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Parameter             | Type                  | Description                                                                                                                                                                                                                                                                                                      |
+   +=======================+=======================+==================================================================================================================================================================================================================================================================================================================+
+   | quota_key             | String                | Specifies the resource type. The value can be **loadbalancer**, **listener**, **listeners_per_pool**, **ipgroup**, **pool**, **member**, **members_per_pool**, **healthmonitor**, **l7policy**, **condition_per_policy**, **certificate**, **security_policy**, **ipgroup_bindings**, or **ipgroup_max_length**. |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | **listeners_per_pool** indicates the maximum number of listeners that can be related to a backend server group.                                                                                                                                                                                                  |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | **members_per_pool** indicates the maximum number of backend servers that can be added to a backend server group.                                                                                                                                                                                                |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | **ipgroup_bindings** indicates the maximum number of listeners that can be bound to a ipgroup.                                                                                                                                                                                                                   |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | **ipgroup_max_length** indicates the maximum number of ip addresses that can be added to a ipgroup.                                                                                                                                                                                                              |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | **condition_per_policy** indicates the maximum number of conditions that can be added to a l7policy.                                                                                                                                                                                                             |
+   +-----------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | quota_limit           | Integer               | Specifies the total quota. Values:                                                                                                                                                                                                                                                                               |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | -  If the value is greater than or equal to 0, it indicates the current quota.                                                                                                                                                                                                                                   |
+   |                       |                       |                                                                                                                                                                                                                                                                                                                  |
+   |                       |                       | -  **-1** indicates that the quota is not limited.                                                                                                                                                                                                                                                               |
+   +-----------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | used                  | Integer               | Specifies the used quota.                                                                                                                                                                                                                                                                                        |
+   +-----------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | unit                  | String                | Specifies the quota unit. The value can only be **count**.                                                                                                                                                                                                                                                       |
+   +-----------------------+-----------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Example Requests
 ----------------
@@ -113,53 +117,13 @@ Successful request.
      "request_id" : "3682f26f8509d52faf895f09040c63c0",
      "quotas" : [ {
        "quota_key" : "members_per_pool",
-       "used" : 50,
-       "quota_limit" : 1000,
-       "unit" : "count"
-     }, {
-       "quota_key" : "loadbalancer",
-       "used" : 198,
+       "used" : 992,
        "quota_limit" : 1000,
        "unit" : "count"
      }, {
        "quota_key" : "security_policy",
-       "used" : 6,
+       "used" : 11,
        "quota_limit" : 50,
-       "unit" : "count"
-     }, {
-       "quota_key" : "ipgroup",
-       "used" : 6,
-       "quota_limit" : 1000,
-       "unit" : "count"
-     }, {
-       "quota_key" : "listener",
-       "used" : 229,
-       "quota_limit" : 1500,
-       "unit" : "count"
-     }, {
-       "quota_key" : "pool",
-       "used" : 215,
-       "quota_limit" : 5000,
-       "unit" : "count"
-     }, {
-       "quota_key" : "member",
-       "used" : 327,
-       "quota_limit" : 3000,
-       "unit" : "count"
-     }, {
-       "quota_key" : "certificate",
-       "used" : 50,
-       "quota_limit" : 100,
-       "unit" : "count"
-     }, {
-       "quota_key" : "l7policy",
-       "used" : 21,
-       "quota_limit" : 500,
-       "unit" : "count"
-     }, {
-       "quota_key" : "healthmonitor",
-       "used" : 188,
-       "quota_limit" : -1,
        "unit" : "count"
      }, {
        "quota_key" : "ipgroup_max_length",
@@ -167,9 +131,59 @@ Successful request.
        "quota_limit" : 300,
        "unit" : "count"
      }, {
+       "quota_key" : "listener",
+       "used" : 803,
+       "quota_limit" : 1500,
+       "unit" : "count"
+     }, {
+       "quota_key" : "pool",
+       "used" : 1009,
+       "quota_limit" : 5000,
+       "unit" : "count"
+     }, {
+       "quota_key" : "certificate",
+       "used" : 608,
+       "quota_limit" : -1,
+       "unit" : "count"
+     }, {
+       "quota_key" : "loadbalancer",
+       "used" : 752,
+       "quota_limit" : 100000,
+       "unit" : "count"
+     }, {
+       "quota_key" : "ipgroup",
+       "used" : 11,
+       "quota_limit" : 1000,
+       "unit" : "count"
+     }, {
        "quota_key" : "ipgroup_bindings",
        "used" : 2,
        "quota_limit" : 50,
+       "unit" : "count"
+     }, {
+       "quota_key" : "member",
+       "used" : 3022,
+       "quota_limit" : 10000,
+       "unit" : "count"
+     }, {
+       "quota_key" : "l7policy",
+       "used" : 148,
+       "quota_limit" : 2000,
+       "unit" : "count"
+     }, {
+       "quota_key" : "healthmonitor",
+       "used" : 762,
+       "quota_limit" : -1,
+       "unit" : "count"
+     }, {
+       "quota_key" : "listeners_per_pool",
+       "used" : 100,
+       "quota_limit" : -1,
+       "unit" : "count"
+     }, {
+       "quota_key" : "condition_per_policy",
+       "used" : 100,
+       "quota_limit" : -1,
        "unit" : "count"
      } ]
    }
