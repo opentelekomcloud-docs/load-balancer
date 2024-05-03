@@ -7,7 +7,7 @@ How Do I Test Sticky Sessions Using Linux Curl Commands?
 
 #. Prepare required resources.
 
-   a. Buy three ECSs, one as the client and the other two as backend servers.
+   a. Create three ECSs, one as the client and the other two as backend servers.
    b. Create a load balancer and add an HTTP listener to the load balancer. Enable sticky sessions when you add the listener.
 
 2. Start the HTTP service of the two backend servers.
