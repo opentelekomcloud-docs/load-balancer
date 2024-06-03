@@ -18,6 +18,7 @@ API Actions (V3)
 -  :ref:`Quota Management <elb_sq_lb_v3_0010>`
 -  :ref:`Availability Zone <elb_sq_lb_v3_0013>`
 -  :ref:`Flavor <elb_sq_lb_v3_0014>`
+-  :ref:`Log <en-us_topic_0000001929387249>`
 -  :ref:`Precautions for Supported Actions <elb_sq_lb_v3_0015>`
 
 .. toctree::
@@ -37,4 +38,5 @@ API Actions (V3)
    quota_management
    availability_zone
    flavor
+   log
    precautions_for_supported_actions

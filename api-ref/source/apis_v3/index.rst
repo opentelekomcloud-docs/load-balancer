@@ -20,6 +20,7 @@ APIs (V3)
 -  :ref:`Health Check <module_health_monitors>`
 -  :ref:`Forwarding Policy <module_policies>`
 -  :ref:`Forwarding Rule <module_rules>`
+-  :ref:`Log <module_logtank>`
 
 .. toctree::
    :maxdepth: 1
@@ -40,3 +41,4 @@ APIs (V3)
    health_check/index
    forwarding_policy/index
    forwarding_rule/index
+   log/index
