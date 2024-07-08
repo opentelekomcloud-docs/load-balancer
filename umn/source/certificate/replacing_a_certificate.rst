@@ -32,7 +32,7 @@ Replacing a Certificate
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. On the **Listeners** tab, locate the listener, click |image3| next to the listener name, and select **Modify Listener**.
 #. Select a server certificate and click **Next**.

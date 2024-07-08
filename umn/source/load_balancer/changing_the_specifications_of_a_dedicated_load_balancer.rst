@@ -41,7 +41,7 @@ Changing Specifications
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. On the **Load Balancers** page, locate the load balancer whose specifications you want to modify, click **More** in the **Operation** column, and select **Change Specifications**.
 #. Select the new specifications and click **Next**.
 #. Confirm the information and click **Submit**.

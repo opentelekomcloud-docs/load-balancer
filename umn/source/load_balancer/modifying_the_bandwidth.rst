@@ -25,13 +25,13 @@ When you modify the bandwidth, traffic routing will not be interrupted.
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
-#. On the **Load Balancers** page:
+#. On the **Load Balancers** page, locate the load balancer and click **More** in the **Operation** column.
 
-   Dedicated load balancers: Locate the load balancer and click **Modify IPv4 Bandwidth** or choose **More** > **Modify IPv6 Bandwidth** in the **Operation** column (if the load balancer has an IPv6 address that has been added to a shared bandwidth).
+#. Dedicated load balancers: Click **Modify IPv4 Bandwidth** or **Modify IPv6 Bandwidth**.
 
-   Shared load balancers: Locate the load balancer and click **Modify IPv4 Bandwidth** in the **Operation** column.
+   Shared load balancers: Click **Modify IPv4 Bandwidth**.
 
 #. In the **New Configuration** area, modify the bandwidth and click **Next**.
 

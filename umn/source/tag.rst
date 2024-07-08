@@ -23,7 +23,7 @@ You can add a tag to a load balancer in the following method:
 
    #. Log in to the management console.
    #. In the upper left corner of the page, click |image1| and select the desired region and project.
-   #. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+   #. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
    #. Locate the load balancer and click its name.
    #. Under **Tags**, click **Add Tag**.
    #. In the **Add Tag** dialog box, enter a tag key and value and click **OK**.
@@ -42,7 +42,7 @@ To add a tag to an existing listener, perform the following steps:
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Listeners**, locate the listener, and click its name.
 #. Under **Tags**, click **Add Tag**.
@@ -58,7 +58,7 @@ Modifying a Tag
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image5| and select the desired region and project.
-#. Hover on |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Tags**, select the tag to be edited, and click **Edit** in the **Operation** column. In the **Edit Tag** dialog box, change the tag value.
 
@@ -75,7 +75,7 @@ Deleting a Tag
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image7| and select the desired region and project.
-#. Hover on |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Tags**, select the tag to be deleted, and click **Delete** in the **Operation** column.
 #. In the displayed dialog box, click **Yes**.

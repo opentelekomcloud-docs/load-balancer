@@ -14,7 +14,7 @@ When you select a region, note the following:
 
 -  The region must be close to your users to reduce network latency and improve the download speed.
 -  Shared load balancers cannot distribute traffic across regions. When creating a shared load balancer, select the same region as the backend servers.
--  Dedicated load balancers support adding backend servers across VPCs using the IP as a backend function. For details, see :ref:`Configuring Hybrid Load Balancing <elb_ug_hd_0005>`.
+-  Dedicated load balancers support adding backend servers across VPCs using the IP as a backend function. For details, see :ref:`Overview <elb_ug_hd3_0004_01>`.
 
 AZ
 --

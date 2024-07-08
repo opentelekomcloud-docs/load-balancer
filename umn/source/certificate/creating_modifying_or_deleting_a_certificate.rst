@@ -21,7 +21,7 @@ Creating a Certificate
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the navigation pane on the left, choose **Certificates**.
 #. Click **Create Certificate**. In the **Create Certificate** dialog box, configure the parameters.
 
@@ -110,7 +110,7 @@ Modifying a Certificate
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the navigation pane on the left, choose **Certificates**.
 #. Locate the certificate and click **Modify** in the **Operation** column.
 #. Modify the parameters as required.
@@ -125,7 +125,7 @@ Only certificates that are not in use can be deleted.
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image5| and select the desired region and project.
-#. Hover on |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the navigation pane on the left, choose **Certificates**.
 #. Locate the certificate and click **Delete** in the **Operation** column.
 #. Click **Yes**.

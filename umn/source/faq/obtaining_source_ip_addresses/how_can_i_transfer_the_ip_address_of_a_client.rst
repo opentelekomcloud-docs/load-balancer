@@ -285,7 +285,7 @@ For load balancing at Layer 4 (TCP/UDP), you can enable **Transfer Client IP Add
 
       a. Log in to the management console.
       b. In the upper left corner of the page, click |image1| and select the desired region and project.
-      c. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+      c. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
       d. In the load balancer list, click the name of the load balancer.
       e. Click **Listeners**.
 
@@ -294,11 +294,11 @@ For load balancing at Layer 4 (TCP/UDP), you can enable **Transfer Client IP Add
 
       f. Enable **Transfer Client IP Address**.
 
-   #. Configure security groups, network ACLs, and OS and software security policies so that IP addresses of the clients can access these backend servers.
+   #. Configure security groups, firewalls, and OS and software security policies so that IP addresses of the clients can access these backend servers.
 
       .. note::
 
-         If you enable this function, a server cannot be used as both the client and the backend server. If the client and the backend server use the same server and the **Transfer Client IP Address** option is enabled, the backend server will think the packet from the client is sent by itself and will not return a response packet to the load balancer. As a result, the return traffic will be interrupted.
+         If **Transfer Client IP Address** is enabled, a server cannot serve as both a backend server and a client. If the client and the backend server use the same server and the **Transfer Client IP Address** option is enabled, the backend server will think the packet from the client is sent by itself and will not return a response packet to the load balancer. As a result, the return traffic will be interrupted.
 
 .. |image1| image:: /_static/images/en-us_image_0000001747739624.png
 .. |image2| image:: /_static/images/en-us_image_0000001794660485.png
