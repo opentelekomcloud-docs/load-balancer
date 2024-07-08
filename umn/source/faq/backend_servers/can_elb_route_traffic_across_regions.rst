@@ -5,5 +5,5 @@
 Can ELB Route Traffic Across Regions?
 =====================================
 
--  No. Shared load balancers cannot distribute traffic across regions.
--  No, but dedicated load balancers can distribute traffic across VPCs. For details about how to add backend servers in a different VPC or an on-premises data center, see :ref:`Configuring Hybrid Load Balancing <elb_ug_hd_0005>`.
+-  Shared load balancers cannot route requests to backend servers across regions.
+-  Dedicated load balancers can distribute traffic across VPCs. For details, see :ref:`Overview <elb_ug_hd3_0004_01>`.

@@ -225,7 +225,7 @@ Configuring Mutual Authentication
 
 **Add backend servers**.
 
-For detailed operations, see :ref:`Adding Backend Servers <en-us_topic_0052569729__section388715404610>`.
+For detailed operations, see :ref:`Overview <elb_ug_hd3_0001>`.
 
 Importing and Testing the Client Certificate
 --------------------------------------------

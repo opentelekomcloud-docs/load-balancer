@@ -35,7 +35,7 @@ Each ECS needs an EIP for accessing the Internet and configuring the application
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
 
 #. Click **Create ECS**, configure the parameters, and click **Create Now**.
 
@@ -48,7 +48,7 @@ Each ECS needs an EIP for accessing the Internet and configuring the application
       =========== ================
       Name        ECS01 and ECS02
       OS          CentOS 7.2 64bit
-      CPU         2vCPUs
+      vCPUs       2
       Memory      4 GiB
       System disk 40 GiB
       Data disk   100 GiB
@@ -209,7 +209,7 @@ Creating a Load Balancer
 Each ECS needs an EIP for accessing the Internet and configuring the application on the ECS. The load balancer needs an EIP to access the application deployed on the ECSs over the Internet. You can determine whether to bind an EIP to the load balancer based on your requirements. For details, see :ref:`Load Balancing on a Public or Private Network <elb_pro_01_0004>`.
 
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Click **Create Elastic Load Balancer** and then configure the parameters.
 #. Click **Create Now**.
 #. Confirm the configuration and submit your request.
@@ -219,14 +219,14 @@ Each ECS needs an EIP for accessing the Internet and configuring the application
 
    After you create a dedicated load balancer, configure the security group that contains the ECSs to allow traffic from the VPC where the load balancer works.
 
-Procedure
----------
+Configuring Security Group Rules
+--------------------------------
 
 #. Log in to the management console.
 
 #. In the upper left corner of the page, click |image5| and select the desired region and project.
 
-#. Under **Computing**, click **Elastic Cloud Server**.
+#. Click |image6| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
 
 #. On the **Elastic Cloud Server** page, click the name of the ECS that has been added to a backend server group.
 
@@ -268,13 +268,13 @@ Procedure
 Firewall Rules
 --------------
 
-To control traffic in and out of a subnet, you can associate a firewall with the subnet. Firewalls rules control access to subnets and add an additional layer of defense to your subnets. The default firewall rule denies all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall rule associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
+To control traffic in and out of a subnet, you can associate a firewall with the subnet. Firewalls rules control access to subnets and add an additional layer of defense to your subnets. Default firewall rules reject all inbound and outbound traffic. If the subnet of a load balancer or associated backend servers has a firewall associated, the load balancer cannot receive traffic from the Internet or route traffic to backend servers, and backend servers cannot receive traffic from and respond to the load balancer.
 
 Configure an inbound firewall rule to allow traffic from the VPC where the load balancer resides to backend servers.
 
 #. Log in to the management console.
-#. In the upper left corner of the page, click |image6| and select the desired region and project.
-#. Click |image7| in the upper left corner of the page and choose **Network** > **Virtual Private Cloud**.
+#. In the upper left corner of the page, click |image7| and select the desired region and project.
+#. Click |image8| in the upper left corner of the page and choose **Network** > **Virtual Private Cloud**.
 #. In the navigation pane on the left, choose **Access Control** > **Firewalls**.
 #. In the firewall list, click the name of the firewall to switch to the page showing its details.
 #. On the **Inbound Rules** or **Outbound Rules** tab page, click **Add Rule** to add a rule.
@@ -282,9 +282,9 @@ Configure an inbound firewall rule to allow traffic from the VPC where the load 
    -  **Action**: Select **Allow**.
    -  **Protocol**: The protocol must be the same as the one you selected for the listener.
    -  **Source**: Set it to the VPC CIDR block.
-   -  **Source Port Range**: Select a port range.
+   -  **Source Port Range**: Select a port range based on the service requirements.
    -  **Destination**: Enter a destination address allowed in this direction. The default value is **0.0.0.0/0**, which indicates that traffic from all IP addresses is permitted.
-   -  **Destination Port Range**: Select a port range.
+   -  **Destination Port Range**: Select a port range based on the service requirements.
    -  (Optional) **Description**: Describe the firewall rule if necessary.
 
 #. Click **OK**.
@@ -292,7 +292,7 @@ Configure an inbound firewall rule to allow traffic from the VPC where the load 
 Adding a Listener
 -----------------
 
-Add a listener to the created load balancer. When you add the listener, create a backend server group, configure a health check, and add the two ECSs to the created backend server group.
+Add a listener to the created load balancer. When you add the listener, create a backend server group, configure a health check, and add the two ECSs to the created backend server group. If a backend server is detected unhealthy, the load balancer will stop routing traffic to it until the backend server recovers.
 
 Configure two forwarding policies to forward HTTP requests to the two ECSs, for example, requests from **www.example.com/ELB01/** to ECS01, and those from **www.example.com/ELB02/** to ECS02.
 
@@ -302,7 +302,7 @@ Configure two forwarding policies to forward HTTP requests to the two ECSs, for 
 
    **Figure 4** Traffic forwarding
 
-#. Hover on |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image9| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Under **Listeners**, click **Add Listener**.
 #. Configure the listener and click **Next**.
@@ -312,14 +312,14 @@ Configure two forwarding policies to forward HTTP requests to the two ECSs, for 
 
 #. Create a backend server group, configure a health check, and click **Finish**.
 
-   -  Backend Server Group
+   -  Backend server group
 
       -  **Name**: Enter a name, for example, **server_group-ELB**.
       -  **Load Balancing Algorithm**: Select an algorithm that the load balancer will use to route requests, for example, **Weighted round robin**.
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
+      -  **Health Check Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
 
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, www.example.com.
 
@@ -338,16 +338,16 @@ Adding a Forwarding Policy
    -  **URL**: You can also specify a URL to forward the requests, for example, **/ELB01/**.
    -  **URL Matching Rule**: Select a rule for matching the specified URL string with the URL in the request. Three options are available, **Exact match**, **Prefix match**, and **Regular expression match**. **Exact match** enjoys the highest priority, and **Regular expression match** the lowest priority. Select **Exact match** here.
 
-#. Create a backend server group, configure a health check, and click **Finish**.
+#. Create a backend server group and configure a health check.
 
-   -  Backend Server Group
+   -  Backend server group
 
       -  **Name**: Enter a name, for example, **server_group-ELB01**.
       -  **Load Balancing Algorithm**: Select an algorithm that the load balancer will use to route requests, for example, **Weighted round robin**.
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
+      -  **Health Check Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
 
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, **www.example.com**.
 
@@ -409,6 +409,7 @@ After the load balancer is configured, you can access the domain name or the spe
 .. |image3| image:: /_static/images/en-us_image_0000001747739624.png
 .. |image4| image:: /_static/images/en-us_image_0000001794660485.png
 .. |image5| image:: /_static/images/en-us_image_0000001747739624.png
-.. |image6| image:: /_static/images/en-us_image_0000001747739624.png
-.. |image7| image:: /_static/images/en-us_image_0000001747739880.png
-.. |image8| image:: /_static/images/en-us_image_0000001794660485.png
+.. |image6| image:: /_static/images/en-us_image_0000001747380972.png
+.. |image7| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image8| image:: /_static/images/en-us_image_0000001747739880.png
+.. |image9| image:: /_static/images/en-us_image_0000001794660485.png

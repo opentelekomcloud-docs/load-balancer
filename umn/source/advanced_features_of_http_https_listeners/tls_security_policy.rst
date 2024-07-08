@@ -20,7 +20,7 @@ Adding a Security Policy
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
@@ -300,7 +300,7 @@ Creating a Custom Security Policy
 
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
 
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. In the navigation pane on the left, choose **TLS Security Policies**.
 
@@ -338,7 +338,7 @@ You can modify a custom security policy as you need.
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image5| and select the desired region and project.
-#. Hover on |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image6| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the navigation pane on the left, choose **TLS Security Policies**.
 #. On the **TLS Security Policies** page, click **Custom Security Policies**, locate the custom security policy, and click **Modify** in the **Operation** column.
 #. In displayed dialog box, modify the custom security policy as described in :ref:`Table 3 <elb_ug_jt_0022__table3263104318541>`.
@@ -351,7 +351,7 @@ You can delete a custom security policy as you need.
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image7| and select the desired region and project.
-#. Hover on |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image8| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. In the navigation pane on the left, choose **TLS Security Policies**.
 #. On the **TLS Security Policies** page, click **Custom Security Policies**, locate the custom security policy, and click **Delete** in the **Operation** column.
 #. Click **Yes**.
@@ -363,7 +363,7 @@ When you change a security policy, ensure that the security group containing bac
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image9| and select the desired region and project.
-#. Hover on |image10| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image10| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. On the **Listeners** tab page, locate the listener, click |image11| next to the listener name, and select **Modify Listener**.
 #. In the **Modify Listener** dialog box, expand **Advanced Settings** and change the security policy.

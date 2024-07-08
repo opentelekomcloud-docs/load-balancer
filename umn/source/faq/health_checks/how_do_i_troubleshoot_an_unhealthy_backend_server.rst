@@ -31,7 +31,7 @@ Shared load balancers: To ensure that health checks can be performed as expected
 
    -  Security group rules configured for backend servers associated with dedicated load balancers are different from those configured for backend servers associated with shared load balancers.
 
-      -  Dedicated load balancers: Ensure that security group rules allow access from IP addresses in the VPC where the backend server resides. For details about how to configure security groups for backend servers associated with dedicated load balancers, see :ref:`Configuring Security Group Rules for Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0007>`.
+      -  Dedicated load balancers: Ensure that security group rules allow access from IP addresses in the VPC where the backend server resides. For details, see :ref:`Configuring Security Group and Firewall Rules <elb_ug_hd_0007>`.
       -  Shared load balancers: Ensure that security group rules allow access from IP addresses in 100.125.0.0/16. For details, see :ref:`Configuring a Security Group for Backend Servers (Shared Load Balancers) <elb_ug_hd_0002>`.
 
    -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and Firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
@@ -78,7 +78,7 @@ Check these causes one by one until you find the cause of this issue.
    +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
    | Security group rules                   | :ref:`Checking Security Group Rules <en-us_topic_0018127975__section2948957185917>`                                                 |
    +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
-   | Network ACL rules                      | :ref:`Checking Firewall Rules <en-us_topic_0018127975__section125775401003>`                                                        |
+   | Firewall rules                         | :ref:`Checking Firewall Rules <en-us_topic_0018127975__section125775401003>`                                                        |
    +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
    | Backend server listening configuration | :ref:`Checking the Backend Server <en-us_topic_0018127975__section12988243125410>`                                                  |
    +----------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------+
@@ -130,9 +130,9 @@ Checking the Health Check Configuration
 
 For a dedicated or shared load balancer, click the name of the load balancer to view its details. Navigate to **Backend Server Groups** and then click the name of the server group. In the **Basic Information** area, to the right of **Health Check**, click **Configure**. Check the following parameters:
 
--  **Protocol**: The protocol used for health checks.
--  **Port**: The port must be the one used on the backend server, and it cannot be changed. Check whether the health check port is in the listening state on the backend server. If the health check port is not in the listening state on the backend server, the backend server will be identified as unhealthy.
--  **Check Path**: If HTTP is used for health checks, you must check this parameter. A simple static HTML file is recommended.
+-  **Heath Check Protocol**: The protocol used for health checks.
+-  **Heath Check Port**: The port must be the one used on the backend server, and it cannot be changed. Check whether the health check port is in the listening state on the backend server. If the health check port is not in the listening state on the backend server, the backend server will be identified as unhealthy.
+-  **Path**: If HTTP is used for health checks, you must check this parameter. A simple static HTML file is recommended.
 
 .. note::
 
@@ -184,7 +184,7 @@ Checking Security Group Rules
 
 -  **Shared load balancers**
 
-   -  **TCP, HTTP, or HTTPS listeners**: Verify that the inbound rule of the security group containing the backend server allows access from 100.125.0.0/16 and allows the traffic from the health check port.
+   -  **TCP, HTTP, or HTTPS listeners**: Verify that the inbound security group rule allows access from 100.125.0.0/16 over the health check port.
 
       -  If the health check port is the same as the backend port, the inbound rule must allow traffic over the backend port, for example, port 80.
       -  If the port (port 80 as an example) for health check is different from that used by the backend server (port 443 as an example), inbound security group rules must allow traffic over both ports.
@@ -234,9 +234,9 @@ Checking Firewall Rules
       -  **Action**: Select **Allow**.
       -  **Protocol**: The protocol must be the same as the one you selected for the listener.
       -  **Source**: Set it to the VPC CIDR block.
-      -  **Source Port Range**: Select a port range.
+      -  **Source Port Range**: Select a port range based on the service requirements.
       -  **Destination**: If you keep the default value, **0.0.0.0/0**, traffic will be allowed for all destination IP addresses.
-      -  **Destination Port Range**: Select a port range.
+      -  **Destination Port Range**: Select a port range based on the service requirements.
       -  (Optional) **Description**: Describe the firewall rule if necessary.
 
    #. Click **OK**.
@@ -257,9 +257,9 @@ Checking Firewall Rules
       -  **Action**: Select **Allow**.
       -  **Protocol**: The protocol must be the same as the one you selected for the listener.
       -  **Source**: Set it to 100.125.0.0/16.
-      -  **Source Port Range**: Select a port range.
+      -  **Source Port Range**: Select a port range based on the service requirements.
       -  **Destination**: If you keep the default value, **0.0.0.0/0**, traffic will be allowed for all destination IP addresses.
-      -  **Destination Port Range**: Select a port range.
+      -  **Destination Port Range**: Select a port range based on the service requirements.
       -  (Optional) **Description**: Describe the firewall rule if necessary.
 
    #. Click **OK**.

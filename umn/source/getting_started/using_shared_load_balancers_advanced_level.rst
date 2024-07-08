@@ -17,13 +17,13 @@ An HTTP listener is used as an example to describe how to route requests from tw
 Prerequisites
 -------------
 
--  You have added security group rules to allow traffic from the ports used by the two ECSs. (Alternatively, you can enable all ports first and then disable the ports that are no longer used.)
+-  You have added security group rules to allow traffic from the ports used by the two ECSs. (Alternatively, you can enable all ports first and then disable the ports that are no longer used after service deployment.)
 -  The security group containing the two ECSs allows traffic from 100.125.0.0/16. (ELB uses these IP addresses to perform health checks and route requests to backend servers.)
 
    .. caution::
 
-      -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with the TCP or UDP listener.
+      -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and Firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
+      -  Dedicated load balancers: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and Firewall rules to allow traffic from the backend subnet where the load balancer is deployed to the backend servers.
 
 Creating ECSs
 -------------
@@ -34,7 +34,7 @@ ECSs are used as backend servers to process requests. Each ECS needs an EIP for 
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
 
 #. Click **Create ECS**, configure the parameters, and click **Create Now**.
 
@@ -204,7 +204,7 @@ Creating a Load Balancer
 The load balancer needs an EIP to access the application deployed on the ECSs over the Internet. You can determine whether to bind an EIP to the load balancer based on your requirements. For details, see :ref:`Load Balancing on a Public or Private Network <elb_pro_01_0004>`.
 
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Click **Create Elastic Load Balancer** and then configure the parameters.
 #. Click **Create Now**.
 #. Confirm the configuration and submit your request.
@@ -223,7 +223,7 @@ Configure two forwarding policies to forward HTTP requests to the two ECSs, for 
 
    **Figure 4** Traffic forwarding
 
-#. Hover on |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the created load balancer and click its name.
 #. Under **Listeners**, click **Add Listener**.
 #. Configure the listener and click **Next**.
@@ -240,9 +240,9 @@ Configure two forwarding policies to forward HTTP requests to the two ECSs, for 
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
+      -  **Health Check Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, www.example.com.
-      -  **Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
+      -  **Health Check Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
 
 Adding Forwarding Policies
 --------------------------
@@ -258,7 +258,7 @@ Adding Forwarding Policies
    -  **URL**: You can also specify a URL to forward the requests, for example, **/ELB01/**.
    -  **URL Matching Rule**: Select a rule for matching the specified URL string with the URL in the request. Three options are available, **Exact match**, **Prefix match**, and **Regular expression match**. **Exact match** enjoys the highest priority, and **Regular expression match** the lowest priority. Select **Exact match** here.
 
-#. Add the backend server group and configure a health check.
+#. Add a backend server group and configure a health check.
 
    -  Backend server group
 
@@ -267,9 +267,9 @@ Adding Forwarding Policies
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
+      -  **Health Check Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example. Note that the protocol cannot be changed after the listener is added.
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, **www.example.com**.
-      -  **Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
+      -  **Health Check Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
 
 #. Select the newly added forwarding policy. On the **Backend Server Groups** tab page on the right, click **Add**.
 

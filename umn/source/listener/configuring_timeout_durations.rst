@@ -51,13 +51,13 @@ Procedure
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
-#. On the **Listeners** tab page, locate the listener, click |image3| next to the listener name, and select **Modify Listener**.
-#. In the **Modify Listener** dialog box, expand **Advanced Settings**.
-#. Configure **Idle Timeout (s)**, **Request Timeout (s)**, or **Response Timeout (s)** and click **Next**.
-#. Click **Finish**.
+#. Click **Listeners**, locate the listener, and click the name of the listener.
+#. On the **Basic Information** tab page, click **Edit** on the top right.
+#. In the **Edit** dialog box, expand **Advanced Settings**.
+#. Configure **Idle Timeout (s)**, **Request Timeout (s)**, or **Response Timeout (s)** as you need.
+#. Click **OK**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001747739624.png
 .. |image2| image:: /_static/images/en-us_image_0000001794660485.png
-.. |image3| image:: /_static/images/en-us_image_0000001747381144.png

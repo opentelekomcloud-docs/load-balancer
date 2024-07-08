@@ -7,9 +7,6 @@ Listener
 
 -  :ref:`Overview <elb_ug_jt_0001>`
 -  :ref:`Protocols and Ports <elb_ug_jt_0002>`
--  :ref:`Load Balancing Algorithms <elb_ug_jt_0003>`
--  :ref:`Sticky Session <elb_ug_jt_0004>`
--  :ref:`Access Control <en-us_elb_03_0003>`
 -  :ref:`Adding a TCP Listener <elb_ug_jt_0006>`
 -  :ref:`Adding a UDP Listener <elb_ug_jt_0007>`
 -  :ref:`Adding an HTTP Listener <elb_ug_jt_0008>`
@@ -17,7 +14,8 @@ Listener
 -  :ref:`Adding a UDP Listener (with a QUIC Backend Server Group Associated) <elb_ug_jt_0018>`
 -  :ref:`Configuring Timeout Durations <elb_ug_jt_0014>`
 -  :ref:`Modifying or Deleting a Listener <elb_ug_jt_0012>`
--  :ref:`Transfer Client IP Address <elb_ug_jt_0514>`
+-  :ref:`Transfer Client IP Address (Dedicated Load Balancers) <en-us_topic_0000001794660385>`
+-  :ref:`Transfer Client IP Address (Shared Load Balancers) <elb_ug_jt_0515>`
 
 .. toctree::
    :maxdepth: 1
@@ -25,9 +23,6 @@ Listener
 
    overview
    protocols_and_ports
-   load_balancing_algorithms
-   sticky_session
-   access_control
    adding_a_tcp_listener
    adding_a_udp_listener
    adding_an_http_listener
@@ -35,4 +30,5 @@ Listener
    adding_a_udp_listener_with_a_quic_backend_server_group_associated
    configuring_timeout_durations
    modifying_or_deleting_a_listener
-   transfer_client_ip_address
+   transfer_client_ip_address_dedicated_load_balancers
+   transfer_client_ip_address_shared_load_balancers

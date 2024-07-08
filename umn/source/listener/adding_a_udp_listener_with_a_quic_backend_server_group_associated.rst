@@ -29,7 +29,7 @@ Adding a UDP Listener with a QUIC Backend Server Group Associated
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
@@ -46,7 +46,7 @@ Adding a UDP Listener with a QUIC Backend Server Group Associated
 Follow-Up Operations
 --------------------
 
-After you add a listener, associate backend servers with the listener by performing the operations in :ref:`Adding or Removing Backend Servers (Dedicated Load Balancers) <elb_ug_hd_0003>`.
+After you add a listener, associate backend servers with the listener by performing the operations in :ref:`Overview <elb_ug_hd3_0001>`.
 
 .. |image1| image:: /_static/images/en-us_image_0000001747739624.png
 .. |image2| image:: /_static/images/en-us_image_0000001794660485.png

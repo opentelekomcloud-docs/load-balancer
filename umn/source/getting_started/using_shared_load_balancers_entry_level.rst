@@ -8,20 +8,20 @@ Using Shared Load Balancers (Entry Level)
 Scenarios
 ---------
 
-You have a web application, which often needs to handle heavy traffic and is deployed on two ECSs for load balancing.
+You have a web application that is deployed on two ECSs, and the application often needs to handle a heavy load.
 
 You can create a shared load balancer to distribute traffic across the two ECSs, which eliminates SPOFs and makes your application more available.
 
 Prerequisites
 -------------
 
--  You have added security group rules to allow traffic from the ports used by the two ECSs. (Alternatively, you can enable all ports first and then disable the ports that are no longer used.)
+-  You have added security group rules to allow traffic from the ports used by the two ECSs. (Alternatively, you can enable all ports first and then disable the ports that are no longer used after service deployment.)
 -  The security group containing the two ECSs allows traffic from 100.125.0.0/16. (ELB uses these IP addresses to perform health checks and route requests to backend servers.)
 
    .. caution::
 
-      -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
-      -  Dedicated load balancer: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and firewall rules to allow traffic from VPC where the backend subnet of the load balancer works to the backend servers associated with the TCP or UDP listener.
+      -  Shared load balancers: If **Transfer Client IP Address** is enabled for a TCP or UDP listener, there is no need to configure security group rules and Firewall rules to allow traffic from 100.125.0.0/16 and client IP addresses to backend servers.
+      -  Dedicated load balancers: If **IP as a Backend** is not enabled for a load balancer that has a TCP or UDP listener, there is no need to configure security group rules and Firewall rules to allow traffic from the backend subnet where the load balancer is deployed to the backend servers.
 
 Creating ECSs
 -------------
@@ -34,7 +34,7 @@ Each ECS needs an EIP for accessing the Internet, and the EIP is used for config
 
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
 
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Computing** > **Elastic Cloud Server**.
 
 #. Click **Create ECS**, configure the parameters, and click **Create Now**.
 
@@ -192,7 +192,7 @@ Creating a Load Balancer
 The load balancer needs an EIP to access the application deployed on the ECSs over the Internet. You can determine whether to bind an EIP to the load balancer based on your requirements. For details, see :ref:`Load Balancing on a Public or Private Network <elb_pro_01_0004>`.
 
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Click **Create Elastic Load Balancer** and then configure the parameters.
 #. Click **Create Now**.
 #. Confirm the configuration and submit your request.
@@ -209,7 +209,7 @@ Add a listener to the created load balancer. When you add the listener, create a
 
    **Figure 4** Traffic forwarding
 
-#. Hover on |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the created load balancer (**elb-01**) and click its name.
 #. Under **Listeners**, click **Add Listener**.
 #. Configure the listener and click **Next**.
@@ -233,9 +233,9 @@ Add a listener to the created load balancer. When you add the listener, create a
 
    -  Health check
 
-      -  **Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example.
+      -  **Health Check Protocol**: Select a protocol for the load balancer to perform health checks on backend servers. If the load balancer uses TCP, HTTP, or HTTPS to receive requests, the health check protocol can be TCP or HTTP. Here we use HTTP as an example.
       -  **Domain Name**: Enter a domain name that will be used for health checks, for example, **www.example.com**.
-      -  **Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
+      -  **Health Check Port**: Enter a port for the load balancer to perform health checks on backend servers, for example, **80**.
 
 #. Click the name of the newly added listener. On the **Backend Server Groups** tab page on the right, click **Add**.
 #. Select the servers you want to add, set the backend port, and click **Finish**.

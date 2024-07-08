@@ -16,15 +16,19 @@ Deleted listeners cannot be recovered.
 
    **Frontend Protocol/Port** and **Backend Protocol** cannot be modified after you have configured them. If you want to modify the protocol or port of the listener, add another listener to the load balancer.
 
-Modifying a Listener
+Modifying a listener
 --------------------
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
-#. On the **Listeners** tab page, locate the listener, click |image3| next to the listener name, and select **Modify Listener**.
-#. Modify the parameters as needed and click **OK**.
+#. Modify the listener in either of the following ways:
+
+   -  On the **Listeners** page, locate the listener, and click **Edit** in the **Operation** column.
+   -  Click the name of the target listener. On the **Basic Information** page, click **Edit** on the top right corner.
+
+#. On the **Edit** dialog box, modify parameters, and click **OK**.
 
 .. _elb_ug_jt_0012__section630190201235:
 
@@ -32,8 +36,8 @@ Deleting a Listener
 -------------------
 
 #. Log in to the management console.
-#. In the upper left corner of the page, click |image4| and select the desired region and project.
-#. Hover on |image5| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. In the upper left corner of the page, click |image3| and select the desired region and project.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 
    .. note::
@@ -43,12 +47,11 @@ Deleting a Listener
       -  If the listener has a forwarding policy, delete the forwarding policy before deleting the listener.
       -  After a listener is deleted, the associated backend server group is also deleted.
 
-#. Click **Listeners**, locate the listener, and click |image6| on the right of its name.
-#. Click **Yes**.
+#. Click **Listeners**, locate the listener, and click **Delete** in the **Operation** column.
+#. In the displayed dialog box, enter **DELETE**.
+#. Click **OK**.
 
 .. |image1| image:: /_static/images/en-us_image_0000001747739624.png
 .. |image2| image:: /_static/images/en-us_image_0000001794660485.png
-.. |image3| image:: /_static/images/en-us_image_0000001794819953.png
-.. |image4| image:: /_static/images/en-us_image_0000001747739624.png
-.. |image5| image:: /_static/images/en-us_image_0000001794660485.png
-.. |image6| image:: /_static/images/en-us_image_0000001747381124.png
+.. |image3| image:: /_static/images/en-us_image_0000001747739624.png
+.. |image4| image:: /_static/images/en-us_image_0000001794660485.png

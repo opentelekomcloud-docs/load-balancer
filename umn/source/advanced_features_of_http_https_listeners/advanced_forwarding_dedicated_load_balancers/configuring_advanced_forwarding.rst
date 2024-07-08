@@ -30,7 +30,7 @@ Enabling Advanced Forwarding
 
 #. Log in to the management console.
 #. In the upper left corner of the page, click |image1| and select the desired region and project.
-#. Hover on |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image2| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 #. Locate the load balancer and click its name.
 #. Click **Listeners**, locate the listener, and click its name.
 #. In the **Basic Information** tab page of the listener in the right pane, click **Enable** next to **Advanced Forwarding**.
@@ -43,7 +43,7 @@ Adding an Advanced Forwarding Policy
 
 #. In the upper left corner of the page, click |image3| and select the desired region and project.
 
-#. Hover on |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image4| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
@@ -169,7 +169,7 @@ Multiple forwarding policies can be sorted to set their priorities.
 
 #. In the upper left corner of the page, click |image6| and select the desired region and project.
 
-#. Hover on |image7| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image7| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
@@ -221,7 +221,7 @@ Modifying a Forwarding Policy
 
 #. In the upper left corner of the page, click |image9| and select the desired region and project.
 
-#. Hover on |image10| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image10| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
@@ -246,7 +246,7 @@ Deleted forwarding policies cannot be recovered.
 
 #. In the upper left corner of the page, click |image12| and select the desired region and project.
 
-#. Hover on |image13| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
+#. Click |image13| in the upper left corner to display **Service List** and choose **Network** > **Elastic Load Balancing**.
 
 #. Locate the load balancer and click its name.
 
