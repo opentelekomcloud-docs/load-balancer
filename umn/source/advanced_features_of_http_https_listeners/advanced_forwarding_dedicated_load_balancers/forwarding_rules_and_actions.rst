@@ -44,7 +44,7 @@ Advanced forwarding policies support the following types of forwarding rules: do
 
    -  You can configure multiple URLs in a forwarding policy.
 
-   -  A URL can contain letters, digits, and special characters \_-';@^- ``%#$.*+?,=!:|\/()[]{}.`` In exact match and prefix match, the URL must start with a slash (/).
+   -  A URL can contain letters, digits, and special characters \_-';@^-``%#$.*+?,=!:|\/()[]{}.`` In exact match and prefix match, the URL must start with a slash (/).
 
    -  There are three URL matching rules:
 
@@ -77,8 +77,8 @@ Advanced forwarding policies support the following types of forwarding rules: do
 
    -  A query string consists of a key and one or more values. You need to set the key and values separately.
 
-      -  The key can contain only letters, digits, and special characters ``!$'()*+,`` ./:;=?@^-_'
-      -  Each value can contain only letters, digits, and special characters ``!$'()*+,`` ./:;=?@^-_'. Asterisks (*) and question marks (?) can be used as wildcard characters.
+      -  The key can contain only letters, digits, and special characters\ ``!$'()*+,``\ ``./:;=?@^-_'``
+      -  Each value can contain only letters, digits, and special characters\ ``!$'()*+,``\ ``./:;=?@^-_'.`` Asterisks (*) and question marks (?) can be used as wildcard characters.
 
    -  Example
 
@@ -109,7 +109,7 @@ Advanced forwarding policies support the following types of forwarding rules: do
    -  An HTTP header consists of a key and one or more values. You need to configure the key and values separately.
 
       -  The key can contain only letters, digits, underscores (_), and hyphens (-).
-      -  Each value can contain only letters, digits, and special characters ``!#$%&'()*+,.\/:;<=>?@[]^-_'{}|~.`` Asterisks (*) and question marks (?) can be used as wildcard characters.
+      -  Each value can contain only letters, digits, and special characters\ ``!#$%&'()*+,.\/:;<=>?@[]^-_'{}|~.`` Asterisks (*) and question marks (?) can be used as wildcard characters.
 
    -  Example
 
@@ -169,9 +169,9 @@ There are four types of actions: forward to a backend server group, redirect to 
 
       -  **Port**: ranges from 1 to 65535. ${port}: retains the port number of the request.
 
-      -  **Path**: A path can contain letters, digits, and special characters \_-';@^- ``%#&$.*+?,=!:|\/()[]{}`` and must start with a slash (/). **${path}**: retains the path of the request.
+      -  **Path**: A path can contain letters, digits, and special characters \_-';@^-``%#&$.*+?,=!:|\/()[]{}`` and must start with a slash (/). **${path}**: retains the path of the request.
 
-      -  **Query string**: A query string can contain only letters, digits, and the following special characters ``!$'()*+,`` ./:;=?@&^-_', and & can only be used as a separator.
+      -  **Query string**: A query string can contain only letters, digits, and the following special characters\ ``!$'()*+,``\ ``./:;=?@&^-_',`` and & can only be used as a separator.
 
       -  **HTTP status code**: 301, 302, 303, 307, or 308
 

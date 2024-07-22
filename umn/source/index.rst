@@ -16,6 +16,7 @@ Elastic Load Balancing - User Guide
    certificate/index
    tag
    access_control/index
+   access_logging
    monitoring/index
    permissions_management/index
    quotas
