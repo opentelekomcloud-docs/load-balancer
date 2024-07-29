@@ -16,7 +16,7 @@ To ensure normal communications between the load balancer and backend servers, y
 
 .. note::
 
-   If **Transfer Client IP Address** is enabled for TCP or UDP listeners, firewall rules and security group rules will not take effect.
+   If the load balancer has Layer 4 listeners and **IP as a Backend** is disabled, firewall rules and security group rules will not take effect.
 
    You can use access control to limit which IP addresses are allowed to access the listener. Learn how to configure :ref:`Access Control <elb_03_0003>`.
 
