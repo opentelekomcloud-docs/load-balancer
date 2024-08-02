@@ -14,7 +14,8 @@ With Log Tank Service (LTS), you can view logs of requests to load balancers at 
 
 .. note::
 
-   ELB displays operations data, such as access logs, on the LTS console. Do not transmit private or sensitive data through fields in access logs. Encrypt your sensitive data if necessary.
+   -  ELB displays operations data, such as access logs, on the LTS console. Do not transmit private or sensitive data through fields in access logs. Encrypt your sensitive data if necessary.
+   -  Currently, access logging is not supported in the **eu-nl** region.
 
 Notes and Constraints
 ---------------------
