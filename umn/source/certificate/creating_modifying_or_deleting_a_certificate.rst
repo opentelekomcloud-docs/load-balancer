@@ -96,10 +96,12 @@ Creating a Certificate
 
          .. note::
 
-            -  You can specify up to 30 domain names for each certificate and separate the domain names using commas.
+            -  An SNI certificate can have up to 100 domain names separated by commas (,).
+            -  SNI certificates of a dedicated load balancer's listener can have up to 200 domain names.
+            -  SNI certificates of a shared load balancer's listener can have up to 30 domain names.
             -  A domain name can contain only letters, digits, and hyphens (-) and cannot start or end with a hyphen (-).
             -  A domain name consists of more than one label separated by periods. Each label can contain a maximum of 63 characters.
-            -  A domain name can contain a maximum of 100 characters, and the total length of domain names cannot exceed 1024 characters.
+            -  A domain name can contain a maximum of 100 characters, and the total length of domain names cannot exceed 10,000 characters.
 
    -  **Description**
 

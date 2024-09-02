@@ -82,6 +82,9 @@ Listener
 --------
 
 -  The listener of a dedicated load balancer can be associated with a maximum of 50 backend server groups.
+-  An SNI certificate can have up to 100 domain names separated by commas (,).
+-  SNI certificates of a dedicated load balancer's listener can have up to 200 domain names.
+-  SNI certificates of a shared load balancer's listener can have up to 30 domain names.
 -  An HTTPS listener can have up to 30 SNI certificates.
 -  Once set, the frontend protocol and port of the listener cannot be modified.
 
