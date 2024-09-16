@@ -16,7 +16,6 @@ Constraints
 This API has the following constraints:
 
 -  Parameters **marker**, **limit**, and **page_reverse** are used for pagination query.
-
 -  Parameters **marker** and **page_reverse** take effect only when they are used together with parameter **limit**.
 
 URI
@@ -42,9 +41,7 @@ GET /v3/{project_id}/elb/flavors
    |                 |                 |                 | Note:                                                                                                                                               |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  This parameter must be used together with **limit**.                                                                                             |
-   |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  If this parameter is not specified, the first page will be queried.                                                                              |
-   |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  This parameter cannot be left blank or set to an invalid ID.                                                                                     |
    +-----------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
    | limit           | No              | Integer         | Specifies the number of records on each page.                                                                                                       |
@@ -58,13 +55,11 @@ GET /v3/{project_id}/elb/flavors
    | page_reverse    | No              | Boolean         | Specifies whether to use reverse query. Values:                                                                                                     |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  **true**: Query the previous page.                                                                                                               |
-   |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  **false** (default): Query the next page.                                                                                                        |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | Note:                                                                                                                                               |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  This parameter must be used together with **limit**.                                                                                             |
-   |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  If **page_reverse** is set to **true** and you want to query the previous page, set the value of **marker** to the value of **previous_marker**. |
    +-----------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
    | id              | No              | Array           | Specifies the flavor ID.                                                                                                                            |
@@ -75,18 +70,16 @@ GET /v3/{project_id}/elb/flavors
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | Multiple names can be queried in the format of *name=xxx&name=xxx*.                                                                                 |
    +-----------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-   | type            | No              | Array           | Specifies the flavor type. Values can be one of the following:                                                                                      |
+   | type            | No              | Array           | Specifies the flavor type. The value can be one of the following:                                                                                   |
    |                 |                 |                 |                                                                                                                                                     |
-   |                 |                 |                 | -  **L4** indicates a Layer-4 flavor.                                                                                                               |
-   |                 |                 |                 |                                                                                                                                                     |
-   |                 |                 |                 | -  **L7** indicates a Layer-7 flavor.                                                                                                               |
+   |                 |                 |                 | -  **L4**: a Layer-4 flavor.                                                                                                                        |
+   |                 |                 |                 | -  **L7**: a Layer-7 flavor.                                                                                                                        |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | Multiple types can be queried in the format of *type=xxx&type=xxx*.                                                                                 |
    +-----------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
    | shared          | No              | Boolean         | Specifies whether the flavor is available to all users.                                                                                             |
    |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  **true** indicates that the flavor is available to all users.                                                                                    |
-   |                 |                 |                 |                                                                                                                                                     |
    |                 |                 |                 | -  **false** indicates that the flavor is available only to a specific user.                                                                        |
    +-----------------+-----------------+-----------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -134,16 +127,14 @@ Response Parameters
    | shared                | Boolean                                                     | Specifies whether the flavor is available to all users.                                             |
    |                       |                                                             |                                                                                                     |
    |                       |                                                             | -  true indicates that the flavor is available to all users.                                        |
-   |                       |                                                             |                                                                                                     |
    |                       |                                                             | -  false indicates that the flavor is available only to a specific user.                            |
    +-----------------------+-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | project_id            | String                                                      | Specifies the project ID.                                                                           |
    +-----------------------+-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
-   | type                  | String                                                      | Specifies the flavor type. Values can be one of the following:                                      |
+   | type                  | String                                                      | Specifies the flavor type. The value can be one of the following:                                   |
    |                       |                                                             |                                                                                                     |
-   |                       |                                                             | -  **L4** indicates a Layer-4 flavor.                                                               |
-   |                       |                                                             |                                                                                                     |
-   |                       |                                                             | -  **L7** indicates a Layer-7 flavor.                                                               |
+   |                       |                                                             | -  **L4**: a Layer-4 flavor.                                                                        |
+   |                       |                                                             | -  **L7**: a Layer-7 flavor.                                                                        |
    |                       |                                                             |                                                                                                     |
    |                       |                                                             | Minimum: **1**                                                                                      |
    |                       |                                                             |                                                                                                     |
@@ -152,7 +143,6 @@ Response Parameters
    | flavor_sold_out       | Boolean                                                     | Specifies whether the flavor is unavailable.                                                        |
    |                       |                                                             |                                                                                                     |
    |                       |                                                             | -  **true** indicates the flavor is unavailable. Load balancers with this flavor cannot be created. |
-   |                       |                                                             |                                                                                                     |
    |                       |                                                             | -  **false** indicates the flavor is available. Load balancers with this flavor can be created.     |
    +-----------------------+-------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
 
