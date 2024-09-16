@@ -66,16 +66,14 @@ Response Parameters
    | shared                | Boolean                                                    | Specifies whether the flavor is available to all users.                                             |
    |                       |                                                            |                                                                                                     |
    |                       |                                                            | -  true indicates that the flavor is available to all users.                                        |
-   |                       |                                                            |                                                                                                     |
    |                       |                                                            | -  false indicates that the flavor is available only to a specific user.                            |
    +-----------------------+------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
    | project_id            | String                                                     | Specifies the project ID.                                                                           |
    +-----------------------+------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
-   | type                  | String                                                     | Specifies the flavor type. Values can be one of the following:                                      |
+   | type                  | String                                                     | Specifies the flavor type. The value can be one of the following:                                   |
    |                       |                                                            |                                                                                                     |
-   |                       |                                                            | -  **L4** indicates a Layer-4 flavor.                                                               |
-   |                       |                                                            |                                                                                                     |
-   |                       |                                                            | -  **L7** indicates a Layer-7 flavor.                                                               |
+   |                       |                                                            | -  **L4**: a Layer-4 flavor.                                                                        |
+   |                       |                                                            | -  **L7**: a Layer-7 flavor.                                                                        |
    |                       |                                                            |                                                                                                     |
    |                       |                                                            | Minimum: **1**                                                                                      |
    |                       |                                                            |                                                                                                     |
@@ -84,7 +82,6 @@ Response Parameters
    | flavor_sold_out       | Boolean                                                    | Specifies whether the flavor is unavailable.                                                        |
    |                       |                                                            |                                                                                                     |
    |                       |                                                            | -  **true** indicates the flavor is unavailable. Load balancers with this flavor cannot be created. |
-   |                       |                                                            |                                                                                                     |
    |                       |                                                            | -  **false** indicates the flavor is available. Load balancers with this flavor can be created.     |
    +-----------------------+------------------------------------------------------------+-----------------------------------------------------------------------------------------------------+
 
