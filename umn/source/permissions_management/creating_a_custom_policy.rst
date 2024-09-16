@@ -10,9 +10,9 @@ Custom policies can be created as a supplement to the system policies of ELB. Fo
 You can create custom policies in either of the following ways:
 
 -  Visual editor: Select cloud services, actions, resources, and request conditions. This does not require knowledge of policy syntax.
--  JSON: Edit JSON policies from scratch or based on an existing policy.
+-  JSON: Create a JSON policy or edit an existing one.
 
-For details, see `Creating a Custom Policy <https://docs.otc.t-systems.com/identity-access-management/umn/user_guide/fine-grained_policy_management/creating_a_custom_policy.html>`__. The following section contains examples of common ELB custom policies.
+For details, see `Creating a Custom Policy <https://docs.otc.t-systems.com/identity-access-management/umn/user_guide/permissions/creating_a_custom_policy.html>`__. The following page describes how to create a custom policy on the console using the IAM service.
 
 Example Custom Policies
 -----------------------
