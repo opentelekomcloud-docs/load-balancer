@@ -5,107 +5,156 @@
 Specifications of Dedicated Load Balancers
 ==========================================
 
-Load balancers are available in different specifications. Choose the specifications that best meet your needs. If the traffic exceeds the selected specifications, new requests will be discarded.
+When you create a dedicated load balancer, you can select elastic or fixed specifications based on your service requirements. :ref:`Table 1 <en-us_topic_0287737145__en-us_topic_0000001819323754_table5935613662>` compares the two types of specifications.
 
--  Maximum concurrent connections
+If the traffic exceeds the selected specifications, new requests will be discarded. Select the specifications based on your service requirements.
 
-   Indicates the maximum number of concurrent connections that a load balancer can handle. If the number reaches the maximum connections that defined in the specification, new requests will be discarded to ensure the performance of the established connections.
+.. _en-us_topic_0287737145__en-us_topic_0000001819323754_table5935613662:
 
--  Connections per second (CPS)
+.. table:: **Table 1** Specifications comparison
 
-   Indicates the number of new connections that a load balancer can establish per second. If the number reaches the CPS that defined in the specification, new requests will be discarded to ensure the performance of established connections.
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Item                                               | Elastic                                                                                                                                                                                      | Fixed                                                                                                                                                                                        |
+   +====================================================+==============================================================================================================================================================================================+==============================================================================================================================================================================================+
+   | Application scenarios                              | -  For fluctuating traffic                                                                                                                                                                   | -  For stable traffic                                                                                                                                                                        |
+   |                                                    | -  When you need to use resources temporarily and for urgent purposes                                                                                                                        | -  When you need to use resources for a long term                                                                                                                                            |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Network (TCP/UDP) load balancer performance        | The performance multiplies as the number of AZs increases. :ref:`Table 3 <en-us_topic_0287737145__en-us_topic_0000001819323754_table52091547185916>` shows the maximum performance in an AZ. | The performance multiplies as the number of AZs increases. :ref:`Table 6 <en-us_topic_0287737145__en-us_topic_0000001819323754_table14428152722818>` shows the maximum performance in an AZ. |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Application (HTTP/HTTPS) load balancer performance | The performance multiplies as the number of AZs increases. :ref:`Table 3 <en-us_topic_0287737145__en-us_topic_0000001819323754_table52091547185916>` shows the maximum performance in an AZ. | The performance multiplies as the number of AZs increases. :ref:`Table 7 <en-us_topic_0287737145__en-us_topic_0000001819323754_table201281815505>` shows the maximum performance in an AZ.   |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Billing items                                      | -  LCU                                                                                                                                                                                       | LCU                                                                                                                                                                                          |
+   |                                                    | -  Load balancer                                                                                                                                                                             |                                                                                                                                                                                              |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Capabilities                                       | Same                                                                                                                                                                                         |                                                                                                                                                                                              |
+   +----------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-   HTTPS listeners need to create SSL handshakes to establish connections with clients, and such SSL handshakes occupy more system resources than HTTP listeners. For example, a small I application load balancer can establish 2,000 new HTTP connections per second but only 200 new HTTPS connections per second.
+Elastic Specifications
+----------------------
 
-   For a small I application load balancer:
+If your service traffic fluctuates greatly, you can choose elastic specifications and select network load balancing (TCP/UDP/TLS) or application load balancing (HTTP/HTTPS), or both that best meet your service needs.
 
-   -  If you only add an HTTP listener, the load balancer can establish up to 2,000 new HTTP connections.
+.. note::
 
-   -  If you only add an HTTPS listener, the load balancer can establish up to 200 new HTTPS connections.
+   The listener protocol must match the load balancing type. For example, if you select application load balancing (HTTP/HTTPS), you can only add an HTTP or HTTPS listener to this load balancer.
 
-   -  If you add an HTTPS listener and an HTTP listener, the new connections are calculated using the following formula:
+:ref:`Table 2 <en-us_topic_0287737145__en-us_topic_0000001819323754_table12368131594417>` describes the dimensions about elastic specifications. When your traffic exceeds the specifications defined in :ref:`Table 3 <en-us_topic_0287737145__en-us_topic_0000001819323754_table52091547185916>`, new requests will be discarded.
 
-      New connections = New HTTP connections + New HTTPS connections x Ratio of HTTP connections to HTTPS connections
+.. _en-us_topic_0287737145__en-us_topic_0000001819323754_table12368131594417:
 
-      For a small I application load balancer, the ratio of HTTP connections to HTTPS connections is 10. For details, see :ref:`Table 1 <en-us_topic_0287737145__table2863652175713>`.
+.. table:: **Table 2** Elastic specification dimensions
 
-      .. _en-us_topic_0287737145__table2863652175713:
+   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Maximum Connections         | Indicates the maximum number of concurrent connections that a load balancer can handle per minute. If the number reaches the maximum connections that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections. |
+   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Connection Per Second (CPS) | Indicates the number of new connections that a load balancer can establish per second. If the number reaches the CPS that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                             |
+   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Query Per Second (QPS)      | Indicates the number of HTTP or HTTPS requests sent to a backend server per second. If the QPS reaches that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                                           |
+   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Bandwidth (Mbit/s)          | Indicates the maximum amount of data that can be transmitted over a connection per second.                                                                                                                                                                                           |
+   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-      .. table:: **Table 1** New connections that a small I application load balancer can establish
+.. _en-us_topic_0287737145__en-us_topic_0000001819323754_table52091547185916:
 
-         +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-         | Parameter                      | Scenario 1                                                                                                                                                      | Scenario 2                                                                                                                                           |
-         +================================+=================================================================================================================================================================+======================================================================================================================================================+
-         | New HTTP connections           | 1,000                                                                                                                                                           | 1,000                                                                                                                                                |
-         +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-         | New HTTPS connections          | 50                                                                                                                                                              | 150                                                                                                                                                  |
-         +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-         | New HTTP and HTTPS connections | 1,000 + 50 x 10 = 1,500                                                                                                                                         | 1,000 + 150 x 10 = 2,500                                                                                                                             |
-         +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-         | Description                    | The new connections do not reach the CPS (HTTP) defined in :ref:`Table 3 <en-us_topic_0287737145__table201281815505>`, and new requests can be properly routed. | The new connections exceed the CPS (HTTP) defined in :ref:`Table 3 <en-us_topic_0287737145__table201281815505>`, and new requests will be discarded. |
-         +--------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------+
+.. table:: **Table 3** Maximum elastic specifications
 
-      .. note::
+   +------------------------------------+---------------------+---------+---------+--------------------+
+   | Protocol                           | Maximum Connections | CPS     | QPS     | Bandwidth (Mbit/s) |
+   +====================================+=====================+=========+=========+====================+
+   | Network load balancing (TCP/UDP)   | 20,000,000          | 400,000 | N/A     | 10,000             |
+   +------------------------------------+---------------------+---------+---------+--------------------+
+   | Application load balancing (HTTP)  | 8,000,000           | 80,000  | 160,000 | 10,000             |
+   +------------------------------------+---------------------+---------+---------+--------------------+
+   | Application load balancing (HTTPS) | 8,000,000           | 80,000  | 160,000 | 10,000             |
+   +------------------------------------+---------------------+---------+---------+--------------------+
 
-         Details in the :ref:`Table 1 <en-us_topic_0287737145__table2863652175713>` are for reference only.
+Fixed Specifications
+--------------------
 
--  Queries per second (QPS)
+Load balancers are available in different fixed specifications. Choose the specifications that best meet your needs. When your traffic exceeds what defined in your selected specifications, new requests will be discarded. Each specification has the following dimensions.
 
-   Indicates the number of HTTP or HTTPS requests sent to a backend server per second. If the QPS reaches that defined in the specification, new requests will be discarded to ensure the performance of established connections.
+.. table:: **Table 4** Fixed specification dimensions
 
--  Bandwidth (Mbit/s)
+   +-----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Maximum Connections               | Indicates the maximum number of concurrent connections that a load balancer can handle per minute. If the number reaches the maximum connections that is defined in your selected fixed specifications, new requests will be discarded to ensure the performance of existing connections.                                                                                                                                     |
+   +-----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | CPS                               | Indicates the number of new connections that a load balancer can establish per second. If the number reaches the CPS that is defined in your selected fixed specifications, new requests will be discarded to ensure the performance of established connections.                                                                                                                                                              |
+   |                                   |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+   |                                   | HTTPS listeners need to create SSL handshakes to establish connections with clients, and such SSL handshakes occupy more system resources than HTTP listeners. For example, a small I application load balancer can establish 2,000 new HTTP connections per second but only 200 new HTTPS connections per second. For details, see :ref:`Table 5 <en-us_topic_0287737145__en-us_topic_0000001819323754_table8443434175610>`. |
+   +-----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | QPS                               | Indicates the number of HTTP or HTTPS requests sent to a backend server per second. If the QPS reaches that is defined in your selected fixed specifications, new requests will be discarded to ensure the performance of established connections.                                                                                                                                                                            |
+   +-----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Bandwidth (Mbit/s)                | Indicates the maximum amount of data that can be transmitted over a connection per second.                                                                                                                                                                                                                                                                                                                                    |
+   +-----------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-   Indicates the maximum amount of data that can be transmitted over a load balancer per second.
+For a small I application load balancer:
 
-:ref:`Table 2 <en-us_topic_0287737145__table14428152722818>` and :ref:`Table 3 <en-us_topic_0287737145__table201281815505>` list the specifications of dedicated load balancers.
+-  If you only add an HTTP listener, the load balancer can establish up to 2,000 new HTTP connections.
 
-.. caution::
+-  If you only add an HTTPS listener, the load balancer can establish up to 200 new HTTPS connections.
 
-   -  **Available fixed specifications are displayed on the console and may vary depending on the resources in different regions.**
+-  If you add an HTTPS listener and an HTTP listener, the new connections are calculated using the following formula:
 
-   -  The load balancing type cannot be changed after being selected.
+   New connections = New HTTP connections + New HTTPS connections x Ratio of HTTP connections to HTTPS connections
 
-      For example, after you select network load balancing, you cannot change it to application load balancing. You can add only TCP and UDP listeners and cannot add HTTP and HTTPS listeners.
+   For a small I application load balancer, the ratio of HTTP connections to HTTPS connections is 10. For details, see :ref:`Table 5 <en-us_topic_0287737145__en-us_topic_0000001819323754_table8443434175610>`.
 
-.. _en-us_topic_0287737145__table14428152722818:
+   .. _en-us_topic_0287737145__en-us_topic_0000001819323754_table8443434175610:
 
-.. table:: **Table 2** Specifications for network load balancing (TCP/UDP)
+   .. table:: **Table 5** New connections that a small I application load balancer can establish
 
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Type      | Maximum Concurrent Connections | CPS     | Bandwidth (Mbit/s) | LCUs in an AZ |
-   +===========+================================+=========+====================+===============+
-   | Small I   | 500,000                        | 10,000  | 50                 | 10            |
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Small II  | 1,000,000                      | 20,000  | 100                | 20            |
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Medium I  | 2,000,000                      | 40,000  | 200                | 40            |
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Medium II | 4,000,000                      | 80,000  | 400                | 80            |
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Large I   | 10,000,000                     | 200,000 | 1,000              | 200           |
-   +-----------+--------------------------------+---------+--------------------+---------------+
-   | Large II  | 20,000,000                     | 400,000 | 2,000              | 400           |
-   +-----------+--------------------------------+---------+--------------------+---------------+
+      +--------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+      | Parameter                      | Scenario 1                                                                                                                                      | Scenario 2                                                                                                                           |
+      +================================+=================================================================================================================================================+======================================================================================================================================+
+      | New HTTP connections           | 1,000                                                                                                                                           | 1,000                                                                                                                                |
+      +--------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+      | New HTTPS connections          | 50                                                                                                                                              | 150                                                                                                                                  |
+      +--------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+      | New HTTP and HTTPS connections | 1,000 + 50 x 10 = 1,500                                                                                                                         | 1,000 + 150 x 10 = 2,500                                                                                                             |
+      +--------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+      | Description                    | -  The new connections do not reach the CPS (HTTP) that a small I application load balancer can handle, so new requests can be properly routed. | -  The new connections exceed the CPS (HTTP) that a small I application load balancer can handle, so new requests will be discarded. |
+      +--------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
-.. _en-us_topic_0287737145__table201281815505:
+   .. note::
 
-.. table:: **Table 3** Specifications for application load balancing (HTTP/HTTPS)
+      Details in the :ref:`Table 5 <en-us_topic_0287737145__en-us_topic_0000001819323754_table8443434175610>` are for reference only.
 
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Type      | Maximum Concurrent Connections | CPS (HTTP) | CPS (HTTPS) | QPS (HTTP) | QPS (HTTPS) | Bandwidth (Mbit/s) | Number of LCUs in an AZ |
-   +===========+================================+============+=============+============+=============+====================+=========================+
-   | Small I   | 200,000                        | 2,000      | 200         | 4,000      | 2,000       | 50                 | 10                      |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Small II  | 400,000                        | 4,000      | 400         | 8,000      | 4,000       | 100                | 20                      |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Medium I  | 800,000                        | 8,000      | 800         | 16,000     | 8,000       | 200                | 40                      |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Medium II | 2,000,000                      | 20,000     | 2,000       | 40,000     | 20,000      | 400                | 100                     |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Large I   | 4,000,000                      | 40,000     | 4,000       | 80,000     | 40,000      | 1,000              | 200                     |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
-   | Large II  | 8,000,000                      | 80,000     | 8,000       | 160,000    | 80,000      | 2,000              | 400                     |
-   +-----------+--------------------------------+------------+-------------+------------+-------------+--------------------+-------------------------+
+:ref:`Table 6 <en-us_topic_0287737145__en-us_topic_0000001819323754_table14428152722818>` and :ref:`Table 7 <en-us_topic_0287737145__en-us_topic_0000001819323754_table201281815505>` list the fixed specifications of dedicated load balancers.
+
+.. _en-us_topic_0287737145__en-us_topic_0000001819323754_table14428152722818:
+
+.. table:: **Table 6** Fixed specifications for a network load balancer (TCP/UDP)
+
+   ========= =================== ======= ================== =============
+   Type      Maximum Connections CPS     Bandwidth (Mbit/s) LCUs in an AZ
+   ========= =================== ======= ================== =============
+   Small I   500,000             10,000  50                 10
+   Small II  1,000,000           20,000  100                20
+   Medium I  2,000,000           40,000  200                40
+   Medium II 4,000,000           80,000  400                80
+   Large I   10,000,000          200,000 1,000              200
+   Large II  20,000,000          400,000 2,000              400
+   ========= =================== ======= ================== =============
+
+.. _en-us_topic_0287737145__en-us_topic_0000001819323754_table201281815505:
+
+.. table:: **Table 7** Fixed specifications for an application load balancer (HTTP/HTTPS)
+
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Type      | Maximum Connections | CPS (HTTP) | CPS (HTTPS) | QPS (HTTP) | QPS (HTTPS) | Bandwidth (Mbit/s) | LCUs in an AZ |
+   +===========+=====================+============+=============+============+=============+====================+===============+
+   | Small I   | 200,000             | 2,000      | 200         | 4,000      | 2,000       | 50                 | 10            |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Small II  | 400,000             | 4,000      | 400         | 8,000      | 4,000       | 100                | 20            |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Medium I  | 800,000             | 8,000      | 800         | 16,000     | 8,000       | 200                | 40            |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Medium II | 2,000,000           | 20,000     | 2,000       | 40,000     | 20,000      | 400                | 100           |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Large I   | 4,000,000           | 40,000     | 4,000       | 80,000     | 40,000      | 1,000              | 200           |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
+   | Large II  | 8,000,000           | 80,000     | 8,000       | 160,000    | 80,000      | 2,000              | 400           |
+   +-----------+---------------------+------------+-------------+------------+-------------+--------------------+---------------+
 
 .. note::
 
