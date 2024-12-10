@@ -110,7 +110,7 @@ html_copy_source = False
 latex_documents = [
     ('index',
      'elb-umn.tex',
-     u'Elastic Load Balancing - User Guide',
+    u'Elastic Load Balancing - User Guide',
      u'OpenTelekomCloud', 'manual'),
 ]
 
