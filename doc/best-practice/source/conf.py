@@ -110,7 +110,7 @@ html_copy_source = False
 latex_documents = [
     ('index',
      'elb-best-practice.tex',
-     u'Elastic Load Balancing - Best Practice',
+    u'Elastic Load Balancing - Best Practice',
      u'OpenTelekomCloud', 'manual'),
 ]
 
