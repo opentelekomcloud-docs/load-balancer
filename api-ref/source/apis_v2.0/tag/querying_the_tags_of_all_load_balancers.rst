@@ -59,7 +59,7 @@ Response Parameters
    | key                   | String                | Specifies the tag key.                                              |
    |                       |                       |                                                                     |
    |                       |                       | -  Cannot be left blank.                                            |
-   |                       |                       | -  Can contain a maximum of 36 characters.                          |
+   |                       |                       | -  Can contain a maximum of 128 characters.                         |
    |                       |                       | -  Can contain only the following character types:                  |
    |                       |                       |                                                                     |
    |                       |                       |    -  Uppercase letters                                             |
@@ -71,7 +71,7 @@ Response Parameters
    +-----------------------+-----------------------+---------------------------------------------------------------------+
    | values                | Array                 | Lists the tag values.                                               |
    |                       |                       |                                                                     |
-   |                       |                       | -  Can contain a maximum of 43 characters.                          |
+   |                       |                       | -  Can contain a maximum of 255 characters.                         |
    |                       |                       | -  Can contain only the following character types:                  |
    |                       |                       |                                                                     |
    |                       |                       |    -  Uppercase letters                                             |

@@ -5,7 +5,7 @@
 Sequencing Query Results
 ========================
 
-APIs v2.0 enable the system to sort queried results based on customized keys by adding the **sort_key** and **sort_dir** parameters to the URL of the list request. **sort_key** specifies the parameter used for sequencing results, and **sort_dir** specifies whether results are displayed in ascending or descending order. These APIs allow sorting query results by multiple criteria. The number of **sort_key** parameters must be equal to that of **sort_dir** parameters. Otherwise, 400 status code is returned.
+API v2.0 enables the system to sort queried results based on customized keys by adding the **sort_key** and **sort_dir** parameters to the URL of the list request. **sort_key** specifies the parameter used for sequencing results, and **sort_dir** specifies whether results are displayed in ascending or descending order. These APIs allow sorting query results by multiple criteria. The number of **sort_key** parameters must be equal to that of **sort_dir** parameters. Otherwise, 400 status code is returned.
 
 Example Request
 ---------------
