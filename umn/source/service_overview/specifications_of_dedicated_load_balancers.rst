@@ -32,7 +32,7 @@ If the traffic exceeds the selected specifications, new requests will be discard
 Elastic Specifications
 ----------------------
 
-If your service traffic fluctuates greatly, you can choose elastic specifications and select network load balancing (TCP/UDP/TLS) or application load balancing (HTTP/HTTPS), or both that best meet your service needs.
+If your service traffic fluctuates greatly, you can choose elastic specifications and select network load balancing (TCP/UDP) or application load balancing (HTTP/HTTPS), or both that best meet your service needs.
 
 .. note::
 
@@ -44,15 +44,15 @@ If your service traffic fluctuates greatly, you can choose elastic specification
 
 .. table:: **Table 2** Elastic specification dimensions
 
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Maximum Connections         | Indicates the maximum number of concurrent connections that a load balancer can handle per minute. If the number reaches the maximum connections that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections. |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Connection Per Second (CPS) | Indicates the number of new connections that a load balancer can establish per second. If the number reaches the CPS that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                             |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Query Per Second (QPS)      | Indicates the number of HTTP or HTTPS requests sent to a backend server per second. If the QPS reaches that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                                           |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-   | Bandwidth (Mbit/s)          | Indicates the maximum amount of data that can be transmitted over a connection per second.                                                                                                                                                                                           |
-   +-----------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   +------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Maximum Connections          | Indicates the maximum number of concurrent connections that a load balancer can handle per minute. If the number reaches the maximum connections that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections. |
+   +------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Connections Per Second (CPS) | Indicates the number of new connections that a load balancer can establish per second. If the number reaches the CPS that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                             |
+   +------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Queries Per Second (QPS)     | Indicates the number of HTTP or HTTPS requests sent to a backend server per second. If the QPS reaches that is defined in the elastic specifications, new requests will be discarded to ensure the performance of established connections.                                           |
+   +------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+   | Bandwidth (Mbit/s)           | Indicates the maximum amount of data that can be transmitted over a connection per second.                                                                                                                                                                                           |
+   +------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. _en-us_topic_0287737145__en-us_topic_0000001819323754_table52091547185916:
 
