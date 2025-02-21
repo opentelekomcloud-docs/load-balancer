@@ -12,16 +12,16 @@ If a client cannot access a backend server through a load balancer, the backend 
 
 -  Dedicated load balancers
 
-   On the **Load Balancers** page, click the name of the load balancer to view its details. Click **Backend Server Groups** and locate the server group. You can find the health check results for backend servers in the **Basic Information** area.
+   On the **Load Balancers** page, click the name of the load balancer to view its details. Click **Backend Server Groups** and locate the server group. You can view the health check results for backend servers in the **Basic Information** area.
 
 -  Shared load balancers
 
-   On the **Load Balancers** page, click the name of the load balancer to view its details. Click **Backend Server Groups** and locate the server group. You can find the health check results for backend servers in the **Basic Information** area.
+   On the **Load Balancers** page, click the name of the load balancer to view its details. Click **Backend Server Groups** and locate the server group. You can view the health check results for backend servers in the **Basic Information** area.
 
 Background
 ----------
 
-To check the health of backend servers, dedicated load balancers use the IP addresses from the backend subnet where they work to send heartbeat requests to the backend servers, while shared load balancers use IP addresses in 100.125.0.0/16.
+To check the health of backend servers, dedicated load balancers use the IP addresses in the backend subnet where they work to send heartbeat requests to the backend servers, while shared load balancers use IP addresses in 100.125.0.0/16.
 
 Dedicated load balancers: To ensure that health checks can be performed as expected, ensure that traffic is allowed from the backend subnet where the load balancer is working to the backend servers.
 
