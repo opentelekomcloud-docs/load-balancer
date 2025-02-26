@@ -12,7 +12,7 @@ This section guides you on how to change the specifications of a dedicated load 
 
 .. note::
 
-   You can only change the specifications of dedicated load balancers.
+   You can only change the specifications of dedicated load balancers. Only newly created resources can be switched to elastic specifications.
 
 Changing Specifications
 -----------------------
